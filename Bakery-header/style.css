@@ -1,10 +1,18 @@
+
 #header{
+    width: 100%;
+    min-height: 50px;
     display: flex;
     justify-content: space-evenly;
     background-color: var(--silver);
     align-items: center;
-    padding: 8px 0px;
     border-bottom: 1px solid var(--black);
+    margin: 0;
+}
+#catalog-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 #catalog-link{
     font-size: 20px;
@@ -19,14 +27,14 @@
     border: 1px solid var(--pale-brown);
     text-indent: 10px;
     background-color: var(--silver);
-    width: 300px;
+    width: 80%;
     height: 35px;
 }
 #search-cake-btn{
     color: var(--black);
     position: absolute;
     top: 5px;
-    right: 10px;
+    right: 23%;
     cursor: pointer;
     border: none;
     background-color: var(--silver);
@@ -37,10 +45,19 @@
 #backhome-link{
     text-decoration: none;
 }
+.dropdown{
+    padding: 0 !important;
+}
+#dropdown-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 #dropdown-management{
     font-size: 20px;
     text-decoration: none;
     color: var(--black);
+    padding: 0;
 }
 #dropdown-management-list{
     background-color: var(--silver);
@@ -56,7 +73,7 @@
     margin: 0;
     display: flex;
     list-style: none;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 #navbar-icon li{
     font-size: 25px;
