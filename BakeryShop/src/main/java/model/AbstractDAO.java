@@ -14,7 +14,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author Nguyen Truong An 
+ * @author Nguyen Truong An CE170984
  * @param <T>
  */
 public abstract class AbstractDAO<T> {
@@ -44,5 +44,5 @@ public abstract class AbstractDAO<T> {
 
     public abstract void delete(String id);
     
-    public abstract T findByID(String id);
+    public abstract T findByID(int id);
 }

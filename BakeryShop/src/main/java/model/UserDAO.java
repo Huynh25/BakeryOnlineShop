@@ -12,13 +12,13 @@ import java.util.List;
 
 /**
  *
- * @author ACER PC
+ * @author Nguyen Truong An CE170984
  */
-public class UserDAO extends AbstractDAO<User>{
+public class UserDAO extends AbstractDAO<User> {
 
     @Override
     public List<User> readAll() {
-List<User> users = new ArrayList<>();
+        List<User> users = new ArrayList<>();
         try {
 
             String sql = "Select * from [dbo].[Customers]";
@@ -36,7 +36,8 @@ List<User> users = new ArrayList<>();
 
         } catch (SQLException ex) {
         }
-        return users;    }
+        return users;
+    }
 
     @Override
     public void create(User object) {
@@ -54,10 +55,10 @@ List<User> users = new ArrayList<>();
     }
 
     @Override
-    public User findByID(String id) {
+    public User findByID(int id) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-    
+
     public static void main(String[] args) {
         UserDAO uDAO = new UserDAO();
 
@@ -65,7 +66,7 @@ List<User> users = new ArrayList<>();
         for (User u : list) {
             System.out.println(u.toString());
         }
-       
+
     }
-    
+
 }
