@@ -1,0 +1,63 @@
+#header{
+    display: flex;
+    justify-content: space-evenly;
+    background-color: var(--silver);
+    align-items: center;
+    padding: 8px 0px;
+    border-bottom: 1px solid var(--black);
+}
+#catalog-link{
+    font-size: 20px;
+    text-decoration: none;
+    color: var(--black);
+}
+#search-cake{
+    position: relative;
+}
+#search-cake-input{
+    border-radius: 20px;
+    border: 1px solid var(--pale-brown);
+    text-indent: 10px;
+    background-color: var(--silver);
+    width: 300px;
+    height: 35px;
+}
+#search-cake-btn{
+    color: var(--black);
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    cursor: pointer;
+    border: none;
+    background-color: var(--silver);
+}
+#bakery-name{
+    margin: 0;
+}
+#backhome-link{
+    text-decoration: none;
+}
+#dropdown-management{
+    font-size: 20px;
+    text-decoration: none;
+    color: var(--black);
+}
+#dropdown-management-list{
+    background-color: var(--silver);
+    border: 1px solid var(--black);
+}
+.dropdown-item:hover{
+    background-color: var(--pale-brown) !important;
+    color: var(--white) !important;
+}
+#navbar-icon{
+    width: 300px;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    list-style: none;
+    justify-content: space-between;
+}
+#navbar-icon li{
+    font-size: 25px;
+}
