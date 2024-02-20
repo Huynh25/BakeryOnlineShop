@@ -4,7 +4,7 @@
     min-height: 50px;
     display: flex;
     justify-content: space-evenly;
-    background-color: var(--silver);
+    background-color: var(--white);
     align-items: center;
     border-bottom: 1px solid var(--black);
     margin: 0;
@@ -26,7 +26,7 @@
     border-radius: 20px;
     border: 1px solid var(--pale-brown);
     text-indent: 10px;
-    background-color: var(--silver);
+    background-color: var(--white);
     width: 80%;
     height: 35px;
 }
@@ -37,7 +37,7 @@
     right: 23%;
     cursor: pointer;
     border: none;
-    background-color: var(--silver);
+    background-color: var(--white);
 }
 #bakery-name{
     margin: 0;
@@ -60,11 +60,11 @@
     padding: 0;
 }
 #dropdown-management-list{
-    background-color: var(--silver);
+    background-color: var(--white);
     border: 1px solid var(--black);
 }
 .dropdown-item:hover{
-    background-color: var(--pale-brown) !important;
+    background-color: var(--red) !important;
     color: var(--white) !important;
 }
 #navbar-icon{
