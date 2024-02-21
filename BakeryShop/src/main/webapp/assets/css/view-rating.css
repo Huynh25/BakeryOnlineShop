@@ -135,10 +135,12 @@
     font-size: 14px;
 }
 .rating-comment{
+    text-align: left;
     font-size: 14px;
 }
 .show-more-button{
     display: flex;
+    margin-top: 10px;
     justify-content: center;
 }
 .show-more-button div{

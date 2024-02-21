@@ -23,7 +23,7 @@ public class RatingDAO extends AbstractDAO<Rating> {
 
     CustomerDAO cDAo = new CustomerDAO();
     CakeDAO cakeDAO = new CakeDAO();
-
+    
     @Override
     public List<Rating> readAll() {
         List<Rating> ratings = new ArrayList<>();
@@ -40,7 +40,7 @@ public class RatingDAO extends AbstractDAO<Rating> {
 
                 Customer customer = cDAo.findByID(rs.getInt("userID"));
 
-                rating.setUserID(customer);
+                rating.setCustomer(customer);
                 rating.setCake(cake);
                 rating.setRatingDate(rs.getDate("ratingDate"));
                 rating.setRatingValue(rs.getInt("ratingValue"));

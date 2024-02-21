@@ -1,6 +1,7 @@
 daos\ProductHistoryDAO.class
 models\ProductHistory.class
 models\User.class
+controllers\admincontrollers\RatingController.class
 daos\ToppingDAO.class
 daos\OrderDAO.class
 models\CakeInOrder.class
