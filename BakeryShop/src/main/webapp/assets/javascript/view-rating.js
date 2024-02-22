@@ -106,7 +106,6 @@ function generateStars(ratingValue) {
 }
 function ShowMoreRating() {
     const ratingDetailContainer = document.getElementById('rating-detail-container');
-    console.log(ratingDetailContainer);
     for (let i = numberShowRating; i < Math.min(numberShowRating + 4, ratingDetailList.length); i++) {
         let ratingDetailNew = document.createElement('div');
         ratingDetailNew.classList.add('rating-comment-container', 'col-sm-6', 'row');
