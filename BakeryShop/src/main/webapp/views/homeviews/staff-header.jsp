@@ -32,7 +32,7 @@
                     <a class="dropdown-item" href="#">Order</a>
                     <a class="dropdown-item" href="#">Topping</a>
                     <a class="dropdown-item" href="#">Cake</a>
-                    <a class="dropdown-item" href="#">Rating</a>
+                    <a class="dropdown-item" href="rating-management">Rating</a>
                 </div>
             </div>
             <ul id="navbar-icon" class="col-sm-6">

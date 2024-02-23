@@ -32,7 +32,7 @@
                     <a class="dropdown-item" href="#">Order</a>
                     <a class="dropdown-item" href="#">Topping</a>
                     <a class="dropdown-item" href="#">Cake</a>
-                    <a class="dropdown-item" href="#">Rating</a>
+                    <a class="dropdown-item" href="rating-management">Rating</a>
                     <a class="dropdown-item" href="#">Staff</a>
                     <a class="dropdown-item" href="#">Product History</a>
                 </div>

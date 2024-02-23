@@ -1,0 +1,223 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/css.css to edit this template
+*/
+/* 
+    Created on : Feb 22, 2024, 5:46:40 PM
+    Author     : Tran Nguyen Nam Thuan CE171497
+*/
+
+#content{
+    margin: 10px 10px;
+    width: calc(100% - 20px);
+    background-color: var(--white);
+}
+#nav-bar-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#nav-bar{
+    padding: 0;
+    min-width: 90%;
+    margin: 0 10px;
+    border-bottom: 1px solid var(--black);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#nav-bar li{
+    list-style: none;
+    font-size: 24px;
+}
+.nav-bar-items{
+    border: 0;
+    background-color: var(--white);
+    text-align: left;
+}
+.nav-bar-items:hover{
+    color:var(--red);
+}
+#nav-bar--active button{
+    position: relative
+}
+#nav-bar--active button::after {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+   display: block;
+   content: "";
+   width: calc(100% + 10px);
+   height: 3px;
+   background-color: var(--red);
+}
+#nav-bar--active .nav-bar-items:hover{
+    color: var(--black);
+}
+#search-order-form{
+    position: relative;
+    margin-top: 10px;
+}
+#search-order-form input{
+    border-radius: 10px;
+    width: 100%;
+    height: 35px;
+}
+#search-order-form button{
+    position: absolute;
+    top:2px;
+    right:18px;
+    height: 31px;
+    width: 40px;
+    border: none;
+    border-left: 1px solid var(--black);
+    border-radius: 0px 10px 10px 0px;
+    background-color: var(--white);
+}
+.date-container{
+    margin-top:10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#filter-container{
+     display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#filter-container div{
+    width: 90%;
+    display: flex;
+    align-items: center;
+}
+.date-container input{
+    max-width: 130px;
+}
+#order-content-container{
+    margin: 30px 10px;
+}
+#number-order{
+    font-weight: 600;
+    margin-left: 38px;
+}
+.order-content{
+    display: flex;
+    justify-content: space-around;
+    border: 2px solid var(--black);
+    align-items: center;
+    min-height: 50px;
+    margin: 0px 40px !important;
+}
+.order-content-total-info, .order-content-status-info{
+    display: flex;
+    align-items: center;
+}
+.order-content-status-info{
+    text-align: right;
+}
+.order-id{
+    color: var(--red);
+}
+.orderdDetail-content{
+    margin: 15px 38px !important;
+    border: 2px solid var(--black);
+    display: flex;
+    justify-content: space-around;
+}
+.orderDetail-card{
+    margin: 20px 10px;
+    padding: 0 !important;
+    border: 2px solid var(--black);
+    width: 25%;
+    border-radius: 10px;
+}
+.orderDetail-cakeName{
+    color: var(--red);
+    text-align: center;
+    font-size: 18px;
+    font-weight: 600;
+    margin-top: 10px;
+}
+.cake-info{
+    display: flex;
+    justify-content: space-evenly;
+    margin: 5px 5px !important;
+}
+.orderDetail-cakeImage{
+    padding: 0 !important;
+    max-width: 130px;
+    height: 120px;
+    border: 2px solid var(--black);
+    border-radius: 10px;
+}
+.orderDetail-totalPrice{
+    text-align: center;
+    font-size: 18px;
+    color:var(--dark-pink);
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+.orderDetail-cakePrice{
+    text-align: center;
+}
+.orderDetail-cakeQuantity{
+    margin: 15px 0px;
+    text-align: center;
+}
+.showTopping-btn, .showLess-btn{
+  margin: 10px 0;   
+  padding: 0px 3px !important;
+  border-radius: 5px;
+  border: 2px solid var(--black);
+}
+.showMore-btn-cotainer{
+    display: flex;
+    justify-content: center;
+}
+.showMore-btn{
+    margin-bottom: 10px ;
+    border-radius: 5px;
+    border: 2px solid var(--black);
+}
+.showTopping-btn-cotainer{
+    display: flex;
+    justify-content: center;
+}
+#back-page-btn,#next-page-btn{
+    cursor: pointer;
+    font-weight: 600;
+}
+#all-order-info{
+    display: flex;
+    justify-content: space-between;
+}
+#page-info{
+    margin-right: 38px;
+    font-size: 18px;
+}
+.disable-icon{
+    opacity: 0.5;
+}
+.toppingDetail{
+    display: flex;
+    justify-content: space-around;
+}
+.toppingDetail-price{
+    text-align: right;
+}
+.toppingDetail-quantity{
+    text-align: left;
+}
+.orderDetail-card--unshowTopping{
+    height: 230px;
+}
+@media only screen and (max-width: 1390px) {
+    .orderDetail-card--unshowTopping {
+        height: 300px; 
+    }
+}
+@media only screen and (max-width: 800px) {
+    .orderDetail-card--unshowTopping {
+        height: 350px; 
+    }
+}

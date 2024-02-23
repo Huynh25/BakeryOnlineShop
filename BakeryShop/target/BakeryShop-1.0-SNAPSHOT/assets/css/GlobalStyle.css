@@ -117,4 +117,19 @@
 #navbar-icon li{
     font-size: 25px;
 }
-
+#url{
+    margin: 5px 0 10px 0;
+}
+#home-link{
+ text-decoration: none;
+ color: var(--black);   
+ font-size: 20px;
+}
+#next-btn{
+    font-size: 20px;
+}
+#title{
+    font-size: 20px;
+    color: var(--red);
+    font-weight: 600;
+}
