@@ -59,6 +59,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     width: 80%;
     height: 44px;
 }
+.search-order-input:focus{
+    outline: none;
+}
 .search-order-btn {
     top: auto;
     bottom: auto;
@@ -129,6 +132,15 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
 }
 .circle-green{
     background-color: greenyellow;
+}
+.circle-blue{
+    background-color: blue;
+}
+.Paid{
+    background-color: greenyellow;
+}
+.NotPaid{
+    background-color: yellow;
 }
 .Total-price{
     margin-right: 5%;

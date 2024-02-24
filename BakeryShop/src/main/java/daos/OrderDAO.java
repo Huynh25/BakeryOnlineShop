@@ -22,7 +22,7 @@ public class OrderDAO extends AbstractDAO<Order>{
       List<Order> orders = new ArrayList<>();
         try {
 
-            String sql = "Select * from [dbo].[Orders]";
+            String sql = "Select * from [dbo].[Orders] ORDER BY orderDate DESC";
             Statement stm = con.createStatement();
             ResultSet rs = stm.executeQuery(sql);
 
@@ -87,6 +87,28 @@ public class OrderDAO extends AbstractDAO<Order>{
         } catch (SQLException ex) {
         }
         return null;
+    }
+    
+    public List<Order> searchOrders(String searchTerm){
+    OrderDAO orderDAO = new OrderDAO();
+    
+        List<Order> orderList = orderDAO.readAll();
+        List<Order> searchResult = new ArrayList<>();
+        
+        for (Order order : orderList) {
+            String orderID = order.getOrderID() + "";
+            String orderDate = order.getOrderDate() + "";
+            String orderPrice = order.getTotalPrice() + "";
+            if (orderID.equalsIgnoreCase(searchTerm)) {
+                searchResult.add(order);
+            } else if (orderDate.contains(searchTerm)) {
+                searchResult.add(order);
+            } else if (orderPrice.equalsIgnoreCase(searchTerm)) {
+                searchResult.add(order);
+            }
+        }
+        
+        return searchResult;
     }
     
     public static void main(String[] args) {

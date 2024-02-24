@@ -8,6 +8,14 @@
         <servlet-name>OrderHistoryController</servlet-name>
         <servlet-class>controllers.customercontrollers.OrderHistoryController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>MyConfirmedOrdersController</servlet-name>
+        <servlet-class>controllers.admincontrollers.MyConfirmedOrdersController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UnconfirmedOrdersController</servlet-name>
+        <servlet-class>controllers.admincontrollers.UnconfirmedOrdersController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RatingController</servlet-name>
         <url-pattern>/rating-management</url-pattern>
@@ -15,6 +23,14 @@
     <servlet-mapping>
         <servlet-name>OrderHistoryController</servlet-name>
         <url-pattern>/order-history</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MyConfirmedOrdersController</servlet-name>
+        <url-pattern>/MyConfirmedOrders</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UnconfirmedOrdersController</servlet-name>
+        <url-pattern>/UnconfirmedOrders</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

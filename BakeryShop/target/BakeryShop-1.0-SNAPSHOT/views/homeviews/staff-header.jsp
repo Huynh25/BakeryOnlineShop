@@ -29,7 +29,7 @@
                     Management
                 </a>
                 <div class="dropdown-menu" id="dropdown-management-list">
-                    <a class="dropdown-item" href="#">Order</a>
+                    <a class="dropdown-item" href="MyConfirmedOrders">Order</a>
                     <a class="dropdown-item" href="#">Topping</a>
                     <a class="dropdown-item" href="#">Cake</a>
                     <a class="dropdown-item" href="rating-management">Rating</a>

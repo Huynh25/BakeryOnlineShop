@@ -1,3 +1,4 @@
+controllers\customercontrollers\OrderHistoryController.class
 daos\ProductHistoryDAO.class
 models\User.class
 controllers\admincontrollers\RatingController.class
@@ -7,6 +8,7 @@ daos\ToppingInCakeDAO.class
 daos\RatingDAO.class
 models\Rating.class
 daos\UserDAO.class
+controllers\admincontrollers\MyConfirmedOrdersController.class
 models\Topping.class
 models\Cake.class
 models\Order.class
@@ -21,4 +23,5 @@ models\Customer.class
 models\ToppingInCake.class
 daos\StaffDAO.class
 daos\CakeDAO.class
+controllers\admincontrollers\UnconfirmedOrdersController.class
 daos\GoWithDAO.class
