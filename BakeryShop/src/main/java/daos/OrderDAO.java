@@ -111,17 +111,157 @@ public class OrderDAO extends AbstractDAO<Order>{
         return searchResult;
     }
     
-    public static void main(String[] args) {
-        OrderDAO oDAO = new OrderDAO();
+ public List<Order> readSomeByID(String numberOrder, int userID) {
+        List<Order> orders = new ArrayList<>();
+        try {
 
-        List<Order> list = oDAO.readAll();
-        for (Order o : list) {
-            System.out.println(o.toString());
+            String sql = "SELECT *\n"
+                    + "FROM [dbo].[Orders]\n"
+                    + "Where userID=\'" + userID + "\'"
+                    + "ORDER BY orderDate DESC\n"
+                    + "OFFSET " + numberOrder + " ROWS FETCH NEXT 8 ROWS ONLY;";
+            Statement stm = con.createStatement();
+            ResultSet rs = stm.executeQuery(sql);
+
+            while (rs.next()) {
+                Order order = new Order();
+                order.setOrderID(rs.getInt("orderID"));
+                order.setUserID(rs.getInt("userID"));
+                order.setStaffID(rs.getInt("staffID"));
+                order.setOrderDescription(rs.getString("orderDescription"));
+                order.setTotalPrice(rs.getInt("totalPrice"));
+                order.setOrderDate(rs.getDate("orderDate"));
+                order.setReceivedDate(rs.getDate("receivedDate"));
+                order.setWasPaid(rs.getBoolean("wasPaid"));
+                order.setStatus(rs.getString("status"));
+
+                orders.add(order);
+            }
+
+        } catch (SQLException ex) {
         }
-        
-        System.out.println("------------");
-        
-        System.out.println(oDAO.findByID(01).toString());
+        return orders;
+    }
 
+    public List<Order> filterSomeByID(String numberOrder, int userID, String filter, String search, String orderDate, String receivedDate) {
+
+        List<Order> orders = new ArrayList<>();
+        try {
+            String sql = "select DISTINCT o.* from Orders o join CakeInOrder cio on cio.orderID=o.orderID join Cakes c on cio.cakeID=c.cakeID\n"
+                    + "where userID=\'" + userID + "\' AND (o.orderID Like \'%" + search + "%\' OR o.staffID Like \'%" + search + "%\' OR o.orderDescription Like N\'%" + search + "%' OR c.cakeName Like N\'%" + search + "%\')";
+            switch (filter) {
+                case "wasPaid": {
+                    sql += "AND wasPaid=1";
+                    break;
+                }
+                case "waiting": {
+                    sql += "AND status=\'Waiting\'";
+                    break;
+                }
+                case "accepted": {
+                    sql += "AND status=\'Delivering\'";
+                    break;
+                }
+                case "completed": {
+                    sql += "AND status=\'Done\'";
+                    break;
+                }
+                case "all": {
+                    break;
+                }
+                default: {
+
+                }
+            }
+            if (!orderDate.equals("")) {
+                sql += "AND orderDate=\'" + orderDate + "\'";
+            }
+            if (!receivedDate.equals("")) {
+                sql += "AND receivedDate=\'" + receivedDate + "\'";
+            }
+            sql += " ORDER BY orderDate DESC OFFSET " + numberOrder + " ROWS FETCH NEXT 8 ROWS ONLY;";
+            Statement stm = con.createStatement();
+            ResultSet rs = stm.executeQuery(sql);
+
+            while (rs.next()) {
+                Order order = new Order();
+                order.setOrderID(rs.getInt("orderID"));
+                order.setUserID(rs.getInt("userID"));
+                order.setStaffID(rs.getInt("staffID"));
+                order.setOrderDescription(rs.getString("orderDescription"));
+                order.setTotalPrice(rs.getInt("totalPrice"));
+                order.setOrderDate(rs.getDate("orderDate"));
+                order.setReceivedDate(rs.getDate("receivedDate"));
+                order.setWasPaid(rs.getBoolean("wasPaid"));
+                order.setStatus(rs.getString("status"));
+
+                orders.add(order);
+            }
+
+        } catch (SQLException ex) {
+        }
+        return orders;
+    }
+    public int numberByUserID(int id) {
+        int number = 0;
+        try {
+            String sql = "Select * from [dbo].[Orders]"
+                    + "where userID =\'" + id + "\'";
+            Statement stm = con.createStatement();
+            ResultSet rs = stm.executeQuery(sql);
+            while (rs.next()) {
+                number++;
+            }
+
+        } catch (SQLException ex) {
+        }
+        return number;
+    }
+
+    public int numberFilterByUserID(int id, String filter, String search, String orderDate, String receivedDate) {
+        int number = 0;
+        try {
+         String sql = "select DISTINCT o.* from Orders o join CakeInOrder cio on cio.orderID=o.orderID join Cakes c on cio.cakeID=c.cakeID\n"
+                    + "where userID=\'" + id + "\' AND (o.orderID Like \'%" + search + "%\' OR o.staffID Like \'%" + search + "%\' OR o.orderDescription Like N\'%" + search + "%' OR c.cakeName Like N\'%" + search + "%\')";
+            switch (filter) {
+                case "wasPaid": {
+                    sql += "AND wasPaid=1";
+                    break;
+                }
+                case "waiting": {
+                    sql += "AND status=\'Waiting\'";
+                    break;
+                }
+                case "accepted": {
+                    sql += "AND status=\'Delivering\'";
+                    break;
+                }
+                case "completed": {
+                    sql += "AND status=\'Done\'";
+                    break;
+                }
+                case "all": {
+                    break;
+                }
+                default: {
+
+                }
+            }
+            if (!orderDate.equals("")) {
+                sql += "AND orderDate=\'" + orderDate + "\'";
+            }
+            if (!receivedDate.equals("")) {
+                sql += "AND receivedDate=\'" + receivedDate + "\'";
+            } 
+            
+            Statement stm = con.createStatement();
+            ResultSet rs = stm.executeQuery(sql);
+            while (rs.next()) {
+                number++;
+            }
+
+        } catch (SQLException ex) {
+        }
+        return number;
     }
 }

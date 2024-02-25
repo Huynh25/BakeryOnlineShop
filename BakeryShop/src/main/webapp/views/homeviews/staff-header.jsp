@@ -37,7 +37,7 @@
             </div>
             <ul id="navbar-icon" class="col-sm-6">
                 <li><a href="#"><i class="bi bi-basket3"></i></a></li>
-                <li><a href="#"><i class="bi bi-clock-history"></i></a></li>
+                 <li><a href="order-history"><i class="bi bi-clock-history"></i></a></li>
                 <li><a href=""><i class="bi bi-person-circle"></i></a></li>
             </ul>
         </div>
