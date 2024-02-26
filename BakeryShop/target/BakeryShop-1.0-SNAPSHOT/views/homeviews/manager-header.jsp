@@ -34,7 +34,7 @@
                     <a class="dropdown-item" href="#">Cake</a>
                     <a class="dropdown-item" href="rating-management">Rating</a>
                     <a class="dropdown-item" href="#">Staff</a>
-                    <a class="dropdown-item" href="#">Product History</a>
+                    <a class="dropdown-item" href="product-history">Product History</a>
                 </div>
             </div>
             <ul id="navbar-icon" class="col-sm-6">

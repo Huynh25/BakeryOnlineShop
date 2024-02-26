@@ -180,6 +180,7 @@ public class OrderDAO extends AbstractDAO<Order>{
                 sql += "AND receivedDate=\'" + receivedDate + "\'";
             }
             sql += " ORDER BY orderDate DESC OFFSET " + numberOrder + " ROWS FETCH NEXT 8 ROWS ONLY;";
+            System.out.println(sql);
             Statement stm = con.createStatement();
             ResultSet rs = stm.executeQuery(sql);
 
