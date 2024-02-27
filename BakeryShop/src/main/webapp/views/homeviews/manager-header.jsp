@@ -33,7 +33,7 @@
                     <a class="dropdown-item" href="#">Topping</a>
                     <a class="dropdown-item" href="#">Cake</a>
                     <a class="dropdown-item" href="rating-management">Rating</a>
-                    <a class="dropdown-item" href="#">Staff</a>
+                    <a class="dropdown-item" href="staff-management">Staff</a>
                     <a class="dropdown-item" href="product-history">Product History</a>
                 </div>
             </div>

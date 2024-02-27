@@ -90,8 +90,6 @@ public class ProductHistoryDAO extends AbstractDAO<ProductHistory> {
              if(!date.equals("")){
                 sql+=" AND (ph.updateDate Like '%"+date+"%' OR ph.createDate Like '%"+date+"%')";
             }
-            System.out.println(sql);
-
             Statement stm = con.createStatement();
             ResultSet rs = stm.executeQuery(sql);
 
@@ -135,7 +133,6 @@ public class ProductHistoryDAO extends AbstractDAO<ProductHistory> {
                     + "        WHEN updateDate IS NULL THEN createDate\n"
                     + "        ELSE updateDate\n"
                     + "    END  DESC OFFSET " + (preNumberPage -1)*8 + " ROWS FETCH NEXT 8 ROWS ONLY";
-            System.out.println(sql);
             Statement stm = con.createStatement();
             ResultSet rs = stm.executeQuery(sql);
 

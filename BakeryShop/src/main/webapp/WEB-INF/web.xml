@@ -20,6 +20,10 @@
         <servlet-name>ProductHistoryController</servlet-name>
         <servlet-class>controllers.admincontrollers.ProductHistoryController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>StaffManagementController</servlet-name>
+        <servlet-class>controllers.admincontrollers.StaffManagementController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RatingController</servlet-name>
         <url-pattern>/rating-management</url-pattern>
@@ -39,6 +43,10 @@
     <servlet-mapping>
         <servlet-name>ProductHistoryController</servlet-name>
         <url-pattern>/product-history</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>StaffManagementController</servlet-name>
+        <url-pattern>/staff-management</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
