@@ -1,4 +1,3 @@
-
 :root{
     --white:#F9F6F2;
     --silver:#E5DFDB;
@@ -8,7 +7,7 @@
     --pale-brown:#BDB09E;
 }
 * {
-  font-family: "Inter", sans-serif;
+    font-family: "Inter", sans-serif;
     color: var(--black);
     box-sizing: border-box;
 }
@@ -16,26 +15,26 @@
     font-family: "Unna", serif;
     font-weight: 400;
     font-style: normal;
-  }
-  
-  .unna-bold {
+}
+
+.unna-bold {
     font-family: "Unna", serif;
     font-weight: 700;
     font-style: normal;
-  }
-  
-  .unna-regular-italic {
+}
+
+.unna-regular-italic {
     font-family: "Unna", serif;
     font-weight: 400;
     font-style: italic;
-  }
-  
-  .unna-bold-italic {
+}
+
+.unna-bold-italic {
     font-family: "Unna", serif;
     font-weight: 700;
     font-style: italic;
-  }
-  #header{
+}
+#header{
     width: 100%;
     min-height: 50px;
     display: flex;
@@ -121,9 +120,9 @@
     margin: 5px 0 10px 0;
 }
 #home-link{
- text-decoration: none;
- color: var(--black);   
- font-size: 20px;
+    text-decoration: none;
+    color: var(--black);
+    font-size: 20px;
 }
 #next-btn{
     font-size: 20px;

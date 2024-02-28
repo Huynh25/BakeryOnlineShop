@@ -27,6 +27,9 @@
 
         <link rel="stylesheet" href="./assets/css/searchcake.css">
 
+        <link rel="stylesheet" href="../../assets/css/footer.css">
+
+
     </head>
 
     <body>
@@ -34,7 +37,7 @@
             <!-- Header -->
             <%@include file="../homeviews/customer-header.jsp" %>
 
-            
+
             <!-- Bread-crumb -->
             <div class="bread-crumb container">
                 <div class="bread-crumb-items">
@@ -119,7 +122,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <!-- Footer -->
             <%@include file="../homeviews/Footer.jsp" %>     
 

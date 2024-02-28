@@ -27,11 +27,14 @@
 
         <link rel="stylesheet" href="../../assets/css/category.css">
 
+        <link rel="stylesheet" href="../../assets/css/footer.css">
+
+
     </head>
 
     <body>
         <div class="page">
-             <!-- Header -->
+            <!-- Header -->
             <%@include file="../homeviews/customer-header.jsp" %>
 
             <!-- Bread-crumb -->

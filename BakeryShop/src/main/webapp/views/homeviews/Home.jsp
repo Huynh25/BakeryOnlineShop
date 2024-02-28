@@ -25,7 +25,11 @@
         <!-- css -->
         <link rel="stylesheet" href="../../assets/css/reset.css">
 
+        <link rel="stylesheet" href="../../assets/css/footer.css">
+
+
         <link rel="stylesheet" href="../../assets/css/home.css">
+
 
     </head>
 
@@ -33,7 +37,7 @@
         <div class="page">
             <!-- Header -->
             <%@include file="../homeviews/customer-header.jsp" %>
-            
+
             <!-- Banner -->
             <div class="banner container-fluid ">
                 <div class="banner-content container row

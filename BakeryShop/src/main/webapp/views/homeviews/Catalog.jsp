@@ -27,6 +27,9 @@
 
         <link rel="stylesheet" href="../../assets/css/catalog.css">
 
+        <link rel="stylesheet" href="../../assets/css/footer.css">
+
+
     </head>
 
     <body>
