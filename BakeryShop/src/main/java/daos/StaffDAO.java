@@ -4,6 +4,7 @@
  */
 package daos;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -46,13 +47,48 @@ public class StaffDAO extends AbstractDAO<Staff> {
     }
 
     @Override
-    public void create(Staff object) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void create(Staff s) {
+        String sql = "INSERT INTO [dbo].[Staffs]\n"
+                + "           ([staffName]\n"
+                + "           ,[password]\n"
+                + "           ,[fullname]\n"
+                + "           ,[email]\n"
+                + "           ,[address]\n"
+                + "           ,[phoneNumber]\n"
+                + "           ,[staffAvatar]\n"
+                + "           ,[managerID])\n"
+                + "     VALUES\n"
+                + "           (?,?,?,?,?,?,?,(Select TOP 1 managerID from Staffs))\n";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, s.getStaffName());
+            ps.setString(2, "MD5(" + s.getPassword() + ")");
+            ps.setString(3, s.getFullname());
+            ps.setString(4, s.getEmail());
+            ps.setString(5, s.getAddress());
+            ps.setString(6, s.getPhoneNumber());
+            ps.setString(7, s.getStaffAvatar());
+            ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
-    public void update(Staff object) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void update(Staff s) {
+        String sql = "UPDATE [dbo].[Staffs] SET [password] = \'" + s.getPassword() + "\'\n"
+                + "      ,[fullname] = \'" + s.getFullname() + "\'\n"
+                + "      ,[email] = \'" + s.getEmail() + "\'\n"
+                + "      ,[address] = \'" + s.getAddress() + "\'\n"
+                + "      ,[phoneNumber] = \'" + s.getPhoneNumber() + "\'\n"
+                + "      ,[staffAvatar] = \'" + s.getStaffAvatar() + "\'\n"
+                + " WHERE staffID =" + s.getStaffID();
+        System.out.println(sql);
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
     }
 
     @Override
@@ -62,7 +98,7 @@ public class StaffDAO extends AbstractDAO<Staff> {
 
     @Override
     public Staff findByID(int id) {
-try {
+        try {
 
             String sql = "Select * from [dbo].[Staffs]"
                     + "where staffID =\'" + id + "\'";
@@ -84,7 +120,8 @@ try {
 
         } catch (SQLException ex) {
         }
-        return null;    }
+        return null;
+    }
 
     public static void main(String[] args) {
         StaffDAO cDAO = new StaffDAO();

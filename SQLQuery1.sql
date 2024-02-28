@@ -131,16 +131,16 @@ VALUES
 
 INSERT INTO Staffs ([staffName], [password], [fullname], [email], [address], [phoneNumber], [staffAvatar], [managerID])
 VALUES 
-    ('johnsmith', 'password123', 'John Smith', 'john@company.com', '123 Main Street, City', '1234567890', 'Image/Avatar/johnsmith.jpg', 1),
-    ('janedoe', 'password456', 'Jane Doe', 'jane@company.com', '456 Oak Avenue, Town', '9876543210', 'Image/Avatar/janedoe.jpg', 1),
-    ('michaelbrown', 'password789', 'Michael Brown', 'michael@company.com', '789 Pine Road, Village', '5551234567', 'Image/Avatar/michaelbrown.jpg', 1),
-    ('emilyjohnson', 'passwordabc', 'Emily Johnson', 'emily@company.com', '101 Maple Lane, County', '7778889999', 'Image/Avatar/emilyjohnson.jpg', 1),
-    ('williamtaylor', 'passworddef', 'William Taylor', 'william@company.com', '111 Cedar Drive, District', '6665554444', 'Image/Avatar/williamtaylor.jpg', 1),
-    ('sarahjones', 'passwordghi', 'Sarah Jones', 'sarah@company.com', '1212 Elm Street, Territory', '3332221111', 'Image/Avatar/sarahjones.jpg', 1),
-    ('robertrodriguez', 'passwordjkl', 'Robert Rodriguez', 'robert@company.com', '1313 Walnut Avenue, Province', '1112223333', 'Image/Avatar/robertrodriguez.jpg', 1),
-    ('jessicawilliams', 'passwordmno', 'Jessica Williams', 'jessica@company.com', '1414 Pinecrest Road, State', '9998887777', 'Image/Avatar/jessicawilliams.jpg', 1),
-    ('davidmartinez', 'passwordpqr', 'David Martinez', 'david@company.com', '1515 Oakwood Boulevard, Country', '6669991111', 'Image/Avatar/davidmartinez.jpg', 1),
-    ('elizabethtaylor', 'passwordstu', 'Elizabeth Taylor', 'elizabeth@company.com', '1616 Maplewood Drive, Empire', '1239874560', 'Image/Avatar/elizabethtaylor.jpg', 1);
+    ('johnsmith', 'johnSmith@123', 'John Smith', 'john@company.com', '123 Main Street, City', '0927481623', 'Image/Avatar/johnsmith.jpg', 1),
+    ('janedoe', 'janeDoe@123', 'Jane Doe', 'jane@company.com', '456 Oak Avenue, Town', '0926371623', 'Image/Avatar/janedoe.jpg', 1),
+    ('michaelbrown', 'michaelBrown@123', 'Michael Brown', 'michael@company.com', '789 Pine Road, Village', '0926374134', 'Image/Avatar/michaelbrown.jpg', 1),
+    ('emilyjohnson', 'emilyJohnson@123', 'Emily Johnson', 'emily@company.com', '101 Maple Lane, County', '0927374826', 'Image/Avatar/emilyjohnson.jpg', 1),
+    ('williamtaylor', 'williamTaylor@123', 'William Taylor', 'william@company.com', '111 Cedar Drive, District', '0925236805', 'Image/Avatar/williamtaylor.jpg', 1),
+    ('sarahjones', 'sarahJones@123', 'Sarah Jones', 'sarah@company.com', '1212 Elm Street, Territory', '0956351823', 'Image/Avatar/sarahjones.jpg', 1),
+    ('robertrodriguez', 'roberTrodriguez@123', 'Robert Rodriguez', 'robert@company.com', '1313 Walnut Avenue, Province', '0972637251', 'Image/Avatar/robertrodriguez.jpg', 1),
+    ('jessicawilliams', 'jessicaWilliams', 'Jessica Williams', 'jessica@company.com', '1414 Pinecrest Road, State', '0926481623', 'Image/Avatar/jessicawilliams.jpg', 1),
+    ('davidmartinez', 'davidMartinez@123', 'David Martinez', 'david@company.com', '1515 Oakwood Boulevard, Country', '0926381623', 'Image/Avatar/davidmartinez.jpg', 1),
+    ('elizabethtaylor', 'elizabethTaylor@123', 'Elizabeth Taylor', 'elizabeth@company.com', '1616 Maplewood Drive, Empire', '0916381627', 'Image/Avatar/elizabethtaylor.jpg', 1);
 
 -- Chèn dữ liệu vào bảng Orders
 INSERT INTO Orders ([userID], [staffID], [orderDescription], [totalPrice], [orderDate], [receivedDate], [wasPaid], [status])

@@ -1,0 +1,220 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/css.css to edit this template
+*/
+/* 
+    Created on : Feb 28, 2024, 8:13:23 AM
+    Author     : Tran Nguyen Nam Thuan CE171497
+*/
+#content{
+    background-color: var(--silver);
+    max-height: 100%;
+    min-height: calc(100vh - 50px);
+    margin: 0;
+}
+#back-btn button{
+    background-color: var(--pale-brown);
+    border-left: 0;
+    margin: 20px 0 0 10px;
+    position: relative;
+    border:0;
+}
+#back-btn button::before{
+    content: '';
+    position: absolute;
+    top: 12px;
+    right: 48px;
+    transform: translateY(-50%);
+    width: 10px;
+    height: 0;
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+    border-right: 20px solid var(--pale-brown);
+
+}
+#avatar-container{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 620px;
+}
+#strip{
+    background-color: var(--pale-brown);
+    height: 100%;
+    width: 50%;
+}
+#staff-avatar{
+    position: absolute;
+    border-radius: 10px;
+    border:3px solid var(--black);
+    top:50px;
+    width: 60%;
+    height: 250px;
+}
+#upload-status{
+    display: none;
+    position: absolute;
+    background-color: transparent;
+    font-size: 120px;
+    top: 74px;
+    color: var(--white);
+}
+#staff-avatar:hover ~ #upload-status{
+    display: block ;
+}
+#cake-1{
+    position: absolute;
+    top:280px;
+    right:20px;
+    height: 200px;
+}
+#cake-2{
+    position: absolute;
+    top:330px;
+    left:20px;
+    height: 300px;
+}
+#add-staff-title{
+    text-align: center;
+    font-weight: 600;
+    margin-top: 20px;
+}
+#staff-form{
+    width:80%;
+    border: 2px solid var(--black);
+    border-radius: 10px;
+    margin-top: 30px;
+    height: 500px;
+    background-color: var(--white);
+}
+#address{
+    width: 100%;
+}
+#staff-id{
+    border-radius: 5px;
+    height: 40px;
+    width: 100%;
+}
+#form-row-0{
+    position: relative;
+}
+#staff-id-label{
+    position: absolute;
+    top: -12px;
+    left: 26px;
+    background-color: var(--white);
+}
+#staff-name{
+    border-radius: 5px;
+    height: 40px;
+    width: 100%;
+}
+#form-row-1{
+    position: relative;
+}
+#staff-name-label{
+    position: absolute;
+    top: -12px;
+    left: 26px;
+    background-color: var(--white);
+}
+#password{
+    border-radius: 5px;
+    height: 40px;
+    width: 100%;
+}
+#form-row-2{
+    position: relative;
+}
+#password-label{
+    position: absolute;
+    top: -12px;
+    left: 26px;
+    background-color: var(--white);
+}
+#fullname{
+    border-radius: 5px;
+    height: 40px;
+    width: 100%;
+}
+#form-row-3{
+    position: relative;
+}
+#fullname-label{
+    position: absolute;
+    top: -12px;
+    left: 26px;
+    background-color: var(--white);
+}
+#phoneNumber{
+    border-radius: 5px;
+    height: 40px;
+    width: 100%;
+}
+#form-row-4{
+    position: relative;
+}
+#phoneNumber-label{
+    position: absolute;
+    top: -12px;
+    left: 26px;
+    background-color: var(--white);
+}
+#email{
+    border-radius: 5px;
+    height: 40px;
+    width: 100%;
+}
+#form-row-5{
+    position: relative;
+}
+#email-label{
+    position: absolute;
+    top: -12px;
+    left: 26px;
+    background-color: var(--white);
+}
+#address{
+    border-radius: 5px;
+    width: 100%;
+    border: 2px solid var(--black);
+}
+#form-row-6{
+    position: relative;
+}
+#address-label{
+    position: absolute;
+    top: -16px;
+    left: 26px;
+    background-color: var(--white);
+}
+#form-row-7{
+    display: flex;
+    justify-content: center;
+}
+#submit{
+    max-height: 35px;
+    width: 140px;
+    border: 2px solid var(--pale-brown);
+    background-color: var(--silver);
+    border-radius: 10px;
+}
+#form-container{
+    display: flex;
+    justify-content: center;
+}
+#upload-avatar{
+    display: none;
+}
+#staff-name-error, #password-error,
+#fullname-error, #phoneNumber-error,
+#email-error, #address-error, #staff-message{
+    color:var(--red);
+}
+#staff-message{
+    text-align: center;
+}
+.readOnly{
+    color: var(--pale-brown);
+}

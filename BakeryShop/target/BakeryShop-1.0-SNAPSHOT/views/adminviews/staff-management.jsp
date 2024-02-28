@@ -33,27 +33,29 @@
                     <i id="next-btn" class="bi bi-chevron-compact-right"></i>
                     <span id="title">Staff Management</span>
                 </div>
-                <button id="add-staff-btn">Add Staff <i class="bi bi-person-plus"></i></button>
+                <button id="add-staff-btn" >Add Staff<i class="bi bi-person-plus"></i></button>
             </div>
             <div id="staff-content" class="row">
                 <c:forEach var="staff" items="${staffList}">
-                       <div class="staff-card col-sm-3">
-                    <div class="staff-image-container">
-                        <img class="staff-image" src="../../${staff.staffAvatar}" alt="alt"/>  
+                    <div class="staff-card col-sm-3" onclick="staffDetail('${staff.staffID}')">
+                        <div class="staff-image-container">
+                            <img class="staff-image" src="../../${staff.staffAvatar}" alt="alt"/>  
+                        </div>
+                        <div class="staff-name"><i class="bi bi-person-fill"></i> ${staff.fullname}</div>
+                        <div class="staff-content-row-1">
+                            <div><i class="bi bi-telephone"></i> ${staff.phoneNumber}</div>
+                            <div><i class="bi bi-envelope"></i> ${staff.email}</div>
+                        </div>
+                        <div class="staff-address"><i class="bi bi-geo-alt"></i> ${staff.address}</div>                 
                     </div>
-                    <div class="staff-name"><i class="bi bi-person-fill"></i> ${staff.fullname}</div>
-                    <div class="staff-content-row-1">
-                        <div><i class="bi bi-telephone"></i> ${staff.phoneNumber}</div>
-                        <div><i class="bi bi-envelope"></i> ${staff.email}</div>
-                    </div>
-                    <div class="staff-address"><i class="bi bi-geo-alt"></i> ${staff.address}</div>                 
-                </div>
                 </c:forEach>
-             
-           
+                <form action="staff-management" method="GET" id="staffDetailForm">
+                    <input type="text" name="staffID" id="staffID" hidden="">
+                </form>
+
             </div>
-        </div>
-        <script  src="../../assets/javascript/view-rating.js"></script>
+        </div> 
+        <script src="../../assets/javascript/staff-management.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
                 integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
         crossorigin="anonymous"></script>

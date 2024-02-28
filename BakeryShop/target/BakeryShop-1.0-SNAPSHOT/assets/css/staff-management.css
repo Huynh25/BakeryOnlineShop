@@ -20,6 +20,7 @@ body{
     border-radius: 20px;
     margin: 30px 10px 20px 10px;
     box-shadow:2px 2px 5px 0px var(--black );
+    cursor: pointer;
 }
 @media (min-width: 576px){
     .staff-card {

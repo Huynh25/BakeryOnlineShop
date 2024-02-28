@@ -39,6 +39,20 @@ public class UserDAO extends AbstractDAO<User> {
         }
         return users;
     }
+        public boolean isValidUserName(String userName) {
+        try {
+            String sql = "select staffName from Staffs UNION select username from Customers";
+            Statement stm = con.createStatement();
+            ResultSet rs = stm.executeQuery(sql);
+            while (rs.next()) {
+                if (rs.getString("staffName").equals(userName)) {
+                    return false;
+                }
+            }
+        } catch (Exception e) {
+        }
+        return true;
+    }
 
     @Override
     public void create(User object) {
