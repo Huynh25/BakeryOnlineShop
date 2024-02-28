@@ -75,7 +75,7 @@
 
                 <c:forEach var="order" items="${myOrderList}" > 
                     <div class="col-sm-3">
-                        <div class="Order-card">
+                        <div class="Ordercard">
                             <div class="Order-title d-flex align-items-center justify-content-center">
                                 <p class="Order-id">Order ID: #${order.orderID}</p>
                             </div>

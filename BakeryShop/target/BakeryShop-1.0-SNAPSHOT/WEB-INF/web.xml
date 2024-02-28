@@ -24,6 +24,10 @@
         <servlet-name>StaffManagementController</servlet-name>
         <servlet-class>controllers.admincontrollers.StaffManagementController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>OrderDetailManagementController</servlet-name>
+        <servlet-class>controllers.admincontrollers.OrderDetailManagementController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RatingController</servlet-name>
         <url-pattern>/rating-management</url-pattern>
@@ -47,6 +51,10 @@
     <servlet-mapping>
         <servlet-name>StaffManagementController</servlet-name>
         <url-pattern>/staff-management</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>OrderDetailManagementController</servlet-name>
+        <url-pattern>/OrderDetailManagement</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
