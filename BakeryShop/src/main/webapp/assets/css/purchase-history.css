@@ -38,10 +38,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/css.css to edit this t
 .nav-bar-items:hover{
     color:var(--red);
 }
-#nav-bar--active button{
+.nav-bar--active button{
     position: relative
 }
-#nav-bar--active button::after {
+.nav-bar--active button::after {
     position: absolute;
     left: 0;
     bottom: 0;
@@ -51,7 +51,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/css.css to edit this t
    height: 3px;
    background-color: var(--red);
 }
-#nav-bar--active .nav-bar-items:hover{
+.nav-bar--active .nav-bar-items:hover{
     color: var(--black);
 }
 #search-order-form{
@@ -197,6 +197,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/css.css to edit this t
 }
 .disable-icon{
     opacity: 0.5;
+    cursor: text !important;
 }
 .toppingDetail{
     display: flex;
@@ -209,15 +210,23 @@ Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/css.css to edit this t
     text-align: left;
 }
 .orderDetail-card--unshowTopping{
-    height: 230px;
+    height: 220px;
 }
 @media only screen and (max-width: 1390px) {
     .orderDetail-card--unshowTopping {
-        height: 300px; 
+        height: 350px; 
     }
 }
 @media only screen and (max-width: 800px) {
     .orderDetail-card--unshowTopping {
-        height: 350px; 
+        height: 380px; 
     }
+}
+.order-Description{
+    margin-top: 5px;
+    text-align: right;
+    color: var(--red);
+}
+.toppingInfo{
+    margin-bottom: 5px;
 }

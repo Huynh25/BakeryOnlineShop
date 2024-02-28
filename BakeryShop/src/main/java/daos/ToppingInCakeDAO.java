@@ -71,13 +71,31 @@ public class ToppingInCakeDAO extends AbstractDAO<ToppingInCake> {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
-     public static void main(String[] args) {
-        ToppingInCakeDAO tDAO = new ToppingInCakeDAO();
+        public List<ToppingInCake> findAllByCioID(String cioID) {
+        List<ToppingInCake> toppingInCakes = new ArrayList<>();
+        try {
 
-        List<ToppingInCake> list = tDAO.readAll();
-        for (ToppingInCake t : list) {
-            System.out.println(t.toString());
+            String sql = "Select * from [dbo].[ToppingInCake] Where cioID="+cioID;
+            Statement stm = con.createStatement();
+            ResultSet rs = stm.executeQuery(sql);
+
+            while (rs.next()) {
+                ToppingInCake toppingInCake = new ToppingInCake();
+
+                CakeInOrder cakeInOrder = cDAO.findByID(rs.getInt("cioID"));
+                Topping topping = tDAO.findByID(rs.getInt("toppingID"));
+
+                toppingInCake.setCakeInOrder(cakeInOrder);
+                toppingInCake.setTopping(topping);
+                
+                toppingInCake.setTicQuantity(rs.getInt("ticQuantity"));
+
+                toppingInCakes.add(toppingInCake);
+            }
+
+        } catch (SQLException ex) {
         }
+        return toppingInCakes;
     }
 
 }

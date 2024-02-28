@@ -92,15 +92,58 @@ try {
         }
         return null;    }
 
-    public static void main(String[] args) {
-        CakeInOrderDAO cDAO = new CakeInOrderDAO();
+   public List<CakeInOrder> readSomeByOrderID(int orderID) {
+        List<CakeInOrder> cakeInOrders = new ArrayList<>();
+        try {
 
-        List<CakeInOrder> list = cDAO.readAll();
-        for (CakeInOrder c : list) {
-            System.out.println(c.toString());
+            String sql = "Select * from [dbo].[CakeInOrder]"
+                    + "where orderID=\'"+orderID+"\'";
+            Statement stm = con.createStatement();
+            ResultSet rs = stm.executeQuery(sql);
+
+            while (rs.next()) {
+                CakeInOrder cakeInOrder = new CakeInOrder();
+                cakeInOrder.setCioID(rs.getInt("cioID"));
+                
+                Cake cake = cDAO.findByID(rs.getInt("cakeID"));
+                
+                Order order = oDAO.findByID(rs.getInt("orderID"));
+                cakeInOrder.setCioQuantity(rs.getInt("cioQuantity"));
+                cakeInOrder.setOrder(order);
+                cakeInOrder.setCake(cake);
+
+                cakeInOrders.add(cakeInOrder);
+            }
+
+        } catch (SQLException ex) {
         }
-        System.out.println("--------------");
-        System.out.println(cDAO.findByID(1).toString());
+        return cakeInOrders;
+    }
+       public List<CakeInOrder> showMoreByOrderID(String orderID,String quantity) {
+        List<CakeInOrder> cakeInOrders = new ArrayList<>();
+        try {
 
+            String sql = "Select * from [dbo].[CakeInOrder]"
+                    + "where orderID=\'"+orderID+"\'";
+             sql += " ORDER BY cioID OFFSET " + quantity + " ROWS FETCH NEXT 4 ROWS ONLY;";
+            Statement stm = con.createStatement();
+            ResultSet rs = stm.executeQuery(sql);
+            while (rs.next()) {
+                CakeInOrder cakeInOrder = new CakeInOrder();
+                cakeInOrder.setCioID(rs.getInt("cioID"));
+                
+                Cake cake = cDAO.findByID(rs.getInt("cakeID"));
+                
+                Order order = oDAO.findByID(rs.getInt("orderID"));
+                cakeInOrder.setCioQuantity(rs.getInt("cioQuantity"));
+                cakeInOrder.setOrder(order);
+                cakeInOrder.setCake(cake);
+
+                cakeInOrders.add(cakeInOrder);
+            }
+
+        } catch (SQLException ex) {
+        }
+        return cakeInOrders;
     }
 }

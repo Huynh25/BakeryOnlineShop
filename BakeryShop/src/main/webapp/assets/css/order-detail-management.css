@@ -1,0 +1,157 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : Feb 26, 2024, 2:48:04 PM
+    Author     : ACER PC
+*/
+.content-top{
+    background-color: var(--white);
+}
+.menu-and-history {
+    width: 100%;
+}
+.top-option {
+    margin: 20px;
+}
+.histoty {
+    margin-top: 12px;
+}
+.histoty h4 {
+    margin-left: 5px;
+}
+.current-page {
+    color: var(--red);
+}
+
+.menu-item {
+    height: 55px;
+    width: 192px;
+    border-radius: 50px;
+    color: black;
+    border: none;
+    background-color: #d9d9d9;
+}
+.menu-variant {
+    color: white;
+    background-color: var(--red);
+}
+.search-and-filter {
+    height: 60px;
+/*    margin: 0px !important;*/
+    margin-top: 10px !important;
+    width: 100%;
+    border: 1px solid var(--pale-brown);
+    border-radius: 10px;
+}
+
+.search-order {
+    position: relative;
+}
+
+.search-order-input {
+    border-radius: 10px;
+    border: 1px solid var(--black);
+    text-indent: 10px;
+    background-color: #F5F5F5;
+    width: 80%;
+    height: 44px;
+}
+.search-order-input:focus{
+    outline: none;
+}
+.search-order-btn {
+    top: auto;
+    bottom: auto;
+    color: var(--black);
+    position: absolute;
+    top: 0px;
+    right: 23%;
+    cursor: pointer;
+    border: none;
+    border-left: 1px solid var(--black);
+    border-bottom: 1px solid var(--black);
+    border-top: 1px solid var(--black);
+    background-color: #F5F5F5;
+    height: 44px;
+}
+.page-number{
+    margin: 0px !important;
+}
+.swap-page-item{
+    padding: 0 10px;
+}
+.swap-page-button{
+    border: none;
+    background-color: var(--white);
+}
+.order-information{
+    height: 58px;
+    background-color: var(--dark-pink);
+    border: 1px solid var(--red);
+}
+.order-detail-inf{
+    color: var(--white);
+    font-size: 1.2vw;
+    padding: 0px !important;
+    padding-left: 15px !important;  
+}
+.order-inf-id{
+    padding-left: 20px !important;
+}
+.order-inf-receivedDate{
+    padding-left: 50px !important;
+}
+.cake-in-order{
+    background-color: var(--silver);
+    height: 380px;
+    margin: 0 !important;
+    margin-top: 10px !important;
+}
+.cake-in-order-detai{
+    border-radius: 10px;
+    border: 2px solid black;
+    height: 100%;
+    margin: 0 4vw !important;
+    background-color: var(--white)
+}
+.cake-in-order-cover{
+    height: 80%;
+}
+.cake-name{
+    color: var(--red);
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 15px;
+}
+.cake-img{
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    border: 1px solid black;
+    object-fit: cover;
+    padding: 0px !important;
+}
+
+.cake-inf-text{
+    color: black;
+    font-size: 1.2vw;
+}
+#show-topping-btn{
+    margin-top: 20px !important;
+}
+.btn-contain{
+    margin-top: 15px ;
+}
+
+.btn-contain button{
+    background-color: var(--red);
+    padding: 5px;
+    color: var(--white);
+    border: none;
+}
+.btn-contain button i{
+    padding-right: 5px;
+    color: var(--white);
+}

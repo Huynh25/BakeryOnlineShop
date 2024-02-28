@@ -29,17 +29,17 @@
                     Management
                 </a>
                 <div class="dropdown-menu" id="dropdown-management-list">
-                    <a class="dropdown-item" href="#">Order</a>
+                    <a class="dropdown-item" href="MyConfirmedOrders">Order</a>
                     <a class="dropdown-item" href="#">Topping</a>
                     <a class="dropdown-item" href="#">Cake</a>
                     <a class="dropdown-item" href="rating-management">Rating</a>
-                    <a class="dropdown-item" href="#">Staff</a>
-                    <a class="dropdown-item" href="#">Product History</a>
+                    <a class="dropdown-item" href="staff-management">Staff</a>
+                    <a class="dropdown-item" href="product-history">Product History</a>
                 </div>
             </div>
             <ul id="navbar-icon" class="col-sm-6">
                 <li><a href="#"><i class="bi bi-basket3"></i></a></li>
-                <li><a href="#"><i class="bi bi-clock-history"></i></a></li>
+                 <li><a href="order-history"><i class="bi bi-clock-history"></i></a></li>
                 <li><a href=""><i class="bi bi-person-circle"></i></a></li>
             </ul>
         </div>

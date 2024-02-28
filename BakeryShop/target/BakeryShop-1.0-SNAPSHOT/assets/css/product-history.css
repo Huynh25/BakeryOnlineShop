@@ -1,0 +1,172 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/css.css to edit this template
+*/
+/* 
+    Created on : Feb 26, 2024, 2:42:36 PM
+    Author     : Tran Nguyen Nam Thuan CE171497
+*/
+
+#content{
+    margin: 10px 10px;
+    width: calc(100% - 20px);
+    background-color: var(--white);
+}
+#nav-bar-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#nav-bar{
+    padding: 0;
+    max-width: 100%;
+    min-width: 90%;
+    min-height: 45px;
+    margin: 0 10px;
+    border: 1px solid var(--black);
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#nav-bar ul li{
+    list-style: none;
+    min-height: 45px;
+    font-size: 24px;
+}
+#nav-bar ul{
+    margin: 0;
+}
+.nav-bar-items{
+    min-height: 45px;
+    border: 0;
+    background-color: var(--white);
+    text-align: left;
+}
+.nav-bar-items:hover{
+    color:var(--red);
+}
+.nav-bar--active button{
+    position: relative
+}
+.nav-bar--active button::after {
+    position: absolute;
+    left: 0;
+    bottom: 5px;
+    display: block;
+    content: "";
+    width: calc(100% + 10px);
+    height: 3px;
+    background-color: var(--red);
+}
+.nav-bar--active .nav-bar-items:hover{
+    color: var(--black);
+}
+#search-product-form{
+    position: relative;
+    margin-top: 10px;
+    margin: 0;
+    padding: 0;
+}
+#search-product-form input{
+    border-radius: 10px;
+    width: 100%;
+    height: 35px;
+}
+#search-product-form button{
+    position: absolute;
+    top:2px;
+    right:2px;
+    height: 31px;
+    width: 40px;
+    border: none;
+    border-left: 1px solid var(--black);
+    border-radius: 0px 10px 10px 0px;
+    background-color: var(--white);
+}
+#filterDate{
+    margin: 10px 0;
+    max-width: 160px;
+    display: flex;
+    align-items: center;
+}
+#filterDate input{
+    width: 100%;
+}
+#product-content{
+    display: flex;
+    justify-content: center;
+}
+#pagination{
+    display: flex;
+}
+#table{
+    border-collapse: collapse;
+    width: 90%;
+    text-align: center;
+    vertical-align: middle;
+}
+
+
+#table thead{
+    background-color: var(--silver);
+}
+#table th, #table td{
+    border: 2px solid var(--black);
+}
+.product-image, .staff-image{
+    width: 150px;
+    height: 100px;
+}
+#product-content-container{
+    margin: 20px 0px;
+}
+#product-content-info-wrapper{
+    display: flex;
+    justify-content: center;
+}
+#product-content-info{
+   width: 90%;
+   display: flex;
+   justify-content: space-between; 
+}
+.product-content{
+    display: flex;
+    justify-content: space-around;
+}
+.staff-content{
+    display: flex;
+    justify-content: space-around;
+}
+.product-info{
+    display: flex;
+    flex-direction:column;
+    justify-content: space-around;
+}
+.product-name-id{
+    width: 100px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.staff-info{
+    display: flex;
+    flex-direction:column;
+    justify-content: space-around;
+}
+
+.product-image, .staff-image{
+    border: 2px solid var(--pale-brown);
+    border-radius: 25px;
+}
+.product-update-date, .product-update-quantity, .product-update-status{
+    vertical-align: middle !important;
+    text-align: center;
+}
+.disable-icon{
+    opacity: 0.5;
+    cursor: text !important;
+}
+#back-page-btn ,#next-page-btn{
+    cursor: pointer;
+}

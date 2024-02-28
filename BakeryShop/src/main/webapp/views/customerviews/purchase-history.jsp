@@ -3,8 +3,11 @@
     Created on : Feb 22, 2024, 11:28:03 AM
     Author     : Tran Nguyen Nam Thuan CE171497
 --%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page import="java.lang.Math" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -24,123 +27,120 @@
         <%@include file="../homeviews/staff-header.jsp" %>
         <div id="content">
             <div id="url">
-                    <a id="home-link" href="#">Home</a>
-                    <i id="next-btn" class="bi bi-chevron-compact-right"></i>
-                    <span id="title">Purchase History</span>
-                </div>
+                <a id="home-link" href="#">Home</a>
+                <i id="next-btn" class="bi bi-chevron-compact-right"></i>
+                <span id="title">Purchase History</span>
+            </div>
             <nav id="nav-bar-container">
                 <ul id="nav-bar" class="row">
-                    <li class="col-sm-1" id="nav-bar--active"><button disabled class="nav-bar-items">All</button></li>
-                    <li class="col-sm-2"><button class="nav-bar-items">Was Paid</button></li>
-                    <li class="col-sm-2"><button class="nav-bar-items">Waiting</button></li>
-                    <li class="col-sm-2"><button class="nav-bar-items">Accepted</button></li>
-                    <li class="col-sm-2"><button class="nav-bar-items">Completed</button></li>
+                    <li class="col-sm-1 nav-bar--active" id="all-filter"><button disabled class="nav-bar-items" onclick="performFilter('all')">All</button></li>
+                    <li class="col-sm-2" id="wasPaid-filter"><button class="nav-bar-items"  onclick="performFilter('wasPaid')">Was Paid</button></li>
+                    <li class="col-sm-2" id="waiting-filter"><button class="nav-bar-items"  onclick="performFilter('waiting')">Waiting</button></li>
+                    <li class="col-sm-2" id="accepted-filter"><button class="nav-bar-items"  onclick="performFilter('accepted')">Accepted</button></li>
+                    <li class="col-sm-2" id="completed-filter"><button class="nav-bar-items"  onclick="performFilter('completed')">Completed</button></li>
                     <li class="col-sm-3"></li>
                 </ul>
             </nav>
             <div id="filter-container">
                 <div class="row">
-                <form id="search-order-form" class="col-sm-4">
-                <input type="text" placeholder="Search"/>
-                <button type="submit"><i class="bi bi-search"></i></button>
-                </form>
+                    <form id="search-order-form" onsubmit="return false;" class="col-sm-4">
+                        <input id="search-order-input" type="text" placeholder="Search"/>
+                        <button onclick="performFilter('search')"><i class="bi bi-search"></i></button>
+                    </form>
                     <div class="col-sm-2">
-                        
+
                     </div>
-                <div class="col-sm-3 date-container" >
-                    <form>
-                        <label for="order-date">Order Date</label>
-                        <input type="date" id="order-date">
-                    </form>
-                </div>
-                <div class="col-sm-3 date-container">
-                    <form>
-                        <label for="order-receive">Receive Date</label>
-                    <input type="date" id="order-receive">
-                    </form>
-                </div>
+                    <div class="col-sm-3 date-container" >
+                        <form>
+                            <label for="order-date">Order Date</label>
+                            <input type="date" id="order-date" onchange="performFilter('order-date')">
+                        </form>
+                    </div>
+                    <div class="col-sm-3 date-container">
+                        <form>
+                            <label for="order-receive">Receive Date</label>
+                            <input type="date" id="order-receive" onchange="performFilter('order-receive')">
+                        </form>
+                    </div>
                 </div>
             </div>
             <div id="order-content-container" >
-                <div id="all-order-info">
-                <h5 id="number-order">42 Orders</h5>
-                <div id="page-info">
-                    Page 1 of 2
-                    <i id="back-page-btn" class="bi bi-chevron-left disable-icon"></i>
-                    <i id="next-page-btn" class="bi bi-chevron-right"></i>
-                </div>
-                </div>
-                <div class="order-content row">
-                    <div class="col-sm-7 row order-content-total-info">
-                     <div class="order-id col-sm-2">#243242</div>
-                    <div class="order-content-date col-sm-2"><i class="bi bi-cart"></i> 20/2/2024</div>
-                    <div class="order-receive-date col-sm-2"><i class="bi bi-truck"></i> None</div>
-                    <div class="order-total-price col-sm-4">Total Price: 1.450.000đ</div>
-                    </div>                   
-                    <div class="col-sm-1"></div>
-                    <div class="col-sm-4 row order-content-status-info">
-                     <div class="order-staus col-sm-6">Status: Waiting</div>
-                    <div class="order-staffID col-sm-6">Staff <i class="bi bi-person-check"></i> #11</div>
+                <div id="all-order-info">                 
+                    <h5 id="number-order">${numberCurrentOrder} Orders</h5>
+                    <div id="page-info">
+                        Page ${currentPage} of ${totalNumberPage}
+                        <i id="back-page-btn"  class="bi bi-chevron-left ${currentPage==1?"disable-icon":""}" ></i>
+                        <c:if test="${currentPage==totalNumberPage}">
+
+                            <i id="next-page-btn" disabled  class="bi bi-chevron-right disable-icon"></i>
+                        </c:if>
+                        <c:if test="${currentPage!=totalNumberPage}">
+                            <i id="next-page-btn" onclick="performFilter('Next-page')"  class="bi bi-chevron-right"></i>
+                        </c:if>
                     </div>
-                    
                 </div>
-                <div class="orderdDetail-content row">
-                    <div class="orderDetail-card orderDetail-card--unshowTopping col-sm-3">
-                        <div class="orderDetail-cakeName">Chocolate Cake</div>
-                        <div class="cake-info row">                          
-                            <img class="orderDetail-cakeImage col-sm-6" src="./../../Image/Cake/chocolate_cake.jpg"/>
-                            <div class="col-sm-6">
-                                <div class="orderDetail-cakePrice">Price: 300.000đ</div>
-                                <div class="orderDetail-cakeQuantity">Quantity: 2</div>
-                                <div class="showTopping-btn-cotainer">                                    
-                                <button class="showTopping-btn">Show Topping <i id class="bi bi-chevron-double-down down-icon"></i></button>                           
-                                </div>
-                            </div>
+                <c:forEach var="order" items="${orderList}" varStatus="loop">   
+                    <div class="order-content row">
+                        <div class="col-sm-7 row order-content-total-info">
+                            <div class="order-id col-sm-2">#${order.orderID}</div>
+                            <div class="order-content-date col-sm-3"><i class="bi bi-cart"></i> ${order.orderDate}</div>
+                            <div class="order-receive-date col-sm-3"><i class="bi bi-truck"></i> ${order.receivedDate==null?'Undefined':order.receivedDate}</div>        
+                            <div class="order-total-price col-sm-4">Total Price: <fmt:formatNumber value="${order.totalPrice}" type="currency" currencySymbol="" maxFractionDigits="0" />đ</div>
+                        </div>                   
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-4 row order-content-status-info">
+                            <div class="order-staus col-sm-6">Status: ${order.status}</div>
+                            <div class="order-staffID col-sm-6">Staff <i class="bi bi-person-check"></i> #${order.staffID==0?'Undefined':order.staffID}</div>
                         </div>
-                        <div class="orderDetail-totalPrice">Total Price: 830.000đ</div>
+
                     </div>
-                    <div class="orderDetail-card orderDetail-card--haveTopping col-sm-3">
-                        <div class="orderDetail-cakeName">Chocolate Cake</div>
-                        <div class="cake-info row">                          
-                            <img class="orderDetail-cakeImage col-sm-6" src="./../../Image/Cake/chocolate_cake.jpg"/>
-                            <div class="col-sm-6">
-                                <div class="orderDetail-cakePrice">Price: 300.000đ</div>
-                                <div class="orderDetail-cakeQuantity">Quantity: 2</div>
-                                <div class="showTopping-btn-cotainer">                                    
-                                <button class="showLess-btn">Show Less <i class="bi bi-chevron-double-up"></i></button>                           
-                                </div>
-                            </div>    
-                             <div class="toppingInfo col-sm-12">
-                                <div>Strawberry:
-                                    <div class="toppingDetail">
-                                        <div class="toppingDetail-price">Price: 20.000đ</div>
-                                        <div class="toppingDetail-quantity">Quantity: 3</div>
+                        <div class="orderdDetail-content row" id="orderdDetail-content-${order.orderID}">                                                                  
+                        <div class="col-sm-12 order-Description">
+                            ${order.orderDescription}
+                        </div>
+                        <c:set var="orderDetailQuantity" value="0" />
+                        <c:forEach var="cakeInOrder" items="${cakeInOrder.get(loop.index)}">  
+                            <c:set var="orderDetailQuantity" value="${orderDetailQuantity+1}" />
+                            <c:if test="${orderDetailQuantity <=3}">
+                                <div class="orderDetail-card orderDetail-card--unshowTopping col-sm-3" id="orderDetail-card-${cakeInOrder.cioID}">
+                                    <div class="orderDetail-cakeName">${cakeInOrder.cake.cakeName}</div>
+                                    <div class="cake-info row">                          
+                                        <img class="orderDetail-cakeImage col-sm-6" src="./../../${cakeInOrder.cake.cakeImg}"/>
+                                        <div class="col-sm-6">
+                                            <div class="orderDetail-cakePrice">Price:
+                                                <fmt:formatNumber value="${cakeInOrder.cake.cakePrice}" type="currency" currencySymbol="" maxFractionDigits="0" />đ
+                                            </div>
+                                            <div class="orderDetail-cakeQuantity">Quantity: ${cakeInOrder.cioQuantity}</div>
+                                            <div class="showTopping-btn-cotainer">                                    
+                                                <button class="showTopping-btn" onclick="ShowTopping(${cakeInOrder.cioID},${cakeInOrder.cioQuantity * cakeInOrder.cake.cakePrice})">Show Topping <i id class="bi bi-chevron-double-down down-icon"></i></button>                           
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="orderDetail-totalPrice">Total Cake Price: 
+                                        <fmt:formatNumber value="${cakeInOrder.cioQuantity * cakeInOrder.cake.cakePrice}" type="currency" currencySymbol="" maxFractionDigits="0" />đ
                                     </div>
                                 </div>
-                                <div>Raisins:
-                                    <div class="toppingDetail">
-                                        <div class="toppingDetail-price">Price: 30.000đ</div>
-                                        <div class="toppingDetail-quantity">Quantity: 2</div>
-                                    </div>
-                                </div>
+                            </c:if>
+                        </c:forEach>
+                        <c:if test="${orderDetailQuantity > 3}">                          
+                            <div class="col-sm-12 showMore-btn-cotainer">                      
+                                <button class="showMore-btn " onclick="showMore(${order.orderID},3)">Show More <i id class="bi bi-chevron-double-down down-icon"></i></button>
                             </div>
-                        </div>
-                        <div class="orderDetail-totalPrice">Total Price: 830.000đ</div>
-                    </div> 
-                    
-                    <div class="col-sm-12 showMore-btn-cotainer">                      
-                    <button class="showMore-btn ">Show More <i id class="bi bi-chevron-double-down down-icon"></i></button>
+                        </c:if>
+
+
+
                     </div>
-                    </div>
-                </div>
+                </c:forEach>
             </div>
-        </div>         
-                <script  src="../../assets/javascript/view-rating.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
-                integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-        crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
-                integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
-        crossorigin="anonymous"></script>
-    </body>
+        </div>
+    </div>         
+    <script  src="../../assets/javascript/purchase-history.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
+    crossorigin="anonymous"></script>
+</body>
 </html>

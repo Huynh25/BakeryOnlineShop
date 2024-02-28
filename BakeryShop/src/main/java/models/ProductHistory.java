@@ -98,9 +98,6 @@ public class ProductHistory {
         this.cake = cake;
     }
 
-    @Override
-    public String toString() {
-        return "ProductHistory{" + "phID=" + phID + ", phQuantity=" + phQuantity + ", updatedDate=" + updatedDate + ", createDate=" + createDate + ", updateBy=" + updateBy.getStaffID() + ", createBy=" + createBy.getStaffID() + ", topping=" + topping.getToppingID() + ", cake=" + cake.getCakeID() + '}';
-    }
+    
     
 }

@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function displayOrders(orders) {
         const orderListHTML = orders.map(order => `
             <div class="col-sm-3">
-                <div class="Order-card">
+                <div class="Order-card" onclick="redirectToOrderDetailPage()">
                     <div class="Order-title d-flex align-items-center justify-content-center">
                         <p class="Order-id">Order ID: #${order.orderID}</p>
                     </div>
@@ -95,6 +95,11 @@ document.addEventListener('DOMContentLoaded', function () {
         window.location.href = 'MyConfirmedOrders'; 
     });
 });
+
+function redirectToOrderDetailPage() {
+    // Chuyển hướng đến trang Order-detail-management.jsp
+    window.location.href = 'OrderDetailManagement';
+}
 
 function getServletUrl() {
         return searchTerm ? 'SearchOrders' : 'MyConfirmedOrderController';

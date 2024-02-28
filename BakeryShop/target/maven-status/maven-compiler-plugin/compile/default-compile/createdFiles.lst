@@ -10,6 +10,7 @@ models\Rating.class
 daos\UserDAO.class
 controllers\admincontrollers\MyConfirmedOrdersController.class
 models\Topping.class
+controllers\admincontrollers\ProductHistoryController.class
 models\Cake.class
 models\Order.class
 models\Staff.class
