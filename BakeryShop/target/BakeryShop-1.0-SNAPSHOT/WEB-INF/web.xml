@@ -28,6 +28,10 @@
         <servlet-name>OrderDetailManagementController</servlet-name>
         <servlet-class>controllers.admincontrollers.OrderDetailManagementController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>LoginController</servlet-name>
+        <servlet-class>controllers.customercontrollers.LoginController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RatingController</servlet-name>
         <url-pattern>/rating-management</url-pattern>
@@ -55,6 +59,10 @@
     <servlet-mapping>
         <servlet-name>OrderDetailManagementController</servlet-name>
         <url-pattern>/OrderDetailManagement</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LoginController</servlet-name>
+        <url-pattern>/login</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
