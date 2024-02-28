@@ -16,6 +16,22 @@
         <servlet-name>UnconfirmedOrdersController</servlet-name>
         <servlet-class>controllers.admincontrollers.UnconfirmedOrdersController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CatalogController</servlet-name>
+        <servlet-class>controllers.customercontrollers.CatalogController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CategoryController</servlet-name>
+        <servlet-class>controllers.customercontrollers.CategoryController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SearchCakeController</servlet-name>
+        <servlet-class>controllers.customercontrollers.SearchCakeController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>HomeController</servlet-name>
+        <servlet-class>controllers.customercontrollers.HomeController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RatingController</servlet-name>
         <url-pattern>/rating-management</url-pattern>
@@ -31,6 +47,22 @@
     <servlet-mapping>
         <servlet-name>UnconfirmedOrdersController</servlet-name>
         <url-pattern>/UnconfirmedOrders</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CatalogController</servlet-name>
+        <url-pattern>/catalog</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CategoryController</servlet-name>
+        <url-pattern>/category</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SearchCakeController</servlet-name>
+        <url-pattern>/searchcake</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>HomeController</servlet-name>
+        <url-pattern>/home</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

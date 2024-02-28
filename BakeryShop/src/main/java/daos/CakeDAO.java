@@ -85,6 +85,99 @@ public class CakeDAO extends AbstractDAO<Cake> {
         return null;
     }
 
+    public List<Cake> getAllCakeWithUniqueType() {
+
+        List<Cake> cakes = new ArrayList<>();
+        try {
+
+            String sql = "SELECT  [cakeID]\n"
+                    + "      ,[cakeName]\n"
+                    + "      ,[cakeDescription]\n"
+                    + "      ,[cakePrice]\n"
+                    + "      ,[cakeImg]\n"
+                    + "      ,[cakeQuantity]\n"
+                    + "	  ,[cakeType]\n"
+                    + "FROM    (SELECT *,\n"
+                    + "                ROW_NUMBER() OVER (PARTITION BY [cakeType] ORDER BY [cakeID]) AS RowNumber\n"
+                    + "         FROM  [BakeryShop].[dbo].[Cakes]\n"
+                    + "        ) AS cte\n"
+                    + "WHERE   cte.RowNumber = 1\n"
+                    + "ORDER BY [cakeID]";
+            Statement stm = con.createStatement();
+            ResultSet rs = stm.executeQuery(sql);
+
+            while (rs.next()) {
+                Cake cake = new Cake();
+                cake.setCakeID(rs.getInt("cakeID"));
+                cake.setCakeName(rs.getString("cakeName"));
+                cake.setCakeDescription(rs.getString("cakeDescription"));
+                cake.setCakePrice(rs.getInt("cakePrice"));
+                cake.setCakeImg(rs.getString("cakeImg"));
+                cake.setCakeQuantity(rs.getInt("cakeQuantity"));
+                cake.setCakeType(rs.getString("cakeType"));
+
+                cakes.add(cake);
+            }
+
+        } catch (SQLException ex) {
+        }
+        return cakes;
+    }
+
+    public List<Cake> getAllCakeWithType(String cakeType) {
+        List<Cake> cakes = new ArrayList<>();
+        try {
+
+            String sql = "Select * from [dbo].[Cakes]"
+                    + "where cakeType like '" + cakeType + "'";
+            Statement stm = con.createStatement();
+            ResultSet rs = stm.executeQuery(sql);
+
+            while (rs.next()) {
+                Cake cake = new Cake();
+                cake.setCakeID(rs.getInt("cakeID"));
+                cake.setCakeName(rs.getString("cakeName"));
+                cake.setCakeDescription(rs.getString("cakeDescription"));
+                cake.setCakePrice(rs.getInt("cakePrice"));
+                cake.setCakeImg(rs.getString("cakeImg"));
+                cake.setCakeQuantity(rs.getInt("cakeQuantity"));
+                cake.setCakeType(rs.getString("cakeType"));
+
+                cakes.add(cake);
+            }
+
+        } catch (SQLException ex) {
+        }
+        return cakes;
+    }
+
+    public List<Cake> searchCakes(String cakeFind) {
+        List<Cake> cakes = new ArrayList<>();
+        try {
+
+            String sql = "Select * from [dbo].[Cakes]"
+                    + "where upper(cakeName) like upper('%" + cakeFind + "%')";
+            Statement stm = con.createStatement();
+            ResultSet rs = stm.executeQuery(sql);
+
+            while (rs.next()) {
+                Cake cake = new Cake();
+                cake.setCakeID(rs.getInt("cakeID"));
+                cake.setCakeName(rs.getString("cakeName"));
+                cake.setCakeDescription(rs.getString("cakeDescription"));
+                cake.setCakePrice(rs.getInt("cakePrice"));
+                cake.setCakeImg(rs.getString("cakeImg"));
+                cake.setCakeQuantity(rs.getInt("cakeQuantity"));
+                cake.setCakeType(rs.getString("cakeType"));
+
+                cakes.add(cake);
+            }
+
+        } catch (SQLException ex) {
+        }
+        return cakes;
+    }
+
     public static void main(String[] args) {
         CakeDAO cDAO = new CakeDAO();
 
@@ -94,5 +187,7 @@ public class CakeDAO extends AbstractDAO<Cake> {
         }
         System.out.println("------------------");
         System.out.println(cDAO.findByID(01));
+        
     }
+
 }
