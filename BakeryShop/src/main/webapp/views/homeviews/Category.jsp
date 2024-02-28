@@ -31,6 +31,8 @@
 
     <body>
         <div class="page">
+             <!-- Header -->
+            <%@include file="../homeviews/customer-header.jsp" %>
 
             <!-- Bread-crumb -->
             <div class="bread-crumb container">
@@ -130,6 +132,8 @@
                 </div>
             </div>
 
+            <!-- Footer -->
+            <%@include file="../homeviews/Footer.jsp" %>          
 
         </div>
 

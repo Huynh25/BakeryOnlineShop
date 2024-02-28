@@ -31,6 +31,9 @@
 
     <body>
         <div class="page">
+            <!-- Header -->
+            <%@include file="../homeviews/customer-header.jsp" %>
+
 
             <!-- Bread-crumb -->
             <div class="bread-crumb container">
@@ -123,7 +126,12 @@
                 </div>
             </div>
 
-            <!-- Cart -->
+            <!-- Footer -->
+            <%@include file="../homeviews/Footer.jsp" %>
+
+        </div>
+        <!-- Cart -->
+
 
 
     </body>

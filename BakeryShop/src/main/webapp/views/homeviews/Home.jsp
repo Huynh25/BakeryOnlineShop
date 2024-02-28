@@ -31,7 +31,9 @@
 
     <body>
         <div class="page">
-
+            <!-- Header -->
+            <%@include file="../homeviews/customer-header.jsp" %>
+            
             <!-- Banner -->
             <div class="banner container-fluid ">
                 <div class="banner-content container row
@@ -128,6 +130,7 @@
             </div>
 
             <!-- Footer -->
+            <%@include file="../homeviews/Footer.jsp" %>
 
         </div>
 

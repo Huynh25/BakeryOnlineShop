@@ -8,17 +8,17 @@
     <div id="header" class="row">
         <div class="row col-sm-5">
             <div class="col-sm-5" id="catalog-container">
-                <a id="catalog-link" href="#">Catalog</a>
+                <a id="catalog-link" href="/catalog">Catalog</a>
             </div>
             <div class="col-sm-7">
-                <form id="search-cake">
-                    <input type="text" name="search-cake-input" id="search-cake-input" placeholder="Search Cake">
+                <form action="searchcake" method="get" id="search-cake">
+                    <input type="text" name="cakeSearch" id="search-cake-input" placeholder="Search Cake">
                     <button type="submit" id="search-cake-btn"><i class="bi bi-search"></i></button>
                 </form>
             </div>
         </div>
         <div class="col-sm-2">
-            <a href="#" id="backhome-link">
+            <a href="/home" id="backhome-link">
                 <h3 id="bakery-name">ELEGANTO</h3>
             </a>
         </div>
