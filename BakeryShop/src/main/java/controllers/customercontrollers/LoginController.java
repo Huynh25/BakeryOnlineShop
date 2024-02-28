@@ -13,6 +13,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import models.Customer;
 import models.Staff;
 
@@ -21,6 +22,7 @@ import models.Staff;
  * @author HuynhLNCE171797
  */
 public class LoginController extends HttpServlet {
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -38,7 +40,7 @@ public class LoginController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet LoginController</title>");            
+            out.println("<title>Servlet LoginController</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet LoginController at " + request.getContextPath() + "</h1>");
@@ -77,11 +79,17 @@ public class LoginController extends HttpServlet {
         String password = (String) request.getParameter("password");
         boolean isCustomer = isCustomer(username, password);
         boolean isStaff = isStaff(username, password);
+        
+        //Create session customer or staff
+        HttpSession session = request.getSession();
         if (isCustomer) {
-            response.sendRedirect("views/manageAccountViews/editProfile.jsp");
+            session.setAttribute("role", "customer");
+            response.sendRedirect("home");
         } else if (isStaff) {
-            response.sendRedirect("views/adminviews/view-rating.jsp");
+            session.setAttribute("role", "staff");
+            response.sendRedirect("home");
         } else {
+            session.setAttribute("role", null);
             request.setAttribute("errorMessage", "Invalid username or password");
             request.getRequestDispatcher("login").forward(request, response);
         }

@@ -36,7 +36,20 @@
     <body>
         <div class="page">
             <!-- Header -->
-            <%@include file="../homeviews/customer-header.jsp" %>
+            <c:choose>
+                <c:when test="${'customer'.equalsIgnoreCase(role)}">
+                    <%@include file="../homeviews/customer-header.jsp" %>
+                </c:when>
+                <c:when test="${'manager'.equalsIgnoreCase(role)}">
+                    <%@include file="../homeviews/manager-header.jsp" %>
+                </c:when>
+                <c:when test="${'staff'.equalsIgnoreCase(role)}">
+                    <%@include file="../homeviews/staff-header.jsp" %>
+                </c:when>
+                <c:otherwise>
+                    <%@include file="../homeviews/customer-header.jsp" %>
+                </c:otherwise>
+            </c:choose>
 
             <!-- Banner -->
             <div class="banner container-fluid ">

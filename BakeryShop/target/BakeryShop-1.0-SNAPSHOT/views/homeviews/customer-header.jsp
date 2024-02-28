@@ -4,7 +4,7 @@
     Author     : Tran Nguyen Nam Thuan CE171497
 --%>
 
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <div id="header" class="row">
     <div class="row col-sm-5">
         <div class="col-sm-5" id="catalog-container">
@@ -26,7 +26,25 @@
         <ul id="navbar-icon">
             <li><a href="#"><i class="bi bi-basket3"></i></a></li>
             <li><a href="order-history"><i class="bi bi-clock-history"></i></a></li>
-            <li><a href="/login"><i class="bi bi-person-circle"></i></a></li>
+
+            <c:choose>
+                <c:when test="${'customer'.equalsIgnoreCase(role)}">
+                    <li>
+                        <a href="/views/manageAccountViews/editProfile.jsp">
+                            <i class="bi bi-person-circle">
+                            </i>
+                        </a>
+                    </li>
+                </c:when>
+                <c:otherwise>
+                    <li>
+                        <a href="/login">
+                            <i class="bi bi-person-circle">
+                            </i>
+                        </a>
+                    </li>
+                </c:otherwise>
+            </c:choose>
         </ul>
     </div>
 </div>

@@ -39,7 +39,8 @@ public class UserDAO extends AbstractDAO<User> {
         }
         return users;
     }
-        public boolean isValidUserName(String userName) {
+
+    public boolean isValidUserName(String userName) {
         try {
             String sql = "select staffName from Staffs UNION select username from Customers";
             Statement stm = con.createStatement();
