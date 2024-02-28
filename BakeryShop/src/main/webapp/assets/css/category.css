@@ -1,0 +1,365 @@
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  color: var(--black);
+  background-color: var(--white);
+}
+
+.unna-regular {
+  font-family: "Unna", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.unna-bold {
+  font-family: "Unna", serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.unna-regular-italic {
+  font-family: "Unna", serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.unna-bold-italic {
+  font-family: "Unna", serif;
+  font-weight: 700;
+  font-style: italic;
+}
+
+/* Footer */
+.footer {
+  color: white;
+  background-color: var(--dark-pink);
+  font-size: 20px;
+  padding-top: 24px;
+  padding-bottom: 24px;
+}
+.footer.row {
+  margin-left: 0;
+}
+.footer a {
+  color: white;
+  list-style: none;
+  text-decoration: none;
+}
+.footer .title h2 {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+.footer .footer-left {
+  height: 100%;
+}
+.footer .footer-left .logo h2 {
+  font-size: 64px;
+  font-family: "Unna", serif;
+}
+.footer .footer-left .describe-bakery {
+  color: var(--red);
+  margin-bottom: 40px;
+  margin-top: 20px;
+}
+.footer .footer-left .social-media .social-items {
+  margin-bottom: 16px;
+}
+.footer .footer-left .social-media .social-items .social-item {
+  margin-right: 20px;
+}
+.footer .footer-left .phone-number {
+  display: flex;
+  align-items: end;
+}
+.footer .footer-right {
+  padding-top: 20px;
+  height: 100%;
+}
+.footer .footer-right .bakery-info .title {
+  margin-bottom: 38px;
+}
+.footer .footer-right .hyperlink a,
+.footer .footer-right .made-by,
+.footer .footer-right .made-by a {
+  color: var(--red);
+}
+.footer .footer-right .hyperlinks {
+  height: 100px;
+}
+.footer .footer-right .made-by {
+  display: flex;
+  align-items: end;
+}
+.footer .footer-right .made-by a {
+  text-decoration: underline;
+}
+
+@media (min-width: 1200px) {
+  .footer {
+    height: 420px;
+  }
+  .footer .footer-content {
+    height: 284px;
+  }
+}
+/* Bread-crumb */
+.bread-crumb {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  font-size: 20px;
+}
+.bread-crumb .bread-crumb-items {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.bread-crumb .bread-crumb-items a {
+  text-decoration: none;
+  color: var(--pale-brown);
+  word-break: break-all;
+  word-wrap: break-word;
+}
+.bread-crumb .bread-crumb-items .active a {
+  text-decoration: underline;
+  color: var(--black);
+}
+.bread-crumb .bread-crumb-items .active {
+  width: 33.33%;
+}
+.bread-crumb .bread-crumb-items .bread-crumb-arrow {
+  margin-left: 20px;
+  margin-right: 20px;
+  color: var(--pale-brown);
+}
+
+@media (max-width: 1200px) {
+  .bread-crumb .bread-crumb-items {
+    margin-left: -20px;
+    justify-content: center;
+  }
+}
+@media (min-width: 1200px) {
+  .bread-crumb .bread-crumb-items {
+    padding-left: 50px;
+  }
+}
+/* Page info */
+.page-info {
+  padding-top: 20px;
+  padding-bottom: 40px;
+}
+.page-info .title {
+  margin-bottom: 36px;
+}
+.page-info .title h2 {
+  color: var(--black);
+  font-size: 80px;
+  font-family: "Unna", serif;
+  font-weight: 600;
+}
+.page-info .des {
+  font-size: 20px;
+  color: var(--pale-brown);
+}
+
+@media (min-width: 1200px) {
+  .page-info .des {
+    width: 380px;
+  }
+}
+@media (max-width: 1400px) {
+  .page-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .page-info .title {
+    text-align: center;
+  }
+  .page-info .des {
+    text-align: center;
+  }
+}
+@media (min-width: 1400px) {
+  .page-info {
+    padding-left: 60px;
+  }
+}
+/* card list */
+.card-list {
+  padding-bottom: 20px;
+  padding-top: 20px;
+}
+.card-list .card-item {
+  border: var(--black) 2px solid;
+  border-radius: 20px;
+  padding-bottom: 20px;
+  margin-bottom: 60px;
+  height: 460px;
+  width: 356px;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  /* For cake card */
+  padding-left: 0;
+  padding-right: 0;
+}
+.card-list .card-item .img {
+  display: flex;
+  justify-content: center;
+  padding: 0;
+}
+.card-list .card-item .img img {
+  width: 100%;
+  height: 240px;
+  /* For cake card */
+  border-radius: 20px 20px 0 0;
+  border-bottom: var(--black) 2px solid;
+}
+.card-list .card-item .content {
+  width: 295px;
+  height: 186px;
+  padding: 0;
+  padding-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+}
+.card-list .card-item .content .title h3 {
+  color: var(--black);
+  font-weight: 600;
+  font-size: 20px;
+}
+.card-list .card-item .content .des {
+  color: var(--pale-brown);
+}
+.card-list .card-item .content .link {
+  display: flex;
+  align-items: end;
+}
+.card-list .card-item .content .link a {
+  /* For cake card */
+  color: white;
+  text-decoration: none;
+  background-color: var(--dark-pink);
+  padding: 10px 20px;
+  border-radius: 20px;
+  border: transparent 1px solid;
+}
+.card-list .card-item .content .link a:hover {
+  /* For cake card */
+  border: var(--black) 1px solid;
+  transition: ease-in-out 0.1s;
+  background-color: white;
+  color: var(--dark-pink);
+}
+
+@media (min-width: 768px) {
+  .card-list .card-items {
+    margin-left: -80px;
+  }
+  .card-list .card-item {
+    margin-left: 60px;
+  }
+}
+@media (min-width: 992px) {
+  .card-list .card-items {
+    margin-left: -60px;
+  }
+}
+@media (min-width: 1200px) {
+  .card-list {
+    padding-left: 60px;
+  }
+  .card-list .card-items {
+    margin-left: -128px;
+  }
+}
+@media (min-width: 1400px) {
+  .card-list {
+    padding-left: 60px;
+  }
+  .card-list .card-items {
+    margin-left: -40px;
+  }
+}
+/* Load more indicators */
+.load-more-indicators {
+  padding-bottom: 80px;
+}
+.load-more-indicators .load-more-btn {
+  display: flex;
+  justify-content: center;
+}
+.load-more-indicators .load-more-btn button {
+  background-color: var(--dark-pink);
+  color: white;
+}
+.load-more-indicators .load-more-btn button:hover {
+  background-color: white;
+  color: var(--dark-pink);
+}
+.load-more-indicators .indicators {
+  margin-top: 40px;
+  font-size: 20px;
+}
+.load-more-indicators .indicators a {
+  text-decoration: none;
+  color: #333;
+  padding: 4px 12px;
+  border-radius: 50%;
+}
+.load-more-indicators .indicators .indicator {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.load-more-indicators .indicators .indicator.active a {
+  background-color: var(--dark-pink);
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .load-more-indicators .indicators {
+    margin-left: -20px;
+  }
+  .load-more-indicators .indicators .indicator {
+    margin-left: 20px;
+  }
+}
+:root {
+  --dark-pink: #97201e;
+  --red: #ce5351;
+  --white: #f9f6f2;
+  --silver: #e5dfdb;
+  --black: #55432c;
+  --pale-brown: #bdb09e;
+}
+
+img {
+  object-fit: cover;
+  border: white solid 2px;
+  border-radius: 25px;
+}
+
+.button button {
+  width: 280px;
+  height: 53px;
+  border-radius: 25px;
+  border: none;
+  background-color: white;
+  color: var(--dark-pink);
+  font-size: 24px;
+}
+.button button:hover {
+  border: var(--black) 2px solid;
+  transition: ease-in-out 0.1s;
+}
+
+/*# sourceMappingURL=category.css.map */

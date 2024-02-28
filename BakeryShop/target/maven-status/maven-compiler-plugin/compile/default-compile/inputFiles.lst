@@ -1,3 +1,33 @@
+<<<<<<< HEAD
+D:\git\github\BakeryOnlineShop\BakeryShop\src\main\java\controllers\customercontrollers\CatalogController.java
+D:\git\github\BakeryOnlineShop\BakeryShop\src\main\java\daos\CakeInOrderDAO.java
+D:\git\github\BakeryOnlineShop\BakeryShop\src\main\java\daos\UserDAO.java
+D:\git\github\BakeryOnlineShop\BakeryShop\src\main\java\daos\CakeDAO.java
+D:\git\github\BakeryOnlineShop\BakeryShop\src\main\java\models\ProductHistory.java
+D:\git\github\BakeryOnlineShop\BakeryShop\src\main\java\controllers\admincontrollers\UnconfirmedOrdersController.java
+D:\git\github\BakeryOnlineShop\BakeryShop\src\main\java\controllers\admincontrollers\RatingController.java
+D:\git\github\BakeryOnlineShop\BakeryShop\src\main\java\models\Topping.java
+D:\git\github\BakeryOnlineShop\BakeryShop\src\main\java\models\Cake.java
+D:\git\github\BakeryOnlineShop\BakeryShop\src\main\java\models\Customer.java
+D:\git\github\BakeryOnlineShop\BakeryShop\src\main\java\models\Staff.java
+D:\git\github\BakeryOnlineShop\BakeryShop\src\main\java\daos\StaffDAO.java
+D:\git\github\BakeryOnlineShop\BakeryShop\src\main\java\controllers\admincontrollers\MyConfirmedOrdersController.java
+D:\git\github\BakeryOnlineShop\BakeryShop\src\main\java\daos\ToppingInCakeDAO.java
+D:\git\github\BakeryOnlineShop\BakeryShop\src\main\java\models\GoWith.java
+D:\git\github\BakeryOnlineShop\BakeryShop\src\main\java\models\User.java
+D:\git\github\BakeryOnlineShop\BakeryShop\src\main\java\controllers\customercontrollers\OrderHistoryController.java
+D:\git\github\BakeryOnlineShop\BakeryShop\src\main\java\models\ToppingInCake.java
+D:\git\github\BakeryOnlineShop\BakeryShop\src\main\java\daos\GoWithDAO.java
+D:\git\github\BakeryOnlineShop\BakeryShop\src\main\java\models\Rating.java
+D:\git\github\BakeryOnlineShop\BakeryShop\src\main\java\models\CakeInOrder.java
+D:\git\github\BakeryOnlineShop\BakeryShop\src\main\java\daos\ProductHistoryDAO.java
+D:\git\github\BakeryOnlineShop\BakeryShop\src\main\java\daos\AbstractDAO.java
+D:\git\github\BakeryOnlineShop\BakeryShop\src\main\java\daos\CustomerDAO.java
+D:\git\github\BakeryOnlineShop\BakeryShop\src\main\java\daos\RatingDAO.java
+D:\git\github\BakeryOnlineShop\BakeryShop\src\main\java\daos\ToppingDAO.java
+D:\git\github\BakeryOnlineShop\BakeryShop\src\main\java\daos\OrderDAO.java
+D:\git\github\BakeryOnlineShop\BakeryShop\src\main\java\models\Order.java
+=======
 D:\bakery-github\BakeryOnlineShop\BakeryShop\src\main\java\models\ToppingInCake.java
 D:\bakery-github\BakeryOnlineShop\BakeryShop\src\main\java\controllers\admincontrollers\StaffManagementController.java
 D:\bakery-github\BakeryOnlineShop\BakeryShop\src\main\java\daos\CakeDAO.java
@@ -29,3 +59,4 @@ D:\bakery-github\BakeryOnlineShop\BakeryShop\src\main\java\daos\ToppingDAO.java
 D:\bakery-github\BakeryOnlineShop\BakeryShop\src\main\java\models\GoWith.java
 D:\bakery-github\BakeryOnlineShop\BakeryShop\src\main\java\controllers\admincontrollers\MyConfirmedOrdersController.java
 D:\bakery-github\BakeryOnlineShop\BakeryShop\src\main\java\daos\ToppingInCakeDAO.java
+>>>>>>> 9cd676281dd068605e1b3080f301c614c0cc9dff
