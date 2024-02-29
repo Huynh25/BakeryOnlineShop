@@ -23,7 +23,7 @@ public class RatingDAO extends AbstractDAO<Rating> {
 
     CustomerDAO cDAo = new CustomerDAO();
     CakeDAO cakeDAO = new CakeDAO();
-    
+
     @Override
     public List<Rating> readAll() {
         List<Rating> ratings = new ArrayList<>();
@@ -72,6 +72,39 @@ public class RatingDAO extends AbstractDAO<Rating> {
     @Override
     public Rating findByID(int id) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    public List<Rating> getAllRatingsByCakeID(int cakeID) {
+        List<Rating> ratings = new ArrayList<>();
+
+        try {
+
+            String sql = "Select * from [dbo].[Ratings]";
+            Statement stm = con.createStatement();
+            ResultSet rs = stm.executeQuery(sql);
+            Cake cake = cakeDAO.findByID(cakeID);
+            
+            if (cake == null) {
+                return ratings;
+            }
+
+            while (rs.next()) {
+                Rating rating = new Rating();
+
+                Customer customer = cDAo.findByID(rs.getInt("userID"));
+
+                rating.setCustomer(customer);
+                rating.setCake(cake);
+                rating.setRatingDate(rs.getDate("ratingDate"));
+                rating.setRatingValue(rs.getInt("ratingValue"));
+                rating.setComment(rs.getString("comment"));
+
+                ratings.add(rating);
+            }
+
+        } catch (SQLException ex) {
+        }
+        return ratings;
     }
 
     public static void main(String[] args) {

@@ -88,8 +88,8 @@
                                     ${cake.cakeDescription}
                                 </div>
                                 <div class="link">
-                                    <c:url value="/home" var="cakeURL">
-                                        <%--<c:param name="cakeID" value="${cake.cakeID}"/>--%>
+                                    <c:url value="/cakedetail" var="cakeURL">
+                                        <c:param name="cakeID" value="${cake.cakeID}"/>
                                     </c:url>
                                     <a href="${cakeURL}">
                                         More detail

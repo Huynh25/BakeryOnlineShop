@@ -70,6 +70,36 @@ public class GoWithDAO extends AbstractDAO<GoWith> {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
+    public List<GoWith> findAllByCakeID(int cakeID) {
+        List<GoWith> goWiths = new ArrayList<>();
+        try {
+
+            String sql = "Select * from [dbo].[GoWiths]\n"
+                    + "where cakeID = " + cakeID;
+            Statement stm = con.createStatement();
+            ResultSet rs = stm.executeQuery(sql);
+            Cake cake = cakeDAO.findByID(cakeID);
+            
+            if (cake == null) {
+                return goWiths;
+            }
+
+            while (rs.next()) {
+                GoWith goWith = new GoWith();
+
+                Topping topping = tDAO.findByID(rs.getInt("toppingID"));
+
+                goWith.setCake(cake);
+                goWith.setTopping(topping);
+
+                goWiths.add(goWith);
+            }
+
+        } catch (SQLException ex) {
+        }
+        return goWiths;
+    }
+
     public static void main(String[] args) {
         GoWithDAO gDAO = new GoWithDAO();
 

@@ -59,7 +59,7 @@ public class ToppingDAO extends AbstractDAO<Topping> {
 
     @Override
     public Topping findByID(int id) {
-try {
+        try {
 
             String sql = "Select * from [dbo].[Toppings]"
                     + "where toppingID =\'" + id + "\'";
@@ -74,15 +74,15 @@ try {
                 topping.setToppingPrice(rs.getInt("toppingPrice"));
                 topping.setToppingImg(rs.getString("toppingImg"));
                 topping.setToppingQuantity(rs.getInt("toppingQuantity"));
-                
+
                 return topping;
             }
 
         } catch (SQLException ex) {
         }
-        return null;    }
+        return null;
+    }
 
-    
     public static void main(String[] args) {
         ToppingDAO tDAO = new ToppingDAO();
 
