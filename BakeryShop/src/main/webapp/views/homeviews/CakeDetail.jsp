@@ -76,25 +76,25 @@
                         <div class="col-xl-3 col-12 cake-info row align-items-between">
                             <div class="title">
                                 <h2>${cake.cakeName}</h2>
+                                <form action="/addcaketocart" method="post" id="add-cake-to-cart">
+                                    <input type="hidden" name="cakeID" value="${cake.cakeID}">
+                                    <input type="hidden" name="cakeType" value="${cake.cakeType}">
+                                </form>
                             </div>
                             <div class="des">
                                 ${cake.cakeDescription}
                             </div>
                             <div class="rating row justify-content-start align-items-center">
                                 <div class="col-8 rating-stars">
-                                    <c:forEach var="star-fill" begin="1" end="5">
-                                        <c:choose>
-                                            <c:when test="${star-fill <= cakeRating}">
-                                                <i class="bi bi-star-fill"></i>
-                                            </c:when>
-                                            <c:otherwise>
-                                                <i class="bi bi-star"></i>
-                                            </c:otherwise>
-                                        </c:choose>
+                                    <c:forEach var="star-fill" begin="1" end="${cakeRating}">
+                                        <i class="bi bi-star-fill"></i>
+                                    </c:forEach>
+                                    <c:forEach var="star-fill" begin="${cakeRating + 1}" end="5">
+                                        <i class="bi bi-star"></i>
                                     </c:forEach>
                                 </div>
                                 <div class="col-4 rating-value">
-                                    ${String.format("%.2f", Float.parseFloat(cakeRating))}
+                                    ${cakeRating}
                                 </div>
                             </div>
                         </div>
@@ -109,30 +109,30 @@
                                 <div class="topping-list">
                                     <c:forEach var="topping" items="${toppings}">
                                         <div class="topping-item">
-                                            <a>${topping.toppingName}</a>
+                                            <a data-value="${topping.toppingID}" data-price="${topping.toppingPrice}">${topping.toppingName}</a>
                                         </div>
                                     </c:forEach>
                                 </div>
                             </div>
                             <div class="row align-items-end">
                                 <div class="col-12 price-quantity row justify-content-xxl-between justify-content-center">
-                                    <div class="col-xxl-6 col-12 price">
-                                        ${cake.cakePrice} <span>đ</span>
+                                    <div class="col-xxl-6 col-12 price">${cake.cakePrice}<span>đ</span>
                                     </div>
                                     <div class="col-xxl-6 col-12 quantity row justify-content-between align-items-center">
                                         <div class="col-3 quantity-btn">
-                                            <button>-</button>
+                                            <button value="decrease">-</button>
                                         </div>
                                         <div class="col-6 input">
-                                            <input type="text" name="buy-quantity" id="buy-quantity" value="0">
+                                            <input form="add-cake-to-cart" type="text" name="buy-quantity" id="buy-quantity" value="1">
                                         </div>
                                         <div class="col-3 quantity-btn">
-                                            <button>+</button>
+                                            <button value="increase">+</button>
                                         </div>
+                                        <input type="hidden" name="cake-quantity" value="${cake.cakeQuantity}">
                                     </div>
                                 </div>
                                 <div class="col-12 add-to-cart-btn button">
-                                    <button>Add to cart</button>
+                                    <button form="add-cake-to-cart" type="button">Add to cart</button>
                                 </div>
                             </div>
                         </div>
@@ -144,10 +144,24 @@
             <%@include file="../homeviews/Footer.jsp" %>
 
         </div>
-        <div class="popup">
 
-        </div>
+        <!--Cart popup-->
+        <%@include file="../homeviews/Cart.jsp" %>
 
+
+
+        <script
+            src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+            crossorigin="anonymous"
+        ></script>
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
+            crossorigin="anonymous"
+        ></script>
+        <script src="../../assets/javascript/form-cake-detail.js"></script>
+        <script src="../../assets/javascript/add-cake-to-cart.js"></script>
     </body>
 
 </html>

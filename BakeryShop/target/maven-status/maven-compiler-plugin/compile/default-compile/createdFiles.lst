@@ -5,6 +5,7 @@ controllers\admincontrollers\OrderDetailManagementController.class
 controllers\admincontrollers\RatingController.class
 daos\ToppingDAO.class
 models\GoWith.class
+models\Cart.class
 daos\ToppingInCakeDAO.class
 daos\RatingDAO.class
 models\Rating.class
@@ -22,6 +23,7 @@ models\ProductHistory.class
 controllers\customercontrollers\CategoryController.class
 daos\OrderDAO.class
 models\CakeInOrder.class
+models\Item.class
 controllers\customercontrollers\LoginController.class
 controllers\customercontrollers\HomeController.class
 daos\CustomerDAO.class
@@ -31,5 +33,7 @@ models\Customer.class
 models\ToppingInCake.class
 daos\StaffDAO.class
 daos\CakeDAO.class
+controllers\customercontrollers\CakeDetailController.class
 controllers\admincontrollers\UnconfirmedOrdersController.class
+controllers\customercontrollers\AddCakeToCartController.class
 daos\GoWithDAO.class

@@ -94,7 +94,7 @@
                         </div>
 
                     </div>
-                        <div class="orderdDetail-content row" id="orderdDetail-content-${order.orderID}">                                                                  
+                    <div class="orderdDetail-content row" id="orderdDetail-content-${order.orderID}">                                                                  
                         <div class="col-sm-12 order-Description">
                             ${order.orderDescription}
                         </div>
@@ -124,7 +124,7 @@
                         </c:forEach>
                         <c:if test="${orderDetailQuantity > 3}">                          
                             <div class="col-sm-12 showMore-btn-cotainer">                      
-                                <button class="showMore-btn " onclick="showMore(${order.orderID},3)">Show More <i id class="bi bi-chevron-double-down down-icon"></i></button>
+                                <button class="showMore-btn " onclick="showMore(${order.orderID}, 3)">Show More <i id class="bi bi-chevron-double-down down-icon"></i></button>
                             </div>
                         </c:if>
 
@@ -134,6 +134,7 @@
                 </c:forEach>
             </div>
         </div>
+
     </div>         
     <script  src="../../assets/javascript/purchase-history.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"

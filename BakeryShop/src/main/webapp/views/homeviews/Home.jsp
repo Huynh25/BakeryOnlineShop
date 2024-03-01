@@ -151,7 +151,8 @@
 
         </div>
 
-        <!-- Cart -->
+        <!--Cart popup-->
+        <%@include file="../homeviews/Cart.jsp" %>
 
 
         <script

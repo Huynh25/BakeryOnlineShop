@@ -1,8 +1,8 @@
 :root{
-    --white:#F9F6F2;
+    --white:#F9F6F2 !important;
     --silver:#E5DFDB;
     --black:#55432C;
-    --red:#CE5351;
+    --red:#CE5351 !important;
     --dark-pink:#97201E;
     --pale-brown:#BDB09E;
 }

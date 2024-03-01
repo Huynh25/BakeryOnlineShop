@@ -36,6 +36,21 @@ public class CakeDetailController extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
+    }
+
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    /**
+     * Handles the HTTP <code>GET</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
         String cakeIDString = request.getParameter("cakeID");
         if (cakeIDString == null) {
             response.sendRedirect("/catalog");
@@ -68,7 +83,7 @@ public class CakeDetailController extends HttpServlet {
         }
 
         request.setAttribute("cakeRating", averageRating);
-        
+
         //Get list of toppings that go with the cake
         GoWithDAO goWithDAO = new GoWithDAO();
         List<GoWith> goWithList = goWithDAO.findAllByCakeID(cakeID);
@@ -76,25 +91,10 @@ public class CakeDetailController extends HttpServlet {
         for (GoWith goWith : goWithList) {
             toppingList.add(goWith.getTopping());
         }
-        
+
         request.setAttribute("toppings", toppingList);
 
         request.getRequestDispatcher("views/homeviews/CakeDetail.jsp").forward(request, response);
-    }
-
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
     }
 
     /**

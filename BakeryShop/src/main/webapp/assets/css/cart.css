@@ -1,0 +1,190 @@
+:root {
+    --dark-pink: #97201e;
+    --red: #ce5351;
+    --white: #f9f6f2;
+    --silver: #e5dfdb;
+    --black: #55432c;
+    --pale-brown: #bdb09e;
+}
+
+/* Popup */
+.popup {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: none;
+}
+
+.popup.open {
+    display: block;
+}
+
+
+.popup div,
+.popup span,
+.popup h1,
+.popup h2,
+.popup h3,
+.popup a,
+.popup img,
+.popup form,
+.popup label {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+.popup img {
+    object-fit: cover;
+    border: white solid 2px;
+    border-radius: 25px;
+}
+.popup .button button {
+    width: 260px;
+    height: 53px;
+    border-radius: 25px;
+    border: none;
+    background-color: white;
+    color: var(--dark-pink);
+    font-size: 24px;
+}
+.popup .button button:hover {
+    border: var(--black) 2px solid;
+    transition: ease-in-out 0.1s;
+}
+.popup .cart-popup {
+    width: 500px;
+    padding: 40px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--white);
+}
+.popup .cart-popup > .title {
+    font-family: "Unna", serif;
+    font-size: 64px;
+    padding-bottom: 40px;
+    border-bottom: var(--black) 1px solid;
+}
+.popup .cart-popup span.underline {
+    text-decoration: underline;
+}
+.popup .cart-popup .cart-info {
+    padding-top: 40px;
+    padding-right: 20px;
+    font-size: 20px;
+}
+.popup .cart-popup .cart-info > * {
+    margin-bottom: 28px;
+}
+.popup .cart-popup .cart-info .title {
+    color: var(--pale-brown);
+    margin-bottom: 20px;
+}
+.popup .cart-popup .cart-info .product-in-cart .quantity {
+    line-height: 36px;
+}
+.popup .cart-popup .cart-info .price-in-cart {
+    text-align: end;
+}
+.popup .cart-popup .cart-info .price-in-cart .price {
+    font-size: 36px;
+}
+.popup .cart-popup .cart-info .button {
+    display: flex;
+    justify-content: center;
+}
+.popup .cart-popup .cart-info .button button {
+    background-color: var(--dark-pink);
+    color: white;
+}
+.popup .cart-popup .cart-info .button button:hover {
+    color: var(--black);
+    background-color: white;
+}
+.popup .cart-popup .cart-items {
+    margin-top: 20px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    padding-right: 20px;
+    height: 60%;
+}
+.popup .cart-popup .cart-items::-webkit-scrollbar {
+    width: 4px;
+}
+.popup .cart-popup .cart-items::-webkit-scrollbar-track {
+    background-color: var(--pale-brown);
+}
+.popup .cart-popup .cart-items::-webkit-scrollbar-thumb {
+    background-color: var(--black);
+}
+.popup .cart-popup .cart-item {
+    font-size: 20px;
+    margin-bottom: 80px;
+}
+.popup .cart-popup .cart-item > * {
+    margin-bottom: 20px;
+}
+
+.popup .cart-popup .cart-item .img {
+    width: 100%;
+    height: 243px;
+}
+
+.popup .cart-popup .cart-item .img img {
+    width: 100%;
+    height: 243px;
+    border-radius: 20px;
+    border: var(--black) 1px solid;
+}
+.popup .cart-popup .cart-item .cake-name {
+    font-weight: 600;
+}
+.popup .cart-popup .cart-item .cake-toppings {
+    color: var(--pale-brown);
+}
+
+.popup .cart-popup .cart-item .cake-quantity .quantity-btn {
+    display: flex;
+    justify-content: center;
+}
+.popup .cart-popup .cart-item .cake-quantity .quantity-btn button {
+    width: 37px;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    padding: 7px 12px;
+    border-radius: 100%;
+    border: none;
+    background-color: var(--dark-pink);
+    color: white;
+}
+.popup .cart-popup .cart-item .cake-quantity .quantity-btn:first-child button {
+    padding: 7px 14px;
+}
+.popup .cart-popup .cart-item .cake-quantity .input input {
+    text-align: center;
+    width: 100%;
+    border: none;
+    background-color: transparent;
+    border-bottom: var(--black) 1px solid;
+    font-size: 20px;
+}
+.popup .cart-popup .cart-item .cake-remove {
+    display: flex;
+    justify-content: end;
+}
+.popup .cart-popup .cart-item .cake-remove button {
+    background-color: transparent;
+    color: var(--black);
+    border: none;
+    border-bottom: var(--black) 1px solid;
+}
+
+/*# sourceMappingURL=cart.css.map */
