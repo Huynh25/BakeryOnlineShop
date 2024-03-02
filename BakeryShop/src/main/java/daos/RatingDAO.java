@@ -29,7 +29,7 @@ public class RatingDAO extends AbstractDAO<Rating> {
         List<Rating> ratings = new ArrayList<>();
         try {
 
-            String sql = "Select * from [dbo].[Ratings]";
+            String sql = "Select * from [dbo].[Ratings] Order BY ratingDate DESC";
             Statement stm = con.createStatement();
             ResultSet rs = stm.executeQuery(sql);
 
