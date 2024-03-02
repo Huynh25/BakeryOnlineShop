@@ -15,14 +15,16 @@ public class Item {
 
     private Cake cake;
     private List<Topping> toppings;
+    private List<Integer> toppingsBuyQuantity;
     private int buyQuantity;
 
     public Item() {
     }
 
-    public Item(Cake cake, List<Topping> toppings, int buyQuantity) {
+    public Item(Cake cake, List<Topping> toppings, List<Integer> toppingsBuyQuantity, int buyQuantity) {
         this.cake = cake;
         this.toppings = toppings;
+        this.toppingsBuyQuantity = toppingsBuyQuantity;
         this.buyQuantity = buyQuantity;
     }
 
@@ -42,6 +44,14 @@ public class Item {
         this.toppings = toppings;
     }
 
+    public List<Integer> getToppingsBuyQuantity() {
+        return toppingsBuyQuantity;
+    }
+
+    public void setToppingsBuyQuantity(List<Integer> toppingsBuyQuantity) {
+        this.toppingsBuyQuantity = toppingsBuyQuantity;
+    }
+
     public int getBuyQuantity() {
         return buyQuantity;
     }
@@ -52,23 +62,17 @@ public class Item {
 
     public int getTotalPrice() {
         int toppingsPrice = 0;
-        for (Topping topping : toppings) {
-            toppingsPrice += topping.getToppingPrice();
+        int length = toppings.size();
+        for (int i = 0; i < length; ++i) {
+            toppingsPrice += (toppings.get(i).getToppingPrice() * toppingsBuyQuantity.get(i));
         }
 
         return buyQuantity * (cake.getCakePrice() + toppingsPrice);
     }
 
     public boolean equals(Item item) {
-        if (this.cake.getCakeID() != item.cake.getCakeID()
-                || this.toppings.size() != item.toppings.size()) {
+        if (this.cake.getCakeID() != item.cake.getCakeID()) {
             return false;
-        }
-
-        for (Topping topping : item.toppings) {
-            if (!this.toppings.contains(topping)) {
-                return false;
-            }
         }
 
         return true;
@@ -79,14 +83,16 @@ public class Item {
         String itemString = "";
         itemString += cake.getCakeID() + ":";
         itemString += buyQuantity + ":";
-        for (Topping topping : toppings) {
-            itemString += topping.getToppingID() + ",";
+
+        int length = toppings.size();
+        for (int i = 0; i < length; ++i) {
+            itemString += (toppings.get(i).getToppingID() + "-" + toppingsBuyQuantity.get(i) + ",");
         }
-        
+
         if (!itemString.isEmpty()) {
             itemString = itemString.subSequence(0, itemString.length() - 1) + ";";
         }
-        
+
         return itemString;
     }
 

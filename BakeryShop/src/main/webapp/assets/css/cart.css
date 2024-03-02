@@ -159,6 +159,7 @@
     height: 34px;
     display: flex;
     align-items: center;
+    justify-content: center;
     padding: 7px 12px;
     border-radius: 100%;
     border: none;

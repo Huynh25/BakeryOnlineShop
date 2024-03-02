@@ -109,7 +109,8 @@
                                 <div class="topping-list">
                                     <c:forEach var="topping" items="${toppings}">
                                         <div class="topping-item">
-                                            <a data-value="${topping.toppingID}" data-price="${topping.toppingPrice}">${topping.toppingName}</a>
+                                            <a data-value="${topping.toppingID}" data-price="${topping.toppingPrice}" 
+                                               data-quan="${topping.toppingQuantity}">${topping.toppingName}</a>
                                         </div>
                                     </c:forEach>
                                 </div>

@@ -1,281 +1,310 @@
 :root {
-  --dark-pink: #97201e;
-  --red: #ce5351;
-  --white: #f9f6f2;
-  --silver: #e5dfdb;
-  --black: #55432c;
-  --pale-brown: #bdb09e;
+    --dark-pink: #97201e;
+    --red: #ce5351;
+    --white: #f9f6f2;
+    --silver: #e5dfdb;
+    --black: #55432c;
+    --pale-brown: #bdb09e;
 }
 
 img {
-  object-fit: cover;
-  border: white solid 2px;
-  border-radius: 25px;
+    object-fit: cover;
+    border: white solid 2px;
+    border-radius: 25px;
 }
 
 .button button {
-  width: 280px;
-  height: 53px;
-  border-radius: 25px;
-  border: none;
-  background-color: white;
-  color: var(--dark-pink);
-  font-size: 24px;
+    width: 280px;
+    height: 53px;
+    border-radius: 25px;
+    border: none;
+    background-color: white;
+    color: var(--dark-pink);
+    font-size: 24px;
 }
 .button button:hover {
-  border: var(--black) 2px solid;
-  transition: ease-in-out 0.1s;
+    border: var(--black) 2px solid;
+    transition: ease-in-out 0.1s;
 }
 
 *,
 ::before,
 ::after {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 body {
-  font-family: "Inter", sans-serif;
-  color: var(--black);
-  background-color: var(--white);
+    font-family: "Inter", sans-serif;
+    color: var(--black);
+    background-color: var(--white);
 }
 
 /* Header */
 #header {
-  width: 100%;
-  min-height: 50px;
-  display: flex;
-  justify-content: space-evenly;
-  background-color: var(--white);
-  align-items: center;
-  border-bottom: 1px solid var(--black);
-  margin: 0;
+    width: 100%;
+    min-height: 50px;
+    display: flex;
+    justify-content: space-evenly;
+    background-color: var(--white);
+    align-items: center;
+    border-bottom: 1px solid var(--black);
+    margin: 0;
 }
 #header #catalog-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 #header #catalog-link {
-  font-size: 20px;
-  text-decoration: none;
-  color: var(--black);
+    font-size: 20px;
+    text-decoration: none;
+    color: var(--black);
 }
 #header #search-cake {
-  position: relative;
+    position: relative;
 }
 #header #search-cake-input {
-  border-radius: 20px;
-  border: 1px solid var(--pale-brown);
-  text-indent: 10px;
-  background-color: var(--white);
-  width: 80%;
-  height: 35px;
+    border-radius: 20px;
+    border: 1px solid var(--pale-brown);
+    text-indent: 10px;
+    background-color: var(--white);
+    width: 80%;
+    height: 35px;
 }
 #header #search-cake-btn {
-  color: var(--black);
-  position: absolute;
-  top: 8px;
-  right: 23%;
-  cursor: pointer;
-  border: none;
-  background-color: var(--white);
+    color: var(--black);
+    position: absolute;
+    top: 8px;
+    right: 23%;
+    cursor: pointer;
+    border: none;
+    background-color: var(--white);
 }
 #header #bakery-name {
-  font-family: "Unna", serif;
-  font-size: 40px;
-  color: var(--black);
-  margin: 0;
+    font-family: "Unna", serif;
+    font-size: 40px;
+    color: var(--black);
+    margin: 0;
 }
 #header #backhome-link {
-  text-decoration: none;
+    text-decoration: none;
 }
 #header .dropdown {
-  padding: 0 !important;
+    padding: 0 !important;
 }
 #header #dropdown-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 #header #dropdown-management {
-  font-size: 20px;
-  text-decoration: none;
-  color: var(--black);
-  padding: 0;
+    font-size: 20px;
+    text-decoration: none;
+    color: var(--black);
+    padding: 0;
 }
 #header #dropdown-management-list {
-  background-color: var(--silver);
-  border: 1px solid var(--black);
+    background-color: var(--silver);
+    border: 1px solid var(--black);
 }
 #header .dropdown-item:hover {
-  background-color: var(--pale-brown) !important;
-  color: var(--white) !important;
+    background-color: var(--pale-brown) !important;
+    color: var(--white) !important;
 }
 #header #navbar-icon {
-  width: 300px;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  list-style: none;
-  justify-content: space-around;
+    width: 300px;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    list-style: none;
+    justify-content: space-around;
 }
 #header #navbar-icon li {
-  font-size: 25px;
+    font-size: 25px;
 }
 #header #navbar-icon li a {
-  color: var(--black);
+    color: var(--black);
 }
 
 /* Bread-crumb */
 .bread-crumb {
-  padding-top: 20px;
-  padding-bottom: 20px;
-  font-size: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-size: 20px;
 }
 .bread-crumb .bread-crumb-items {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
 }
 .bread-crumb .bread-crumb-items a {
-  text-decoration: none;
-  color: var(--pale-brown);
-  word-break: break-all;
-  word-wrap: break-word;
+    text-decoration: none;
+    color: var(--pale-brown);
+    word-break: break-all;
+    word-wrap: break-word;
 }
 .bread-crumb .bread-crumb-items .active a {
-  text-decoration: underline;
-  color: var(--black);
+    text-decoration: underline;
+    color: var(--black);
 }
 .bread-crumb .bread-crumb-items .active {
-  width: 33.33%;
+    width: 33.33%;
 }
 .bread-crumb .bread-crumb-items .bread-crumb-arrow {
-  margin-left: 20px;
-  margin-right: 20px;
-  color: var(--pale-brown);
+    margin-left: 20px;
+    margin-right: 20px;
+    color: var(--pale-brown);
 }
 
 @media (max-width: 1200px) {
-  .bread-crumb .bread-crumb-items {
-    margin-left: -20px;
-    justify-content: center;
-  }
+    .bread-crumb .bread-crumb-items {
+        margin-left: -20px;
+        justify-content: center;
+    }
 }
 @media (min-width: 1200px) {
-  .bread-crumb .bread-crumb-items {
-    padding-left: 50px;
-  }
+    .bread-crumb .bread-crumb-items {
+        padding-left: 50px;
+    }
 }
 .cake-detail-content {
-  padding-top: 60px;
-  padding-bottom: 80px;
+    padding-top: 60px;
+    padding-bottom: 80px;
 }
 .cake-detail-content .cake-info {
-  width: 340px;
+    width: 340px;
 }
 .cake-detail-content .cake-info .title h2 {
-  font-size: 60px;
-  font-family: "Unna", serif;
-  color: var(--black);
-  font-weight: 600;
+    font-size: 60px;
+    font-family: "Unna", serif;
+    color: var(--black);
+    font-weight: 600;
 }
 .cake-detail-content .cake-info .des {
-  font-size: 20px;
-  color: var(--pale-brown);
+    font-size: 20px;
+    color: var(--pale-brown);
 }
 .cake-detail-content .cake-info .rating .rating-stars i {
-  margin-right: 10px;
-  font-size: 20px;
+    margin-right: 10px;
+    font-size: 20px;
 }
 .cake-detail-content .cake-info .rating .rating-value {
-  font-size: 20px;
-  color: var(--pale-brown);
+    font-size: 20px;
+    color: var(--pale-brown);
 }
 .cake-detail-content .img {
-  display: flex;
-  justify-content: center;
+    display: flex;
+    justify-content: center;
 }
 .cake-detail-content .img img {
-  width: 357px;
-  height: 375px;
-  border: var(--black) 2px solid;
+    width: 357px;
+    height: 375px;
+    border: var(--black) 2px solid;
+}
+.cake-detail-content .cake-attribute .alert {
+    color: var(--red);
+    font-size: 19px;
+    font-weight: 600;
 }
 .cake-detail-content .cake-attribute .toppings .title {
-  font-size: 20px;
+    font-size: 20px;
 }
 .cake-detail-content .cake-attribute .topping-list {
-  padding-top: 20px;
-  padding-bottom: 30px;
-  width: 304px;
+    padding-top: 20px;
+    padding-bottom: 30px;
+    width: 304px;
 }
 .cake-detail-content .cake-attribute .topping-list .topping-item {
-  margin: 12px 8px;
-  display: inline-block;
+    user-select: none;
+    margin-bottom: 20px;
+    margin-right: 14px;
+    padding: 10px 14px;
+    font-size: 14px;
+    display: inline-block;
+    position: relative;
+}
+.cake-detail-content .cake-attribute .topping-list .topping-item span {
+    position: absolute;
+    color: white;
+    background-color: var(--dark-pink);
+    top: -15px;
+    right: -15px;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+    cursor: pointer;
+    border: 2px white solid;
 }
 .cake-detail-content .cake-attribute .topping-list .topping-item a {
-  color: var(--pale-brown);
-  cursor: pointer;
+    color: var(--pale-brown);
+    cursor: pointer;
 }
 .cake-detail-content .cake-attribute .topping-list .topping-item.active {
-  padding: 10px 14px;
-  background-color: var(--dark-pink);
-  border-radius: 20px;
+    background-color: var(--dark-pink);
+    border-radius: 20px;
 }
 .cake-detail-content .cake-attribute .topping-list .topping-item.active a {
-  color: white;
+    color: white;
 }
 .cake-detail-content .cake-attribute .price-quantity .price {
-  margin: auto;
-  font-size: 20px;
+    margin: auto;
+    font-size: 20px;
 }
 .cake-detail-content .cake-attribute .price-quantity .price span {
-  text-decoration: underline;
+    text-decoration: underline;
 }
 .cake-detail-content .cake-attribute .price-quantity .quantity .quantity-btn {
-  display: flex;
-  justify-content: center;
+    display: flex;
+    justify-content: center;
 }
 .cake-detail-content .cake-attribute .price-quantity .quantity .quantity-btn button {
-  padding: 4px 8px;
-  border-radius: 50px;
-  border: none;
-  background-color: var(--dark-pink);
-  color: white;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 4px 8px;
+    border-radius: 50px;
+    border: none;
+    background-color: var(--dark-pink);
+    color: white;
 }
 .cake-detail-content .cake-attribute .price-quantity .quantity .input input {
-  text-align: center;
-  width: 100%;
-  border: none;
-  background-color: transparent;
-  border-bottom: var(--black) 1px solid;
-  font-size: 20px;
+    text-align: center;
+    width: 100%;
+    border: none;
+    background-color: transparent;
+    border-bottom: var(--black) 1px solid;
+    font-size: 20px;
 }
 .cake-detail-content .cake-attribute .add-to-cart-btn {
-  margin-top: 40px;
-  display: flex;
-  align-items: end;
+    margin-top: 40px;
+    display: flex;
+    align-items: end;
 }
 .cake-detail-content .cake-attribute .add-to-cart-btn button {
-  background-color: var(--dark-pink);
-  color: white;
+    background-color: var(--dark-pink);
+    color: white;
 }
 .cake-detail-content .cake-attribute .add-to-cart-btn button:hover {
-  border-color: var(--black);
-  background-color: white;
-  color: var(--dark-pink);
+    border-color: var(--black);
+    background-color: white;
+    color: var(--dark-pink);
 }
 
 @media (min-width: 1400px) {
-  .cake-detail-content .cake-attribute .price-quantity {
-    padding-right: 120px;
-  }
+    .cake-detail-content .cake-attribute .price-quantity {
+        padding-right: 120px;
+    }
 }
 @media (max-width: 1399px) {
-  .cake-detail-content .cake-attribute .price-quantity .price {
-    text-align: center;
-    margin-bottom: 20px;
-  }
+    .cake-detail-content .cake-attribute .price-quantity .price {
+        text-align: center;
+        margin-bottom: 20px;
+    }
 }
 
 /*# sourceMappingURL=cakedetail.css.map */

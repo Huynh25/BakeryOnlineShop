@@ -4,7 +4,6 @@
  */
 package models;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,13 +29,16 @@ public class Cart {
                     String[] itemPart = itemString.split(":");
                     int id = Integer.parseInt(itemPart[0]);
                     int quantity = Integer.parseInt(itemPart[1]);
-                    String[] toppingIDs = itemPart[2].split(",");
+                    String[] toppingStrings = itemPart[2].split(",");
                     Cake cake = getCakeByID(id, cakeList);
                     List<Topping> toppings = new ArrayList<>();
-                    for (String toppingID : toppingIDs) {
-                        toppings.add(getToppingByID(Integer.parseInt(toppingID), toppingList));
+                    List<Integer> toppingsBuyQuantity = new ArrayList<>();
+                    for (String toppingString : toppingStrings) {
+                        String[] toppingPart = toppingString.split("-");
+                        toppings.add(getToppingByID(Integer.parseInt(toppingPart[0]), toppingList));
+                        toppingsBuyQuantity.add(Integer.parseInt(toppingPart[1]));
                     }
-                    Item item = new Item(cake, toppings, quantity);
+                    Item item = new Item(cake, toppings, toppingsBuyQuantity, quantity);
                     addItem(item);
                 } catch (Exception e) {
 
@@ -69,7 +71,7 @@ public class Cart {
     public List<Item> getItems() {
         return items;
     }
-    
+
     public boolean isEmpty() {
         return items.isEmpty();
     }
@@ -92,10 +94,11 @@ public class Cart {
         Item itemInCart = getItemInCart(item);
 
         if (itemInCart != null) {
-            itemInCart.setBuyQuantity(itemInCart.getBuyQuantity() + item.getBuyQuantity());
-        } else {
-            items.add(item);
+            items.remove(itemInCart);
         }
+        
+        items.add(item);
+
     }
 
     public void removeItem(Item item) {

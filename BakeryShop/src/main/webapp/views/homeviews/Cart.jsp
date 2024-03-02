@@ -90,7 +90,7 @@
                     </div>
                     <div class="cake-toppings">
                         Toppings: <c:forEach var="topping" items="${item.toppings}" varStatus="status">
-                            ${topping.toppingName}${status.last ? '' : ', '}
+                            ${topping.toppingName}-${item.toppingsBuyQuantity[status.index]}${status.last ? '' : ', '}
                         </c:forEach>
                     </div>
                     <div class="cake-edit row justify-content-between">
