@@ -5,6 +5,7 @@
 package daos;
 
 import daos.CakeDAO;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -146,4 +147,35 @@ try {
         }
         return cakeInOrders;
     }
+       
+    public List<Cake> findCakesInOrder(int orderID) {
+    List<Cake> cakesInOrder = new ArrayList<>();
+    try {
+        String sql = "SELECT cio.cioID, c.cakeID, c.cakeName, c.cakeDescription, c.cakePrice, c.cakeImg, c.cakeQuantity, c.cakeType "
+                + "FROM [dbo].[CakeInOrder] cio "
+                + "JOIN [dbo].[Cakes] c ON cio.cakeID = c.cakeID "
+                + "WHERE cio.orderID = ?";
+        
+        try (PreparedStatement pstmt = con.prepareStatement(sql)) {
+            pstmt.setInt(1, orderID);
+            ResultSet rs = pstmt.executeQuery();
+            
+            while (rs.next()) {
+                Cake cake = new Cake();
+                cake.setCakeID(rs.getInt("cakeID"));
+                cake.setCakeName(rs.getString("cakeName"));
+                cake.setCakeDescription(rs.getString("cakeDescription"));
+                cake.setCakePrice(rs.getInt("cakePrice"));
+                cake.setCakeImg(rs.getString("cakeImg"));
+                cake.setCakeQuantity(rs.getInt("cakeQuantity"));
+                cake.setCakeType(rs.getString("cakeType"));
+                
+                cakesInOrder.add(cake);
+            }
+        }
+    } catch (SQLException ex) {
+        // Handle the exception
+    }
+    return cakesInOrder;
+}
 }

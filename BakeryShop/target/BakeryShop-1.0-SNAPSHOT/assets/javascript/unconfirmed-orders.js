@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function displayOrders(orders) {
         const orderListHTML = orders.map(order => `
             <div class="col-sm-3">
-                <div class="Order-card" onclick="redirectToOrderDetailPage()">
+                <div class="Order-card" onclick="redirectToOrderDetailPage(${order.orderID})">
                     <div class="Order-title d-flex align-items-center justify-content-center">
                         <p class="Order-id">Order ID: #${order.orderID}</p>
                     </div>
@@ -92,10 +92,19 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
-function redirectToOrderDetailPage() {
-    // Chuyển hướng đến trang Order-detail-management.jsp
-    window.location.href = 'OrderDetailManagement';
+function redirectToOrderDetailPage(orderID) {
+    console.log("hello");
+    var encodedPrePage = encodeURIComponent("Unconfirmed Orders");
+    var encodedURL = encodeURIComponent("UnconfirmedOrders");
+    var encodedOrderID = encodeURIComponent(orderID);
+
+    var url = 'OrderDetailManagement?orderID=' + encodedOrderID + '&prePage=' + encodedPrePage + '&preURL=' + encodedURL;
+    console.log("Redirecting to URL:", url);
+    window.location.href = url;
 }
+
+
+
 
 
 

@@ -178,8 +178,7 @@ VALUES
 (13, NULL, N'Bánh kỷ niệm cho sự kiện kỷ niệm 15 năm kết hôn.', 300000, '2024-02-20', NULL, 1, 'Waiting'),
 (15, NULL, N'Bánh kỷ niệm cho ngày kỷ niệm 1 năm làm việc.', 331000, '2024-02-21', NULL, 0, 'Waiting'),
 (19, NULL, N'Bánh kỷ niệm cho sự kiện kỷ niệm tân gia.', 260000, '2024-02-21', NULL, 1, 'Waiting'),
-(20, NULL, N'Bánh chúc mừng tân gia.', 334000, '2024-02-22', NULL, 1, 'Waiting'),
-(2, NULL, N'Bánh kỷ niệm cho ngày kỷ niệm 10 năm làm việc.', 253000, '2024-02-22', NULL, 0, 'Waiting');
+(20, NULL, N'Bánh chúc mừng tân gia.', 334000, '2024-02-22', NULL, 1, 'Waiting');
 
 -- Chèn dữ liệu vào bảng Cakes
 INSERT INTO Cakes ([cakeName], [cakeDescription], [cakePrice], [cakeImg], [cakeQuantity], [cakeType])
@@ -293,8 +292,7 @@ VALUES
     (1, 31, 7),
     (1, 32, 10),
     (1, 33, 1),
-    (1, 34, 5),
-    (1, 35, 3);
+    (1, 34, 5);
 
 -- Chèn dữ liệu vào bảng Toppings
 INSERT INTO Toppings ([toppingName], [toppingQuantity], [toppingPrice], [toppingImg], [toppingDescription])

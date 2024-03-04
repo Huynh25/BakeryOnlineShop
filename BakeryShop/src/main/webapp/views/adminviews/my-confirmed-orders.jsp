@@ -33,10 +33,10 @@
                     </div>
                     <div class="col-sm-4"></div>
                     <div class="menu col-sm-4 row">
-                        <button class="menu-item my-confirmed-order-btn menu-variant col-sm-5">
+                        <button class="menu-item my-confirmed-order-btn menu-variant col-sm-6">
                             My Confirmed Orders
                         </button>
-                        <div class="col-sm-2"></div>
+                        <div class="col-sm-1"></div>
                         <button class="menu-item unconfirmed-order-btn menu-default col-sm-5">
                             Unconfirmed Orders
                         </button>
