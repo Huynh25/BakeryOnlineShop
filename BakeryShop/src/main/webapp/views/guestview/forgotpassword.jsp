@@ -31,7 +31,7 @@
             rel="stylesheet"
             href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
             />
-        <link rel="stylesheet" href="../../assets/css/loginViews/forgotpassword.css" />
+        <link rel="stylesheet" href="../../assets/css/forgotpassword.css" />
         <link rel="stylesheet" href="../../assets/css/GlobalStyle.css" />
         <link rel="stylesheet" href="../../assets/css/style.css" />
         <title>Forgot Password</title>

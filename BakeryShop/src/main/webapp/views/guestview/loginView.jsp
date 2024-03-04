@@ -31,7 +31,7 @@
             rel="stylesheet"
             href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
             />
-        <link rel="stylesheet" href="../../assets/css/loginViews/login.css" />
+        <link rel="stylesheet" href="../../assets/css/login.css" />
         <link rel="stylesheet" href="../../assets/css/GlobalStyle.css" />
         <link rel="stylesheet" href="../../assets/css/style.css" />
         <title>Login</title>
@@ -45,17 +45,17 @@
             <div class="right">
                 <form action="login" method="POST" id="loginForm">
                     <h2>LOGIN</h2>
-                    <div style="text-align: center" id="accountValid"></div>
+                    <div  style="text-align: center; color: red" id="accountValid"></div>
                     <div class="form-group fullname">
                         <div class="title"><label for="fname">Username</label></div>
                         <input class="username" value="${sessionScope.rememeberusername}" type="text" id="username" name="username" oninput="ResetValid('userValid')"/>
-                      <div  id="userValid"></div>
+                      <div style="color: red" id="userValid"></div>
                     </div>
                     <div class="form-group box mailBox">
                         <div class="title"><label for="email">Password</label></div>
                         <input type="password" id="password" name="password"  oninput="ResetValid('passValid')"/>
-                        <div  style="text-align: center" id="passValid"></div>
-                        <div id="accountValid">${Fail}</div>
+                        <div style="text-align: center; color: red" id="passValid"></div>
+                        <div style="color: red" id="accountValid">${errorMessage}</div>
                     </div>
                     <div class="container remember-me">
                         <input type="checkbox" id="remember-me" name="remember-me" />
@@ -75,7 +75,7 @@
                         <a href="#"><p>Continue with Google</p></a>
                     </div>
                     <div class="register">
-                        <p>Need an account ?<a href="./registerView.jsp"> SIGN-UP</a></p>
+                        <p>Need an account ?<a href="register">SIGN-UP</a></p>
                     </div>
                 </div>
 
@@ -104,6 +104,6 @@
             integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
             crossorigin="anonymous"
         ></script>
-        <script src="../../assets/javascript/login/login.js"></script>
+        <script src="../../assets/javascript/login.js"></script>
     </body>
 </html>

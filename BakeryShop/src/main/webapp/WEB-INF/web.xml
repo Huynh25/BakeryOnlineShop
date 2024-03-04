@@ -56,6 +56,10 @@
         <servlet-name>AddCakeToCartController</servlet-name>
         <servlet-class>controllers.customercontrollers.AddCakeToCartController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>RegisterController</servlet-name>
+        <servlet-class>controllers.customercontrollers.RegisterController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RatingController</servlet-name>
         <url-pattern>/rating-management</url-pattern>
@@ -111,6 +115,10 @@
     <servlet-mapping>
         <servlet-name>AddCakeToCartController</servlet-name>
         <url-pattern>/addcaketocart</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RegisterController</servlet-name>
+        <url-pattern>/register</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

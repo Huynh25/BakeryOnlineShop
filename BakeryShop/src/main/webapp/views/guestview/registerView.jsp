@@ -31,63 +31,25 @@
             rel="stylesheet"
             href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
             />
-        <link rel="stylesheet" href="../../assets/css/loginViews/register.css" />
+        <link rel="stylesheet" href="../../assets/css/register.css" />
         <link rel="stylesheet" href="../../assets/css/GlobalStyle.css" />
         <link rel="stylesheet" href="../../assets/css/style.css" />
-
-
         <title>Register</title>
     </head>
     <body>
-        <div id="header" class="row header">
-            <div class="row col-sm-5">
-                <div class="col-sm-5" id="catalog-container">
-                    <a id="catalog-link" href="#">Catalog</a>
-                </div>
-                <div class="col-sm-7">
-                    <form id="search-cake">
-                        <input
-                            type="text"
-                            name="search-cake-input"
-                            id="search-cake-input"
-                            placeholder="Search Cake"
-                            />
-                        <button type="submit" id="search-cake-btn">
-                            <i class="bi bi-search"></i>
-                        </button>
-                    </form>
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <a href="#" id="backhome-link">
-                    <h3 id="bakery-name">ELEGANTO</h3>
-                </a>
-            </div>
-            <div class="col-sm-3">
-                <ul id="navbar-icon">
-                    <li>
-                        <a href="#"><i class="bi bi-basket3"></i></a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="bi bi-clock-history"></i></a>
-                    </li>
-                    <li>
-                        <a href=""><i class="bi bi-person-circle"></i></a>
-                    </li>
-                </ul>
-            </div>
-        </div>
+        <%@include file="../homeviews/customer-header.jsp" %>
 
         <div class="content-center">
             <div class="left">
                 <h1>Indulge in the perfection of delightful cakes!</h1>
             </div>
             <div class="right">
-                <form action="register" method="post">
-                    <h2>CREATE ACCOUNT</h2>
+                <h2>CREATE ACCOUNT</h2>
+                <form action="register" method="post" id="registerForm">
                     <div class="form-group fullname">
                         <div class="title"><label for="fname">Full Name</label></div>
-                        <input class="fnbox" type="text" id="fname" name="fname" />
+                        <input class="fnbox" type="text" id="fullname" name="fullname" />
+                        <div id="fullname-error"></div>
                     </div>
                     <div class="form-group box mailBox">
                         <div class="title"><label for="email">Email</label></div>
@@ -96,29 +58,35 @@
                     <div class="pandp">
                         <div class="form-group box phone">
                             <div class="title-phone"><label for="phone">Phone</label></div>
-                            <input type="tel" id="phone" name="phone" />
+                            <input type="number" id="phoneNumer" name="phoneNumer" />
                         </div>
                         <div class="form-group box password">
                             <div class="title-password">
                                 <label for="pwd">Password</label>
                             </div>
-                            <input type="password" id="pwd" name="pwd" />
+                            <input type="password" id="password" name="password" />
                         </div>
                     </div>
                     <div class="form-group box address">
                         <div class="title"><label for="address">Address</label></div>
                         <input type="text" id="address" name="address" />
                     </div>
+                    <div>
+                        <div class="overall-error" id="overall-error"></div>
+                    </div>
                     <div class="form-group khac">
                         <input class="button" type="submit" value="CREATE ACCOUNT" />
-                        <p class="login">Already have an account? <a href="./loginView.jsp">Login</a></p>
-                         <p class="or">_________________<span>Or</span>_________________</p>
-                        <div class="google">
-                            <img src="../../Image/Login/google.jpg" alt="google" />
-                            <a href="#"><p>Continue with Google</p></a>
-                        </div>
                     </div>
                 </form>
+                <div class="form-group khac">
+                    <p class="login">Already have an account? <a href="login">Login</a></p>
+                    <p class="or">_________________<span>Or</span>_________________</p>
+                    <div class="google">
+                        <img src="../../Image/Login/google.jpg" alt="google" />
+                        <a href="#"><p>Continue with Google</p></a>
+                    </div>
+                </div>
+
             </div>
             <div class="img-cake">
                 <div class="candy-cake">
@@ -148,5 +116,6 @@
             integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
             crossorigin="anonymous"
         ></script>
+        <script src="../../assets/javascript/register.js"></script>
     </body>
 </html>

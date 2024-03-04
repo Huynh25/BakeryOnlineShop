@@ -1,5 +1,6 @@
 controllers\customercontrollers\OrderHistoryController.class
 daos\ProductHistoryDAO.class
+controllers\customercontrollers\RegisterController.class
 models\User.class
 controllers\admincontrollers\OrderDetailManagementController.class
 controllers\admincontrollers\RatingController.class

@@ -10,12 +10,14 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import models.Customer;
 import models.Staff;
+import models.User;
 
 /**
  *
@@ -75,43 +77,59 @@ public class LoginController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String username = (String) request.getParameter("username");
-        String password = (String) request.getParameter("password");
-        boolean isCustomer = isCustomer(username, password);
-        boolean isStaff = isStaff(username, password);
-        
-        //Create session customer or staff
-        HttpSession session = request.getSession();
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
+        boolean isCustomer = isCustomer(username, password, request, response);
+        boolean isStaff = isStaff(username, password, request, response);
         if (isCustomer) {
-            session.setAttribute("role", "customer");
             response.sendRedirect("home");
         } else if (isStaff) {
-            session.setAttribute("role", "staff");
             response.sendRedirect("home");
         } else {
-            session.setAttribute("role", null);
             request.setAttribute("errorMessage", "Invalid username or password");
-            request.getRequestDispatcher("login").forward(request, response);
+            request.getRequestDispatcher("views/guestview/loginView.jsp").forward(request, response);
         }
     }
 
-    public boolean isCustomer(String username, String password) {
+    public boolean isCustomer(String username, String password, HttpServletRequest request, HttpServletResponse response) {
         CustomerDAO cd = new CustomerDAO();
         List<Customer> list = cd.readAll();
+        HttpSession session = request.getSession();
+        User u = new User(username, password, "customer");
         for (Customer c : list) {
             if (c.getUsername().equals(username) && c.getPassword().equals(password)) {
+                Cookie cookie = new Cookie("username", username);
+                cookie.setMaxAge(3 * 24 * 60 * 60);
+                response.addCookie(cookie);
+//                session.setAttribute("user", u);
+                session.setAttribute(username, "customer");
                 return true;
             }
         }
         return false;
     }
 
-    public boolean isStaff(String username, String password) {
+    public boolean isStaff(String username, String password, HttpServletRequest request, HttpServletResponse response) {
         StaffDAO sd = new StaffDAO();
         List<Staff> list = sd.readAll();
+        HttpSession session = request.getSession();
         for (Staff s : list) {
             if (s.getStaffName().equals(username) && s.getPassword().equals(password)) {
-                return true; // Nhân viên không phải quản lý (staff)    
+                User u;
+                if (s.getManagerID() == s.getStaffID()) {
+                    u = new User(username, password, "manager");
+                    Cookie cookie = new Cookie("username", username);
+                    cookie.setMaxAge(3 * 24 * 60 * 60);
+                    response.addCookie(cookie);
+                    session.setAttribute(username, "manager");
+                } else {
+                    u = new User(username, password, "staff");
+                    Cookie cookie = new Cookie("username", username);
+                    cookie.setMaxAge(3 * 24 * 60 * 60);
+                    response.addCookie(cookie);
+                    session.setAttribute(username, "staff");
+                }
+                return true;
             }
         }
         return false;

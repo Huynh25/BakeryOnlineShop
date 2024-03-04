@@ -23,16 +23,17 @@ public class Customer {
     public Customer() {
     }
 
-    public Customer(int userID, String username, String password, String fullname, String googleID, String accessToken, String userAvatar, String address, String phonrNumber) {
+    public Customer(int userID, String username, String password, String fullname,String email, String googleID, String accessToken, String userAvatar, String address, String phoneNumber) {
         this.userID = userID;
         this.username = username;
         this.password = password;
         this.fullname = fullname;
+        this.email = email;
         this.googleID = googleID;
         this.accessToken = accessToken;
         this.userAvatar = userAvatar;
         this.address = address;
-        this.phoneNumber = phonrNumber;
+        this.phoneNumber = phoneNumber;
     }
 
     public int getUserID() {
@@ -119,7 +120,5 @@ public class Customer {
     public String toString() {
         return "Customer{" + "userID=" + userID + ", username=" + username + ", password=" + password + ", fullname=" + fullname + ", email=" + email + ", googleID=" + googleID + ", accessToken=" + accessToken + ", userAvatar=" + userAvatar + ", address=" + address + ", phoneNumber=" + phoneNumber + '}';
     }
-     
-     
-     
+            
 }
