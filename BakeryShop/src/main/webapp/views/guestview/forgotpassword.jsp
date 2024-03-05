@@ -91,9 +91,6 @@
                             <input type="text" placeholder="  Username" />
                         </div>
                     </div>
-                    <div class="title-1">
-                        <p>The code expires in <span>5 minute</span>s</p>
-                    </div>
 
                     <button class="btn-otp" type="submit">Verify Code</button>
                 </form>

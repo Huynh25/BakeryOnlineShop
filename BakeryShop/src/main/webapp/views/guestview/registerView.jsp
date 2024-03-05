@@ -38,13 +38,13 @@
     </head>
     <body>
         <%@include file="../homeviews/customer-header.jsp" %>
-
         <div class="content-center">
             <div class="left">
                 <h1>Indulge in the perfection of delightful cakes!</h1>
             </div>
             <div class="right">
                 <h2>CREATE ACCOUNT</h2>
+                <div class="error" style="color: red">${error}</div>
                 <form action="register" method="post" id="registerForm">
                     <div class="form-group fullname">
                         <div class="title"><label for="fname">Full Name</label></div>

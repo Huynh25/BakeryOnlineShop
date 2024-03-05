@@ -60,6 +60,10 @@
         <servlet-name>RegisterController</servlet-name>
         <servlet-class>controllers.customercontrollers.RegisterController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>forgotpasswordController</servlet-name>
+        <servlet-class>controllers.customercontrollers.forgotpasswordController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RatingController</servlet-name>
         <url-pattern>/rating-management</url-pattern>
@@ -119,6 +123,10 @@
     <servlet-mapping>
         <servlet-name>RegisterController</servlet-name>
         <url-pattern>/register</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>forgotpasswordController</servlet-name>
+        <url-pattern>/forgotpassword</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

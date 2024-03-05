@@ -118,9 +118,6 @@ body {
   color: rgb(145, 142, 142);
   font-size: 1.2rem;
 }
-.title-1 {
-  padding-top: 45px;
-}
 .title-1 a {
   color: rgb(206, 83, 81);
   font-weight: bold;
@@ -140,4 +137,11 @@ body {
 }
 .btn-otp:hover{
     background-color: rgb(206, 83, 81);
+}
+.title-1 p {
+    color: rgb(145, 142, 142);
+    font-size: 1.2rem;
+}
+.title-1{
+    padding-top: 20px;
 }

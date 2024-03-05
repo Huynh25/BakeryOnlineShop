@@ -84,7 +84,7 @@ public class RegisterController extends HttpServlet {
             CustomerDAO cd = new CustomerDAO();
             Customer c = cd.findByPhone(phoneNumer);
             if (c != null) {
-                request.setAttribute("error", phoneNumer + "already exists");
+                request.setAttribute("error", phoneNumer + " already exists");
                 request.getRequestDispatcher("views/guestview/registerView.jsp").forward(request, response);
             } else {
                 cd.create(new Customer(0, username, password, fullname, email, googleID, accessToken, userAvatar, address, phoneNumer));

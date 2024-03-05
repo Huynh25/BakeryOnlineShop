@@ -56,6 +56,9 @@
                         </div>
                     </div>
                     <div class="title-1">
+                        <p>The code expires in <span id="countdown">60 second</span></p>
+                    </div>
+                    <div class="title-1">
                         <p>Don't revive an OTP? <a href="#">Send OTP</a></p>
                     </div>
                     <button class="btn-otp active" type="submit">Validate</button>

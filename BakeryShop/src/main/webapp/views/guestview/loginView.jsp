@@ -1,7 +1,7 @@
 <%-- 
     Document   : loginView
     Created on : Feb 25, 2024, 9:01:38 PM
-    Author     : acer
+    Author     : HuynhLNCE171797
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -45,30 +45,35 @@
             <div class="right">
                 <form action="login" method="POST" id="loginForm">
                     <h2>LOGIN</h2>
-                    <div  style="text-align: center; color: red" id="accountValid"></div>
+                    <div class="accountValid" id="accountValid"></div>
                     <div class="form-group fullname">
                         <div class="title"><label for="fname">Username</label></div>
-                        <input class="username" value="${sessionScope.rememeberusername}" type="text" id="username" name="username" oninput="ResetValid('userValid')"/>
-                      <div style="color: red" id="userValid"></div>
+                        <input class="username" value="${sessionScope.rememeberusername}" type="text" id="username" name="username" oninput="ResetValid('userValid')" checkInputs()/>
+                        <div style="color: red" id="userValid"></div>
                     </div>
                     <div class="form-group box mailBox">
                         <div class="title"><label for="email">Password</label></div>
-                        <input type="password" id="password" name="password"  oninput="ResetValid('passValid')"/>
+                        <input type="password" id="password" name="password"  oninput="ResetValid('passValid')" checkInputs()/>
                         <div style="text-align: center; color: red" id="passValid"></div>
-                        <div style="color: red" id="accountValid">${errorMessage}</div>
                     </div>
                     <div class="container remember-me">
-                        <input type="checkbox" id="remember-me" name="remember-me" />
-                        <label for="remember-me">Remember me</label>
+                        <div class="remember-check">
+                            <input type="checkbox" id="remember-me" name="remember-me" />
+                            <label for="remember-me">Remember me</label>
+                        </div>
+                        <div class="forgot-link">
+                            <p class="forgotPassword">
+                                <a href="forgotpassword">Forgot Password?</a>
+                            </p>
+                        </div>
                     </div>
+                    <div style="color: red" id="accountValid">${errorMessage}</div>
                     <div class="submit" style="text-align: center">
-                        <input class="button" type="submit" value="LOGIN" />
+                        <input class="button" type="submit" value="LOGIN"/>
                     </div>
                 </form>
                 <div class="form-group khac">
-                    <p class="forgotPassword container">
-                        <a href="./forgotpassword.jsp">Forgot Password?</a>
-                    </p>
+
                     <p class="or">_________________<span>Or</span>_________________</p>
                     <div class="google">
                         <img src="../../Image/Login/google.jpg" alt="google" />
@@ -84,9 +89,7 @@
             <div class="candy-cake">
                 <img class="candy" src="../../Image/Login/candy-cane.png" alt="candy" />
             </div>
-
             <img class="cake-1" src="../../Image/Login/strawberry-cake (1).png" alt="cake" />
-
 
             <img class="cake-2" src="../../Image/Login/strawberry-cake (2).png" alt="cake" />
 

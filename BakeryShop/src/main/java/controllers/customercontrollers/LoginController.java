@@ -15,6 +15,8 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import models.Customer;
 import models.Staff;
 import models.User;
@@ -65,7 +67,27 @@ public class LoginController extends HttpServlet {
             throws ServletException, IOException {
         request.getRequestDispatcher("views/guestview/loginView.jsp").forward(request, response);
     }
+    public static String getMD5Hash(String input) {
+        try {
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            byte[] messageDigest = md.digest(input.getBytes());
 
+            // Convert byte array to a string representation
+            StringBuilder hexString = new StringBuilder();
+            for (byte b : messageDigest) {
+                String hex = Integer.toHexString(0xFF & b);
+                if (hex.length() == 1) {
+                    hexString.append('0');
+                }
+                hexString.append(hex);
+            }
+
+            return hexString.toString();
+        } catch (NoSuchAlgorithmException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    
     /**
      * Handles the HTTP <code>POST</code> method.
      *

@@ -82,6 +82,10 @@ body {
     border: none;
     font-size: 20px;
 }
+.button.disabled {
+    background: gray;
+    cursor: not-allowed;
+}
 .submit .button{
     text-align: center;
 }
@@ -165,9 +169,8 @@ body {
     padding-left: 100px;
     padding-top: 15px;
     padding-bottom: 0px;
-}
-.forgotPassword {
-    text-align: right;
+    display: flex;
+    justify-content: space-around;
 }
 .forgotPassword a {
     color: rgb(206, 83, 81);
@@ -180,4 +183,14 @@ body {
 .register a {
     color: rgb(206, 83, 81);
     text-decoration: none;
+}
+#accountValid{
+    padding-left: 230px;
+    position: absolute;
+    color: red;
+}
+.accountValid{
+    padding-left: 230px;
+    position: absolute;
+    color: red;
 }
