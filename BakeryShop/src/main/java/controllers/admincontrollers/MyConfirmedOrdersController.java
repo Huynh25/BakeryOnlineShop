@@ -114,7 +114,6 @@ public class MyConfirmedOrdersController extends HttpServlet {
             }
         }
         
-        
         int staffID = staff.getStaffID();
         
         OrderDAO orderDAO = new OrderDAO();
@@ -135,9 +134,6 @@ public class MyConfirmedOrdersController extends HttpServlet {
             if (order.getStaffID() == staffID) {
                 myOrderList.add(order);
             }
-        }
-        if (staffID == 0) {
-            myOrderList.clear();
         }
 
         Gson gson = new Gson();
