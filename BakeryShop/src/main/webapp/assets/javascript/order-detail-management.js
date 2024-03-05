@@ -25,6 +25,7 @@ function showTopping(cardIndex, CakeID) {
 }
 
 function showPopup() {
+    alert("aa");
     document.getElementById("acceptOrderPopup").style.display = "block";
 }
 

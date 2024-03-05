@@ -91,6 +91,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     background-color: var(--dark-pink);
     border: 1px solid var(--red);
 }
+#last-order-inf{
+    padding: 0 !important;    
+}
 .order-detail-inf{
     color: var(--white);
     font-size: 1.2vw;
@@ -105,7 +108,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
 }
 .cake-in-order{
     background-color: var(--silver);
-    height: 380px;
+    height: 100%;
     margin: 0 !important;
     margin-top: 10px !important;
 }
@@ -113,7 +116,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     border-radius: 10px;
     border: 2px solid black;
     height: 100%;
-    margin: 0 4vw !important;
+    margin: 6vh 4vw !important;
     background-color: var(--white)
 }
 .cake-in-order-cover{
@@ -127,7 +130,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
 }
 .cake-img{
     width: 100%;
-    height: 100%;
+/*    height: 100%;*/
     border-radius: 10px;
     border: 1px solid black;
     object-fit: cover;
@@ -136,13 +139,14 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
 
 .cake-inf-text{
     color: black;
-    font-size: 1.2vw;
+    font-size: 1.1vw;
 }
 #show-topping-btn{
-    margin-top: 20px !important;
+    margin: 10px 0!important;
 }
 .btn-contain{
-    margin-top: 15px ;
+    margin-top: 5px ;
+    margin-bottom: 5px;
 }
 
 .btn-contain button{
@@ -151,7 +155,76 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     color: var(--white);
     border: none;
 }
+.cake-total-price{
+    color: var(--red);
+    font-weight: bold;
+    font-size: 20px;
+}
 .btn-contain button i{
     padding-right: 5px;
     color: var(--white);
+}
+.topping-in-cake-txt{
+    color: var(--red);
+    font-weight: bold;
+    font-size: 20px;
+}
+#fixed-bottom{
+
+    background-color: white;
+}
+.topping-txt{
+    margin-left: 20px !important;
+    color: black;
+    font-weight: bold;
+}
+
+.pre-page:hover {
+  text-decoration: none !important;
+  color: var(--red);
+}
+
+.pre-page:active {
+  text-decoration: none !important;
+  color: var(--red);
+}
+
+.popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+}
+
+.popup-content {
+    padding: 20px;
+}
+
+.popup button {
+    margin-top: 15px;
+    margin-left: 15px;
+    margin-right: 15px;
+    background-color: #4CAF50;
+    color: #fff;
+    padding: 10px 25px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.popup button:hover {
+    background-color: #45a049;
+}
+
+.no-option{
+    background-color: var(--red) !important;
 }
