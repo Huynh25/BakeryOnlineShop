@@ -4,6 +4,7 @@
  */
 package controllers.customercontrollers;
 
+import daos.CakeDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -12,6 +13,8 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import java.util.List;
+import models.Cake;
 
 /**
  *
@@ -35,6 +38,11 @@ public class HomeController extends HttpServlet {
         if (role != null) {
             request.setAttribute("role", role);
         }
+        
+        // Get best seller
+        CakeDAO cakeDAO = new CakeDAO();
+        List<Cake> top6BestSeller = cakeDAO.getBestSeller(6);
+        request.setAttribute("bestSeller", top6BestSeller);
         
         request.getRequestDispatcher("views/homeviews/Home.jsp").forward(request, response);
 

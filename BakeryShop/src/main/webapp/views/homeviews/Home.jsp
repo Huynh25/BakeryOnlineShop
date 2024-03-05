@@ -88,8 +88,7 @@
             <!-- Ribbon -->
             <div class="ribbon">
                 <div class="ribbon-content">
-                    Welcome to our bakery Welcome to our bakery Welcome to our bakery Welcome to our bakery Welcome to our
-                    bakery
+                    Welcome to our bakery ! Welcome to our bakery ! Welcome to our bakery !
                 </div>
             </div>
 
@@ -146,6 +145,49 @@
                 </div>
             </div>
 
+            <c:if test="${bestSeller != null}">
+                <!-- Best seller --> 
+                <div class="best-seller">
+                    <h2 class="title container">
+                        Best seller
+                    </h2>
+
+                    <!-- Card list -->
+                    <div class="card-list container">
+                        <div class="card-items row justify-content-xxl-start justify-content-center">
+                            <c:forEach var="cake" items="${bestSeller}">
+                                <div class="col-xl-3 col-10 card-item row justify-content-center">
+                                    <div class="col-12 img">
+                                        <img src="../../${cake.cakeImg}" alt="${cake.cakeName}">
+                                    </div>
+                                    <div class="col-11 content">
+                                        <div class="title">
+                                            <h3>
+                                                ${cake.cakeName}
+                                            </h3>
+                                        </div>
+                                        <div class="des">
+                                            ${cake.cakeDescription}
+                                        </div>
+                                        <div class="link">
+                                            <c:url value="/cakedetail" var="cakeURL">
+                                                <c:param name="cakeID" value="${cake.cakeID}"/>
+                                            </c:url>
+                                            <a href="${cakeURL}">
+                                                More detail
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </c:forEach>
+
+
+                        </div>
+                    </div>
+                </div>
+            </c:if>
+
+
             <!-- Footer -->
             <%@include file="../homeviews/Footer.jsp" %>
 
@@ -154,7 +196,7 @@
         <!--Cart popup-->
         <%@include file="../homeviews/Cart.jsp" %>
 
-
+        <script src="../../assets/javascript/homepage.js"></script>
         <script
             src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
             integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"

@@ -15,7 +15,7 @@ submitBtn.addEventListener("click", function () {
         node.setAttribute("value", topping.querySelector("a").getAttribute("data-value"));
         node.setAttribute("form", "add-cake-to-cart");
         topping.appendChild(node);
-    });
+    }); 
 
     if (numberOfTopping === 0) {
         rightSide.prepend(alertNode);

@@ -42,16 +42,13 @@ function updateMaxCake() {
 function updateBuyQuantity() {
     buyQuantity = cakeDetailContent.querySelector("input[name='buy-quantity']");
 
-
     if (buyQuanCurrent > maxCake) {
         buyQuanCurrent = maxCake;
     }
 
     buyQuantity.setAttribute("value", buyQuanCurrent);
     buyQuantity.value = buyQuanCurrent;
-
 }
-
 
 toppings.forEach(function (topping) {
     topping.addEventListener("click", function (event) {
@@ -76,13 +73,11 @@ toppings.forEach(function (topping) {
 
         }
 
-
         updateMaxCake();
         updateBuyQuantity();
         updatePrice();
     });
 });
-
 
 buyQuantity.addEventListener("change", function (event) {
     if (numberOfTopping === 0) {
@@ -127,11 +122,11 @@ decreaseBtn.addEventListener("click", function () {
         buyQuanCurrent = 1;
     }
 
-
     buyQuantity.setAttribute("value", buyQuanCurrent);
     buyQuantity.value = buyQuanCurrent;
     updatePrice();
 });
+
 increaseBtn.addEventListener("click", function () {
     if (numberOfTopping === 0) {
         let rightSide = document.querySelector(".cake-detail-content .cake-attribute");

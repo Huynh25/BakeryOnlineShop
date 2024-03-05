@@ -49,7 +49,6 @@
 
         session.setAttribute("cart", cart);
     }
-
 %>
 
 <div class="popup">

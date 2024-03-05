@@ -178,6 +178,37 @@ public class CakeDAO extends AbstractDAO<Cake> {
         return cakes;
     }
 
+    public List<Cake> getBestSeller(int top) {
+        List<Cake> cakes = new ArrayList<>();
+        try {
+
+            String sql = "SELECT top(" + top + ") c.cakeID, c.cakeName, c.cakeDescription, c.cakePrice, c.cakeImg, c.cakeQuantity, c.cakeType, COUNT(*) AS NumberOfOrder\n"
+                    + "FROM Cakes c\n"
+                    + "JOIN CakeInOrder cio ON c.cakeID = cio.cakeID\n"
+                    + "JOIN Orders o ON cio.orderID = o.orderID\n"
+                    + "GROUP BY c.cakeID, c.cakeName, c.cakeDescription, c.cakePrice, c.cakeImg, c.cakeQuantity, c.cakeType\n"
+                    + "ORDER BY NumberOfOrder desc;";
+            Statement stm = con.createStatement();
+            ResultSet rs = stm.executeQuery(sql);
+
+            while (rs.next()) {
+                Cake cake = new Cake();
+                cake.setCakeID(rs.getInt("cakeID"));
+                cake.setCakeName(rs.getString("cakeName"));
+                cake.setCakeDescription(rs.getString("cakeDescription"));
+                cake.setCakePrice(rs.getInt("cakePrice"));
+                cake.setCakeImg(rs.getString("cakeImg"));
+                cake.setCakeQuantity(rs.getInt("cakeQuantity"));
+                cake.setCakeType(rs.getString("cakeType"));
+
+                cakes.add(cake);
+            }
+
+        } catch (SQLException ex) {
+        }
+        return cakes;
+    }
+
     public static void main(String[] args) {
         CakeDAO cDAO = new CakeDAO();
 
@@ -187,7 +218,7 @@ public class CakeDAO extends AbstractDAO<Cake> {
         }
         System.out.println("------------------");
         System.out.println(cDAO.findByID(01));
-        
+
     }
 
 }
