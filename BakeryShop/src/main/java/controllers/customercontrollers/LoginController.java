@@ -89,14 +89,12 @@ public class LoginController extends HttpServlet {
         CustomerDAO cd = new CustomerDAO();
         List<Customer> list = cd.readAll();
         HttpSession session = request.getSession();
-        User u = new User(username, password, "customer");
+        User u = new User(username, password, "customer",-1);
         for (Customer c : list) {
             if (c.getUsername().equals(username) && c.getPassword().equalsIgnoreCase(getMD5Hash(password))) {
-                Cookie cookie = new Cookie("username", username);
-                cookie.setMaxAge(3 * 24 * 60 * 60);
-                response.addCookie(cookie);
-//                session.setAttribute("user", u);
-                session.setAttribute(username, "customer");
+                session.setAttribute("user", u);
+                u.setId(c.getUserID());
+                System.out.println(session.getAttribute("user"));
                 return true;
             }
         }
@@ -113,18 +111,13 @@ public class LoginController extends HttpServlet {
             if (s.getStaffName().equals(username) && s.getPassword().equalsIgnoreCase(getMD5Hash(password))) {
                 User u;
                 if (s.getManagerID() == s.getStaffID()) {
-                    u = new User(username, password, "manager");
-                    Cookie cookie = new Cookie("username", username);
-                    cookie.setMaxAge(3 * 24 * 60 * 60);
-                    response.addCookie(cookie);
-                    session.setAttribute(username, "manager");
+                    u = new User(username, password, "manager",s.getStaffID());
+                    session.setAttribute("user", u);
                 } else {
-                    u = new User(username, password, "staff");
-                    Cookie cookie = new Cookie("username", username);
-                    cookie.setMaxAge(3 * 24 * 60 * 60);
-                    response.addCookie(cookie);
-                    session.setAttribute(username, "staff");
+                    u = new User(username, password, "staff",s.getStaffID());
+                    session.setAttribute("user", u);
                 }
+                System.out.println(session.getAttribute("user"));
                 return true;
             }
         }
