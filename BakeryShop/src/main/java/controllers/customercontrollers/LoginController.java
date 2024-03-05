@@ -27,20 +27,10 @@ import models.User;
  */
 public class LoginController extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try ( PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
@@ -53,25 +43,16 @@ public class LoginController extends HttpServlet {
         }
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         request.getRequestDispatcher("views/guestview/loginView.jsp").forward(request, response);
     }
+
     public static String getMD5Hash(String input) {
         try {
             MessageDigest md = MessageDigest.getInstance("MD5");
             byte[] messageDigest = md.digest(input.getBytes());
-
             // Convert byte array to a string representation
             StringBuilder hexString = new StringBuilder();
             for (byte b : messageDigest) {
@@ -81,21 +62,12 @@ public class LoginController extends HttpServlet {
                 }
                 hexString.append(hex);
             }
-
             return hexString.toString();
         } catch (NoSuchAlgorithmException e) {
             throw new RuntimeException(e);
         }
     }
-    
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -119,7 +91,7 @@ public class LoginController extends HttpServlet {
         HttpSession session = request.getSession();
         User u = new User(username, password, "customer");
         for (Customer c : list) {
-            if (c.getUsername().equals(username) && c.getPassword().equals(password)) {
+            if (c.getUsername().equals(username) && c.getPassword().equalsIgnoreCase(getMD5Hash(password))) {
                 Cookie cookie = new Cookie("username", username);
                 cookie.setMaxAge(3 * 24 * 60 * 60);
                 response.addCookie(cookie);
@@ -131,12 +103,14 @@ public class LoginController extends HttpServlet {
         return false;
     }
 
+
+
     public boolean isStaff(String username, String password, HttpServletRequest request, HttpServletResponse response) {
         StaffDAO sd = new StaffDAO();
         List<Staff> list = sd.readAll();
         HttpSession session = request.getSession();
         for (Staff s : list) {
-            if (s.getStaffName().equals(username) && s.getPassword().equals(password)) {
+            if (s.getStaffName().equals(username) && s.getPassword().equalsIgnoreCase(getMD5Hash(password))) {
                 User u;
                 if (s.getManagerID() == s.getStaffID()) {
                     u = new User(username, password, "manager");

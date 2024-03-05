@@ -19,7 +19,7 @@ GO
 CREATE TABLE [Customers](
 	[userID] int NOT NULL IDENTITY(1,1) primary key ,
 	[username] varchar(30) NOT NULL Unique,
-	[password] varchar(30) ,
+	[password] varchar(32) ,
 	[fullname] varchar(50) ,
 	[email] nvarchar(100) ,
 	[googleID] nvarchar(100) ,
@@ -31,7 +31,7 @@ CREATE TABLE [Customers](
 CREATE TABLE [Staffs](
 	[staffID] int NOT NULL IDENTITY(1,1) primary key,
 	[staffName] varchar(30) NOT NULL Unique ,
-	[password] varchar(30) ,
+	[password] varchar(32) ,
 	[fullname] varchar(50) ,
 	[email] nvarchar(100) ,
 	[address] nvarchar(50),
