@@ -156,10 +156,6 @@
                                     <p class="topping-price topping-txt">Price: ${toppingInCake.topping.toppingPrice}</p>
                                     <p class="topping-quantity topping-txt">Quantity: ${toppingInCake.getTicQuantity()}</p>
                                 </div>
-                                <!-- Thêm các thông tin khác về topping nếu cần -->
-
-
-
                             </div>
 
                             <div class="d-flex justify-content-center" id="show-topping-btn">

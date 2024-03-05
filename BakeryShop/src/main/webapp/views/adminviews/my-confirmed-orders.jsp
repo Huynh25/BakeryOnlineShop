@@ -42,11 +42,7 @@
                         </button>
                     </div>
                 </div>
-<!--                <form id="searchForm">
-                    <label for="searchTerm">Search Order:</label>
-                    <input type="text" id="searchTerm" name="searchTerm">
-                    <button type="button" onclick="searchOrders()">Search</button>
-                </form>-->
+
                 <div class="search-and-filter d-flex align-items-center row">
                     <div id="searchForm" class="searchbar col-sm-4">
                         <form class="search-order" action="MyConfirmedOrders" method="get">
