@@ -16,10 +16,12 @@ import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 import models.Order;
 import models.Staff;
+import models.User;
 
 /**
  *
@@ -99,22 +101,11 @@ public class MyConfirmedOrdersController extends HttpServlet {
 //        String searchTerm = request.getParameter("searchTerm");
         System.out.println(searchTerm);
 
-        Staff staff = new Staff();
 
-        Cookie[] cookies = request.getCookies();
-
-        if (cookies != null) {
-            for (Cookie cookie : cookies) {
-                // Kiểm tra xem có cookie nào có tên là "username" hay không
-                if (cookie.getName().equals("username")) {
-                    String username = cookie.getValue();
-                    staff = staffDAO.findByFullname(username);
-                    System.out.println(staff.getStaffID());
-                }
-            }
-        }
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("user");
         
-        int staffID = staff.getStaffID();
+        int staffID = user.getId();
         
         OrderDAO orderDAO = new OrderDAO();
         List<Order> orderList = new ArrayList<>();
