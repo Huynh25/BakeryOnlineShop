@@ -78,9 +78,10 @@
         </div>
         <div class="cart-items">
             <c:forEach var="item" items="${cart.items}">
+                <input type="hidden" class="item-${item.cake.cakeID}" data-quan="${item.buyQuantity}">
                 <div class="cart-item">
                     <div class="img">
-                        <img src="../../${item.cake.cakeImg}" alt="cake1">
+                        <img src="../../${item.cake.cakeImg}" alt="${item.cake.cakeName}">
                     </div>
                     <div class="cake-name">
                         ${item.cake.cakeName}
@@ -90,7 +91,8 @@
                     </div>
                     <div class="cake-toppings">
                         Toppings: <c:forEach var="topping" items="${item.toppings}" varStatus="status">
-                            ${topping.toppingName}-${item.toppingsBuyQuantity[status.index]}${status.last ? '' : ', '}
+                            ${topping.toppingName}${status.last ? '' : ', '}
+                            <input type="hidden" name="topping" value="${topping.toppingID}">
                         </c:forEach>
                     </div>
                     <div class="cake-edit row justify-content-between">

@@ -8,6 +8,7 @@ let decreaseBtn = cakeDetailContent.querySelector("button[value='decrease']");
 let increaseBtn = cakeDetailContent.querySelector("button[value='increase']");
 let priceTag = cakeDetailContent.querySelector(".price-quantity .price").childNodes[0];
 let cakeQuantity = parseInt(cakeDetailContent.querySelector("input[name='cake-quantity']").getAttribute("value"));
+let maxCake = cakeQuantity;
 const alertNode = document.createElement("div");
 alertNode.setAttribute("class", ["row align-items-center justify-content-start alert"]);
 alertNode.textContent = "You must choose one of these toppings !";
@@ -18,82 +19,91 @@ function updatePrice() {
     priceTag.nodeValue = buyQuanCurrent * (orgPrice + toppingsPrice);
 }
 
+function updateMaxCake() {
+    if (cakeQuantity === 0) {
+        maxCake = 0;
+        return;
+    }
+
+    let toppingsActive = cakeDetailContent.querySelectorAll(".topping-list .topping-item.active a");
+    let minQuanToppingActive = 1;
+    for (let idx = 0; idx < toppingsActive.length; ++idx) {
+        let quan = parseInt(toppingsActive[idx].getAttribute("data-quan"));
+        if (idx === 0) {
+            minQuanToppingActive = quan;
+        } else if (quan < minQuanToppingActive) {
+            minQuanToppingActive = quan;
+        }
+    }
+
+    maxCake = minQuanToppingActive;
+}
+
+function updateBuyQuantity() {
+    buyQuantity = cakeDetailContent.querySelector("input[name='buy-quantity']");
+
+
+    if (buyQuanCurrent > maxCake) {
+        buyQuanCurrent = maxCake;
+    }
+
+    buyQuantity.setAttribute("value", buyQuanCurrent);
+    buyQuantity.value = buyQuanCurrent;
+
+}
+
+
 toppings.forEach(function (topping) {
     topping.addEventListener("click", function (event) {
-        const spanToppingQuantity = topping.querySelector("span");
         const toppingPrice = parseInt(topping.querySelector("a").getAttribute("data-price"));
-        if (event.target === spanToppingQuantity) {
-            let toppingBuyQuantityInput = spanToppingQuantity.querySelector("input");
-            let toppingBuyValue = parseInt(toppingBuyQuantityInput.getAttribute("value"));
-            let maxQuantity = parseInt(topping.querySelector("a").getAttribute("data-quan"));
-            if (toppingBuyValue >= maxQuantity) {
-                return;
+        topping.classList.toggle("active");
+        if (topping.classList.contains("active")) {
+            if (numberOfTopping === 0) {
+                let rightSide = document.querySelector(".cake-detail-content .cake-attribute");
+                let currentAlertNode = rightSide.querySelector(".alert");
+                if (currentAlertNode) {
+                    rightSide.removeChild(currentAlertNode);
+                }
             }
 
-            ++toppingBuyValue;
+            ++numberOfTopping;
+
             toppingsPrice += toppingPrice;
 
-            spanToppingQuantity.childNodes[0].textContent = toppingBuyValue;
-
-            toppingBuyQuantityInput.setAttribute("value", toppingBuyValue);
-
         } else {
-            topping.classList.toggle("active");
-            if (topping.classList.contains("active")) {
-                if (numberOfTopping === 0) {
-                    let rightSide = document.querySelector(".cake-detail-content .cake-attribute");
-                    let currentAlertNode = rightSide.querySelector(".alert");
-                    if (currentAlertNode) {
-                        rightSide.removeChild(currentAlertNode);
-                    }
-                }
+            --numberOfTopping;
+            toppingsPrice -= toppingPrice;
 
-                ++numberOfTopping;
-
-                toppingsPrice += toppingPrice;
-
-                const spanToppingQuantity = document.createElement("span");
-                spanToppingQuantity.textContent = 1;
-
-                const toppingBuyQuantityInput = document.createElement("input");
-                toppingBuyQuantityInput.setAttribute("type", "hidden");
-                toppingBuyQuantityInput.setAttribute("name", "toppingQuantity");
-                toppingBuyQuantityInput.setAttribute("value", 1);
-                toppingBuyQuantityInput.setAttribute("form", "add-cake-to-cart");
-                spanToppingQuantity.appendChild(toppingBuyQuantityInput);
-
-                topping.appendChild(spanToppingQuantity);
-            } else {
-                --numberOfTopping;
-
-                let toppingBuyQuantityInput = spanToppingQuantity.querySelector("input");
-                let toppingBuyValue = parseInt(toppingBuyQuantityInput.getAttribute("value"));
-                let removePrice = toppingPrice * toppingBuyValue;
-
-                toppingsPrice -= removePrice;
-                topping.removeChild(spanToppingQuantity);
-            }
         }
 
 
-
+        updateMaxCake();
+        updateBuyQuantity();
         updatePrice();
     });
 });
 
 
 buyQuantity.addEventListener("change", function (event) {
+    if (numberOfTopping === 0) {
+        let rightSide = document.querySelector(".cake-detail-content .cake-attribute");
+        rightSide.prepend(alertNode);
+        return;
+    }
 
     if (isNaN(event.target.value)) {
         event.target.value = 1;
         return;
     }
 
-    let cakeQuantity = parseInt(cakeDetailContent.querySelector("input[name='cake-quantity']").getAttribute("value"));
-    if (event.target.value > cakeQuantity) {
-        event.target.value = cakeQuantity;
+    updateMaxCake();
+    if (cakeQuantity === 0) {
+        event.target.value = 0;
+    } else if (event.target.value > maxCake) {
+        event.target.value = maxCake;
     } else if (event.target.value < 1) {
         event.target.value = 1;
+
     }
     buyQuanCurrent = parseInt(event.target.value);
     buyQuantity.setAttribute("value", buyQuanCurrent);
@@ -102,9 +112,17 @@ buyQuantity.addEventListener("change", function (event) {
 });
 
 decreaseBtn.addEventListener("click", function () {
+    if (numberOfTopping === 0) {
+        let rightSide = document.querySelector(".cake-detail-content .cake-attribute");
+        rightSide.prepend(alertNode);
+        return;
+    }
+
     buyQuanCurrent = parseInt(buyQuantity.getAttribute("value"));
     if (buyQuanCurrent > 1) {
         --buyQuanCurrent;
+    } else if (cakeQuantity === 0) {
+        buyQuanCurrent = 0;
     } else {
         buyQuanCurrent = 1;
     }
@@ -115,11 +133,20 @@ decreaseBtn.addEventListener("click", function () {
     updatePrice();
 });
 increaseBtn.addEventListener("click", function () {
+    if (numberOfTopping === 0) {
+        let rightSide = document.querySelector(".cake-detail-content .cake-attribute");
+        rightSide.prepend(alertNode);
+        return;
+    }
+
     buyQuanCurrent = parseInt(buyQuantity.getAttribute("value"));
-    if (buyQuanCurrent < cakeQuantity) {
+    updateMaxCake();
+    if (cakeQuantity === 0) {
+        buyQuanCurrent = 0;
+    } else if (buyQuanCurrent < maxCake) {
         ++buyQuanCurrent;
     } else {
-        buyQuanCurrent = cakeQuantity;
+        buyQuanCurrent = maxCake;
     }
     buyQuantity.setAttribute("value", buyQuanCurrent);
     buyQuantity.value = buyQuanCurrent;

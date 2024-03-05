@@ -34,9 +34,8 @@ public class Cart {
                     List<Topping> toppings = new ArrayList<>();
                     List<Integer> toppingsBuyQuantity = new ArrayList<>();
                     for (String toppingString : toppingStrings) {
-                        String[] toppingPart = toppingString.split("-");
-                        toppings.add(getToppingByID(Integer.parseInt(toppingPart[0]), toppingList));
-                        toppingsBuyQuantity.add(Integer.parseInt(toppingPart[1]));
+                        toppings.add(getToppingByID(Integer.parseInt(toppingString), toppingList));
+                        toppingsBuyQuantity.add(quantity);
                     }
                     Item item = new Item(cake, toppings, toppingsBuyQuantity, quantity);
                     addItem(item);
@@ -94,10 +93,10 @@ public class Cart {
         Item itemInCart = getItemInCart(item);
 
         if (itemInCart != null) {
-            items.remove(itemInCart);
+            itemInCart.setBuyQuantity(itemInCart.getBuyQuantity() + item.getBuyQuantity());
+        } else {
+            items.add(0, item);
         }
-        
-        items.add(item);
 
     }
 

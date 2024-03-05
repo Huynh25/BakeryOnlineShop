@@ -32,6 +32,62 @@
     </head>
 
     <body>
+
+
+        <c:set var="toppings" value="${toppings}"/>
+        <c:set var="cake" value="${cake}"/>
+        <c:set var="cart" value="${cart}"/>
+        <%
+            Cake cake = (Cake) pageContext.getAttribute("cake");
+            List<Topping> toppings = (ArrayList<Topping>) pageContext.getAttribute("toppings");
+            Cart currentCart = (Cart) pageContext.getAttribute("cart");
+            if (currentCart == null) {
+                String text = "";
+                Cookie[] cookies = new Cookie[4];
+                cookies = request.getCookies();
+                if (cookies != null) {
+                    for (Cookie cookie : cookies) {
+                        if (cookie.getName().equals("cart")) {
+                            text += cookie.getValue();
+                        }
+                    }
+                }
+
+                if (!text.isEmpty()) {
+                    text = URLDecoder.decode(text, "UTF-8");
+                    CakeDAO cakeDAO = new CakeDAO();
+                    List<Cake> cakeList = cakeDAO.readAll();
+
+                    ToppingDAO toppingDAO = new ToppingDAO();
+                    List<Topping> toppingList = toppingDAO.readAll();
+
+                    currentCart = new Cart(text, cakeList, toppingList);
+                } else {
+                    currentCart = new Cart();
+                }
+
+            }
+            int boughtQuantity = 0;
+            List<Item> items = currentCart.getItems();
+            for (Item item : items) {
+                if (item.getCake().getCakeID() == cake.getCakeID()) {
+                    boughtQuantity += item.getBuyQuantity();
+
+                    int idx = 0;
+                    for (Topping topping : toppings) {
+                        idx = 0;
+                        for (Topping toppingItem : item.getToppings()) {
+                            if (topping.getToppingID() == toppingItem.getToppingID()) {
+                                int updateQuantity = topping.getToppingQuantity() - item.getToppingsBuyQuantity().get(idx);
+                                topping.setToppingQuantity(updateQuantity);
+                            }
+                        }
+                    }
+                }
+            }
+            cake.setCakeQuantity(cake.getCakeQuantity() - boughtQuantity);
+        %>
+
         <div class="page">
             <!-- Header -->
             <%@include file="../homeviews/customer-header.jsp" %>
@@ -108,61 +164,74 @@
                                 </div>
                                 <div class="topping-list">
                                     <c:forEach var="topping" items="${toppings}">
-                                        <div class="topping-item">
-                                            <a data-value="${topping.toppingID}" data-price="${topping.toppingPrice}" 
-                                               data-quan="${topping.toppingQuantity}">${topping.toppingName}</a>
-                                        </div>
+                                        <c:choose>
+                                            <c:when test="${topping.toppingQuantity > 0}">
+                                                <div class="topping-item">
+                                                    <a data-value="${topping.toppingID}" data-price="${topping.toppingPrice}" 
+                                                       data-quan="${topping.toppingQuantity}">${topping.toppingName}</a>
+                                                </div>
+                                            </c:when>
+                                        </c:choose>
+
                                     </c:forEach>
                                 </div>
                             </div>
                             <div class="row align-items-end">
                                 <div class="col-12 price-quantity row justify-content-xxl-between justify-content-center">
-                                    <div class="col-xxl-6 col-12 price">${cake.cakePrice}<span>đ</span>
+                                    <c:choose>
+                                        <c:when test="${cake.cakeQuantity > 0}">
+                                            <div class="col-xxl-6 col-12 price">${cake.cakePrice}<span>đ</span>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <div class="col-xxl-6 col-12 price">0<span>đ</span>
+                                                </c:otherwise>
+                                            </c:choose>
+                                        </div>
+                                        <div class="col-xxl-6 col-12 quantity row justify-content-between align-items-center">
+                                            <div class="col-3 quantity-btn">
+                                                <button value="decrease">-</button>
+                                            </div>
+                                            <div class="col-6 input">
+                                                <input form="add-cake-to-cart" type="text" name="buy-quantity" id="buy-quantity" 
+                                                       value="${cake.cakeQuantity > 0 ? 1 : 0}">
+                                            </div>
+                                            <div class="col-3 quantity-btn">
+                                                <button value="increase">+</button>
+                                            </div>
+                                            <input type="hidden" name="cake-quantity" value="${cake.cakeQuantity}">
+                                        </div>
                                     </div>
-                                    <div class="col-xxl-6 col-12 quantity row justify-content-between align-items-center">
-                                        <div class="col-3 quantity-btn">
-                                            <button value="decrease">-</button>
-                                        </div>
-                                        <div class="col-6 input">
-                                            <input form="add-cake-to-cart" type="text" name="buy-quantity" id="buy-quantity" value="1">
-                                        </div>
-                                        <div class="col-3 quantity-btn">
-                                            <button value="increase">+</button>
-                                        </div>
-                                        <input type="hidden" name="cake-quantity" value="${cake.cakeQuantity}">
+                                    <div class="col-12 add-to-cart-btn button">
+                                        <button form="add-cake-to-cart" type="button">Add to cart</button>
                                     </div>
-                                </div>
-                                <div class="col-12 add-to-cart-btn button">
-                                    <button form="add-cake-to-cart" type="button">Add to cart</button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
+                <!-- Footer -->
+                <%@include file="../homeviews/Footer.jsp" %>
+
             </div>
 
-            <!-- Footer -->
-            <%@include file="../homeviews/Footer.jsp" %>
 
-        </div>
-
-        <!--Cart popup-->
-        <%@include file="../homeviews/Cart.jsp" %>
+            <!--Cart popup-->
+            <%@include file="../homeviews/Cart.jsp" %>
 
 
-
-        <script
-            src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
-            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-            crossorigin="anonymous"
-        ></script>
-        <script
-            src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
-            crossorigin="anonymous"
-        ></script>
-        <script src="../../assets/javascript/form-cake-detail.js"></script>
-        <script src="../../assets/javascript/add-cake-to-cart.js"></script>
+            <script
+                src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+                integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+                crossorigin="anonymous"
+            ></script>
+            <script
+                src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
+                crossorigin="anonymous"
+            ></script>
+            <script src="../../assets/javascript/form-cake-detail.js"></script>
+            <script src="../../assets/javascript/add-cake-to-cart.js"></script>
     </body>
 
 </html>
