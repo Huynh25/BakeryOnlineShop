@@ -13,7 +13,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     width: 100%;
 }
 .top-option {
-    margin: 20px;
+    padding: 20px;
+    padding-top: 10px;
 }
 .histoty {
     margin-top: 12px;
