@@ -7,16 +7,19 @@ package controllers.admincontrollers;
 import com.google.gson.Gson;
 import com.oracle.wls.shaded.org.apache.bcel.generic.AALOAD;
 import daos.OrderDAO;
+import daos.StaffDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import java.util.List;
 import models.Order;
+import models.Staff;
 
 /**
  *
@@ -52,6 +55,7 @@ public class MyConfirmedOrdersController extends HttpServlet {
         }
     }
 
+    StaffDAO staffDAO = new StaffDAO();
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -70,6 +74,7 @@ public class MyConfirmedOrdersController extends HttpServlet {
         searchTerm = searchTerm1;
         System.out.println(searchTerm1);
         OrderDAO orderDAO = new OrderDAO();
+        
         List<Order> orderList = orderDAO.readAll();
 
         // Chuyển đến trang JSP và truyền danh sách đơn hàng
@@ -94,8 +99,23 @@ public class MyConfirmedOrdersController extends HttpServlet {
 //        String searchTerm = request.getParameter("searchTerm");
         System.out.println(searchTerm);
 
-        int staffID = 2;
+        Staff staff = new Staff();
 
+        Cookie[] cookies = request.getCookies();
+
+        if (cookies != null) {
+            for (Cookie cookie : cookies) {
+                // Kiểm tra xem có cookie nào có tên là "username" hay không
+                if (cookie.getName().equals("username")) {
+                    String username = cookie.getValue();
+                    staff = staffDAO.findByFullname(username);
+                    System.out.println(staff.getStaffID());
+                }
+            }
+        }
+        
+        int staffID = staff.getStaffID();
+        
         OrderDAO orderDAO = new OrderDAO();
         List<Order> orderList = new ArrayList<>();
         List<Order> myOrderList = new ArrayList<>();

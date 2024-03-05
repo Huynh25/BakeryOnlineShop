@@ -25,7 +25,6 @@ function showTopping(cardIndex, CakeID) {
 }
 
 function showPopup() {
-    alert("aa");
     document.getElementById("acceptOrderPopup").style.display = "block";
 }
 
@@ -33,7 +32,14 @@ function closePopup() {
     document.getElementById("acceptOrderPopup").style.display = "none";
 }
 
-function confirmAccept() {
+function confirmAccept(orderID) {
+    console.log("hello");
+
+    var encodedOrderID = encodeURIComponent(orderID);
+
+    var url = 'AcceptOrder?orderID=' + encodedOrderID;
+    console.log("Redirecting to URL:", url);
+    window.location.href = url;
     closePopup();
 }
 

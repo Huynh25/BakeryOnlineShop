@@ -122,6 +122,32 @@ public class StaffDAO extends AbstractDAO<Staff> {
         }
         return null;
     }
+    
+    public Staff findByFullname(String name) {
+        try {
+
+            String sql = "Select * from [dbo].[Staffs]"
+                    + "where staffName =\'" + name + "\'";
+            Statement stm = con.createStatement();
+            ResultSet rs = stm.executeQuery(sql);
+
+            if (rs.next()) {
+                Staff staff = new Staff();
+                staff.setStaffID(rs.getInt("staffID"));
+                staff.setStaffName(rs.getString("staffName"));
+                staff.setPassword(rs.getString("password"));
+                staff.setFullname(rs.getString("fullname"));
+                staff.setEmail(rs.getString("email"));
+                staff.setStaffAvatar(rs.getString("staffAvatar"));
+                staff.setAddress(rs.getString("address"));
+                staff.setPhoneNumber(rs.getString("phoneNumber"));
+                return staff;
+            }
+
+        } catch (SQLException ex) {
+        }
+        return null;
+    }
 
     public static void main(String[] args) {
         StaffDAO cDAO = new StaffDAO();
