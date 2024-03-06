@@ -1,0 +1,2 @@
+let text = document.querySelector(".ribbon .ribbon-content");
+text.innerText = `Welcome to our bakery ! Welcome to our bakery ! Welcome to our bakery ! Welcome to our bakery ! Welcome to our bakery ! Welcome to our bakery ! Welcome to our bakery ! Welcome to our bakery ! Welcome to our bakery ! Welcome to our bakery !`;

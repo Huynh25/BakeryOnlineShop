@@ -64,9 +64,18 @@
             <!-- Page info -->
             <div class="page-info container">
                 <div class="title">
-                    <h2>
-                        ${title}
-                    </h2>
+                    <c:choose>
+                        <c:when test="${cakeList != null && cakeList.size() != 0}">
+                            <h2>
+                                ${title}
+                            </h2>
+                        </c:when>
+                        <c:otherwise>
+                            <h2>
+                                Sorry, this category is empty
+                            </h2>
+                        </c:otherwise>
+                    </c:choose>
                 </div>
             </div>
 
@@ -102,6 +111,7 @@
 
                 </div>
             </div>
+
 
             <!-- Load-more & indicators -->
             <div class="load-more-indicators container">

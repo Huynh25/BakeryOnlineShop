@@ -1,234 +1,357 @@
 :root {
-  --dark-pink: #97201e;
-  --red: #ce5351;
-  --white: #f9f6f2;
-  --silver: #e5dfdb;
-  --black: #55432c;
-  --pale-brown: #bdb09e;
+    --dark-pink: #97201e;
+    --red: #ce5351;
+    --white: #f9f6f2;
+    --silver: #e5dfdb;
+    --black: #55432c;
+    --pale-brown: #bdb09e;
 }
 
 img {
-  object-fit: cover;
-  border: white solid 2px;
-  border-radius: 25px;
+    object-fit: cover;
+    border: white solid 2px;
+    border-radius: 25px;
 }
 
 .button button {
-  width: 260px;
-  height: 53px;
-  border-radius: 25px;
-  border: none;
-  background-color: white;
-  color: var(--dark-pink);
-  font-size: 24px;
+    width: 260px;
+    height: 53px;
+    border-radius: 25px;
+    border: none;
+    background-color: white;
+    color: var(--dark-pink);
+    font-size: 24px;
 }
 .button button:hover {
-  border: var(--black) 2px solid;
-  transition: ease-in-out 0.1s;
+    border: var(--black) 2px solid;
+    transition: ease-in-out 0.1s;
 }
 
 *,
 ::before,
 ::after {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 body {
-  font-family: "Inter", sans-serif;
-  color: var(--black);
-  background-color: var(--white);
+    font-family: "Inter", sans-serif;
+    color: var(--black);
+    background-color: var(--white);
 }
 
 /* Header */
 #header {
-  width: 100%;
-  min-height: 50px;
-  display: flex;
-  justify-content: space-evenly;
-  background-color: var(--white);
-  align-items: center;
-  border-bottom: 1px solid var(--black);
-  margin: 0;
+    width: 100%;
+    min-height: 50px;
+    display: flex;
+    justify-content: space-evenly;
+    background-color: var(--white);
+    align-items: center;
+    border-bottom: 1px solid var(--black);
+    margin: 0;
 }
 #header #catalog-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 #header #catalog-link {
-  font-size: 20px;
-  text-decoration: none;
-  color: var(--black);
+    font-size: 20px;
+    text-decoration: none;
+    color: var(--black);
 }
 #header #search-cake {
-  position: relative;
+    position: relative;
 }
 #header #search-cake-input {
-  border-radius: 20px;
-  border: 1px solid var(--pale-brown);
-  text-indent: 10px;
-  background-color: var(--white);
-  width: 80%;
-  height: 35px;
+    border-radius: 20px;
+    border: 1px solid var(--pale-brown);
+    text-indent: 10px;
+    background-color: var(--white);
+    width: 80%;
+    height: 35px;
 }
 #header #search-cake-btn {
-  color: var(--black);
-  position: absolute;
-  top: 8px;
-  right: 23%;
-  cursor: pointer;
-  border: none;
-  background-color: var(--white);
+    color: var(--black);
+    position: absolute;
+    top: 8px;
+    right: 23%;
+    cursor: pointer;
+    border: none;
+    background-color: var(--white);
 }
 #header #bakery-name {
-  font-family: "Unna", serif;
-  font-size: 40px;
-  color: var(--black);
-  margin: 0;
+    font-family: "Unna", serif;
+    font-size: 40px;
+    color: var(--black);
+    margin: 0;
 }
 #header #backhome-link {
-  text-decoration: none;
+    text-decoration: none;
 }
 #header .dropdown {
-  padding: 0 !important;
+    padding: 0 !important;
 }
 #header #dropdown-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 #header #dropdown-management {
-  font-size: 20px;
-  text-decoration: none;
-  color: var(--black);
-  padding: 0;
+    font-size: 20px;
+    text-decoration: none;
+    color: var(--black);
+    padding: 0;
 }
 #header #dropdown-management-list {
-  background-color: var(--silver);
-  border: 1px solid var(--black);
+    background-color: var(--silver);
+    border: 1px solid var(--black);
 }
 #header .dropdown-item:hover {
-  background-color: var(--pale-brown) !important;
-  color: var(--white) !important;
+    background-color: var(--pale-brown) !important;
+    color: var(--white) !important;
 }
 #header #navbar-icon {
-  width: 300px;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  list-style: none;
-  justify-content: space-around;
+    width: 300px;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    list-style: none;
+    justify-content: space-around;
 }
 #header #navbar-icon li {
-  font-size: 25px;
+    font-size: 25px;
 }
 #header #navbar-icon li a {
-  color: var(--black);
+    color: var(--black);
 }
 
 /* Banner */
 .banner {
-  background-color: var(--dark-pink);
-  padding-top: 64px;
-  padding-bottom: 64px;
+    background-color: var(--dark-pink);
+    padding-top: 64px;
+    padding-bottom: 64px;
 }
 .banner .banner-content {
-  margin: auto;
-  color: #fff;
-  height: 100%;
+    margin: auto;
+    color: #fff;
+    height: 100%;
 }
 .banner .banner-left {
-  margin-bottom: 40px;
+    margin-bottom: 40px;
 }
 .banner .banner-left > * {
-  margin-bottom: 20px;
+    margin-bottom: 20px;
 }
 .banner .banner-left h1 {
-  font-size: 84px;
-  font-weight: 700;
-  font-family: "Unna", serif;
-  max-width: 543px;
+    font-size: 84px;
+    font-weight: 700;
+    font-family: "Unna", serif;
+    max-width: 543px;
 }
 .banner .banner-left .row .img img {
-  width: 160px;
-  height: 200px;
+    width: 160px;
+    height: 200px;
 }
 .banner .banner-left .row .new-collection h3 {
-  font-size: 24px;
+    font-size: 24px;
 }
 .banner .banner-left .row .new-collection .new-collection-desc {
-  font-size: 16px;
-  color: var(--red);
-  text-align: justify;
-  max-width: 300px;
+    font-size: 16px;
+    color: var(--red);
+    text-align: justify;
+    max-width: 300px;
 }
 .banner .banner-right .img {
-  display: flex;
-  justify-content: center;
+    display: flex;
+    justify-content: center;
 }
 .banner .banner-right .img img {
-  width: 320px;
-  height: 320px;
-  border-radius: 50px;
+    width: 320px;
+    height: 320px;
+    border-radius: 50px;
 }
 
 /* Ribbon */
 .ribbon {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  display: inline-block;
-  font-family: "Unna", serif;
-  font-style: italic;
-  font-size: 40px;
-  width: 100%;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    display: inline-block;
+    font-family: "Unna", serif;
+    font-style: italic;
+    font-size: 40px;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    height: 50px;
 }
 .ribbon .ribbon-content {
-  white-space: nowrap;
-  overflow: hidden;
+    height: 50px;
+    white-space: nowrap;
+    position: absolute;
+    animation: scroll-left 20s linear infinite;
+}
+@keyframes scroll-left {
+    from {
+        left: 100%;
+        width: 500%;
+    }
+    to {
+        left: -100%;
+        width: 500%;
+    }
 }
 
 /* Best service */
 .best-service {
-  padding-top: 64px;
-  padding-bottom: 64px;
+    padding-top: 64px;
+    padding-bottom: 64px;
 }
 .best-service .title h2 {
-  font-family: "Unna", serif;
-  font-size: 56px;
+    font-family: "Unna", serif;
+    font-size: 56px;
 }
 .best-service .best-service-item {
-  margin-top: 36px;
-  border-radius: 200px;
-  height: 300px;
-  width: 276px;
-  border: var(--black) 2px solid;
-  text-align: center;
-  padding-top: 24px;
-  padding-bottom: 24px;
+    margin-top: 36px;
+    border-radius: 200px;
+    height: 300px;
+    width: 276px;
+    border: var(--black) 2px solid;
+    text-align: center;
+    padding-top: 24px;
+    padding-bottom: 24px;
 }
 .best-service .best-service-item .icon {
-  font-size: 30px;
+    font-size: 30px;
 }
 .best-service .best-service-item .title {
-  font-size: 20px;
+    font-size: 20px;
 }
 .best-service .best-service-item .content {
-  color: var(--pale-brown);
+    color: var(--pale-brown);
 }
 
 @media (min-width: 1200px) {
-  .banner {
-    height: 600px;
+    .banner {
+        height: 600px;
+    }
+    .banner .banner-left {
+        margin-bottom: 0;
+    }
+    .banner .banner-left > * {
+        margin-bottom: 0;
+    }
+    .banner .banner-right .img img {
+        width: 480px;
+        height: 480px;
+    }
+}
+
+/* best seller */
+.best-seller .title {
+    font-family: "Unna", serif;
+    font-size: 56px;
+}
+
+/* card list */
+.card-list {
+  padding-bottom: 20px;
+  padding-top: 20px;
+}
+.card-list .card-item {
+  border: var(--black) 2px solid;
+  border-radius: 20px;
+  padding-bottom: 20px;
+  margin-bottom: 60px;
+  height: 460px;
+  width: 356px;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  /* For cake card */
+  padding-left: 0;
+  padding-right: 0;
+}
+.card-list .card-item .img {
+  display: flex;
+  justify-content: center;
+  padding: 0;
+}
+.card-list .card-item .img img {
+  width: 100%;
+  height: 240px;
+  /* For cake card */
+  border-radius: 20px 20px 0 0;
+  border-bottom: var(--black) 2px solid;
+}
+.card-list .card-item .content {
+  width: 295px;
+  height: 186px;
+  padding: 0;
+  padding-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+}
+.card-list .card-item .content .title h3 {
+  color: var(--black);
+  font-weight: 600;
+  font-size: 20px;
+}
+.card-list .card-item .content .des {
+  color: var(--pale-brown);
+}
+.card-list .card-item .content .link {
+  display: flex;
+  align-items: end;
+}
+.card-list .card-item .content .link a {
+  /* For cake card */
+  color: white;
+  text-decoration: none;
+  background-color: var(--dark-pink);
+  padding: 10px 20px;
+  border-radius: 20px;
+  border: transparent 1px solid;
+}
+.card-list .card-item .content .link a:hover {
+  /* For cake card */
+  border: var(--black) 1px solid;
+  transition: ease-in-out 0.1s;
+  background-color: white;
+  color: var(--dark-pink);
+}
+
+@media (min-width: 768px) {
+  .card-list .card-items {
+    margin-left: -80px;
   }
-  .banner .banner-left {
-    margin-bottom: 0;
+  .card-list .card-item {
+    margin-left: 60px;
   }
-  .banner .banner-left > * {
-    margin-bottom: 0;
+}
+@media (min-width: 992px) {
+  .card-list .card-items {
+    margin-left: -60px;
   }
-  .banner .banner-right .img img {
-    width: 480px;
-    height: 480px;
+}
+@media (min-width: 1200px) {
+  .card-list {
+    padding-left: 60px;
+  }
+  .card-list .card-items {
+    margin-left: -128px;
+  }
+}
+@media (min-width: 1400px) {
+  .card-list {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+  .card-list .card-items {
+    margin-left: -84px;
+  }
+  .card-list .card-items .card-item {
+       margin-left: 110px;
   }
 }
 

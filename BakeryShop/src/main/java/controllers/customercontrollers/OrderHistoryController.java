@@ -16,12 +16,14 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import java.util.ArrayList;
 import models.Cake;
 import models.CakeInOrder;
 import models.Order;
 import models.Topping;
 import models.ToppingInCake;
+import models.User;
 
 /**
  *
@@ -70,8 +72,10 @@ public class OrderHistoryController extends HttpServlet {
 
         OrderDAO od = new OrderDAO();
         CakeInOrderDAO ciod = new CakeInOrderDAO();
-        ArrayList<Order> orderList = (ArrayList<Order>) od.readSomeByID(0 + "", 1);
-        int numberCurrentOrder = od.numberByUserID(1);
+        HttpSession session = request.getSession();
+        User user=(User) session.getAttribute("user");   
+        ArrayList<Order> orderList = (ArrayList<Order>) od.readSomeByID(0 + "", user.getId());
+        int numberCurrentOrder = od.numberByUserID(user.getId());
         ArrayList<ArrayList<CakeInOrder>> cakeInOrder = new ArrayList<>();
         for (Order order : orderList) {
             ArrayList<CakeInOrder> cakeInEachOrder = (ArrayList<CakeInOrder>) ciod.readSomeByOrderID(order.getOrderID());
@@ -99,6 +103,8 @@ public class OrderHistoryController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String filter = request.getParameter("filter");
         String cioID = request.getParameter("cioID");
+         HttpSession session = request.getSession();
+        User user=(User) session.getAttribute("user");  
         if (filter != null) {
             String numberPage = request.getParameter("numberPage");
             OrderDAO od = new OrderDAO();
@@ -106,14 +112,14 @@ public class OrderHistoryController extends HttpServlet {
             String search = request.getParameter("search");
             String orderDate = request.getParameter("order-date");
             String receivedDate = request.getParameter("received-date");
-            ArrayList<Order> orderList = (ArrayList<Order>) od.filterSomeByID((Integer.parseInt(numberPage) - 1) * 8 + "", 1, filter, search, orderDate, receivedDate);
+            ArrayList<Order> orderList = (ArrayList<Order>) od.filterSomeByID((Integer.parseInt(numberPage) - 1) * 8 + "", user.getId(), filter, search, orderDate, receivedDate);
             ArrayList<ArrayList<CakeInOrder>> cakeInOrder = new ArrayList<>();
             for (Order order : orderList) {
                 ArrayList<CakeInOrder> cakeInEachOrder = (ArrayList<CakeInOrder>) ciod.readSomeByOrderID(order.getOrderID());
                 cakeInOrder.add(cakeInEachOrder);
             }
 
-            int numberCurrentOrder = od.numberFilterByUserID(1, filter, search, orderDate, receivedDate);
+            int numberCurrentOrder = od.numberFilterByUserID(user.getId(), filter, search, orderDate, receivedDate);
             Gson gson = new Gson();
             response.setContentType("application/json");
             JsonObject jsonObject = new JsonObject();

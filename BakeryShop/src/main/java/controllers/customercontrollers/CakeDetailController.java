@@ -56,11 +56,18 @@ public class CakeDetailController extends HttpServlet {
             response.sendRedirect("/catalog");
             return;
         }
-        int cakeID = Integer.parseInt(cakeIDString);
+        
+        int cakeID = -1;
+        
+        try {
+            cakeID = Integer.parseInt(cakeIDString);
+        } catch (NumberFormatException e) {
+            response.sendRedirect("/catalog");
+            return;
+        }
 
         CakeDAO cakeDAO = new CakeDAO();
         Cake cake = cakeDAO.findByID(cakeID);
-
         if (cake == null) {
             response.sendRedirect("/catalog");
             return;

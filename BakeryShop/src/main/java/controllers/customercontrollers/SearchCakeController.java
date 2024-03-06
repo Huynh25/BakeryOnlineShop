@@ -39,8 +39,7 @@ public class SearchCakeController extends HttpServlet {
         CakeDAO cakeDAO = new CakeDAO();
         List<Cake> cakeList = cakeDAO.searchCakes(cakeFind);
         request.setAttribute("cakeList", cakeList);
-        request.getRequestDispatcher("views/homeviews/SearchCake.jsp").forward(request, response);
-
+        request.getRequestDispatcher("views/homeviews/SearchCake.jsp").forward(request, response);  
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

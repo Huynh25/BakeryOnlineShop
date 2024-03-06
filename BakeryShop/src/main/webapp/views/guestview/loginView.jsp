@@ -36,25 +36,28 @@
         <link rel="stylesheet" href="../../assets/css/style.css" />
         <title>Login</title>
     </head>
-    <body>
+    <body style="overflow: hidden">
         <%@include file="../homeviews/customer-header.jsp" %>
         <div class="content-center">
             <div class="left">
                 <h1>Indulge in the perfection of delightful cakes!</h1>
             </div>
             <div class="right">
-                <form action="login" method="POST" id="loginForm">
+                <form action="login" method="POST" id="loginForm" class="needs-validation" novalidate>
                     <h2>LOGIN</h2>
-                    <div class="accountValid" id="accountValid"></div>
                     <div class="form-group fullname">
-                        <div class="title"><label for="fname">Username</label></div>
-                        <input class="username" value="${sessionScope.rememeberusername}" type="text" id="username" name="username" oninput="ResetValid('userValid')" checkInputs()/>
-                        <div style="color: red" id="userValid"></div>
+                        <div class="title">
+                            <label for="username">Username</label>
+                        </div>
+                        <input class="form-control username" value="${sessionScope.rememeberusername}" type="text" id="username" name="username" required>
+                        <div class="invalid-feedback">Please enter a username!</div>
                     </div>
-                    <div class="form-group box mailBox">
-                        <div class="title"><label for="email">Password</label></div>
-                        <input type="password" id="password" name="password"  oninput="ResetValid('passValid')" checkInputs()/>
-                        <div style="text-align: center; color: red" id="passValid"></div>
+                    <div class="form-group box password">
+                        <div class="title">
+                            <label for="password">Password</label>
+                        </div>
+                        <input class="form-control" type="password" id="password" name="password" required>
+                        <div class="invalid-feedback">Please enter a password!</div>
                     </div>
                     <div class="container remember-me">
                         <div class="remember-check">
@@ -69,9 +72,10 @@
                     </div>
                     <div style="color: red" id="accountValid">${errorMessage}</div>
                     <div class="submit" style="text-align: center">
-                        <input class="button" type="submit" value="LOGIN"/>
+                        <button class="button" type="submit">LOGIN</button>
                     </div>
                 </form>
+
                 <div class="form-group khac">
 
                     <p class="or">_________________<span>Or</span>_________________</p>
@@ -80,7 +84,7 @@
                         <a href="#"><p>Continue with Google</p></a>
                     </div>
                     <div class="register">
-                        <p>Need an account ?<a href="register">SIGN-UP</a></p>
+                        <p>Need an account ?<a href="register"> SIGN-UP</a></p>
                     </div>
                 </div>
 

@@ -9,8 +9,8 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Edit Profile</title>
-        <link rel="stylesheet" href="../../assets/css/editProfile.css" />
+        <title>Change Password</title>
+        <link rel="stylesheet" href="../../assets/css/changePasswor.css" />
         <link rel="stylesheet" href="../../assets/css/GlobalStyle.css" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -33,52 +33,38 @@
         <%@include file="../homeviews/customer-header.jsp" %>
         <div class="form-edit">
             <form action="editProfile" method="post" class="form">
-                <div class="col-md-2 right-avatar">
-                    <img class="avatar" src="../../Image/Avatar/editAvatar.png" alt="Avatar" />
-<!--                    <img src="${avt}" name="avt" alt="Avatar" class="img-fluid my-5" style="width: 80px; " />-->
-                    <div class="file-input-wrapper">
-                        <input  type="file" id="avt" accept=".png,.jpg" name="avt" required >
-                    </div>
-                </div>
-                <div class="col-md-8 container left">
+                <div class= "container">
                     <div class="form-group">
-                        <label for="fullname">Fullname</label>
+                        <label for="current-password">Current password</label>
                         <input
-                            type="text"
-                            id="fullname"
-                            name="fullname"
-                            placeholder="Enter your fullname"
-                            value: ${fullname}
+                            type="password"
+                            id="password"
+                            name="password"
+                            value: ${password}
+                            />
+                        
+                        <div class="forgot-link">
+                            <p class="forgotPassword">
+                                <a href="forgotpassword">Forgot Password?</a>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">New password</label>
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            value: ${password}
                             />
                     </div>
                     <div class="form-group">
-                        <label for="email">Email</label>
+                        <label for="address">Confirm password</label>
                         <input
-                            type="email"
-                            id="email"
-                            name="email"
-                            placeholder="Enter your email"
-                            value: ${email}
-                            />
-                    </div>
-                    <div class="form-group">
-                        <label for="address">Address</label>
-                        <input
-                            type="text"
-                            id="address"
-                            name="address"
-                            placeholder="Enter your address"
-                            value: ${address}
-                            />
-                    </div>
-                    <div class="form-group">
-                        <label for="phone">Contact number</label>
-                        <input
-                            type="tel"
-                            id="phone"
-                            name="phone"
-                            placeholder="Enter your contact number"
-                            value: ${phone}
+                            type="password"
+                            id="password"
+                            name="password"
+                            value: ${password}
                             />
                     </div>
                     <div class="form-group">

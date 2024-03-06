@@ -12,14 +12,25 @@ public class User {
     private String username;
     private String password;
     private String role;
-
+    private int id;
     public User() {
     }
 
-    public User(String username, String pasword, String role) {
+    public User(String username, String password, String role, int id) {
         this.username = username;
-        this.password = pasword;
+        this.password = password;
         this.role = role;
+        this.id = id;
+    }
+
+   
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getUsername() {
@@ -48,8 +59,10 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" + "username=" + username + ", password=" + password + ", role=" + role + '}';
+        return "User{" + "username=" + username + ", password=" + password + ", role=" + role + ", id=" + id + '}';
     }
+
+
     
     
 }
