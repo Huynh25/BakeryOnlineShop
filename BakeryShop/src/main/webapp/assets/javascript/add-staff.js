@@ -37,16 +37,11 @@ function validForm() {
     } else if (!address.value) {
         document.getElementById("address-error").innerHTML = "Please fill in Address";
     } else {
+        document.getElementById('show-modal-btn').click();
         return true;
     }
     return false;
 }
-document.getElementById('staff-form').addEventListener("submit", function (event) {
-    if (!validForm()) {
-        event.preventDefault();
-    }
-});
-
 function resetError(errorElement) {
     document.getElementById(errorElement).innerHTML = "";
     document.getElementById('staff-message').innerHTML="";
@@ -56,3 +51,9 @@ document.getElementById("back-btn").addEventListener("click", function() {
     window.location.href = "../../staff-management";
 });
 
+document.addEventListener("DOMContentLoaded", function() {
+    var message=document.getElementById('staff-message').innerHTML;
+    if (message.trim()!=="") {
+       document.getElementById('show-modalMess-btn').click();
+    }
+});

@@ -40,8 +40,27 @@
             </div>
             <div id="form-container" class="col-sm-8">
                 <form id="staff-form" class="row" action="../../staff-management" method="POST">
-                    <h2 class="col-sm-12" id="add-staff-title">Add Staff</h2>
-                    <div class="col-sm-12" id="staff-message">${message}</div>
+                    <h2 class="col-sm-12" id="add-staff-title">Add Staff</h2>                   
+                    <button type="button" hidden id="show-modalMess-btn" data-toggle="modal" data-target="#messModal">
+                    </button>
+                   <div class="modal fade" id="messModal" tabindex="-1" aria-labelledby="messModal" aria-hidden="false">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Add Staff</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body" id="staff-message">
+                                  ${message}
+                                </div>
+                                <div class="modal-footer">
+                                    <button class="btn btn-primary" type="button" data-dismiss="modal">Cancel</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="col-sm-6" id="form-row-1">
                         <label for="staff-name" id="staff-name-label" >Staff Name</label>
                         <input id="staff-name" name="staff-name" type="text" placeholder="Enter StaffName" oninput="resetError(`staff-name-error`)"  />
@@ -74,18 +93,43 @@
                     </div>
                     <input type="text" hidden="" name="avatar" id="avatar" value="../../Image/Avatar/add_staff_avatar.jpg">
                     <div class="col-sm-12" id="form-row-7">                        
-                        <input  type="submit"  value="Submit" id="submit"/>
+                        <button type="button" onclick="validForm()" id="submit">
+                            Submit
+                        </button>
                     </div>
-                </form>
+                    <button type="button" hidden id="show-modal-btn" data-toggle="modal" data-target="#submitModal">
+                    </button>
+                    <!-- Modal -->
+                    <div class="modal fade" id="submitModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="submitModalLabel">Add Staff</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                   Are you sure you have filled in the correct information?
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" id="submit-sure-btn" onclick="submitForm()" class="btn btn-primary">Yes</button>
+                                    <button type="button" id="cancel-sure-btn" class="btn btn-secondary" data-dismiss="modal">No</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
             </div>
-        </div>
-        <script src="../../assets/javascript/add-staff.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
-                integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-        crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
-                integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
-        crossorigin="anonymous"></script>
-    </body>
+        </form>
+    </div>
+</div>
+<script src="../../assets/javascript/add-staff.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
+crossorigin="anonymous"></script>
+</body>
 
 </html>

@@ -137,3 +137,18 @@
 .rating-cake-card--detail .cake-card-icon  .cake-card-stars-icon{
     display: none;
 }
+#statistic-link-wrapper{
+    display: flex;
+    justify-content: right;
+}
+#statistic-link{
+    text-decoration: none;
+    color: var(--black);
+    border: 2px solid var(--black);
+    padding: 3px 3px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+#statistic-link:hover{
+    transform: scale(1.1); 
+}

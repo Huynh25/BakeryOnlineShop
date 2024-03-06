@@ -29,11 +29,11 @@
                         </div>
                     </div>
                     <div class="navbar-nav w-100">
-                        <a href="#" class="nav-item nav-link" ><i class="bi bi-house"></i>Home</a>
+                        <a href="../../home" class="nav-item nav-link" ><i class="bi bi-house"></i>Home</a>
                         <a href="#" class="nav-item nav-link"><i class="bi bi-bag-check-fill"></i>Order</a>
                         <a href="#" class="nav-item nav-link"><i class="bi bi-patch-plus"></i>Topping</a>
                         <a href="#" class="nav-item nav-link"><i class="bi bi-cake-fill"></i>Cake</a>
-                        <a href="#" class="nav-item nav-link"><i class="bi bi-star-half"></i>Rating</a>
+                        <a href="../../views/adminviews/rating-statistics-page.jsp" class="nav-item nav-link"><i class="bi bi-star-half"></i>Rating</a>
                         <a href="#" class="nav-item nav-link active"><i class="bi bi-file-person-fill"></i>Staff</a>
                         <a href="#" class="nav-item nav-link"><i class="bi bi-backpack2-fill"></i>Product History</a>                     
                     </div>

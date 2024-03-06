@@ -41,7 +41,26 @@
             <div id="form-container" class="col-sm-8">
                 <form id="staff-form" class="row" action="../../staff-management" method="POST">
                     <h2 class="col-sm-12" id="add-staff-title">Update Staff</h2>
-                    <div class="col-sm-12" id="staff-message">${message}</div>
+                    <button type="button" hidden id="show-modalMess-btn" data-toggle="modal" data-target="#messModal">
+                    </button>
+                    <div class="modal fade" id="messModal" tabindex="-1" aria-labelledby="messModal" aria-hidden="false">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Add Staff</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body" id="staff-message">
+                                    ${message}
+                                </div>
+                                <div class="modal-footer">
+                                    <button class="btn btn-primary" type="button" data-dismiss="modal">Cancel</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="col-sm-4" id="form-row-0">
                         <label for="staff-id" id="staff-id-label">StaffID</label>
                         <input id="staff-id" name="staff-id" type="text" class="readOnly" value="${staff.staffID}" readonly=""/>
@@ -52,7 +71,7 @@
                     </div>
                     <div class="col-sm-4" id="form-row-2">
                         <label for="password" id="password-label">Password</label>
-                        <input id="password" name="password" type="password" placeholder="Enter Password" value="${staff.password}" oninput="resetError(`password-error`)" />
+                        <input id="password" name="password" type="password" placeholder="Enter Password" value="@PWNT*****" oninput="resetError(`password-error`)" />
                         <div id="password-error"></div>
                     </div>
                     <div class="col-sm-6" id="form-row-3">                       
@@ -75,11 +94,39 @@
                         <textarea id="address" name="address" type="text" placeholder="Enter Address" rows="4" value="${staff.address}" oninput="resetError(`address-error`)">${staff.address}</textarea>
                         <div id="address-error"></div>
                     </div>
-                        <input type="text" hidden="" name="avatar" value="${staff.staffAvatar}" id="avatar">
-                    <div class="col-sm-12" id="form-row-7">                        
-                        <input  type="submit"  value="Submit" id="submit"/>
+                    <input type="text" hidden="" name="avatar" value="${staff.staffAvatar}" id="avatar">
+                    <div class="col-sm-12" id="form-row-7">    
+                        <button type="button" onclick="validForm()" id="submit">
+                            Submit
+                        </button>
+                    </div>
+                    <button type="button" hidden id="show-modal-btn" data-toggle="modal" data-target="#submitModal">
+                    </button>
+                    <!-- Modal -->
+                    <div class="modal fade" id="submitModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="submitModalLabel">Update Staff</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    Do you really want to update?
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" id="submit-sure-btn" onclick="submitForm()" class="btn btn-primary">Yes</button>
+                                    <button type="button" id="cancel-sure-btn" class="btn btn-secondary" data-dismiss="modal">No</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </form>
+
+
+
+
             </div>
         </div>
         <script src="../../assets/javascript/add-staff.js"></script>

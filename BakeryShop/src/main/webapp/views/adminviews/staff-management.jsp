@@ -33,7 +33,10 @@
                     <i id="next-btn" class="bi bi-chevron-compact-right"></i>
                     <span id="title">Staff Management</span>
                 </div>
-                <button id="add-staff-btn" >Add Staff<i class="bi bi-person-plus"></i></button>
+                <div id="statistic-link-wrapper">                       
+                    <a href="../../views/adminviews/staff-statistic-page.jsp" id="statistic-link">Statistics <i class="bi bi-bar-chart"></i></a>
+                    <button id="add-staff-btn" >Add Staff<i class="bi bi-person-plus"></i></button>
+                </div>
             </div>
             <div id="staff-content" class="row">
                 <c:forEach var="staff" items="${staffList}">

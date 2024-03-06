@@ -74,15 +74,19 @@ public class StaffDAO extends AbstractDAO<Staff> {
         }
     }
 
-    @Override
+  @Override
     public void update(Staff s) {
-        String sql = "UPDATE [dbo].[Staffs] SET [password] = \'" + s.getPassword() + "\'\n"
-                + "      ,[fullname] = \'" + s.getFullname() + "\'\n"
+        String sql = "UPDATE [dbo].[Staffs] SET \n"
+                + "      [fullname] = \'" + s.getFullname() + "\'\n"
                 + "      ,[email] = \'" + s.getEmail() + "\'\n"
                 + "      ,[address] = \'" + s.getAddress() + "\'\n"
                 + "      ,[phoneNumber] = \'" + s.getPhoneNumber() + "\'\n"
-                + "      ,[staffAvatar] = \'" + s.getStaffAvatar() + "\'\n"
-                + " WHERE staffID =" + s.getStaffID();
+                + "      ,[staffAvatar] = \'" + s.getStaffAvatar() + "\'\n";
+               
+        if(!s.getPassword().equals("@PWNT*****")){
+            sql+=",[password] = CONVERT(VARCHAR(32),HASHBYTES('MD5',\'" + s.getPassword() + "\'), 2)\n";
+        }
+        sql+=" WHERE staffID =" + s.getStaffID();
         System.out.println(sql);
         try {
             PreparedStatement ps = con.prepareStatement(sql);

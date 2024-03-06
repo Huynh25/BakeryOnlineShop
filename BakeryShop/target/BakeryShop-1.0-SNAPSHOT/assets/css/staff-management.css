@@ -71,3 +71,23 @@ body{
     border-radius: 10px;
     background-color: var(--white);
 }
+#add-staff-btn:hover{
+    transform: scale(1.1);
+}
+#statistic-link-wrapper{
+    display: flex;
+    justify-content: space-between;
+    width: 15%;
+}
+#statistic-link{
+    text-decoration: none;
+    color: var(--black);
+    border: 2px solid var(--black);
+    padding: 3px 3px;
+    border-radius: 5px;
+    height: 35px;
+    transition: all 0.3s ease;
+}
+#statistic-link:hover{
+    transform: scale(1.1);
+}
