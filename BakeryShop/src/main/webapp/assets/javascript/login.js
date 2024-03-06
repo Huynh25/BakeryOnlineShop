@@ -2,22 +2,30 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/JavaScript.js to edit this template
  */
-$(document).ready(function () {
-    $('#loginForm').submit(function (event) {
-        var username = $('#username').val();
-        var password = $('#password').val();
-        if (username.trim() === '' && password.trim() === '') {
-            $('#accountValid').text('Please enter username and password');
-            event.preventDefault();
-        } else if (username.trim() === '') {
-            $('#userValid').text('Please enter username!');
-            event.preventDefault();
-        } else if (password.trim() === '') {
-            $('#passValid').text('Please enter password!');
-            event.preventDefault();
-        }
-    });        
-});
 
+(function () {
+    'use strict';
+    var forms = document.querySelectorAll('.needs-validation');
+    Array.prototype.slice.call(forms)
+            .forEach(function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (!form.checkValidity()) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
 
-
+                    form.classList.add('was-validated');
+                }, false);
+            });
+})();
+    document.addEventListener('DOMContentLoaded', function () {
+        const usernameInput = document.getElementById('username');
+        const passwordInput = document.getElementById('password');
+        const errorMessageDiv = document.getElementById('accountValid');
+        usernameInput.addEventListener('input', function () {
+            errorMessageDiv.innerText = '';
+        });
+        passwordInput.addEventListener('input', function () {
+            errorMessageDiv.innerText = '';
+        });
+    });

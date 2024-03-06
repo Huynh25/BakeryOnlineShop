@@ -37,50 +37,13 @@
         <title>Forgot Password</title>
     </head>
     <body>
-        <div id="header" class="row header">
-            <div class="row col-sm-5">
-                <div class="col-sm-5" id="catalog-container">
-                    <a id="catalog-link" href="#">Catalog</a>
-                </div>
-                <div class="col-sm-7">
-                    <form id="search-cake">
-                        <input
-                            type="text"
-                            name="search-cake-input"
-                            id="search-cake-input"
-                            placeholder="Search Cake"
-                            />
-                        <button type="submit" id="search-cake-btn">
-                            <i class="bi bi-search"></i>
-                        </button>
-                    </form>
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <a href="#" id="backhome-link">
-                    <h3 id="bakery-name">ELEGANTO</h3>
-                </a>
-            </div>
-            <div class="col-sm-3">
-                <ul id="navbar-icon">
-                    <li>
-                        <a href="#"><i class="bi bi-basket3"></i></a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="bi bi-clock-history"></i></a>
-                    </li>
-                    <li>
-                        <a href=""><i class="bi bi-person-circle"></i></a>
-                    </li>
-                </ul>
-            </div>
-        </div>
+        <%@include file="../homeviews/customer-header.jsp" %>
         <div class="content-center">
             <div class="left">
                 <h1>Indulge in the perfection of delightful cakes!</h1>
             </div>
             <div class="right">
-                <form class="form" action="#" method="post">
+                <form class="form" action="forgotpassword" method="post">
                     <h2>FORGOT PASSWORD</h2>
                     <p class="title">Enter your phone number to receive the OTP code</p>
                     <div class="input">
@@ -119,6 +82,5 @@
             integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
             crossorigin="anonymous"
         ></script>
-        <script src="./js/login.js"></script>
     </body>
 </html>
