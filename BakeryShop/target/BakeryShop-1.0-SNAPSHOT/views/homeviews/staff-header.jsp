@@ -30,8 +30,8 @@
                 </a>
                 <div class="dropdown-menu" id="dropdown-management-list">
                     <a class="dropdown-item" href="MyConfirmedOrders">Order</a>
-                    <a class="dropdown-item" href="#">Topping</a>
-                    <a class="dropdown-item" href="#">Cake</a>
+                    <a class="dropdown-item" href="ToppingManagement">Topping</a>
+                    <a class="dropdown-item" href="CakeManagement">Cake</a>
                     <a class="dropdown-item" href="rating-management">Rating</a>
                 </div>
             </div>

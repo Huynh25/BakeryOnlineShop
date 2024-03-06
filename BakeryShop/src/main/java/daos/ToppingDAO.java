@@ -82,6 +82,25 @@ public class ToppingDAO extends AbstractDAO<Topping> {
         }
         return null;
     }
+    
+    public List<Topping> searchToppings(String searchTerm) {
+    ToppingDAO toppingDAO = new ToppingDAO();
+
+    List<Topping> toppingList = toppingDAO.readAll();
+    List<Topping> searchResult = new ArrayList<>();
+
+    for (Topping topping : toppingList) {
+        String toppingID = topping.getToppingID() + "";
+        String toppingName = topping.getToppingName();
+        String toppingPrice = topping.getToppingPrice() + "";
+        String toppingDescription = topping.getToppingDescription();
+
+        if (toppingID.equalsIgnoreCase(searchTerm) || toppingName.contains(searchTerm) || toppingPrice.equalsIgnoreCase(searchTerm) || toppingDescription.contains(searchTerm)) {
+            searchResult.add(topping);
+        }
+    }
+    return searchResult;
+    }
 
     public static void main(String[] args) {
         ToppingDAO tDAO = new ToppingDAO();

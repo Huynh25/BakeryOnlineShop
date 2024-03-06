@@ -4,6 +4,7 @@
     Author     : ACER PC
 --%>
 
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -29,18 +30,10 @@
                     <div class="histoty col-sm-4 row">
                         <h4 class="Home-text">Home</h4>
                         <h4>&gt</h4>
-                        <h4 class="current-page">My Confirmed Orders</h4>
+                        <h4 class="current-page">Cake Management</h4>
                     </div>
                     <div class="col-sm-4"></div>
-                    <div class="menu col-sm-4 row">
-                        <button class="menu-item my-confirmed-order-btn menu-variant col-sm-5">
-                            My Confirmed Orders
-                        </button>
-                        <div class="col-sm-2"></div>
-                        <button class="menu-item unconfirmed-order-btn menu-default col-sm-5">
-                            Unconfirmed Orders
-                        </button>
-                    </div>
+
                 </div>
                 <!--                <form id="searchForm">
                                     <label for="searchTerm">Search Order:</label>
@@ -49,11 +42,11 @@
                                 </form>-->
                 <div class="search-and-filter d-flex align-items-center row">
                     <div id="searchForm" class="searchbar col-sm-4">
-                        <form class="search-order" action="MyConfirmedOrders" method="get">
+                        <form class="search-order" action="CakeManagement" method="Post">
                             <input
                                 type="text"
                                 class="search-order-input"
-                                placeholder="Search Order"
+                                placeholder="Search Cake"
                                 id="searchTerm"
                                 name ="searchTerm"
                                 />
@@ -64,68 +57,69 @@
                     </div>
                     <div class="col-sm-2"></div>
                     <div class="col-sm-3"></div>
-                    <div class="swap-page col-sm-3 d-flex align-items-center justify-content-end">
-                        <p class="swap-page-item page-number">Page <span id="currentPage">1</span> of <span id="totalPages">1</span></p>
-                        <button class="swap-page-item prev-page swap-page-button">&lt</button>
-                        <button class="swap-page-item next-page swap-page-button">&gt</button>
-                    </div>
+                    <!--                    <div class="swap-page col-sm-3 d-flex align-items-center justify-content-end">
+                                            <p class="swap-page-item page-number">Page <span id="currentPage">1</span> of <span id="totalPages">1</span></p>
+                                            <button class="swap-page-item prev-page swap-page-button">&lt</button>
+                                            <button class="swap-page-item next-page swap-page-button">&gt</button>
+                                        </div>-->
                 </div>
             </div>
             <div class="content-cake">
-                <div class=" container-fluid d-flex justify-content-end">
+                <div class=" container-fluid d-flex justify-content-end filter-cover ">
                     <div class=" type-filter dropdown d-flex">
                         <p class="mr-2">Type:</p>
                         <button class="btn btn-filter dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             All
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="dropdownItems">
+                            <c:forEach var="cakeType" items="${cakeTypes}">
+                                <a class="dropdown-item" href="#" onclick="selectItem('${cakeType}')">${cakeType}</a>
+                            </c:forEach>
                         </div>
                     </div>
                 </div>
-            <div class="cake-list row" id="cakeList">
-                <div class="col-sm-4 cake-in-order-cover">
-                    <div class="cake-detai">
-                        <p class="cake-id">#01</p>
-                        <div class="d-flex align-items-center justify-content-center">
-                            <p class="cake-name">Strawberry Cake</p>
-                        </div>
-                        <div class="row">
-                        <img class="cake-img" src="../../Image/Cake/strawberry_cake.jpg" alt="alt"/>
-                        <div class="col-sm-6">
-                        <div class="d-flex justify-content-start align-items-center">
-                            <p class="cake-inf-title">Price: </p>
-                            <p class="cake-inf">250.000đ</p>
-                        </div>
-                        <div class="d-flex justify-content-center align-items-center">
-                            <p class="cake-inf-title">Quantity: </p>
-                            <p class="cake-inf">2</p>
-                            <button class=" plus-btn d-flex align-items-center"><i class="bi bi-plus-square-fill"></i></button>
-                        </div>
-                             <div class="d-flex justify-content-center align-items-center">
-                            <p class="cake-inf-title">Type: </p>
-                            <p class="cake-inf">Sponge cake</p>
-                        </div>
-                        </div>
-                        </div>
-                        <div>
-                            <p class="cake-inf-title">Description: </p>
-                            <p class="cake-inf">Sponge Delight: Taste the delightful simplicity of our sponge cake</p>
-                        </div>
-                    </div>
-                </div>  
-                <div class="col-sm-4 cake-in-order-cover">
-                    <div class="cake-detai">
-                        <div>
-                        <p class="cake-id">#01</p>
-                        </div>
-                    </div>
-                </div>   
-                <div class="col-sm-4 cake-in-order-cover">
-                    <div class="cake-detai">
 
+                <div class="cake-list row" id="cakeList">
+                    <c:forEach var="cake" items="${cakeList}">
+                        
+                        <div class="col-sm-3 cake-in-order-cover" data-type="${cake.cakeType}" style="padding: 0">
+                            <div class="cake-detai">
+                                <p class="cake-id">#<c:out value="${cake.cakeID}" /></p>
+                                <div class="d-flex align-items-center justify-content-center">
+                                    <p class="cake-name"><c:out value="${cake.cakeName}" /></p>
+                                </div>
+                                <div class="row">
+                                    <img class="cake-img" src="${cake.cakeImg}" />
+                                    <div class="col-sm-6 cake-right-inf">
+                                        <!-- Thêm các dòng khác theo định dạng tương tự -->
+                                        <div class="d-flex justify-content-start align-items-center">
+                                            <p class="cake-inf-title">Price: </p>
+                                            <p class="cake-inf"> <fmt:formatNumber value="${cake.cakePrice}" type="currency" currencySymbol="" maxFractionDigits="0" />đ</p>
+                                        </div>
+                                        <div class="d-flex justify-content-start align-items-center">
+                                            <p class="cake-inf-title">Quantity: </p>
+                                            <p class="cake-inf">${cake.cakeQuantity}</p>
+                                            <!--                            <button class=" plus-btn d-flex align-items-center"><i class="bi bi-plus-square-fill"></i></button>-->
+                                        </div>
+                                        <div class="d-flex justify-content-start align-items-center">
+                                            <p class="cake-inf-title">Type: </p>
+                                            <p class="cake-inf">${cake.cakeType}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <p class="cake-inf-title">Description: </p>
+                                    <p class="cake-inf cake-description"><c:out value="${cake.cakeDescription}" /></p>
+                                </div>
+                            </div>
+                        </div>
+                    </c:forEach>
+                    <div class="col-sm-12 d-flex justify-content-center" id="empty-notice" style="display: ${isEmpty ? 'flex' : 'none'}!important">
+                        <h2 class="text-danger">No products were found!!!</h2>
                     </div>
-                </div>  
-
+                        <div class="col-sm-12 d-flex justify-content-center" style="display: ${isEmpty ? 'none' : 'flex'}!important">
+                        <h2 style="display: none" id="empty-notice-txt" class="text-danger">No products were found!!!</h2>
+                        </div>
             </div>
         </div>
         <script src="../../assets/javascript/cake-management.js"></script>

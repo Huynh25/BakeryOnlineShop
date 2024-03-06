@@ -68,6 +68,14 @@
         <servlet-name>AcceptOrderController</servlet-name>
         <servlet-class>controllers.admincontrollers.AcceptOrderController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CakeManagementController</servlet-name>
+        <servlet-class>controllers.admincontrollers.CakeManagementController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ToppingManagementController</servlet-name>
+        <servlet-class>controllers.admincontrollers.ToppingManagementController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RatingController</servlet-name>
         <url-pattern>/rating-management</url-pattern>
@@ -135,6 +143,22 @@
     <servlet-mapping>
         <servlet-name>AcceptOrderController</servlet-name>
         <url-pattern>/AcceptOrder</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CakeManagementController</servlet-name>
+        <url-pattern>/CakeManagement</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ToppingManagementController</servlet-name>
+        <url-pattern>/ToppingManagement</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>StatisticStaffController</servlet-name>
+        <servlet-class>controllers.admincontrollers.StatisticStaffController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>StatisticStaffController</servlet-name>
+        <url-pattern>/statistic-staff</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

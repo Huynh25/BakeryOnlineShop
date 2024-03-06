@@ -8,16 +8,21 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
 */
 
 .content-cake{
-    height: 500px;
+    height: 100% !important;
     border: 1px solid var(--black);
     border-radius: 10px;
     margin-left: 0 !important;
     margin-right: 0 !important;
     margin-bottom: 20px;
 }
+.filter-cover{
+    background-color: var(--silver);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
 .btn-filter{
     padding: 0 !important;
-    background-color: var(--white) !important;
+    background-color: var(--silver) !important;
     color: var(--black) !important;
     border: none !important;
     height: 20px;
@@ -29,13 +34,31 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
 #dropdownItems{
     margin-right: 20px !important;
 }
+.cake-in-order-cover{
+    margin: 10px 0;
+}
+.cake-list{
+    height: 100%;
+    padding-bottom: 80px;
+    margin: 0 !important;
+    background-color: var(--silver);
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
 .cake-detai{
     border-radius: 10px;
-    border: 2px solid black;
-    height: 250px;
-    margin: 5vh 4vw !important;
+    border: 1.5px solid black;
+    height: 100%;
+    margin: 2vh 2vw !important;
     background-color: var(--white);
     position: relative;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    margin-bottom: 20px;
+}
+.cake-detai:hover{
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    cursor: pointer;
 }
 .cake-id{
     color: var(--red);
@@ -58,9 +81,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     border-radius: 20px;
     margin-left: 20px !important;
 }
+.cake-right-inf{
+    padding-right: 0 !important;
+}
 .cake-inf-title{
     color: var(--black);
-    font-size: 1.2vw;
+    font-size: 1.1vw;
     font-weight: bold;
     margin-right: 5px;
     margin-left: 2px;
@@ -68,7 +94,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
 }
 .cake-inf{
     color: var(--black);
-    font-size: 1.1vw;
+    font-size: 1.05vw;
     margin-bottom: 4px;
 }
 .plus-btn{
@@ -78,4 +104,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     padding-left: 5px;
     background-color: var(--white);
     border: none;
+}
+.cake-description{
+    margin: 0 10px; 
 }

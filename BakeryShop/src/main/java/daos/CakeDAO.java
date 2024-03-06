@@ -208,6 +208,42 @@ public class CakeDAO extends AbstractDAO<Cake> {
         }
         return cakes;
     }
+    
+    public List<Cake> searchAllInCakes(String searchTerm) {
+    CakeDAO cakeDAO = new CakeDAO();
+
+    List<Cake> cakeList = cakeDAO.readAll();
+    List<Cake> searchResult = new ArrayList<>();
+
+    for (Cake cake : cakeList) {
+        String cakeID = cake.getCakeID() + "";
+        String cakeName = cake.getCakeName();
+        String cakePrice = cake.getCakePrice() + "";
+        String cakeDescription = cake.getCakeDescription();
+
+        if (cakeID.equalsIgnoreCase(searchTerm) || cakeName.contains(searchTerm) || cakePrice.equalsIgnoreCase(searchTerm) || cakeDescription.contains(searchTerm)) {
+            searchResult.add(cake);
+        }
+    }
+    return searchResult;
+    }
+    
+     public List<String> getAllTypes() {
+    List<String> types = new ArrayList<>();
+    types.add(0, "All");
+    try {
+        String sql = "SELECT DISTINCT cakeType FROM [dbo].[Cakes]";
+        Statement stm = con.createStatement();
+        ResultSet rs = stm.executeQuery(sql);
+
+        while (rs.next()) {
+            types.add(rs.getString("cakeType"));
+        }
+    } catch (SQLException ex) {
+        // Xử lý exception nếu cần
+    }
+    return types;
+}
 
     public static void main(String[] args) {
         CakeDAO cDAO = new CakeDAO();
