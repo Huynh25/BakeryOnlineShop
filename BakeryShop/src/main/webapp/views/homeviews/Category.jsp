@@ -35,7 +35,7 @@
     <body>
         <div class="page">
             <!-- Header -->
-            <%@include file="../homeviews/customer-header.jsp" %>
+            <%@include file="../homeviews/Header.jsp" %>
 
             <!-- Bread-crumb -->
             <div class="bread-crumb container">

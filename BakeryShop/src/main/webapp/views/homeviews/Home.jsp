@@ -36,20 +36,8 @@
     <body>
         <div class="page">
             <!-- Header -->
-            <c:choose>
-                <c:when test="${'customer'.equalsIgnoreCase(role)}">
-                    <%@include file="../homeviews/customer-header.jsp" %>
-                </c:when>
-                <c:when test="${'manager'.equalsIgnoreCase(role)}">
-                    <%@include file="../homeviews/manager-header.jsp" %>
-                </c:when>
-                <c:when test="${'staff'.equalsIgnoreCase(role)}">
-                    <%@include file="../homeviews/staff-header.jsp" %>
-                </c:when>
-                <c:otherwise>
-                    <%@include file="../homeviews/customer-header.jsp" %>
-                </c:otherwise>
-            </c:choose>
+            <%@include file="../homeviews/Header.jsp" %>
+
 
             <!-- Banner -->
             <div class="banner container-fluid ">
@@ -91,6 +79,48 @@
                     Welcome to our bakery ! Welcome to our bakery ! Welcome to our bakery !
                 </div>
             </div>
+
+            <c:if test="${bestSeller != null}">
+                <!-- Best seller --> 
+                <div class="best-seller">
+                    <h2 class="title container">
+                        Best seller
+                    </h2>
+
+                    <!-- Card list -->
+                    <div class="card-list container">
+                        <div class="card-items row justify-content-xxl-start justify-content-center">
+                            <c:forEach var="cake" items="${bestSeller}">
+                                <div class="col-xl-3 col-10 card-item row justify-content-center">
+                                    <div class="col-12 img">
+                                        <img src="../../${cake.cakeImg}" alt="${cake.cakeName}">
+                                    </div>
+                                    <div class="col-11 content">
+                                        <div class="title">
+                                            <h3>
+                                                ${cake.cakeName}
+                                            </h3>
+                                        </div>
+                                        <div class="des">
+                                            ${cake.cakeDescription}
+                                        </div>
+                                        <div class="link">
+                                            <c:url value="/cakedetail" var="cakeURL">
+                                                <c:param name="cakeID" value="${cake.cakeID}"/>
+                                            </c:url>
+                                            <a href="${cakeURL}">
+                                                More detail
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </c:forEach>
+
+
+                        </div>
+                    </div>
+                </div>
+            </c:if>
 
             <!-- Best service -->
             <div class="best-service container">
@@ -144,48 +174,6 @@
                     </div>
                 </div>
             </div>
-
-            <c:if test="${bestSeller != null}">
-                <!-- Best seller --> 
-                <div class="best-seller">
-                    <h2 class="title container">
-                        Best seller
-                    </h2>
-
-                    <!-- Card list -->
-                    <div class="card-list container">
-                        <div class="card-items row justify-content-xxl-start justify-content-center">
-                            <c:forEach var="cake" items="${bestSeller}">
-                                <div class="col-xl-3 col-10 card-item row justify-content-center">
-                                    <div class="col-12 img">
-                                        <img src="../../${cake.cakeImg}" alt="${cake.cakeName}">
-                                    </div>
-                                    <div class="col-11 content">
-                                        <div class="title">
-                                            <h3>
-                                                ${cake.cakeName}
-                                            </h3>
-                                        </div>
-                                        <div class="des">
-                                            ${cake.cakeDescription}
-                                        </div>
-                                        <div class="link">
-                                            <c:url value="/cakedetail" var="cakeURL">
-                                                <c:param name="cakeID" value="${cake.cakeID}"/>
-                                            </c:url>
-                                            <a href="${cakeURL}">
-                                                More detail
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </c:forEach>
-
-
-                        </div>
-                    </div>
-                </div>
-            </c:if>
 
 
             <!-- Footer -->

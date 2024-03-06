@@ -79,7 +79,7 @@ public class Cart {
         return getItemInCart(findItem).getBuyQuantity();
     }
 
-    private Item getItemInCart(Item findItem) {
+    public Item getItemInCart(Item findItem) {
         for (Item item : items) {
             if (item.equals(findItem)) {
                 return item;
@@ -95,7 +95,7 @@ public class Cart {
         if (itemInCart != null) {
             itemInCart.setBuyQuantity(itemInCart.getBuyQuantity() + item.getBuyQuantity());
         } else {
-            items.add(0, item);
+            items.add(item);
         }
 
     }

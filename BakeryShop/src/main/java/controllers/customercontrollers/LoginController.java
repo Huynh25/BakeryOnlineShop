@@ -94,7 +94,6 @@ public class LoginController extends HttpServlet {
             if (c.getUsername().equals(username) && c.getPassword().equalsIgnoreCase(getMD5Hash(password))) {
                 session.setAttribute("user", u);
                 u.setId(c.getUserID());
-                System.out.println(session.getAttribute("user"));
                 return true;
             }
         }

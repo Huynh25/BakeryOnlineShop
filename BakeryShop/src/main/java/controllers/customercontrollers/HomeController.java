@@ -33,12 +33,6 @@ public class HomeController extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession session = request.getSession();
-        String role = (String) session.getAttribute("role");
-        if (role != null) {
-            request.setAttribute("role", role);
-        }
-        
         // Get best seller
         CakeDAO cakeDAO = new CakeDAO();
         List<Cake> top6BestSeller = cakeDAO.getBestSeller(6);

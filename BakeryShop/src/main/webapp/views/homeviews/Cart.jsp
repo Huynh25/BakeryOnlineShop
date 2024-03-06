@@ -75,10 +75,12 @@
                 <button>BUY</button>
             </div>
         </div>
+        <form action="/editcart" method="post" id="edit-cart">
+        </form>
         <div class="cart-items">
-            <c:forEach var="item" items="${cart.items}">
-                <input type="hidden" class="item-${item.cake.cakeID}" data-quan="${item.buyQuantity}">
+            <c:forEach var="item" items="${cart.items}" varStatus="status">
                 <div class="cart-item">
+                    <input type="hidden" class="cart-item-id" value="${item.cake.cakeID}">
                     <div class="img">
                         <img src="../../${item.cake.cakeImg}" alt="${item.cake.cakeName}">
                     </div>
@@ -91,23 +93,23 @@
                     <div class="cake-toppings">
                         Toppings: <c:forEach var="topping" items="${item.toppings}" varStatus="status">
                             ${topping.toppingName}${status.last ? '' : ', '}
-                            <input type="hidden" name="topping" value="${topping.toppingID}">
+                            <input type="hidden" class="cart-item-topping" value="${topping.toppingID}">
                         </c:forEach>
                     </div>
                     <div class="cake-edit row justify-content-between">
                         <div class="col-sm-6 cake-quantity row justify-content-between align-items-center">
                             <div class="col-sm-3 quantity-btn">
-                                <button>-</button>
+                                <button type="button" form="edit-cart" class="dec-btn">-</button>
                             </div>
                             <div class="col-sm-6 input">
-                                <input type="text" name="buy-quantity" id="buy-quantity" value="${item.buyQuantity}">
+                                <input form="edit-cart" type="text" name="buy-quantity" class="buy-quan-text" value="${item.buyQuantity}">
                             </div>
                             <div class="col-sm-3 quantity-btn">
-                                <button>+</button>
+                                <button type="button" form="edit-cart" class="inc-btn">+</button>
                             </div>
                         </div>
                         <div class="col-sm-6 cake-remove">
-                            <button>Remove</button>
+                            <button type="button" form="edit-cart" class="rem-btn">Remove</button>
                         </div>
                     </div>
                 </div>
@@ -115,5 +117,4 @@
         </div>
     </div>
 </div>
-
 <script src="../../assets/javascript/cart.js""></script>

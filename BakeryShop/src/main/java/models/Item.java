@@ -63,9 +63,12 @@ public class Item {
 
     private void updateToppingBuyQuantity() {
         toppingsBuyQuantity.clear();
-        for (int i = 0; i < toppings.size(); ++i) {
-            toppingsBuyQuantity.add(buyQuantity);
+        if (buyQuantity != 0) {
+            for (int i = 0; i < toppings.size(); ++i) {
+                toppingsBuyQuantity.add(buyQuantity);
+            }
         }
+
     }
 
     public int getTotalPrice() {
@@ -87,9 +90,15 @@ public class Item {
             return false;
         }
 
-
         for (Topping topping : toppings) {
-            if (!item.toppings.contains(topping)) {
+            boolean contains = false;
+            for (Topping toppingItem : item.getToppings()) {
+                if (topping.getToppingID() == toppingItem.getToppingID()) {
+                    contains = true;
+                    break;
+                }
+            }
+            if (!contains) {
                 return false;
             }
         }

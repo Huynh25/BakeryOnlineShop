@@ -204,8 +204,7 @@ body {
 
 /* Best service */
 .best-service {
-    padding-top: 64px;
-    padding-bottom: 64px;
+    padding-bottom: 120px;
 }
 .best-service .title h2 {
     font-family: "Unna", serif;
@@ -248,7 +247,8 @@ body {
 }
 
 /* best seller */
-.best-seller .title {
+.best-seller > .title {
+    margin-top: 60px;
     font-family: "Unna", serif;
     font-size: 56px;
 }
@@ -348,7 +348,7 @@ body {
     padding-right: 0px;
   }
   .card-list .card-items {
-    margin-left: -84px;
+    margin-left: -94px;
   }
   .card-list .card-items .card-item {
        margin-left: 110px;
