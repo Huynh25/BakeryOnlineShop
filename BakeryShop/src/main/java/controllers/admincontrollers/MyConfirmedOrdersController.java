@@ -7,21 +7,16 @@ package controllers.admincontrollers;
 import com.google.gson.Gson;
 import com.oracle.wls.shaded.org.apache.bcel.generic.AALOAD;
 import daos.OrderDAO;
-import daos.StaffDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 import models.Order;
-import models.Staff;
-import models.User;
 
 /**
  *
@@ -57,7 +52,6 @@ public class MyConfirmedOrdersController extends HttpServlet {
         }
     }
 
-    StaffDAO staffDAO = new StaffDAO();
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -76,7 +70,6 @@ public class MyConfirmedOrdersController extends HttpServlet {
         searchTerm = searchTerm1;
         System.out.println(searchTerm1);
         OrderDAO orderDAO = new OrderDAO();
-        
         List<Order> orderList = orderDAO.readAll();
 
         // Chuyển đến trang JSP và truyền danh sách đơn hàng
@@ -101,12 +94,8 @@ public class MyConfirmedOrdersController extends HttpServlet {
 //        String searchTerm = request.getParameter("searchTerm");
         System.out.println(searchTerm);
 
+        int staffID = 2;
 
-        HttpSession session = request.getSession();
-        User user = (User) session.getAttribute("user");
-        
-        int staffID = user.getId();
-        
         OrderDAO orderDAO = new OrderDAO();
         List<Order> orderList = new ArrayList<>();
         List<Order> myOrderList = new ArrayList<>();

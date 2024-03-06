@@ -265,21 +265,4 @@ public class OrderDAO extends AbstractDAO<Order>{
         }
         return number;
     }
-    
-    public void acceptOrder(int orderID, int staffID) {
-    try {
-        String sql = "UPDATE [dbo].[Orders] SET status = 'Delivering', staffID = " + staffID + " WHERE orderID = " + orderID;
-
-        Statement stm = con.createStatement();
-        int rowsAffected = stm.executeUpdate(sql);
-
-        if (rowsAffected > 0) {
-            System.out.println("Đơn hàng đã được chấp nhận và đang được giao hàng.");
-        } else {
-            System.out.println("Không tìm thấy đơn hàng hoặc có lỗi xảy ra khi cập nhật thông tin.");
-        }
-    } catch (SQLException ex) {
-        ex.printStackTrace();
-    }
-}
 }

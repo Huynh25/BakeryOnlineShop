@@ -64,10 +64,6 @@
         <servlet-name>forgotpasswordController</servlet-name>
         <servlet-class>controllers.customercontrollers.forgotpasswordController</servlet-class>
     </servlet>
-    <servlet>
-        <servlet-name>AcceptOrderController</servlet-name>
-        <servlet-class>controllers.admincontrollers.AcceptOrderController</servlet-class>
-    </servlet>
     <servlet-mapping>
         <servlet-name>RatingController</servlet-name>
         <url-pattern>/rating-management</url-pattern>
@@ -131,10 +127,6 @@
     <servlet-mapping>
         <servlet-name>forgotpasswordController</servlet-name>
         <url-pattern>/forgotpassword</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>AcceptOrderController</servlet-name>
-        <url-pattern>/AcceptOrder</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -55,25 +55,14 @@
 
             <!-- Page info -->
             <div class="page-info container">
-                <c:choose>
-                    <c:when test="${cakeList != null && cakeList.size() != 0}">
-                        <div class="title">
-                            <h2>
-                                Our catalog
-                            </h2>
-                        </div>
-                        <div class="des">
-                            We have a variety of cakes to give you more choices
-                        </div>
-                    </c:when>
-                    <c:otherwise>
-                        <div class="title">
-                            <h2>
-                                Sorry, our catalog is empty, please try again later
-                            </h2>
-                        </div>
-                    </c:otherwise>
-                </c:choose>
+                <div class="title">
+                    <h2>
+                        Our catalog
+                    </h2>
+                </div>
+                <div class="des">
+                    We have a variety of cakes to give you more choices
+                </div>
             </div>
 
             <!-- Card list -->

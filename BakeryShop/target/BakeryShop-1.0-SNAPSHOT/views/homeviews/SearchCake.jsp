@@ -57,11 +57,11 @@
             </div>
 
             <c:if test="${cakeList == null || cakeList.size() == 0}">
-                <h1 class='container p-5'>Sorry, we couldn't find your cake</h1>
+                <h1 class='row justify-content-center'>Sorry, we couldn't find your cake</h1>
             </c:if>
 
             <!-- Card list -->
-            <div class="card-list container"
+            <div class="card-list container">
                 <div class="card-items row justify-content-xxl-start justify-content-center">
                     <c:forEach var="cake" items="${cakeList}">
                         <div class="col-xl-3 col-10 card-item row justify-content-center">
@@ -78,8 +78,8 @@
                                     ${cake.cakeDescription}
                                 </div>
                                 <div class="link">
-                                    <c:url value="/cakedetail" var="cakeURL">
-                                        <c:param name="cakeID" value="${cake.cakeID}"/>
+                                    <c:url value="/home" var="cakeURL">
+                                        <%--<c:param name="cakeID" value="${cake.cakeID}"/>--%>
                                     </c:url>
                                     <a href="${cakeURL}">
                                         More detail

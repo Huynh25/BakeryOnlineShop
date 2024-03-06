@@ -28,8 +28,8 @@ body {
     transform: translate(-50%, -45%);
     background: white;
     border-radius: 20px;
-    width: 1020px;
-    height: 630px;
+    width: 1050px;
+    height: 650px;
     background-color: rgb(164, 47, 45);
     margin-bottom: 0px;
 }
@@ -49,7 +49,7 @@ body {
     float: right;
     width: 65%;
     background: #ffffff;
-    height: 630px;
+    height: 650px;
     border-radius: 20px;
 }
 .right h2 {
@@ -81,6 +81,10 @@ body {
     flex-grow: 0;
     border: none;
     font-size: 20px;
+}
+.button.disabled {
+    background: gray;
+    cursor: not-allowed;
 }
 .submit .button{
     text-align: center;
@@ -158,11 +162,13 @@ body {
     height: 180px;
     transform: translate(-125px, -285px);
 }
-.title label{
-    padding-right: 470px;
+.title {
+    padding-right: 415px;
 }
 .remember-me {
+    padding-left: 100px;
     padding-top: 15px;
+    padding-bottom: 0px;
     display: flex;
     justify-content: space-around;
 }
@@ -178,17 +184,13 @@ body {
     color: rgb(206, 83, 81);
     text-decoration: none;
 }
-.fullname{
-    padding-left: 90px;
-}
-.password{
-    padding-left: 90px;
-}
-
-.invalid-feedback{
-    text-align: left;
-}
-
 #accountValid{
-    text-align: center;
+    padding-left: 230px;
+    position: absolute;
+    color: red;
+}
+.accountValid{
+    padding-left: 230px;
+    position: absolute;
+    color: red;
 }

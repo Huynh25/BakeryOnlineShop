@@ -7,7 +7,6 @@ controllers\admincontrollers\RatingController.class
 daos\ToppingDAO.class
 models\GoWith.class
 models\Cart.class
-controllers\admincontrollers\AcceptOrderController.class
 daos\ToppingInCakeDAO.class
 daos\RatingDAO.class
 models\Rating.class

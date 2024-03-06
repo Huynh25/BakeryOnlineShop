@@ -9,14 +9,15 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
 
 .content{
     background-color: var(--white);
-    padding-top: 10px;
+    margin-top: 20px;
 }
 .menu-and-history {
     width: 100%;
 }
 .top-option {
+    background-color: var(--white);
     margin: 20px;
-    margin-top: 0px;
+    margin-top: 0;
 }
 .histoty {
     margin-top: 12px;

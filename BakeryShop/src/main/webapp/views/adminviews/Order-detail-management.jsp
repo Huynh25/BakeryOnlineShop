@@ -190,7 +190,7 @@
             <div id="acceptOrderPopup" class="popup">
                 <div class="popup-content">
                     <p>Are you sure you want to accept this order?</p>
-                    <button onclick="confirmAccept(${order.orderID})">Yes</button>
+                    <button onclick="confirmAccept()">Yes</button>
                     <button class="no-option" onclick="closePopup()">No</button>
                 </div>
             </div>

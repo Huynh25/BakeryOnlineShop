@@ -53,9 +53,11 @@ body {
 }
 .right h2 {
     text-align: center;
+    padding: 20px 0;
     font-family: "Unna";
     font-weight: bold;
     color: rgb(206, 83, 81);
+    padding-bottom: 30px;
 }
 .form-group {
     text-align: center;
@@ -109,7 +111,6 @@ body {
 }
 .form-group input[type="text"],
 .form-group input[type="email"],
-.form-group input[type="number"],
 .form-group input[type="password"] {
     padding: 4px;
     border-radius: 5px;
@@ -118,11 +119,16 @@ body {
 
 .form-group input[type="text"],
 .form-group input[type="email"],
-.form-group input[type="number"],
 .form-group input[type="address"] {
     width: 500px;
 }
 .form-group input[type="password"] {
+    width: 206px;
+}
+.form-group input[type = "number"]{
+    padding: 4px;
+    border-radius: 5px;
+    border: 1px solid #4c4c4c;
     width: 206px;
 }
 
@@ -147,8 +153,11 @@ body {
     height: 180px;
     transform: translate(60%, -135%) rotate(-25deg);
 }
-.password-form {
+.pandp {
     display: flex;
+    padding-left: 90px;
+}
+.password {
     padding-left: 90px;
 }
 
@@ -169,7 +178,7 @@ body {
     padding-right: 440px;
 }
 .title-phone {
-padding-right: 360px;
+    padding-right: 140px;
 }
 .title-password {
     padding-right: 120px;

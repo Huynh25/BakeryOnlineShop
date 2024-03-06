@@ -55,22 +55,16 @@
                         <div class="title"><label for="email">Email</label></div>
                         <input type="email" id="email" name="email" />
                     </div>
-                    <div class="">
+                    <div class="pandp">
                         <div class="form-group box phone">
-                            <div class="title-phone"><label for="phone">Phone Number</label></div>
+                            <div class="title-phone"><label for="phone">Phone</label></div>
                             <input type="number" id="phoneNumer" name="phoneNumer" />
                         </div>
-                    </div>
-                    <div class="password-form">
                         <div class="form-group box password">
-                            <div class="title-password1"><label for="phone">Password</label></div>
-                            <input type="password" id="password1" name="password1" />
-                        </div>
-                        <div class="form-group box password">
-                            <div class="title-password2">
-                                <label for="pwd">Confirm Password</label>
+                            <div class="title-password">
+                                <label for="pwd">Password</label>
                             </div>
-                            <input type="password" id="password2" name="password2" />
+                            <input type="password" id="password" name="password" />
                         </div>
                     </div>
                     <div class="form-group box address">
@@ -86,6 +80,11 @@
                 </form>
                 <div class="form-group khac">
                     <p class="login">Already have an account? <a href="login">Login</a></p>
+                    <p class="or">_________________<span>Or</span>_________________</p>
+                    <div class="google">
+                        <img src="../../Image/Login/google.jpg" alt="google" />
+                        <a href="#"><p>Continue with Google</p></a>
+                    </div>
                 </div>
 
             </div>

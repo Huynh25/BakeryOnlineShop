@@ -58,14 +58,6 @@ public class Item {
 
     public void setBuyQuantity(int buyQuantity) {
         this.buyQuantity = buyQuantity;
-        updateToppingBuyQuantity();
-    }
-
-    private void updateToppingBuyQuantity() {
-        toppingsBuyQuantity.clear();
-        for (int i = 0; i < toppings.size(); ++i) {
-            toppingsBuyQuantity.add(buyQuantity);
-        }
     }
 
     public int getTotalPrice() {
@@ -75,23 +67,12 @@ public class Item {
             toppingsPrice += (toppings.get(i).getToppingPrice() * toppingsBuyQuantity.get(i));
         }
 
-        return buyQuantity * cake.getCakePrice() + toppingsPrice;
+        return buyQuantity * (cake.getCakePrice() + toppingsPrice);
     }
 
     public boolean equals(Item item) {
         if (this.cake.getCakeID() != item.cake.getCakeID()) {
             return false;
-        }
-
-        if (this.toppings.size() != item.toppings.size()) {
-            return false;
-        }
-
-
-        for (Topping topping : toppings) {
-            if (!item.toppings.contains(topping)) {
-                return false;
-            }
         }
 
         return true;
@@ -105,7 +86,7 @@ public class Item {
 
         int length = toppings.size();
         for (int i = 0; i < length; ++i) {
-            itemString += (toppings.get(i).getToppingID() + ",");
+            itemString += (toppings.get(i).getToppingID() + "-" + toppingsBuyQuantity.get(i) + ",");
         }
 
         if (!itemString.isEmpty()) {

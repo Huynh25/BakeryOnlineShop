@@ -41,6 +41,7 @@ public class AddCakeToCartController extends HttpServlet {
         String cakeID = request.getParameter("cakeID");
         String cakeType = request.getParameter("cakeType");
         String[] toppingsID = request.getParameterValues("topping");
+        String[] toppingQuantity = request.getParameterValues("toppingQuantity");
         String buyQuantity = request.getParameter("buy-quantity");
 
         cakeID = (cakeID == null ? "" : cakeID);
@@ -64,8 +65,9 @@ public class AddCakeToCartController extends HttpServlet {
         newItemText += cakeID + ":" + buyQuantity + ":";
         int length = toppingsID.length;
         for (int i = 0; i < length; ++i) {
-            newItemText += toppingsID[i] + ",";
+            newItemText += toppingsID[i] + "-" + toppingQuantity[i] + ",";
         }
+        
 
         if (!newItemText.isEmpty()) {
             newItemText = newItemText.substring(0, newItemText.length() - 1) + ";";
@@ -86,11 +88,11 @@ public class AddCakeToCartController extends HttpServlet {
         List<Topping> toppingList = toppingDAO.readAll();
 
         Cart cart = new Cart(text, cakeList, toppingList);
-
+        
         HttpSession session = request.getSession();
         session.setAttribute("cart", cart);
 
-        response.sendRedirect("/category?cakeType=" + cakeType.replace(" ", "+"));
+        response.sendRedirect("/category?cakeType="+cakeType.replace(" ", "+"));
 
     }
 
