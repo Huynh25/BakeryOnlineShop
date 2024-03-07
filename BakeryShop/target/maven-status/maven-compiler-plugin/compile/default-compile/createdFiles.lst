@@ -11,16 +11,19 @@ controllers\admincontrollers\AcceptOrderController.class
 daos\ToppingInCakeDAO.class
 daos\RatingDAO.class
 models\Rating.class
+controllers\admincontrollers\ToppingManagementController.class
 daos\UserDAO.class
 controllers\admincontrollers\MyConfirmedOrdersController.class
 controllers\admincontrollers\StaffManagementController.class
 controllers\customercontrollers\SearchCakeController.class
+controllers\customercontrollers\EditCartController.class
 controllers\customercontrollers\CatalogController.class
 models\Topping.class
 controllers\admincontrollers\ProductHistoryController.class
 models\Cake.class
 models\Order.class
 models\Staff.class
+controllers\admincontrollers\StatisticStaffController.class
 controllers\customercontrollers\forgotpasswordController.class
 models\ProductHistory.class
 controllers\customercontrollers\CategoryController.class
@@ -30,6 +33,7 @@ models\Item.class
 controllers\customercontrollers\LoginController.class
 controllers\customercontrollers\HomeController.class
 daos\CustomerDAO.class
+controllers\admincontrollers\CakeManagementController.class
 daos\CakeInOrderDAO.class
 daos\AbstractDAO.class
 models\Customer.class
