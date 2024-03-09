@@ -306,7 +306,9 @@
     justify-content: space-between;
     padding-bottom: 40px !important;
 }
-.active-weak-line, .active-top-bar, .active-all-cake,.active-one-cake{
+.active-weak-line, .active-top-bar,
+.active-all-cake,.active-one-cake,
+.active-all-topping,.active-one-topping{
     background-color: black !important;
     color:white!important;
 }

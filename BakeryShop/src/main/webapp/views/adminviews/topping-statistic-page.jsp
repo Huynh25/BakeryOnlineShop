@@ -31,8 +31,8 @@
                     <div class="navbar-nav w-100">
                         <a href="../../home" class="nav-item nav-link" ><i class="bi bi-house"></i>Home</a>
                         <a href="#" class="nav-item nav-link"><i class="bi bi-bag-check-fill"></i>Order</a>
-                        <a href="../../views/adminviews/topping-statistic-page.jsp" class="nav-item nav-link"><i class="bi bi-patch-plus"></i>Topping</a>
-                        <a href="#" class="nav-item nav-link active"><i class="bi bi-cake-fill"></i>Cake</a>
+                        <a href="#" class="nav-item nav-link active"><i class="bi bi-patch-plus"></i>Topping</a>
+                        <a href="../../views/adminviews/cake-statistic-page.jsp" class="nav-item nav-link"><i class="bi bi-cake-fill"></i>Cake</a>
                         <a href="../../views/adminviews/rating-statistics-page.jsp" class="nav-item nav-link"><i class="bi bi-star-half"></i>Rating</a>
                         <a href="../../views/adminviews/staff-statistic-page.jsp" class="nav-item nav-link "><i class="bi bi-file-person-fill"></i>Staff</a>
                         <a href="#" class="nav-item nav-link"><i class="bi bi-backpack2-fill"></i>Product History</a>                     
@@ -50,22 +50,22 @@
                         </div>
                         <div class="col-sm-12 col-xl-6" id="all-cake-chart">
                             <div class="bg-secondary rounded h-100 p-4">
-                                <h4 class="chart-title">Sales Performance of All Cake</h4>
+                                <h4 class="chart-title">Sales Performance of All Topping</h4>
                                 <div class="option-dropdown">
                                     <div class="dropdown" id="bar-chart-option-dropdown">
-                                        <button class="btn btn-secondary dropdown-toggle" id="option-all-cake-chart-btn" type="button" data-toggle="dropdown" aria-expanded="false">
+                                        <button class="btn btn-secondary dropdown-toggle" id="option-all-topping-chart-btn" type="button" data-toggle="dropdown" aria-expanded="false">
                                             Total Income
                                         </button>
-                                        <div class="dropdown-menu" id="option-all-cake-chart">
-                                            <a class="dropdown-item active-all-cake" href="#">Total Income</a>
+                                        <div class="dropdown-menu" id="option-all-topping-chart">
+                                            <a class="dropdown-item active-all-topping" href="#">Total Income</a>
                                             <a class="dropdown-item" href="#">Number of Orders</a>
                                         </div>
                                     </div>
-                                    <div class="dropdown" id="weaks-all-cake-dropdown">
-                                        <button class="btn btn-secondary dropdown-toggle" id="weak-all-cake-option-dropdown-btn" type="button" data-toggle="dropdown" aria-expanded="false">
+                                    <div class="dropdown" id="weaks-all-topping-dropdown">
+                                        <button class="btn btn-secondary dropdown-toggle" id="weak-all-topping-option-dropdown-btn" type="button" data-toggle="dropdown" aria-expanded="false">
                                             Weeks
                                         </button>
-                                        <div class="dropdown-menu" id="weak-all-cake-option-dropdown">
+                                        <div class="dropdown-menu" id="weak-all-topping-option-dropdown">
 
                                         </div>
                                     </div>
@@ -78,32 +78,32 @@
                                 <canvas id="bar-chart"></canvas>                               
                             </div>
                         </div>
-                        <div class="col-sm-12 col-xl-6" id="one-cake-chart">
+                        <div class="col-sm-12 col-xl-6" id="one-topping-chart">
                             <div class="bg-secondary rounded h-100 p-4">
                                 <h4 class="chart-title">Sales Performance of One Cake/Week</h4>
                                 <div class="option-dropdown">
                                     <div class="dropdown" id="line-chart-option-dropdown">
-                                        <button class="btn btn-secondary dropdown-toggle" id="one-cake-option-chart-btn" type="button" data-toggle="dropdown" aria-expanded="false">
+                                        <button class="btn btn-secondary dropdown-toggle" id="one-topping-option-chart-btn" type="button" data-toggle="dropdown" aria-expanded="false">
                                             Total Income
                                         </button>
-                                        <div class="dropdown-menu" id="one-cake-option-chart">
-                                            <a class="dropdown-item active-one-cake" href="#">Total Income</a>
+                                        <div class="dropdown-menu" id="one-topping-option-chart">
+                                            <a class="dropdown-item active-one-topping" href="#">Total Income</a>
                                             <a class="dropdown-item" href="#">Number of Orders</a>
                                         </div>
                                     </div>
                                     <div class="dropdown" id="weakLine-dropdown">
-                                        <button class="btn btn-secondary dropdown-toggle" id="weak-one-cake-option-dropdown-btn" type="button" data-toggle="dropdown" aria-expanded="false">
+                                        <button class="btn btn-secondary dropdown-toggle" id="weak-one-topping-option-dropdown-btn" type="button" data-toggle="dropdown" aria-expanded="false">
                                             Weeks
                                         </button>
-                                        <div class="dropdown-menu" id="weak-one-cake-option-dropdown">
+                                        <div class="dropdown-menu" id="weak-one-topping-option-dropdown">
 
                                         </div>
                                     </div>
-                                     <div class="dropdown" id="cakeList-dropdown">
-                                        <button class="btn btn-secondary dropdown-toggle" id="cakelist-one-cake-option-dropdown-btn" type="button" data-toggle="dropdown" aria-expanded="false">
+                                     <div class="dropdown" id="toppingList-dropdown">
+                                        <button class="btn btn-secondary dropdown-toggle" id="toppingList-one-topping-option-dropdown-btn" type="button" data-toggle="dropdown" aria-expanded="false">
                                             
                                         </button>
-                                        <div class="dropdown-menu" id="cakelist-one-cake-option-dropdown">
+                                        <div class="dropdown-menu" id="toppingList-one-topping-option-dropdown">
                                             
                                         </div>
                                     </div>
@@ -122,7 +122,7 @@
             <script src="../../assets/javascript/owl.carousel.min.js"></script>
             <script src="../../assets/javascript/moment.min.js"></script>
             <script src="../../assets/javascript/tempusdominus-bootstrap-4.min.js"></script>
-            <script src="../../assets/javascript/cake-data-chart.js"></script>
+            <script src="../../assets/javascript/topping-data-chart.js"></script>
     </body>
 </html>
 
