@@ -296,8 +296,8 @@
     color:white;
     font-size: 12px;
 }
-.char-title{
-    text-align: center;
+.chart-title{
+  text-align: center;
 }
 #sumarize-rating{
     display: flex;
@@ -306,7 +306,7 @@
     justify-content: space-between;
     padding-bottom: 40px !important;
 }
-.active-weak-line, .active-top-bar{
+.active-weak-line, .active-top-bar, .active-all-cake,.active-one-cake{
     background-color: black !important;
     color:white!important;
 }
@@ -316,4 +316,24 @@
 .disable-icon{
     cursor: text !important;
     opacity: 50%;
+}
+#cake-chart-info{
+    height: 270px;
+    margin: 10px 0px;
+}
+#cake-chart-info div{
+    margin-top: 10px;   
+}
+#all-cake-chart, #one-cake-chart{
+    margin-top: 10px;
+}
+#summarize-content{
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 10px 30px;
+}
+#summarize-content h4{
+   margin: 0 !important;
 }

@@ -76,6 +76,10 @@
         <servlet-name>ToppingManagementController</servlet-name>
         <servlet-class>controllers.admincontrollers.ToppingManagementController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>StatisticCakeController</servlet-name>
+        <servlet-class>controllers.admincontrollers.StatisticCakeController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RatingController</servlet-name>
         <url-pattern>/rating-management</url-pattern>
@@ -159,6 +163,10 @@
     <servlet-mapping>
         <servlet-name>StatisticStaffController</servlet-name>
         <url-pattern>/statistic-staff</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>StatisticCakeController</servlet-name>
+        <url-pattern>/cake-statistic</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
