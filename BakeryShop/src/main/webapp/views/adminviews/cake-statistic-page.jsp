@@ -35,20 +35,20 @@
                         <a href="#" class="nav-item nav-link active"><i class="bi bi-cake-fill"></i>Cake</a>
                         <a href="../../views/adminviews/rating-statistics-page.jsp" class="nav-item nav-link"><i class="bi bi-star-half"></i>Rating</a>
                         <a href="../../views/adminviews/staff-statistic-page.jsp" class="nav-item nav-link "><i class="bi bi-file-person-fill"></i>Staff</a>
-                        <a href="#" class="nav-item nav-link"><i class="bi bi-backpack2-fill"></i>Product History</a>                     
+                        <a href="../../views/adminviews/product-history-statistic-page.jsp" class="nav-item nav-link"><i class="bi bi-backpack2-fill"></i>Product History</a>                     
                     </div>
                 </nav>
             </div>
             <div class="content col-sm-9">
                 <div class="container-fluid">
                     <div class="row">
-                        <div class= "col-sm-12 col-xl-12" id="cake-chart-info">
+                        <div class= "col-sm-12 col-xl-12" id="chart-info">
                             <div class="bg-secondary rounded h-100" id="summarize-content" >
                                    <h4 class="mb-4 chart-title">Summarize Information</h4>  
                                    
                             </div>
                         </div>
-                        <div class="col-sm-12 col-xl-6" id="all-cake-chart">
+                        <div class="col-sm-12 col-xl-6" id="all-chart">
                             <div class="bg-secondary rounded h-100 p-4">
                                 <h4 class="chart-title">Sales Performance of All Cake</h4>
                                 <div class="option-dropdown">
@@ -78,7 +78,7 @@
                                 <canvas id="bar-chart"></canvas>                               
                             </div>
                         </div>
-                        <div class="col-sm-12 col-xl-6" id="one-cake-chart">
+                        <div class="col-sm-12 col-xl-6" id="one-chart">
                             <div class="bg-secondary rounded h-100 p-4">
                                 <h4 class="chart-title">Sales Performance of One Cake/Week</h4>
                                 <div class="option-dropdown">

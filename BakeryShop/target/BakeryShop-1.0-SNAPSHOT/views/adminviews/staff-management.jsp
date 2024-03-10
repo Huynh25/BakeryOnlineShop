@@ -25,7 +25,7 @@
     </head>
 
     <body>
-        <%@include file="../homeviews/manager-header.jsp" %>
+        <%@include file="../homeviews/Header.jsp" %>
         <div id="content">   
             <div id="url-and-add-staff-btn">
                 <div id="url">

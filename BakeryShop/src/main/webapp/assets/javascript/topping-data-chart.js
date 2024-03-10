@@ -82,10 +82,10 @@ let toppingList;
                 for (var i = 0; i < toppingDetailListLength; i++) {
                     if (toppingDetailList[i].topping.toppingName === summarizeList[k].toppingName) {
                         summarizeList[k].totalIncomeAll += toppingDetailList[i].topping.toppingPrice * toppingDetailList[i].ticQuantity;
-                        summarizeList[k].numberOfOrderAll++;
+                        summarizeList[k].numberOfOrderAll+=toppingDetailList[i].ticQuantity;
                         if (weakActiveList.includes(convertDateFormat(toppingDetailList[i].cakeInOrder.order.orderDate))) {
                             summarizeList[k].totalIncomeWeak += toppingDetailList[i].topping.toppingPrice * toppingDetailList[i].ticQuantity;
-                            summarizeList[k].numberOfOrderWeak++;
+                            summarizeList[k].numberOfOrderWeak+=toppingDetailList[i].ticQuantity;
                         }
                     }
                 }
@@ -162,7 +162,7 @@ let toppingList;
                 oneToppingDataChart.push({"orderDate": weakActiveList[weakActiveListIndex], "data": 0});
                 for (var i = 0; i < toppingDetailListLength; i++) {
                     if (toppingDetailList[i].topping.toppingName === toppingList[activeTopping].toppingName && weakActiveList[weakActiveListIndex] === convertDateFormat(toppingDetailList[i].cakeInOrder.order.orderDate)) {
-                        oneToppingDataChart[j].data++;
+                        oneToppingDataChart[j].data+=toppingDetailList[i].ticQuantity;
                     }
                 }
                 weakActiveListIndex++;

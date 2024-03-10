@@ -84,6 +84,10 @@
         <servlet-name>StatisticToppingController</servlet-name>
         <servlet-class>controllers.admincontrollers.StatisticToppingController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>StatisticProductHistoryController</servlet-name>
+        <servlet-class>controllers.admincontrollers.StatisticProductHistoryController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RatingController</servlet-name>
         <url-pattern>/rating-management</url-pattern>
@@ -175,6 +179,10 @@
     <servlet-mapping>
         <servlet-name>StatisticToppingController</servlet-name>
         <url-pattern>/topping-statistic</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>StatisticProductHistoryController</servlet-name>
+        <url-pattern>/product-history-statistic</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -35,7 +35,7 @@
                         <a href="../../views/adminviews/cake-statistic-page.jsp" class="nav-item nav-link"><i class="bi bi-cake-fill"></i>Cake</a>
                         <a href="../../views/adminviews/rating-statistics-page.jsp" class="nav-item nav-link"><i class="bi bi-star-half"></i>Rating</a>
                         <a href="#" class="nav-item nav-link active"><i class="bi bi-file-person-fill"></i>Staff</a>
-                        <a href="#" class="nav-item nav-link"><i class="bi bi-backpack2-fill"></i>Product History</a>                     
+                        <a href="../../views/adminviews/product-history-statistic-page.jsp" class="nav-item nav-link"><i class="bi bi-backpack2-fill"></i>Product History</a>                     
                     </div>
                 </nav>
             </div>

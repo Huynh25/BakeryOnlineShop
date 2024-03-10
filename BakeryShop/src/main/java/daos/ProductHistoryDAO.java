@@ -31,6 +31,10 @@ public class ProductHistoryDAO extends AbstractDAO<ProductHistory> {
         try {
 
             String sql = "Select * from [dbo].[ProductHistory]";
+            sql += "ORDER BY CASE\n"
+                    + "        WHEN updateDate IS NULL THEN createDate\n"
+                    + "        ELSE updateDate\n"
+                    + "    END  DESC";
             Statement stm = con.createStatement();
             ResultSet rs = stm.executeQuery(sql);
 

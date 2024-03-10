@@ -308,7 +308,8 @@
 }
 .active-weak-line, .active-top-bar,
 .active-all-cake,.active-one-cake,
-.active-all-topping,.active-one-topping{
+.active-all-topping,.active-one-topping,
+.active-all-product,.active-one-product{
     background-color: black !important;
     color:white!important;
 }
@@ -319,14 +320,14 @@
     cursor: text !important;
     opacity: 50%;
 }
-#cake-chart-info{
+#chart-info{
     height: 270px;
     margin: 10px 0px;
 }
 #cake-chart-info div{
     margin-top: 10px;   
 }
-#all-cake-chart, #one-cake-chart{
+#all-chart, #one-chart{
     margin-top: 10px;
 }
 #summarize-content{

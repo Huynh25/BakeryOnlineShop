@@ -83,10 +83,10 @@ let cakeList;
                 for (var i = 0; i < cakeDetailListLength; i++) {
                     if (cakeDetailList[i].cake.cakeName === summarizeList[k].cakeName) {
                         summarizeList[k].totalIncomeAll += cakeDetailList[i].cake.cakePrice * cakeDetailList[i].cioQuantity;
-                        summarizeList[k].numberOfOrderAll++;
+                        summarizeList[k].numberOfOrderAll+=cakeDetailList[i].cioQuantity;
                         if (weakActiveList.includes(convertDateFormat(cakeDetailList[i].order.orderDate))) {
                             summarizeList[k].totalIncomeWeak += cakeDetailList[i].cake.cakePrice * cakeDetailList[i].cioQuantity;
-                            summarizeList[k].numberOfOrderWeak++;
+                            summarizeList[k].numberOfOrderWeak+=cakeDetailList[i].cioQuantity;
                         }
                     }
                 }
@@ -202,7 +202,7 @@ let cakeList;
                 allCakeChartData.push({"cakeName": cakeList[j].cakeName, "data": 0});
                 for (var i = 0; i < cakeDetailListLength; i++) {
                     if (cakeDetailList[i].cake.cakeName === allCakeChartData[k].cakeName && weakActiveList.includes(convertDateFormat(cakeDetailList[i].order.orderDate))) {
-                        allCakeChartData[k].data++;
+                        allCakeChartData[k].data+=cakeDetailList[i].cioQuantity;
                     }
                 }
             }
@@ -251,7 +251,7 @@ let cakeList;
                 oneCakeDataChart.push({"orderDate": weakActiveList[weakActiveListIndex], "data": 0});
                 for (var i = 0; i < cakeDetailListLength; i++) {
                     if (cakeDetailList[i].cake.cakeName === cakeList[activeCake].cakeName && weakActiveList[weakActiveListIndex] === convertDateFormat(cakeDetailList[i].order.orderDate)) {
-                        oneCakeDataChart[j].data++;
+                        oneCakeDataChart[j].data+=cakeDetailList[i].cioQuantity;
                     }
                 }
                 weakActiveListIndex++;
