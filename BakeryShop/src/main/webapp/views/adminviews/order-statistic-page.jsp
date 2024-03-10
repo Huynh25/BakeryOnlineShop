@@ -30,9 +30,9 @@
                     </div>
                     <div class="navbar-nav w-100">
                         <a href="../../home" class="nav-item nav-link" ><i class="bi bi-house"></i>Home</a>
-                        <a href="../../views/adminviews/order-statistic-page.jsp" class="nav-item nav-link"><i class="bi bi-bag-check-fill"></i>Order</a>
+                        <a href="#" class="nav-item nav-link active"><i class="bi bi-bag-check-fill"></i>Order</a>
                         <a href="../../views/adminviews/topping-statistic-page.jsp" class="nav-item nav-link"><i class="bi bi-patch-plus"></i>Topping</a>
-                        <a href="#" class="nav-item nav-link active"><i class="bi bi-cake-fill"></i>Cake</a>
+                        <a href="../../views/adminviews/cake-statistic-page.jsp" class="nav-item nav-link"><i class="bi bi-cake-fill"></i>Cake</a>
                         <a href="../../views/adminviews/rating-statistics-page.jsp" class="nav-item nav-link"><i class="bi bi-star-half"></i>Rating</a>
                         <a href="../../views/adminviews/staff-statistic-page.jsp" class="nav-item nav-link "><i class="bi bi-file-person-fill"></i>Staff</a>
                         <a href="../../views/adminviews/product-history-statistic-page.jsp" class="nav-item nav-link"><i class="bi bi-backpack2-fill"></i>Product History</a>                     
@@ -42,73 +42,57 @@
             <div class="content col-sm-9">
                 <div class="container-fluid">
                     <div class="row">
-                        <div class= "col-sm-12 col-xl-12" id="chart-info">
-                            <div class="bg-secondary rounded h-100" id="summarize-content" >
-                                   <h4 class="mb-4 chart-title">Summarize Information</h4>  
-                                   
-                            </div>
-                        </div>
                         <div class="col-sm-12 col-xl-6" id="all-chart">
                             <div class="bg-secondary rounded h-100 p-4">
-                                <h4 class="chart-title">Sales Performance of All Cake</h4>
+                                <h4 class="chart-title">Order status every week</h4>
                                 <div class="option-dropdown">
-                                    <div class="dropdown" id="bar-chart-option-dropdown">
-                                        <button class="btn btn-secondary dropdown-toggle" id="option-all-cake-chart-btn" type="button" data-toggle="dropdown" aria-expanded="false">
-                                            Total Income
+                                    <div class="dropdown" id="pie-option-dropdown">
+                                        <button class="btn btn-secondary dropdown-toggle" id="pie-option-chart-btn" type="button" data-toggle="dropdown" aria-expanded="false">
+                                            Status
                                         </button>
-                                        <div class="dropdown-menu" id="option-all-cake-chart">
-                                            <a class="dropdown-item active-all-cake" href="#">Total Income</a>
-                                            <a class="dropdown-item" href="#">Number of Orders</a>
+                                        <div class="dropdown-menu" id="pie-option-chart">
+                                            <a class="dropdown-item active-weak-line" href="#">Status</a>
+                                            <a class="dropdown-item" href="#">Was Paid</a>
                                         </div>
                                     </div>
-                                    <div class="dropdown" id="weaks-all-cake-dropdown">
-                                        <button class="btn btn-secondary dropdown-toggle" id="weak-all-cake-option-dropdown-btn" type="button" data-toggle="dropdown" aria-expanded="false">
+                                    <div class="dropdown" id="weeks-pie-dropdown">
+                                        <button class="btn btn-secondary dropdown-toggle" id="week-pie-dropdown-btn" type="button" data-toggle="dropdown" aria-expanded="false">
                                             Weeks
                                         </button>
-                                        <div class="dropdown-menu" id="weak-all-cake-option-dropdown">
+                                        <div class="dropdown-menu" id="week-pie-dropdown">
 
                                         </div>
                                     </div>
-                                     <div id="page-info">
-                                        <span id="chartBar-Pagination"></span>                                       
-                                        <i id="back-page-btn" class="bi bi-chevron-left disable-icon pag-icon" ></i>
-                                        <i id="next-page-btn" class="bi bi-chevron-right pag-icon"></i>
-                                    </div>
                                 </div>
-                                <canvas id="bar-chart"></canvas>                               
+                                <canvas id="pie-chart"></canvas>                               
                             </div>
                         </div>
-                        <div class="col-sm-12 col-xl-6" id="one-chart">
+                        <div class="col-sm-12 col-xl-6">
                             <div class="bg-secondary rounded h-100 p-4">
-                                <h4 class="chart-title">Sales Performance of One Cake/Week</h4>
+                                <h4 class="chart-title">Orders every week</h4>
                                 <div class="option-dropdown">
-                                    <div class="dropdown" id="line-chart-option-dropdown">
-                                        <button class="btn btn-secondary dropdown-toggle" id="one-cake-option-chart-btn" type="button" data-toggle="dropdown" aria-expanded="false">
+                                    <div class="dropdown" id="order-option-dropdown">
+                                        <button class="btn btn-secondary dropdown-toggle" id="order-option-list-chart-btn" type="button" data-toggle="dropdown" aria-expanded="false">
                                             Total Income
                                         </button>
-                                        <div class="dropdown-menu" id="one-cake-option-chart">
-                                            <a class="dropdown-item active-one-cake" href="#">Total Income</a>
+                                        <div class="dropdown-menu" id="order-option-list-chart">
+                                            <a class="dropdown-item active-weak-line" href="#">Total Income</a>
                                             <a class="dropdown-item" href="#">Number of Orders</a>
                                         </div>
                                     </div>
-                                    <div class="dropdown" id="weakLine-dropdown">
-                                        <button class="btn btn-secondary dropdown-toggle" id="weak-one-cake-option-dropdown-btn" type="button" data-toggle="dropdown" aria-expanded="false">
+                                    <div class="dropdown" id="weeks-order-dropdown">
+                                        <button class="btn btn-secondary dropdown-toggle" id="week-option-dropdown-btn" type="button" data-toggle="dropdown" aria-expanded="false">
                                             Weeks
                                         </button>
-                                        <div class="dropdown-menu" id="weak-one-cake-option-dropdown">
+                                        <div class="dropdown-menu" id="week-option-dropdown">
 
                                         </div>
                                     </div>
-                                     <div class="dropdown" id="cakeList-dropdown">
-                                        <button class="btn btn-secondary dropdown-toggle" id="cakelist-one-cake-option-dropdown-btn" type="button" data-toggle="dropdown" aria-expanded="false">
-                                            
-                                        </button>
-                                        <div class="dropdown-menu" id="cakelist-one-cake-option-dropdown">
-                                            
-                                        </div>
-                                    </div>
                                 </div>
-                                <canvas id="line-chart"></canvas>                               
+                                <canvas id="line-chart"></canvas>
+                                <div id="summarize-content-order">
+                                    <h4 class="mb-4 chart-title" id="order-summarize-title">Summarize Information</h4>  
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -122,7 +106,7 @@
             <script src="../../assets/javascript/owl.carousel.min.js"></script>
             <script src="../../assets/javascript/moment.min.js"></script>
             <script src="../../assets/javascript/tempusdominus-bootstrap-4.min.js"></script>
-            <script src="../../assets/javascript/cake-data-chart.js"></script>
+            <script src="../../assets/javascript/order-data-chart.js"></script>
     </body>
 </html>
 

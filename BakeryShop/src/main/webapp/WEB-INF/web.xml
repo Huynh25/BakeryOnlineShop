@@ -88,6 +88,10 @@
         <servlet-name>StatisticProductHistoryController</servlet-name>
         <servlet-class>controllers.admincontrollers.StatisticProductHistoryController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>StatisticOrderController</servlet-name>
+        <servlet-class>controllers.admincontrollers.StatisticOrderController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RatingController</servlet-name>
         <url-pattern>/rating-management</url-pattern>
@@ -183,6 +187,10 @@
     <servlet-mapping>
         <servlet-name>StatisticProductHistoryController</servlet-name>
         <url-pattern>/product-history-statistic</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>StatisticOrderController</servlet-name>
+        <url-pattern>/order-statistic</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -340,3 +340,15 @@
 #summarize-content h4{
    margin: 0 !important;
 }
+#summarize-content-order{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    color:white;
+}
+#summarize-content-order div{
+    padding: 8px 10px;
+}
+#order-summarize-title{
+    margin: 0 !important;
+}

@@ -30,8 +30,8 @@
                     </div>
                     <div class="navbar-nav w-100">
                         <a href="../../home" class="nav-item nav-link" ><i class="bi bi-house"></i>Home</a>
-                        <a href="#" class="nav-item nav-link"><i class="bi bi-bag-check-fill"></i>Order</a>
-                        <a href="" class="nav-item nav-link active"><i class="bi bi-patch-plus"></i>Topping</a>
+                        <a href="../../views/adminviews/order-statistic-page.jsp" class="nav-item nav-link"><i class="bi bi-bag-check-fill"></i>Order</a>
+                        <a href="#" class="nav-item nav-link active"><i class="bi bi-patch-plus"></i>Topping</a>
                         <a href="../../views/adminviews/cake-statistic-page.jsp" class="nav-item nav-link"><i class="bi bi-cake-fill"></i>Cake</a>
                         <a href="../../views/adminviews/rating-statistics-page.jsp" class="nav-item nav-link"><i class="bi bi-star-half"></i>Rating</a>
                         <a href="../../views/adminviews/staff-statistic-page.jsp" class="nav-item nav-link "><i class="bi bi-file-person-fill"></i>Staff</a>
@@ -44,8 +44,7 @@
                     <div class="row">
                         <div class= "col-sm-12 col-xl-12" id="chart-info">
                             <div class="bg-secondary rounded h-100" id="summarize-content" >
-                                   <h4 class="mb-4 chart-title">Summarize Information</h4>  
-                                   
+                                   <h4 class="mb-4 chart-title">Summarize Information</h4>                                    
                             </div>
                         </div>
                         <div class="col-sm-12 col-xl-6" id="all-chart">
