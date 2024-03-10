@@ -399,16 +399,51 @@ VALUES
 -- Chèn dữ liệu vào bảng ProductHistory
 INSERT INTO ProductHistory ([phQuantity], [updateDate], [createDate], [updateBy], [createBy], [toppingID], [cakeID])
 VALUES 
-    (50, '2024-01-01', NULL, 1, NULL, 1, NULL),
-    (40, NULL, '2024-01-02', NULL, 2, NULL, 1),
-    (30, NULL, '2024-01-03', NULL, 3, NULL, 3),
-    (20, NULL, '2024-01-04', NULL, 4, 4, NULL),
-    (15, '2024-01-05', NULL, 5, NULL, NULL, 5),
-    (25, NULL, '2024-01-06', NULL, 6, 6, NULL),
-    (35, NULL, '2024-01-07', NULL, 7, NULL, 7),
-    (45, '2024-01-08', NULL, 8, NULL, 8, NULL),
-    (55, NULL, '2024-01-09', NULL, 9, 9, NULL),
-    (60, '2024-01-10', NULL, 10, NULL, NULL, 10);
+
+
+(1, NULL, '2024-01-01', NULL, 1, NULL, 1),
+(3, NULL, '2024-01-01', NULL, 1, NULL, 2),
+(2, NULL, '2024-01-01', NULL, 2, NULL, 3),
+(4, NULL, '2024-01-01', NULL, 3, NULL, 4),
+(5, NULL, '2024-01-02', NULL, 4, NULL, 5),
+(6, NULL, '2024-01-02', NULL, 6, NULL, 6),
+(1, NULL, '2024-01-02', NULL, 3, NULL, 7),
+(4, NULL, '2024-01-03', NULL, 7, NULL, 8),
+(6, NULL, '2024-01-03', NULL, 8, NULL, 9),
+(7, NULL, '2024-01-09', NULL, 1, NULL, 10),
+
+(10, NULL, '2024-01-01', NULL, 4, 1, NULL),
+(15, NULL, '2024-01-01', NULL, 5, 2, NULL),
+(4, NULL, '2024-01-02', NULL, 3, 3, NULL),
+(2, NULL, '2024-01-02', NULL, 2, 4, NULL),
+(14, NULL, '2024-01-03', NULL, 1, 5, NULL),
+(7, NULL, '2024-01-03', NULL, 7, 6, NULL),
+(8, NULL, '2024-01-03', NULL, 8, 7, NULL),
+(9, NULL, '2024-01-03', NULL, 9, 8, NULL),
+(15, NULL, '2024-01-04', NULL, 2, 9, NULL),
+(23, NULL, '2024-01-09', NULL, 1, 10, NULL),
+
+(2, '2024-01-04',NULL , 3, NULL, NULL, 2),
+(1, '2024-01-04',NULL , 4, NULL, NULL, 5),
+(3, '2024-01-04',NULL , 5, NULL, NULL, 1),
+(5, '2024-01-05',NULL , 1, NULL, NULL, 5),
+(4, '2024-01-05',NULL , 5, NULL, NULL, 6),
+(7, '2024-01-06',NULL , 7, NULL, NULL, 1),
+(8, '2024-01-06',NULL , 1, NULL, NULL, 2),
+(9, '2024-01-07',NULL , 2, NULL, NULL, 8),
+(1, '2024-01-07',NULL , 4, NULL, NULL, 5),
+(2, '2024-01-08',NULL , 5, NULL, NULL, 1),
+
+(7, '2024-01-04',NULL , 4, NULL, 6, NULL),
+(8, '2024-01-04',NULL , 6, NULL, 2, NULL),
+(15, '2024-01-04',NULL , 2, NULL, 4, NULL),
+(5, '2024-01-05',NULL , 4, NULL, 6, NULL),
+(4, '2024-01-05',NULL , 5, NULL, 1, NULL),
+(8, '2024-01-06',NULL , 1, NULL, 2, NULL),
+(2, '2024-01-06',NULL , 9, NULL, 3, NULL),
+(4, '2024-01-07',NULL , 2, NULL, 4, NULL),
+(10, '2024-01-07',NULL , 3, NULL, 5, NULL),
+(12, '2024-01-08',NULL , 5, NULL, 7, NULL);
 
 
 
