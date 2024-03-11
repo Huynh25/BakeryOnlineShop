@@ -15,6 +15,21 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     margin-right: 0 !important;
     margin-bottom: 20px;
 }
+#add-topping-btn{
+    height: 35px;
+    border-radius: 10px;
+    background-color: var(--white);
+    padding-right: 20px;
+}
+#add-topping-btn:hover{
+    transform: scale(1.1);
+}
+.add-icon{
+    font-size: 20px;
+    top:-3px;
+    position: absolute;
+    font-weight: bold;
+}
 .btn-filter{
     padding: 0 !important;
     background-color: var(--white) !important;
@@ -101,4 +116,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
 }
 .topping-description{
     margin: 0 10px; 
+}
+.pre-page:hover {
+  text-decoration: none !important;
+  color: var(--red);
+}
+
+.pre-page{
+    color: var(--black);
 }

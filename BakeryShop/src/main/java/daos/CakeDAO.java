@@ -47,14 +47,81 @@ public class CakeDAO extends AbstractDAO<Cake> {
     }
 
     @Override
-    public void create(Cake object) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+     public void create(Cake newCake) {
+        try {
+            String sql = "INSERT INTO [dbo].[Cakes] (cakeName, cakeDescription, cakePrice, cakeImg, cakeQuantity, cakeType) "
+                    + "VALUES (?, ?, ?, ?, ?, ?)";
+
+            try ( PreparedStatement preparedStatement = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+                preparedStatement.setString(1, newCake.getCakeName());
+                preparedStatement.setString(2, newCake.getCakeDescription());
+                preparedStatement.setInt(3, newCake.getCakePrice());
+                preparedStatement.setString(4, newCake.getCakeImg());
+                preparedStatement.setInt(5, newCake.getCakeQuantity());
+                preparedStatement.setString(6, newCake.getCakeType());
+
+                // Execute the insert and retrieve the generated keys
+                int rowsInserted = preparedStatement.executeUpdate();
+                if (rowsInserted > 0) {
+                    // Get the generated keys (if any)
+                    try ( ResultSet generatedKeys = preparedStatement.getGeneratedKeys()) {
+                        if (generatedKeys.next()) {
+                            int generatedID = generatedKeys.getInt(1);
+                            newCake.setCakeID(generatedID);
+                            System.out.println("Cake with ID " + generatedID + " created successfully.");
+                        } else {
+                            System.out.println("Failed to retrieve generated ID for the new cake.");
+                        }
+                    }
+                } else {
+                    System.out.println("Failed to create the new cake.");
+                }
+            }
+        } catch (SQLException ex) {
+            // Handle exceptions as needed
+            ex.printStackTrace();
+        }
     }
 
     @Override
-    public void update(Cake object) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+public void update(Cake updatedCake) {
+        try {
+            // Assuming cakeID is the primary key
+            int cakeID = updatedCake.getCakeID();
+
+            // Check if the cake with the given ID exists
+            if (findByID(cakeID) != null) {
+                String sql = "UPDATE [dbo].[Cakes] "
+                        + "SET cakeName = ?, cakeDescription = ?, cakePrice = ?, "
+                        + "cakeImg = ?, cakeQuantity = ?, cakeType = ? "
+                        + "WHERE cakeID = ?";
+
+                try ( PreparedStatement preparedStatement = con.prepareStatement(sql)) {
+                    preparedStatement.setString(1, updatedCake.getCakeName());
+                    preparedStatement.setString(2, updatedCake.getCakeDescription());
+                    preparedStatement.setInt(3, updatedCake.getCakePrice());
+                    preparedStatement.setString(4, updatedCake.getCakeImg());
+                    preparedStatement.setInt(5, updatedCake.getCakeQuantity());
+                    preparedStatement.setString(6, updatedCake.getCakeType());
+                    preparedStatement.setInt(7, cakeID);
+
+                    // Execute the update
+                    int rowsUpdated = preparedStatement.executeUpdate();
+
+                    if (rowsUpdated > 0) {
+                        System.out.println("Cake with ID " + cakeID + " updated successfully.");
+                    } else {
+                        System.out.println("Failed to update cake with ID " + cakeID);
+                    }
+                }
+            } else {
+                System.out.println("Cake with ID " + cakeID + " does not exist.");
+            }
+        } catch (SQLException ex) {
+            // Handle exceptions as needed
+            ex.printStackTrace();
+        }
+    }    
 
     @Override
     public void delete(String id) {

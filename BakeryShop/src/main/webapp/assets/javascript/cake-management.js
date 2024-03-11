@@ -9,12 +9,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function filterByType(type) {
         let hiddenCount = 0;
-        
+
         hideNotice();
 
         for (const cake of cakes) {
             const cakeType = cake.getAttribute('data-type');
-
             if (type === 'All' || type === cakeType) {
                 cake.style.display = 'block';
             } else {
@@ -48,3 +47,17 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 });
+    function redirectToCakeDetailPage(cakeID) {
+        console.log("hello");
+    var encodedCakeID = encodeURIComponent(cakeID);
+    var url = 'CakeDetailManagement?cakeID=' + encodedCakeID;
+    console.log("Redirecting to URL:", url);
+    window.location.href = url;
+    }
+    
+    function redirectToAddCakePage() {
+        console.log("hello");
+    var url = 'AddCake';
+    console.log("Redirecting to URL:", url);
+    window.location.href = url;
+    }

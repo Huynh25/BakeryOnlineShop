@@ -44,13 +44,66 @@ public class ToppingDAO extends AbstractDAO<Topping> {
     }
 
     @Override
-    public void create(Topping object) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void create(Topping newTopping) {
+    try {
+        String sql = "INSERT INTO [dbo].[Toppings] (toppingName, toppingQuantity, toppingPrice, toppingImg, toppingDescription) "
+                + "VALUES (?, ?, ?, ?, ?)";
+
+        try (PreparedStatement preparedStatement = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+            preparedStatement.setString(1, newTopping.getToppingName());
+            preparedStatement.setInt(2, newTopping.getToppingQuantity());
+            preparedStatement.setInt(3, newTopping.getToppingPrice());
+            preparedStatement.setString(4, newTopping.getToppingImg());
+            preparedStatement.setString(5, newTopping.getToppingDescription());
+
+            // Execute the insert and retrieve the generated keys
+            int rowsInserted = preparedStatement.executeUpdate();
+            if (rowsInserted > 0) {
+                // Get the generated keys (if any)
+                try (ResultSet generatedKeys = preparedStatement.getGeneratedKeys()) {
+                    if (generatedKeys.next()) {
+                        int generatedID = generatedKeys.getInt(1);
+                        newTopping.setToppingID(generatedID);
+                        System.out.println("Topping with ID " + generatedID + " created successfully.");
+                    } else {
+                        System.out.println("Failed to retrieve generated ID for the new topping.");
+                    }
+                }
+            } else {
+                System.out.println("Failed to create the new topping.");
+            }
+        }
+    } catch (SQLException ex) {
+        // Handle exceptions as needed
+        ex.printStackTrace();
     }
+}
 
     @Override
-    public void update(Topping object) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void update(Topping topping) {
+        try {
+            String sql = "UPDATE [dbo].[Toppings] SET "
+                    + "toppingName = ?, "
+                    + "toppingQuantity = ?, "
+                    + "toppingPrice = ?, "
+                    + "toppingImg = ?, "
+                    + "toppingDescription = ? "
+                    + "WHERE toppingID = ?";
+
+            PreparedStatement pstmt = con.prepareStatement(sql);
+
+            pstmt.setString(1, topping.getToppingName());
+            pstmt.setInt(2, topping.getToppingQuantity());
+            pstmt.setInt(3, topping.getToppingPrice());
+            pstmt.setString(4, topping.getToppingImg());
+            pstmt.setString(5, topping.getToppingDescription());
+            pstmt.setInt(6, topping.getToppingID());
+
+            pstmt.executeUpdate();
+        } catch (SQLException ex) {
+            // Handle exception (e.g., log or throw a custom exception)
+            ex.printStackTrace();
+        }
     }
 
     @Override
@@ -117,6 +170,30 @@ public class ToppingDAO extends AbstractDAO<Topping> {
         } catch (Exception e) {
         }
 
+    }
+    public Topping findByName(String name) {
+        try {
+
+            String sql = "Select * from [dbo].[Toppings]"
+                    + "where toppingName =\'" + name + "\'";
+            Statement stm = con.createStatement();
+            ResultSet rs = stm.executeQuery(sql);
+
+            if (rs.next()) {
+                Topping topping = new Topping();
+                topping.setToppingID(rs.getInt("toppingID"));
+                topping.setToppingName(rs.getString("toppingName"));
+                topping.setToppingDescription(rs.getString("toppingDescription"));
+                topping.setToppingPrice(rs.getInt("toppingPrice"));
+                topping.setToppingImg(rs.getString("toppingImg"));
+                topping.setToppingQuantity(rs.getInt("toppingQuantity"));
+
+                return topping;
+            }
+
+        } catch (SQLException ex) {
+        }
+        return null;
     }
 
     public static void main(String[] args) {

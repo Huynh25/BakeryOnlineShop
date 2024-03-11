@@ -100,6 +100,22 @@
         <servlet-name>MakePurchaseController</servlet-name>
         <servlet-class>controllers.customercontrollers.MakePurchaseController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CakeDetailManagementController</servlet-name>
+        <servlet-class>controllers.admincontrollers.CakeDetailManagementController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddCakeController</servlet-name>
+        <servlet-class>controllers.admincontrollers.AddCakeController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ToppingDetailManagementController</servlet-name>
+        <servlet-class>controllers.admincontrollers.ToppingDetailManagementController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddToppingController</servlet-name>
+        <servlet-class>controllers.admincontrollers.AddToppingController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RatingController</servlet-name>
         <url-pattern>/rating-management</url-pattern>
@@ -207,6 +223,22 @@
     <servlet-mapping>
         <servlet-name>MakePurchaseController</servlet-name>
         <url-pattern>/make-purchase</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CakeDetailManagementController</servlet-name>
+        <url-pattern>/CakeDetailManagement</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddCakeController</servlet-name>
+        <url-pattern>/AddCake</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ToppingDetailManagementController</servlet-name>
+        <url-pattern>/ToppingDetailManagement</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddToppingController</servlet-name>
+        <url-pattern>/AddTopping</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

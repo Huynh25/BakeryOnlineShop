@@ -15,6 +15,21 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     margin-right: 0 !important;
     margin-bottom: 20px;
 }
+#add-cake-btn{
+    height: 35px;
+    border-radius: 10px;
+    background-color: var(--white);
+    padding-right: 20px;
+}
+#add-cake-btn:hover{
+    transform: scale(1.1);
+}
+.add-icon{
+    font-size: 20px;
+    top:-3px;
+    position: absolute;
+    font-weight: bold;
+}
 .filter-cover{
     background-color: var(--silver);
     border-top-left-radius: 10px;
@@ -106,5 +121,13 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     border: none;
 }
 .cake-description{
-    margin: 0 10px; 
+    margin: 0 10px;
+}
+.pre-page:hover {
+    text-decoration: none !important;
+    color: var(--red);
+}
+
+.pre-page{
+    color: var(--black);
 }

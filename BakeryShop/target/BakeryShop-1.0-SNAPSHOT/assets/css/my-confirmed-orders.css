@@ -151,4 +151,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     font-weight: bold;
 }
 
+.pre-page:hover {
+  text-decoration: none !important;
+  color: var(--red);
+}
 
+.pre-page{
+    color: var(--black);
+}

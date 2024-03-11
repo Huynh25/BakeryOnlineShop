@@ -99,6 +99,28 @@ public class GoWithDAO extends AbstractDAO<GoWith> {
         }
         return goWiths;
     }
+    public void updateGoWith(int cakeID, List<Topping> toppingList) {
+        try {
+            // Xóa tất cả goWith hiện tại của cakeID
+            String deleteSql = "DELETE FROM [dbo].[GoWiths] WHERE cakeID = " + cakeID;
+            Statement deleteStatement = con.createStatement();
+            deleteStatement.executeUpdate(deleteSql);
+
+            // Thêm mới goWiths dựa trên danh sách Topping mới
+            for (Topping topping : toppingList) {
+                // Kiểm tra nếu topping có tồn tại trong danh sách topping
+                if (tDAO.findByID(topping.getToppingID()) != null) {
+                    // Thêm goWith mới vào CSDL
+                    String insertSql = "INSERT INTO [dbo].[GoWiths] (cakeID, toppingID) VALUES (" + cakeID + ", " + topping.getToppingID() + ")";
+                    Statement insertStatement = con.createStatement();
+                    insertStatement.executeUpdate(insertSql);
+                }
+            }
+        } catch (SQLException ex) {
+            // Xử lý exception nếu có
+            ex.printStackTrace();
+        }
+    }
 
     public static void main(String[] args) {
         GoWithDAO gDAO = new GoWithDAO();

@@ -26,7 +26,7 @@
             <div class="top-option">
                 <div class="menu-and-history row">
                     <div class="histoty col-sm-4 row">
-                        <h4 class="Home-text">Home</h4>
+                        <h4 class="Home-text"><a class="pre-page" href="/home">Home</a></h4>
                         <h4>&gt</h4>
                         <h4><a class="pre-page current-page" href="${preURL}">${prePage}</a></h4>
                         <h4>&gt</h4>

@@ -28,7 +28,7 @@
             <div class="top-option">
                 <div class="menu-and-history row">
                     <div class="histoty col-sm-4 row">
-                        <h4 class="Home-text">Home</h4>
+                        <h4 class="Home-text"><a class="pre-page" href="/home">Home</a></h4>
                         <h4>&gt</h4>
                         <h4 class="current-page">Topping Management</h4>
                     </div>
@@ -55,8 +55,10 @@
                             </button>
                         </form>
                     </div>
-                    <div class="col-sm-2"></div>
-                    <div class="col-sm-3"></div>
+                    <div class="col-sm-6"></div>
+                    <div class="col-sm-2 d-flex align-items-center justify-content-around">
+                        <button onclick="redirectToAddToppingPage()" id="add-topping-btn" >Add Topping<i class="add-icon bi bi-plus"></i></button>
+                    </div>
                     <!--                    <div class="swap-page col-sm-3 d-flex align-items-center justify-content-end">
                                             <p class="swap-page-item page-number">Page <span id="currentPage">1</span> of <span id="totalPages">1</span></p>
                                             <button class="swap-page-item prev-page swap-page-button">&lt</button>
@@ -69,7 +71,7 @@
                 <div class="topping-list row" id="toppingList">
                     <c:forEach var="topping" items="${toppingList}">
                         
-                        <div class="col-sm-3 topping-in-order-cover" style="padding: 0">
+                        <div class="col-sm-3 topping-in-order-cover" onclick="redirectToToppingDetailPage(${topping.toppingID})" style="padding: 0">
                             <div class="topping-detai">
                                 <p class="topping-id">#<c:out value="${topping.toppingID}" /></p>
                                 <div class="d-flex align-items-center justify-content-center">

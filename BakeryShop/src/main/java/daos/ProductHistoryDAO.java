@@ -5,9 +5,11 @@
 package daos;
 
 import daos.CakeDAO;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
 import models.Cake;
@@ -188,6 +190,44 @@ public class ProductHistoryDAO extends AbstractDAO<ProductHistory> {
     public ProductHistory findByID(int i) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+    
+    public void createPH(ProductHistory productHistory, String action) {
+    try {
+        String sql = "INSERT INTO [dbo].[ProductHistory] (phQuantity, [updateDate], createDate, updateBy, createBy, cakeID, toppingID) "
+                + "VALUES (?, ?, ?, ?, ?, ?, ?)";
+
+        PreparedStatement pstmt = con.prepareStatement(sql);
+
+        pstmt.setInt(1, productHistory.getPhQuantity());
+        
+
+        if ("update".equalsIgnoreCase(action)) {
+            pstmt.setDate(2, productHistory.getUpdatedDate());
+            pstmt.setNull(3, Types.DATE); 
+            pstmt.setInt(4, productHistory.getUpdateBy().getStaffID());
+            pstmt.setNull(5, Types.INTEGER); 
+        } else if ("create".equalsIgnoreCase(action)) {
+            pstmt.setNull(2, Types.DATE); 
+            pstmt.setDate(3, productHistory.getCreateDate());
+            pstmt.setNull(4, Types.INTEGER); 
+            pstmt.setInt(5, productHistory.getCreateBy().getStaffID());
+        }
+
+
+        if (productHistory.getCake() != null) {
+            pstmt.setInt(6, productHistory.getCake().getCakeID());
+            pstmt.setNull(7, Types.INTEGER);
+        } else if (productHistory.getTopping() != null) {
+            pstmt.setNull(6, Types.INTEGER); 
+            pstmt.setInt(7, productHistory.getTopping().getToppingID());
+        }
+
+        pstmt.executeUpdate();
+    } catch (SQLException ex) {
+        // Handle exception (e.g., log or throw a custom exception)
+        ex.printStackTrace();
+    }
+}
 
     public static void main(String[] args) {
         ProductHistoryDAO pDAO = new ProductHistoryDAO();
