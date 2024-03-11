@@ -4,6 +4,7 @@
  */
 package daos;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -82,24 +83,40 @@ public class ToppingDAO extends AbstractDAO<Topping> {
         }
         return null;
     }
-    
+
     public List<Topping> searchToppings(String searchTerm) {
-    ToppingDAO toppingDAO = new ToppingDAO();
+        ToppingDAO toppingDAO = new ToppingDAO();
 
-    List<Topping> toppingList = toppingDAO.readAll();
-    List<Topping> searchResult = new ArrayList<>();
+        List<Topping> toppingList = toppingDAO.readAll();
+        List<Topping> searchResult = new ArrayList<>();
 
-    for (Topping topping : toppingList) {
-        String toppingID = topping.getToppingID() + "";
-        String toppingName = topping.getToppingName();
-        String toppingPrice = topping.getToppingPrice() + "";
-        String toppingDescription = topping.getToppingDescription();
+        for (Topping topping : toppingList) {
+            String toppingID = topping.getToppingID() + "";
+            String toppingName = topping.getToppingName();
+            String toppingPrice = topping.getToppingPrice() + "";
+            String toppingDescription = topping.getToppingDescription();
 
-        if (toppingID.equalsIgnoreCase(searchTerm) || toppingName.contains(searchTerm) || toppingPrice.equalsIgnoreCase(searchTerm) || toppingDescription.contains(searchTerm)) {
-            searchResult.add(topping);
+            if (toppingID.equalsIgnoreCase(searchTerm) || toppingName.contains(searchTerm) || toppingPrice.equalsIgnoreCase(searchTerm) || toppingDescription.contains(searchTerm)) {
+                searchResult.add(topping);
+            }
         }
+        return searchResult;
     }
-    return searchResult;
+
+    public void updateQuantity(Topping topping) {
+        String sql = "UPDATE Toppings SET toppingQuantity=? WHERE toppingID=?";
+
+        try {
+            PreparedStatement statement = con.prepareStatement(sql);
+            statement.setInt(1, topping.getToppingQuantity());
+            statement.setInt(2, topping.getToppingID());
+
+            int rowsUpdated = statement.executeUpdate();
+            if (rowsUpdated > 0) {
+            }
+        } catch (Exception e) {
+        }
+
     }
 
     public static void main(String[] args) {

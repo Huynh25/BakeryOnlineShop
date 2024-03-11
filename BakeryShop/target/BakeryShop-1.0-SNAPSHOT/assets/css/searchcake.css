@@ -104,7 +104,7 @@ body {
   padding: 0;
 }
 #header #dropdown-management-list {
-  background-color: var(--silver);
+  background-color: var(--white);
   border: 1px solid var(--black);
 }
 #header .dropdown-item:hover {
@@ -124,6 +124,9 @@ body {
 }
 #header #navbar-icon li a {
   color: var(--black);
+}
+.dropdown{
+    padding: 0 !important;
 }
 
 /* Bread-crumb */

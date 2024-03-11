@@ -104,7 +104,7 @@ body {
     padding: 0;
 }
 #header #dropdown-management-list {
-    background-color: var(--silver);
+    background-color: var(--white);
     border: 1px solid var(--black);
 }
 #header .dropdown-item:hover {

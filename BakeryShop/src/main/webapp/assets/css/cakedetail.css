@@ -94,21 +94,25 @@ body {
 #header .dropdown {
     padding: 0 !important;
 }
+
 #header #dropdown-container {
     display: flex;
     justify-content: center;
     align-items: center;
 }
+
 #header #dropdown-management {
     font-size: 20px;
     text-decoration: none;
     color: var(--black);
     padding: 0;
 }
+
 #header #dropdown-management-list {
-    background-color: var(--silver);
+    background-color: var(--white);
     border: 1px solid var(--black);
 }
+
 #header .dropdown-item:hover {
     background-color: var(--pale-brown) !important;
     color: var(--white) !important;

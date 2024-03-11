@@ -92,6 +92,14 @@
         <servlet-name>StatisticOrderController</servlet-name>
         <servlet-class>controllers.admincontrollers.StatisticOrderController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CheckoutController</servlet-name>
+        <servlet-class>controllers.customercontrollers.CheckoutController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>MakePurchaseController</servlet-name>
+        <servlet-class>controllers.customercontrollers.MakePurchaseController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RatingController</servlet-name>
         <url-pattern>/rating-management</url-pattern>
@@ -191,6 +199,14 @@
     <servlet-mapping>
         <servlet-name>StatisticOrderController</servlet-name>
         <url-pattern>/order-statistic</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CheckoutController</servlet-name>
+        <url-pattern>/checkout</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MakePurchaseController</servlet-name>
+        <url-pattern>/make-purchase</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

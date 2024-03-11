@@ -72,7 +72,8 @@
                 </div>
             </div>
             <div class="col-sm-12 button">
-                <button>BUY</button>
+                <form action="checkout" method="post" id="go-to-checkout"></form>
+                <button type="submit" form="go-to-checkout">BUY</button>
             </div>
         </div>
         <form action="/editcart" method="post" id="edit-cart">

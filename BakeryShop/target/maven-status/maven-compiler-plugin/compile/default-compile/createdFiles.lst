@@ -31,9 +31,11 @@ daos\OrderDAO.class
 models\CakeInOrder.class
 models\Item.class
 controllers\customercontrollers\LoginController.class
+controllers\customercontrollers\CheckoutController.class
 controllers\customercontrollers\HomeController.class
 daos\CustomerDAO.class
 controllers\admincontrollers\CakeManagementController.class
+controllers\customercontrollers\MakePurchaseController.class
 daos\CakeInOrderDAO.class
 daos\AbstractDAO.class
 models\Customer.class

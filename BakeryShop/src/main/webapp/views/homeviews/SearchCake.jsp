@@ -61,7 +61,7 @@
             </c:if>
 
             <!-- Card list -->
-            <div class="card-list container"
+            <div class="card-list container">
                 <div class="card-items row justify-content-xxl-start justify-content-center">
                     <c:forEach var="cake" items="${cakeList}">
                         <div class="col-xl-3 col-10 card-item row justify-content-center">

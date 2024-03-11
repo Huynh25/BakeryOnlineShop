@@ -54,7 +54,25 @@ public class CakeInOrderDAO extends AbstractDAO<CakeInOrder> {
 
     @Override
     public void create(CakeInOrder object) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        String sql = "INSERT INTO CakeInOrder ([cioQuantity], [orderID], [cakeID]) "
+                + "OUTPUT Inserted.[cioID]"
+                + "VALUES (?, ?, ?)";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+
+            ps.setInt(1, object.getCioQuantity());
+            ps.setInt(2, object.getOrder().getOrderID());
+            ps.setInt(3, object.getCake().getCakeID());
+
+
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                object.setCioID(rs.getInt("cioID"));
+            }
+
+        } catch (Exception e) {
+        }
     }
 
     @Override

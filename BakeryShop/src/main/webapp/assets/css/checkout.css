@@ -1,0 +1,241 @@
+:root {
+  --dark-pink: #97201e;
+  --red: #ce5351;
+  --white: #f9f6f2;
+  --silver: #e5dfdb;
+  --black: #55432c;
+  --pale-brown: #bdb09e;
+}
+
+img {
+  object-fit: cover;
+  border: white solid 2px;
+  border-radius: 25px;
+}
+
+.button button {
+  width: 280px;
+  height: 53px;
+  border-radius: 25px;
+  border: none;
+  background-color: white;
+  color: var(--dark-pink);
+  font-size: 24px;
+}
+.button button:hover {
+  border: var(--black) 2px solid;
+  transition: ease-in-out 0.1s;
+}
+
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  color: var(--black);
+  background-color: var(--white);
+}
+
+/* Header */
+#header {
+  width: 100%;
+  min-height: 50px;
+  display: flex;
+  justify-content: space-evenly;
+  background-color: var(--white);
+  align-items: center;
+  border-bottom: 1px solid var(--black);
+  margin: 0;
+}
+#header #catalog-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#header #catalog-link {
+  font-size: 20px;
+  text-decoration: none;
+  color: var(--black);
+}
+#header #search-cake {
+  position: relative;
+}
+#header #search-cake-input {
+  border-radius: 20px;
+  border: 1px solid var(--pale-brown);
+  text-indent: 10px;
+  background-color: var(--white);
+  width: 80%;
+  height: 35px;
+}
+#header #search-cake-btn {
+  color: var(--black);
+  position: absolute;
+  top: 8px;
+  right: 23%;
+  cursor: pointer;
+  border: none;
+  background-color: var(--white);
+}
+#header #bakery-name {
+  font-family: "Unna", serif;
+  font-size: 40px;
+  color: var(--black);
+  margin: 0;
+}
+#header #backhome-link {
+  text-decoration: none;
+}
+#header .dropdown {
+  padding: 0 !important;
+}
+#header #dropdown-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#header #dropdown-management {
+  font-size: 20px;
+  text-decoration: none;
+  color: var(--black);
+  padding: 0;
+}
+#header #dropdown-management-list {
+  background-color: var(--white);
+  border: 1px solid var(--black);
+}
+#header .dropdown-item:hover {
+  background-color: var(--pale-brown) !important;
+  color: var(--white) !important;
+}
+#header #navbar-icon {
+  width: 300px;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  list-style: none;
+  justify-content: space-around;
+}
+#header #navbar-icon li {
+  font-size: 25px;
+}
+#header #navbar-icon li a {
+  color: var(--black);
+}
+
+/* Page info */
+.page-info {
+  padding: 60px;
+  padding-bottom: 0;
+}
+.page-info .title {
+  font-size: 80px;
+  font-family: "Unna", serif;
+}
+
+/* Checkout body */
+.checkout-body {
+  padding: 60px;
+}
+.checkout-body span.bold {
+  font-weight: 600;
+}
+.checkout-body span.underline {
+  text-decoration: underline;
+}
+.checkout-body .checkout-content .checkout-part {
+  margin-bottom: 40px;
+}
+.checkout-body .checkout-content .title {
+  margin-bottom: 32px;
+}
+.checkout-body .checkout-content .title h3 {
+  font-family: "Unna", serif;
+  font-size: 40px;
+}
+.checkout-body .checkout-content .input {
+  margin-bottom: 20px;
+}
+.checkout-body .checkout-content .input input,
+.checkout-body .checkout-content .input textarea {
+  width: 100%;
+  background-color: transparent;
+  border: var(--black) 1px solid;
+  padding: 16px 24px;
+  font-size: 24px;
+  color: var(--black);
+}
+.checkout-body .checkout-content .input input {
+  height: 62px;
+}
+.checkout-body .checkout-content .contact-info .input input,
+.checkout-body .checkout-content .shipping-info .input textarea{
+    pointer-events: none;
+}
+.checkout-body .checkout-content .input textarea {
+  height: 120px;
+  line-height: 40px;
+}
+.checkout-body .checkout-content .payment-info .input {
+  display: flex;
+  align-items: center;
+}
+.checkout-body .checkout-content .payment-info .input input {
+  width: 34px;
+  height: 34px;
+  margin-right: 20px;
+  accent-color: var(--black);
+}
+.checkout-body .checkout-content .payment-info .input label {
+  font-size: 24px;
+  color: var(--black);
+}
+.checkout-body .checkout-content .button button {
+  color: white;
+  background-color: var(--dark-pink);
+}
+.checkout-body .checkout-content .button button:hover {
+  background: white;
+  color: var(--black);
+}
+.checkout-body .order-content {
+  padding-left: 60px;
+}
+.checkout-body .order-content .title {
+  font-size: 60px;
+  height: 72px;
+  font-family: "Unna", serif;
+  border-bottom: var(--black) 1px solid;
+}
+.checkout-body .order-item {
+  padding-top: 24px;
+  padding-bottom: 12px;
+  font-size: 24px;
+  border-bottom: var(--black) 1px solid;
+}
+.checkout-body .order-item > * {
+  margin-bottom: 20px;
+}
+.checkout-body .order-item .cake-name {
+  font-weight: 600;
+  margin-bottom: 28px;
+}
+.checkout-body .order-item .cake-toppings {
+  line-height: 36px;
+}
+.checkout-body .order-item .total {
+  margin-top: 28px;
+}
+.checkout-body .order-total {
+  padding-top: 20px;
+  font-size: 24px;
+  font-weight: 600;
+}
+.checkout-body .order-total > * {
+  margin-bottom: 20px;
+}
+
+/*# sourceMappingURL=checkout.css.map */

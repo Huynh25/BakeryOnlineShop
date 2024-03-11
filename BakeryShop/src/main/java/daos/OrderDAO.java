@@ -4,6 +4,7 @@
  */
 package daos;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -15,11 +16,11 @@ import models.Order;
  *
  * @author Nguyen Truong An CE170984
  */
-public class OrderDAO extends AbstractDAO<Order>{
+public class OrderDAO extends AbstractDAO<Order> {
 
     @Override
     public List<Order> readAll() {
-      List<Order> orders = new ArrayList<>();
+        List<Order> orders = new ArrayList<>();
         try {
 
             String sql = "Select * from [dbo].[Orders] ORDER BY orderDate DESC";
@@ -43,11 +44,34 @@ public class OrderDAO extends AbstractDAO<Order>{
 
         } catch (SQLException ex) {
         }
-        return orders;    }
+        return orders;
+    }
 
     @Override
     public void create(Order object) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        String sql = "INSERT INTO Orders ([userID], [orderDescription], [totalPrice], [orderDate], [wasPaid], [status]) "
+                + "OUTPUT Inserted.[orderID]"
+                + "VALUES (?, ?, ?, ?, ?, ?)";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+
+            ps.setInt(1, object.getUserID());
+            ps.setString(2, object.getOrderDescription());
+            ps.setInt(3, object.getTotalPrice());
+
+            ps.setDate(4, object.getOrderDate());
+
+            ps.setBoolean(5, object.isWasPaid());
+            ps.setString(6, object.getStatus());
+
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                object.setOrderID(rs.getInt("orderID"));
+            }
+
+        } catch (Exception e) {
+        }
     }
 
     @Override
@@ -62,7 +86,7 @@ public class OrderDAO extends AbstractDAO<Order>{
 
     @Override
     public Order findByID(int id) {
-                try {
+        try {
 
             String sql = "Select * from [dbo].[Orders]"
                     + "where orderID =\'" + id + "\'";
@@ -70,7 +94,7 @@ public class OrderDAO extends AbstractDAO<Order>{
             ResultSet rs = stm.executeQuery(sql);
 
             if (rs.next()) {
-                 Order order = new Order();
+                Order order = new Order();
                 order.setOrderID(rs.getInt("orderID"));
                 order.setUserID(rs.getInt("userID"));
                 order.setStaffID(rs.getInt("staffID"));
@@ -80,7 +104,7 @@ public class OrderDAO extends AbstractDAO<Order>{
                 order.setReceivedDate(rs.getDate("receivedDate"));
                 order.setWasPaid(rs.getBoolean("wasPaid"));
                 order.setStatus(rs.getString("status"));
-                
+
                 return order;
             }
 
@@ -88,13 +112,13 @@ public class OrderDAO extends AbstractDAO<Order>{
         }
         return null;
     }
-    
-    public List<Order> searchOrders(String searchTerm){
-    OrderDAO orderDAO = new OrderDAO();
-    
+
+    public List<Order> searchOrders(String searchTerm) {
+        OrderDAO orderDAO = new OrderDAO();
+
         List<Order> orderList = orderDAO.readAll();
         List<Order> searchResult = new ArrayList<>();
-        
+
         for (Order order : orderList) {
             String orderID = order.getOrderID() + "";
             String orderDate = order.getOrderDate() + "";
@@ -107,11 +131,11 @@ public class OrderDAO extends AbstractDAO<Order>{
                 searchResult.add(order);
             }
         }
-        
+
         return searchResult;
     }
-    
- public List<Order> readSomeByID(String numberOrder, int userID) {
+
+    public List<Order> readSomeByID(String numberOrder, int userID) {
         List<Order> orders = new ArrayList<>();
         try {
 
@@ -203,6 +227,7 @@ public class OrderDAO extends AbstractDAO<Order>{
         }
         return orders;
     }
+
     public int numberByUserID(int id) {
         int number = 0;
         try {
@@ -222,7 +247,7 @@ public class OrderDAO extends AbstractDAO<Order>{
     public int numberFilterByUserID(int id, String filter, String search, String orderDate, String receivedDate) {
         int number = 0;
         try {
-         String sql = "select DISTINCT o.* from Orders o join CakeInOrder cio on cio.orderID=o.orderID join Cakes c on cio.cakeID=c.cakeID\n"
+            String sql = "select DISTINCT o.* from Orders o join CakeInOrder cio on cio.orderID=o.orderID join Cakes c on cio.cakeID=c.cakeID\n"
                     + "where userID=\'" + id + "\' AND (o.orderID Like \'%" + search + "%\' OR o.staffID Like \'%" + search + "%\' OR o.orderDescription Like N\'%" + search + "%' OR c.cakeName Like N\'%" + search + "%\')";
             switch (filter) {
                 case "wasPaid": {
@@ -253,8 +278,8 @@ public class OrderDAO extends AbstractDAO<Order>{
             }
             if (!receivedDate.equals("")) {
                 sql += "AND receivedDate=\'" + receivedDate + "\'";
-            } 
-            
+            }
+
             Statement stm = con.createStatement();
             ResultSet rs = stm.executeQuery(sql);
             while (rs.next()) {
@@ -265,21 +290,22 @@ public class OrderDAO extends AbstractDAO<Order>{
         }
         return number;
     }
-    
+
     public void acceptOrder(int orderID, int staffID) {
-    try {
-        String sql = "UPDATE [dbo].[Orders] SET status = 'Delivering', staffID = " + staffID + " WHERE orderID = " + orderID;
+        try {
+            String sql = "UPDATE [dbo].[Orders] SET status = 'Delivering', staffID = " + staffID + " WHERE orderID = " + orderID;
 
-        Statement stm = con.createStatement();
-        int rowsAffected = stm.executeUpdate(sql);
+            Statement stm = con.createStatement();
+            int rowsAffected = stm.executeUpdate(sql);
 
-        if (rowsAffected > 0) {
-            System.out.println("Đơn hàng đã được chấp nhận và đang được giao hàng.");
-        } else {
-            System.out.println("Không tìm thấy đơn hàng hoặc có lỗi xảy ra khi cập nhật thông tin.");
+            if (rowsAffected > 0) {
+                System.out.println("Đơn hàng đã được chấp nhận và đang được giao hàng.");
+            } else {
+                System.out.println("Không tìm thấy đơn hàng hoặc có lỗi xảy ra khi cập nhật thông tin.");
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
         }
-    } catch (SQLException ex) {
-        ex.printStackTrace();
     }
-}
+
 }
