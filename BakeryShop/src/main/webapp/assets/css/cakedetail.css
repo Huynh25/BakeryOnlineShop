@@ -94,28 +94,28 @@ body {
 #header .dropdown {
     padding: 0 !important;
 }
-
 #header #dropdown-container {
     display: flex;
     justify-content: center;
     align-items: center;
 }
-
 #header #dropdown-management {
     font-size: 20px;
     text-decoration: none;
     color: var(--black);
     padding: 0;
 }
-
 #header #dropdown-management-list {
     background-color: var(--white);
     border: 1px solid var(--black);
+    top: 8px !important;
 }
-
+#header .dropdown-item {
+    padding: 8px 20px;
+}
 #header .dropdown-item:hover {
-    background-color: var(--pale-brown) !important;
-    color: var(--white) !important;
+    background-color: var(--red);
+    color: var(--white);
 }
 #header #navbar-icon {
     width: 300px;

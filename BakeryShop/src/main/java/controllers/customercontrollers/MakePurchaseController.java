@@ -123,7 +123,7 @@ public class MakePurchaseController extends HttpServlet {
         }
 
         session.removeAttribute("cart");
-        response.sendRedirect("catalog");
+        response.sendRedirect("order-history");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

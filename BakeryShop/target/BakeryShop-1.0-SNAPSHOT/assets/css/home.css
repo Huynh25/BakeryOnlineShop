@@ -106,10 +106,14 @@ body {
 #header #dropdown-management-list {
     background-color: var(--white);
     border: 1px solid var(--black);
+    top: 8px !important;
+}
+#header .dropdown-item {
+    padding: 8px 20px;
 }
 #header .dropdown-item:hover {
-    background-color: var(--pale-brown) !important;
-    color: var(--white) !important;
+    background-color: var(--red);
+    color: var(--white);
 }
 #header #navbar-icon {
     width: 300px;
@@ -255,104 +259,104 @@ body {
 
 /* card list */
 .card-list {
-  padding-bottom: 20px;
-  padding-top: 20px;
+    padding-bottom: 20px;
+    padding-top: 20px;
 }
 .card-list .card-item {
-  border: var(--black) 2px solid;
-  border-radius: 20px;
-  padding-bottom: 20px;
-  margin-bottom: 60px;
-  height: 460px;
-  width: 356px;
-  display: flex;
-  justify-content: center;
-  align-items: start;
-  /* For cake card */
-  padding-left: 0;
-  padding-right: 0;
+    border: var(--black) 2px solid;
+    border-radius: 20px;
+    padding-bottom: 20px;
+    margin-bottom: 60px;
+    height: 460px;
+    width: 356px;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    /* For cake card */
+    padding-left: 0;
+    padding-right: 0;
 }
 .card-list .card-item .img {
-  display: flex;
-  justify-content: center;
-  padding: 0;
+    display: flex;
+    justify-content: center;
+    padding: 0;
 }
 .card-list .card-item .img img {
-  width: 100%;
-  height: 240px;
-  /* For cake card */
-  border-radius: 20px 20px 0 0;
-  border-bottom: var(--black) 2px solid;
+    width: 100%;
+    height: 240px;
+    /* For cake card */
+    border-radius: 20px 20px 0 0;
+    border-bottom: var(--black) 2px solid;
 }
 .card-list .card-item .content {
-  width: 295px;
-  height: 186px;
-  padding: 0;
-  padding-top: 20px;
-  display: flex;
-  flex-wrap: wrap;
+    width: 295px;
+    height: 186px;
+    padding: 0;
+    padding-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
 }
 .card-list .card-item .content .title h3 {
-  color: var(--black);
-  font-weight: 600;
-  font-size: 20px;
+    color: var(--black);
+    font-weight: 600;
+    font-size: 20px;
 }
 .card-list .card-item .content .des {
-  color: var(--pale-brown);
+    color: var(--pale-brown);
 }
 .card-list .card-item .content .link {
-  display: flex;
-  align-items: end;
+    display: flex;
+    align-items: end;
 }
 .card-list .card-item .content .link a {
-  /* For cake card */
-  color: white;
-  text-decoration: none;
-  background-color: var(--dark-pink);
-  padding: 10px 20px;
-  border-radius: 20px;
-  border: transparent 1px solid;
+    /* For cake card */
+    color: white;
+    text-decoration: none;
+    background-color: var(--dark-pink);
+    padding: 10px 20px;
+    border-radius: 20px;
+    border: transparent 1px solid;
 }
 .card-list .card-item .content .link a:hover {
-  /* For cake card */
-  border: var(--black) 1px solid;
-  transition: ease-in-out 0.1s;
-  background-color: white;
-  color: var(--dark-pink);
+    /* For cake card */
+    border: var(--black) 1px solid;
+    transition: ease-in-out 0.1s;
+    background-color: white;
+    color: var(--dark-pink);
 }
 
 @media (min-width: 768px) {
-  .card-list .card-items {
-    margin-left: -80px;
-  }
-  .card-list .card-item {
-    margin-left: 60px;
-  }
+    .card-list .card-items {
+        margin-left: -80px;
+    }
+    .card-list .card-item {
+        margin-left: 60px;
+    }
 }
 @media (min-width: 992px) {
-  .card-list .card-items {
-    margin-left: -60px;
-  }
+    .card-list .card-items {
+        margin-left: -60px;
+    }
 }
 @media (min-width: 1200px) {
-  .card-list {
-    padding-left: 60px;
-  }
-  .card-list .card-items {
-    margin-left: -128px;
-  }
+    .card-list {
+        padding-left: 60px;
+    }
+    .card-list .card-items {
+        margin-left: -128px;
+    }
 }
 @media (min-width: 1400px) {
-  .card-list {
-    padding-left: 0px;
-    padding-right: 0px;
-  }
-  .card-list .card-items {
-    margin-left: -94px;
-  }
-  .card-list .card-items .card-item {
-       margin-left: 110px;
-  }
+    .card-list {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+    .card-list .card-items {
+        margin-left: -94px;
+    }
+    .card-list .card-items .card-item {
+        margin-left: 110px;
+    }
 }
 
 /*# sourceMappingURL=home.css.map */

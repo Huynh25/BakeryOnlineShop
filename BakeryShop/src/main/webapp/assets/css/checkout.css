@@ -41,89 +41,93 @@ body {
 
 /* Header */
 #header {
-  width: 100%;
-  min-height: 50px;
-  display: flex;
-  justify-content: space-evenly;
-  background-color: var(--white);
-  align-items: center;
-  border-bottom: 1px solid var(--black);
-  margin: 0;
+    width: 100%;
+    min-height: 50px;
+    display: flex;
+    justify-content: space-evenly;
+    background-color: var(--white);
+    align-items: center;
+    border-bottom: 1px solid var(--black);
+    margin: 0;
 }
 #header #catalog-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 #header #catalog-link {
-  font-size: 20px;
-  text-decoration: none;
-  color: var(--black);
+    font-size: 20px;
+    text-decoration: none;
+    color: var(--black);
 }
 #header #search-cake {
-  position: relative;
+    position: relative;
 }
 #header #search-cake-input {
-  border-radius: 20px;
-  border: 1px solid var(--pale-brown);
-  text-indent: 10px;
-  background-color: var(--white);
-  width: 80%;
-  height: 35px;
+    border-radius: 20px;
+    border: 1px solid var(--pale-brown);
+    text-indent: 10px;
+    background-color: var(--white);
+    width: 80%;
+    height: 35px;
 }
 #header #search-cake-btn {
-  color: var(--black);
-  position: absolute;
-  top: 8px;
-  right: 23%;
-  cursor: pointer;
-  border: none;
-  background-color: var(--white);
+    color: var(--black);
+    position: absolute;
+    top: 8px;
+    right: 23%;
+    cursor: pointer;
+    border: none;
+    background-color: var(--white);
 }
 #header #bakery-name {
-  font-family: "Unna", serif;
-  font-size: 40px;
-  color: var(--black);
-  margin: 0;
+    font-family: "Unna", serif;
+    font-size: 40px;
+    color: var(--black);
+    margin: 0;
 }
 #header #backhome-link {
-  text-decoration: none;
+    text-decoration: none;
 }
 #header .dropdown {
-  padding: 0 !important;
+    padding: 0 !important;
 }
 #header #dropdown-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 #header #dropdown-management {
-  font-size: 20px;
-  text-decoration: none;
-  color: var(--black);
-  padding: 0;
+    font-size: 20px;
+    text-decoration: none;
+    color: var(--black);
+    padding: 0;
 }
 #header #dropdown-management-list {
-  background-color: var(--white);
-  border: 1px solid var(--black);
+    background-color: var(--white);
+    border: 1px solid var(--black);
+    top: 8px !important;
+}
+#header .dropdown-item {
+    padding: 8px 20px;
 }
 #header .dropdown-item:hover {
-  background-color: var(--pale-brown) !important;
-  color: var(--white) !important;
+    background-color: var(--red);
+    color: var(--white);
 }
 #header #navbar-icon {
-  width: 300px;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  list-style: none;
-  justify-content: space-around;
+    width: 300px;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    list-style: none;
+    justify-content: space-around;
 }
 #header #navbar-icon li {
-  font-size: 25px;
+    font-size: 25px;
 }
 #header #navbar-icon li a {
-  color: var(--black);
+    color: var(--black);
 }
 
 /* Page info */
