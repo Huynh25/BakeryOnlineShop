@@ -30,7 +30,7 @@
             <c:choose>
                 <c:when test="${'customer'.equalsIgnoreCase(role)}">
                     <li>
-                        <a href="editProfile">
+                        <a href="changePassword">
                             <i class="bi bi-person-circle">
                             </i>
                         </a>

@@ -3,7 +3,7 @@ $("input[type=password]").keyup(function(){
 	var lcase = new RegExp("[a-z]+");
 	var num = new RegExp("[0-9]+");
 	
-	if($("#password1").val().length >= 8){
+	if($("#newPassword").val().length >= 8){
 		$("#8char").removeClass("glyphicon-remove");
 		$("#8char").addClass("glyphicon-ok");
 		$("#8char").css("color","#00A41E");
@@ -13,7 +13,7 @@ $("input[type=password]").keyup(function(){
 		$("#8char").css("color","#FF0004");
 	}
 	
-	if(ucase.test($("#password1").val())){
+	if(ucase.test($("#newPassword").val())){
 		$("#ucase").removeClass("glyphicon-remove");
 		$("#ucase").addClass("glyphicon-ok");
 		$("#ucase").css("color","#00A41E");
@@ -23,7 +23,7 @@ $("input[type=password]").keyup(function(){
 		$("#ucase").css("color","#FF0004");
 	}
 	
-	if(lcase.test($("#password1").val())){
+	if(lcase.test($("#newPassword").val())){
 		$("#lcase").removeClass("glyphicon-remove");
 		$("#lcase").addClass("glyphicon-ok");
 		$("#lcase").css("color","#00A41E");
@@ -33,7 +33,7 @@ $("input[type=password]").keyup(function(){
 		$("#lcase").css("color","#FF0004");
 	}
 	
-	if(num.test($("#password1").val())){
+	if(num.test($("#newPassword").val())){
 		$("#num").removeClass("glyphicon-remove");
 		$("#num").addClass("glyphicon-ok");
 		$("#num").css("color","#00A41E");
@@ -43,7 +43,7 @@ $("input[type=password]").keyup(function(){
 		$("#num").css("color","#FF0004");
 	}
 	
-	if($("#password1").val() === $("#password2").val()){
+	if($("#newPassword").val() === $("#password2").val()){
 		$("#pwmatch").removeClass("glyphicon-remove");
 		$("#pwmatch").addClass("glyphicon-ok");
 		$("#pwmatch").css("color","#00A41E");
@@ -53,3 +53,7 @@ $("input[type=password]").keyup(function(){
 		$("#pwmatch").css("color","#FF0004");
 	}
 });
+
+function cancelChange() {
+    window.location.href = "/home";
+}

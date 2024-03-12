@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const password = passwordInput.value;
         const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/;
         if (!passwordRegex.test(password)) {
-            showError("Invalid password. Password must contain at least 6 characters, including uppercase, lowercase, and special characters.");
+            showError("Password must contain at least 6 characters, including uppercase, lowercase, and special characters.");
         }
     });
     password2Input.addEventListener('input', function () {

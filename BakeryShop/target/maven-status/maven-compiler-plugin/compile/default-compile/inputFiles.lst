@@ -3,6 +3,7 @@ D:\Bakery-Done\BakeryOnlineShop\BakeryShop\src\main\java\models\UserGoogleDto.ja
 D:\Bakery-Done\BakeryOnlineShop\BakeryShop\src\main\java\daos\RatingDAO.java
 D:\Bakery-Done\BakeryOnlineShop\BakeryShop\src\main\java\daos\ToppingInCakeDAO.java
 D:\Bakery-Done\BakeryOnlineShop\BakeryShop\src\main\java\models\Item.java
+D:\Bakery-Done\BakeryOnlineShop\BakeryShop\src\main\java\controllers\customercontrollers\ChangePasswordController.java
 D:\Bakery-Done\BakeryOnlineShop\BakeryShop\src\main\java\controllers\admincontrollers\StaffManagementController.java
 D:\Bakery-Done\BakeryOnlineShop\BakeryShop\src\main\java\controllers\customercontrollers\forgotpasswordController.java
 D:\Bakery-Done\BakeryOnlineShop\BakeryShop\src\main\java\models\Cake.java

@@ -10,8 +10,10 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Change Password</title>
-        <link rel="stylesheet" href="../../assets/css/changePasswor.css" />
+
         <link rel="stylesheet" href="../../assets/css/GlobalStyle.css" />
+        <link rel="stylesheet" href="../../assets/css/changePassword.css" />
+
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
@@ -28,50 +30,69 @@
             rel="stylesheet"
             href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
             />
+        <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     </head>
     <body>
         <%@include file="../homeviews/customer-header.jsp" %>
         <div class="form-edit">
-            <form action="editProfile" method="post" class="form">
+            <form action="changePassword" method="post" class="form">
+                <input type="text" name="userID" value="${customer.userID}" hidden=""/>
                 <div class= "container">
-                    <div class="form-group">
+                    <div class="form-group container">
                         <label for="current-password">Current password</label>
                         <input
                             type="password"
-                            id="password"
-                            name="password"
-                            value: ${password}
+                            id="currentpassword"
+                            name="currentpassword"
+                            value: ${currentpassword}
                             />
-                        
                         <div class="forgot-link">
                             <p class="forgotPassword">
                                 <a href="forgotpassword">Forgot Password?</a>
                             </p>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label for="email">New password</label>
-                        <input
-                            type="password"
-                            id="password"
-                            name="password"
-                            value: ${password}
-                            />
+                    <div class= "container">
+                        <div class="form-group">
+                            <label for="email">New password</label>
+                            <input
+                                type="password"
+                                id="newPassword"
+                                name="newPassword"
+                                value: ${newPassword}
+                                />
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <span id="8char" class="glyphicon glyphicon-remove" style="color:#FF0004;"></span> 8 Characters Long<br>
+                                <span id="ucase" class="glyphicon glyphicon-remove" style="color:#FF0004;"></span> One Uppercase Letter
+                            </div>
+                            <div class="col-sm-6">
+                                <span id="lcase" class="glyphicon glyphicon-remove" style="color:#FF0004;"></span> One Lowercase Letter<br>
+                                <span id="num" class="glyphicon glyphicon-remove" style="color:#FF0004;"></span> One Number
+                            </div>
+                        </div>
+                        <div class="form-group confirm">
+                            <label for="address">Confirm password</label>
+                            <input
+                                type="password"
+                                id="password2"
+                                name="password2"
+                                value: ${password2}
+                                />
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <span id="pwmatch" class="glyphicon glyphicon-remove" style="color:#FF0004;"></span> Passwords Match
+                            </div>
+                        </div>
                     </div>
                     <div class="form-group">
-                        <label for="address">Confirm password</label>
-                        <input
-                            type="password"
-                            id="password"
-                            name="password"
-                            value: ${password}
-                            />
-                    </div>
-                    <div class="form-group">
-                        <button class="cancel-btn">Cancel</button>
-                        <button class="save">Save</button>
+                        <button type="button" class="cancel-btn" onclick="cancelChange()">Cancel</button>
+                        <button type="submit" class="save">Save</button>
                     </div>
                 </div>
+                ${successMessage} ${errorMessage}
             </form>
         </div>
         <script
@@ -84,5 +105,7 @@
             integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
             crossorigin="anonymous"
         ></script>
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+        <script src="../../assets/javascript/resetpassword.js"></script>
     </body>
 </html>

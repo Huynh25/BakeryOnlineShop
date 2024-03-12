@@ -52,6 +52,7 @@ models\Staff.class
 controllers\customercontrollers\forgotpasswordController.class
 models\UserGoogleDto.class
 controllers\customercontrollers\LoginController.class
+controllers\customercontrollers\ChangePasswordController.class
 models\Customer.class
 models\ToppingInCake.class
 controllers\admincontrollers\AddToppingController.class

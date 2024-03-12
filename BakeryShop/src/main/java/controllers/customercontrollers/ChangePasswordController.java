@@ -5,6 +5,7 @@
 package controllers.customercontrollers;
 
 import daos.CustomerDAO;
+import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -12,12 +13,13 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import models.Customer;
+import models.User;
 
 /**
  *
  * @author HuynhLNCE171797
  */
-public class RegisterController extends HttpServlet {
+public class ChangePasswordController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,14 +38,15 @@ public class RegisterController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet RegisterController</title>");            
+            out.println("<title>Servlet ChangePasswordController</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet RegisterController at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet ChangePasswordController at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
     }
+
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -56,7 +59,18 @@ public class RegisterController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("views/guestview/registerView.jsp").forward(request, response);
+        HttpSession session = (HttpSession) request.getSession();
+        User user = (User) session.getAttribute("user");
+        if (user != null) {
+            String username = user.getUsername();
+            CustomerDAO customerDAO = new CustomerDAO();
+            Customer customer = customerDAO.findByUsername(username);
+            request.setAttribute("customer", customer);
+            if (customer != null) {
+                request.setAttribute("customer", customer);
+                request.getRequestDispatcher("views/customerviews/changePassword.jsp").forward(request, response);
+            }
+        }
     }
 
     /**
@@ -70,34 +84,33 @@ public class RegisterController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       response.setContentType("text/html;charset=UTF-8");
-        String username = request.getParameter("fullname");
-        String password = request.getParameter("password");
-        String fullname = request.getParameter("fullname");
-        String email = request.getParameter("email");
-        String phoneNumber = request.getParameter("phoneNumber");
-        String address = request.getParameter("address");
-        String googleID = request.getParameter("googleID");
-        String accessToken = request.getParameter("accessToken");
-        String userAvatar = "Image/Avatar" + request.getParameter("userAvatar");
+            HttpSession session = request.getSession();
+            User user = (User) session.getAttribute("user");
+            if (user != null) {
+                String userID = request.getParameter("userID");
+                String currentPassword = request.getParameter("currentpassword");
+                String newPassword = request.getParameter("newPassword");
+                String confirmPassword = request.getParameter("password2");
 
-        try {
-            CustomerDAO cd = new CustomerDAO();
-            Customer c = cd.findByPhone(phoneNumber);
-            if (c == null) {
-                Customer customerNew = new Customer(0, username, password, fullname, email, googleID, accessToken, userAvatar, address, phoneNumber);
-                cd.create(customerNew);
-                response.sendRedirect("login");
-                response.setContentType("application/json");
-                response.setCharacterEncoding("UTF-8");
+                CustomerDAO cusDAO = new CustomerDAO();
+                boolean passwordVerified = cusDAO.verifyPassword(Integer.parseInt(userID), currentPassword);
 
-            } else {
-                request.setAttribute("error", "Phone number " + phoneNumber + " already exists");
-                request.getRequestDispatcher("views/guestview/registerView.jsp").forward(request, response);
+                if (passwordVerified && newPassword.equals(confirmPassword)) {
+                    boolean passwordChanged = cusDAO.changePassword(Integer.parseInt(userID), newPassword);
+
+                    if (passwordChanged) {
+                        request.setAttribute("successMessage", "Password changed successfully!");
+                        request.getRequestDispatcher("views/customerviews/changePassword.jsp").forward(request, response);
+                    } else {
+                        request.setAttribute("errorMessage", "An error occurred while changing password. Please try again!");
+                        request.getRequestDispatcher("views/customerviews/changePassword.jsp").forward(request, response);
+                    }
+                } else {
+                    request.setAttribute("errorMessage", "Current password is incorrect or new passwords do not match.");
+                    request.getRequestDispatcher("views/customerviews/changePassword.jsp").forward(request, response);
+                }
             }
-        } catch (Exception e) {
         }
-    }
 
     /**
      * Returns a short description of the servlet.

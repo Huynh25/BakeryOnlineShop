@@ -82,13 +82,6 @@ public class CustomerDAO extends AbstractDAO<Customer> {
         }
     }
 
-    /**
-     * hash password by MD5
-     *
-     * @param msg - guideline
-     * @param op - option to get password: 0(check valid) and 1(not check valid)
-     * @return pass after hash
-     */
     private String hashPass(String password) {
         try {
             MessageDigest md = MessageDigest.getInstance("MD5");
@@ -184,7 +177,6 @@ public class CustomerDAO extends AbstractDAO<Customer> {
 
     public Customer findByUsername(String username) {
         try {
-
             String sql = "Select * from [dbo].[Customers]"
                     + "where username =\'" + username + "\'";
             Statement stm = con.createStatement();
@@ -216,6 +208,7 @@ public class CustomerDAO extends AbstractDAO<Customer> {
                     + "SET userAvatar=?, fullname =?, email =?, address =?, phoneNumber=?\n"
                     + "WHERE userID = ?;";
             PreparedStatement ps = con.prepareStatement(sql);
+            System.out.println(c);
             ps.setString(1, c.getUserAvatar());
             ps.setString(2, c.getFullname());
             ps.setString(3, c.getEmail());
@@ -223,10 +216,39 @@ public class CustomerDAO extends AbstractDAO<Customer> {
             ps.setString(5, c.getPhoneNumber());
             ps.setInt(6, c.getUserID());
             int rowsAffected = ps.executeUpdate();
-
             return rowsAffected > 0;
         } catch (Exception e) {
             e.printStackTrace();
+        }
+        return false;
+    }
+
+    public boolean changePassword(int customerID, String newPassword) {
+        try {
+            String hashedPassword = hashPass(newPassword);
+            String sql = "UPDATE Customers SET password = ? WHERE userID = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, hashedPassword);
+            ps.setInt(2, customerID);
+            int rowsAffected = ps.executeUpdate();
+            return rowsAffected > 0;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return false;
+    }
+
+    public boolean verifyPassword(int customerID, String currentPassword) {
+        try {
+            String hashedPassword = hashPass(currentPassword);
+            String sql = "SELECT * FROM Customers WHERE userID = ? AND password = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, customerID);
+            ps.setString(2, hashedPassword);
+            ResultSet rs = ps.executeQuery();
+            return rs.next(); // Trả về true nếu tìm thấy mật khẩu, ngược lại trả về false
+        } catch (SQLException ex) {
+            ex.printStackTrace();
         }
         return false;
     }
@@ -244,49 +266,50 @@ public class CustomerDAO extends AbstractDAO<Customer> {
         System.out.println(cDAO.findByPhone("0987654321"));
         System.out.println("+_____________________+");
         System.out.println(cDAO.findByUsername("voldemort"));
+        System.out.println(cDAO.verifyPassword(1, "onepiec"));
 
-        Customer newCustomer = new Customer();
-        newCustomer.setUsername("newuser");
-        newCustomer.setPassword("newpassword");
-        newCustomer.setFullname("New User");
-        newCustomer.setEmail("newuser@example.com");
-        newCustomer.setGoogleID("newgoogleid");
-        newCustomer.setAccessToken("newaccesstoken");
-        newCustomer.setUserAvatar("avatar.jpg");
-        newCustomer.setAddress("New Address");
-        newCustomer.setPhoneNumber("0123456789");
-
-        // Thử tạo mới khách hàng bằng cách gọi phương thức create
-        cDAO.create(newCustomer);
-
-        // In ra thông tin của khách hàng sau khi tạo mới
-        System.out.println("New customer created:");
-        System.out.println(newCustomer);
-
-        int userIDToUpdate = 1; // ID của khách hàng cần cập nhật
-        Customer customerToUpdate = cDAO.findByID(userIDToUpdate);
-        System.out.println("Customer to update:");
-        System.out.println(customerToUpdate);
-        // Cập nhật thông tin của khách hàng
-        if (customerToUpdate != null) {
-            // Cập nhật các thông tin cần thay đổi
-            customerToUpdate.setFullname("Updated Full Name");
-            customerToUpdate.setEmail("updatedemail@example.com");
-            customerToUpdate.setAddress("Updated Address");
-            customerToUpdate.setPhoneNumber("0123456789");
-            // Gọi phương thức update trong CustomerDAO để cập nhật thông tin
-            boolean isUpdated = cDAO.updateProfile(customerToUpdate);
-            // Kiểm tra kết quả cập nhật
-            if (isUpdated) {
-                System.out.println("Customer information updated successfully!");
-                // In ra thông tin của khách hàng sau khi cập nhật
-                System.out.println("Updated customer:");
-                System.out.println(customerToUpdate);
-            } else {
-                System.out.println("Failed to update customer information.");
-            }
-        } else {
-            System.out.println("Customer not found. Unable to update.");
-        }
+//        Customer newCustomer = new Customer();
+//        newCustomer.setUsername("newuser");
+//        newCustomer.setPassword("newpassword");
+//        newCustomer.setFullname("New User");
+//        newCustomer.setEmail("newuser@example.com");
+//        newCustomer.setGoogleID("newgoogleid");
+//        newCustomer.setAccessToken("newaccesstoken");
+//        newCustomer.setUserAvatar("avatar.jpg");
+//        newCustomer.setAddress("New Address");
+//        newCustomer.setPhoneNumber("0123456789");
+//
+//        // Thử tạo mới khách hàng bằng cách gọi phương thức create
+//        cDAO.create(newCustomer);
+//
+//        // In ra thông tin của khách hàng sau khi tạo mới
+//        System.out.println("New customer created:");
+//        System.out.println(newCustomer);
+//
+//        int userIDToUpdate = 1; // ID của khách hàng cần cập nhật
+//        Customer customerToUpdate = cDAO.findByID(userIDToUpdate);
+//        System.out.println("Customer to update:");
+//        System.out.println(customerToUpdate);
+//        // Cập nhật thông tin của khách hàng
+//        if (customerToUpdate != null) {
+//            // Cập nhật các thông tin cần thay đổi
+//            customerToUpdate.setFullname("Updated Full Name");
+//            customerToUpdate.setEmail("updatedemail@example.com");
+//            customerToUpdate.setAddress("Updated Address");
+//            customerToUpdate.setPhoneNumber("0123456789");
+//            // Gọi phương thức update trong CustomerDAO để cập nhật thông tin
+//            boolean isUpdated = cDAO.updateProfile(customerToUpdate);
+//            // Kiểm tra kết quả cập nhật
+//            if (isUpdated) {
+//                System.out.println("Customer information updated successfully!");
+//                // In ra thông tin của khách hàng sau khi cập nhật
+//                System.out.println("Updated customer:");
+//                System.out.println(customerToUpdate);
+//            } else {
+//                System.out.println("Failed to update customer information.");
+//            }
+//        } else {
+//            System.out.println("Customer not found. Unable to update.");
+//        }
     }
 }

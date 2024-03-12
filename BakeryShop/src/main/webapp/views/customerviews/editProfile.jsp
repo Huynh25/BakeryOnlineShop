@@ -34,11 +34,13 @@
         <div class="form-edit">
             <form class="form" action="editProfile" method="POST">
                 <div class="col-md-2 right-avatar file-input-wrapper ">
+                    <input type="text" name="userID" value="${customer.userID}" hidden=""/>
                     <label for="file" class="avatar-wrapper">
-                    <img src="${userAvatar}" class="avatar" alt="Avatar" />
-                    <input type="file" id="file" accept=".jpg,.png" name="avatar" required>
+                        <image src="${customer.userAvatar}" alt="Avatar" id="show-avatar" class="userAvatar"/>
+                        <input type="file" id="file" onchange="handleAvatar(event)"/>
+                        <input type="text" id="inputAvatar" name="avatar" value="${customer.userAvatar}" hidden="">
                     </label>
-                    <span id="fileLabel">Change avatar</span>
+                    <span id="fileLabel">Change avatar ${successMessage} ${errorMessage}</span>
                 </div>
                 <div class="col-md-8 container left">
                     <div class="form-group">
@@ -47,7 +49,7 @@
                             type="text"
                             id="fullname"
                             name="fullname"
-                            value="${fullname}"
+                            value="${customer.fullname}"
                             placeholder="Enter your fullname"
                             />
                     </div>
@@ -57,7 +59,7 @@
                             type="email"
                             id="email"
                             name="email"
-                            value="${email}"
+                            value="${customer.email}"
                             placeholder="Enter your email"
                             />
                     </div>
@@ -68,7 +70,7 @@
                             type="text"
                             id="address"
                             name="address"
-                            value="${address}"
+                            value="${customer.address}"
                             placeholder="Enter your address"
                             />
                     </div>
@@ -79,13 +81,13 @@
                             type="tel"
                             id="phoneNumber"
                             name="phoneNumber"
-                            value="${phoneNumber}"
+                            value="${customer.phoneNumber}"
                             placeholder="Enter your contact number"
                             />
                     </div>
                     <div class="form-group">
-                        <button class="cancel-btn" onclick="cancelEdit()">Cancel</button>
-                        <button class="save">Save</button>
+                        <button type="button" class="cancel-btn" onclick="cancelEdit()">Cancel</button>
+                        <button type="submit" class="save">Save</button>
                     </div>
                 </div>
             </form>

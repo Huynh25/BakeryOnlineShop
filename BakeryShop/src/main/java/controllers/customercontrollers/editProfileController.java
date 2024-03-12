@@ -59,17 +59,12 @@ public class editProfileController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
        HttpSession session = (HttpSession) request.getSession();
-       String currentUser = (String) session.getAttribute("username");
         User user = (User) session.getAttribute("user");
         if (user != null) {
             String username = user.getUsername();
             CustomerDAO customerDAO = new CustomerDAO();
             Customer customer = customerDAO.findByUsername(username);
-            request.setAttribute("fullname", customer.getFullname());
-            request.setAttribute("email", customer.getEmail());
-            request.setAttribute("userAvatar", customer.getUserAvatar());
-            request.setAttribute("address", customer.getAddress());
-            request.setAttribute("phoneNumber", customer.getPhoneNumber());
+            request.setAttribute("customer", customer);
             if (customer != null) {
                 request.setAttribute("customer", customer);
                 request.getRequestDispatcher("views/customerviews/editProfile.jsp").forward(request, response);
@@ -91,19 +86,20 @@ public class editProfileController extends HttpServlet {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
         if (user != null) {
-            String userAvatar = request.getParameter("userAvatar");
-            String fullname = request.getParameter("fullName");
+            String userID=request.getParameter("userID");
+            String userAvatar = request.getParameter("avatar");
+            String fullname = request.getParameter("fullname");
             String email = request.getParameter("email");
             String address = request.getParameter("address");
             String phoneNumber = request.getParameter("phoneNumber");
 
             Customer updatedCustomer = new Customer();
-            updatedCustomer.setEmail(userAvatar);
+            updatedCustomer.setUserID(Integer.parseInt(userID));
+            updatedCustomer.setUserAvatar(userAvatar);
             updatedCustomer.setFullname(fullname);
             updatedCustomer.setEmail(email);
-            updatedCustomer.setEmail(address);
-            updatedCustomer.setEmail(phoneNumber);
-
+            updatedCustomer.setAddress(address);
+            updatedCustomer.setPhoneNumber(phoneNumber);
             CustomerDAO cusDAO = new CustomerDAO();
             boolean isProfileUpdated = cusDAO.updateProfile(updatedCustomer);
             if (isProfileUpdated) {
