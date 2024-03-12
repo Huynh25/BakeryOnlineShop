@@ -64,6 +64,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
 .right-avatar {
   float: right;
   width: 50%;
+  background: none;
 }
 
 .form-edit {
@@ -91,7 +92,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     position: relative;
     display: inline-block;
     overflow: hidden;
-    background-color: #f1f1f1;
+    background: none;
     color: #555555;
     border-radius: 4px;
     padding: 10px 20px;
@@ -100,8 +101,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
 
 .file-input-wrapper input[type="file"] {
     position: absolute;
-    left: 0;
-    top: 0;
     opacity: 0;
     cursor: pointer;
 }
@@ -117,4 +116,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
 
 .file-input-wrapper:active {
     background-color: #bfbfbf;
+}
+.right-avatar span{
+    padding-left: 20px;
+    font-weight: bold;
 }

@@ -24,7 +24,7 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     </head>
     <body>
-        <%@include file="../homeviews/staff-header.jsp" %>
+        <%@include file="../homeviews/Header.jsp" %>
         <div id="content">
             <div id="url">
                 <a id="home-link" href="#">Home</a>

@@ -1,9 +1,3 @@
-<%-- 
-    Document   : loginView
-    Created on : Feb 25, 2024, 9:01:38 PM
-    Author     : HuynhLNCE171797
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -33,7 +27,6 @@
             />
         <link rel="stylesheet" href="../../assets/css/login.css" />
         <link rel="stylesheet" href="../../assets/css/GlobalStyle.css" />
-        <link rel="stylesheet" href="../../assets/css/style.css" />
         <title>Login</title>
     </head>
     <body style="overflow: hidden">
@@ -66,7 +59,7 @@
                         </div>
                         <div class="forgot-link">
                             <p class="forgotPassword">
-                                <a href="forgotpassword">Forgot Password?</a>
+                                <a href="../guestview/forgotpassword.jsp">Forgot Password?</a>
                             </p>
                         </div>
                     </div>
@@ -75,13 +68,12 @@
                         <button class="button" type="submit">LOGIN</button>
                     </div>
                 </form>
-
                 <div class="form-group khac">
-
                     <p class="or">_________________<span>Or</span>_________________</p>
                     <div class="google">
                         <img src="../../Image/Login/google.jpg" alt="google" />
-                        <a href="#"><p>Continue with Google</p></a>
+                        <a href="https://accounts.google.com/o/oauth2/auth?scope=profile&redirect_uri=http://localhost:8080/BakeryShop/LoginGoogle&response_type=code&client_id=419792958495-cne67vhk6lh27eg32he4rltd8440sv7d.apps.googleusercontent.com&approval_prompt=force">
+                            <p>Continue with Google</p></a>
                     </div>
                     <div class="register">
                         <p>Need an account ?<a href="register"> SIGN-UP</a></p>

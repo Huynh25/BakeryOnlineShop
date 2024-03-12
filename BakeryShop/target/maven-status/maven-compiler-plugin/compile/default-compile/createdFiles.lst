@@ -1,14 +1,20 @@
+controllers\admincontrollers\StatisticToppingController.class
 controllers\admincontrollers\RatingController.class
 daos\ToppingDAO.class
+controllers\admincontrollers\StatisticCakeController.class
 models\GoWith.class
 models\Cart.class
 daos\ToppingInCakeDAO.class
 daos\RatingDAO.class
+controllers\admincontrollers\StatisticOrderController.class
 controllers\customercontrollers\CatalogController.class
 models\Topping.class
 controllers\admincontrollers\ProductHistoryController.class
+controllers\admincontrollers\AddCakeController.class
 controllers\admincontrollers\StatisticStaffController.class
+controllers\admincontrollers\ToppingDetailManagementController.class
 models\ProductHistory.class
+models\Constants.class
 controllers\customercontrollers\CategoryController.class
 daos\OrderDAO.class
 models\CakeInOrder.class
@@ -23,6 +29,7 @@ daos\AbstractDAO.class
 daos\StaffDAO.class
 daos\CakeDAO.class
 controllers\customercontrollers\CakeDetailController.class
+controllers\customercontrollers\editProfileController.class
 controllers\customercontrollers\AddCakeToCartController.class
 daos\GoWithDAO.class
 controllers\customercontrollers\OrderHistoryController.class
@@ -31,6 +38,7 @@ controllers\customercontrollers\RegisterController.class
 models\User.class
 controllers\admincontrollers\OrderDetailManagementController.class
 controllers\admincontrollers\AcceptOrderController.class
+controllers\admincontrollers\CakeDetailManagementController.class
 models\Rating.class
 controllers\admincontrollers\ToppingManagementController.class
 daos\UserDAO.class
@@ -42,7 +50,10 @@ models\Cake.class
 models\Order.class
 models\Staff.class
 controllers\customercontrollers\forgotpasswordController.class
+models\UserGoogleDto.class
 controllers\customercontrollers\LoginController.class
 models\Customer.class
 models\ToppingInCake.class
+controllers\admincontrollers\AddToppingController.class
+controllers\admincontrollers\StatisticProductHistoryController.class
 controllers\admincontrollers\UnconfirmedOrdersController.class

@@ -15,7 +15,7 @@ import models.Customer;
 
 /**
  *
- * @author acer
+ * @author HuynhLNCE171797
  */
 public class RegisterController extends HttpServlet {
 
@@ -70,27 +70,31 @@ public class RegisterController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
+       response.setContentType("text/html;charset=UTF-8");
         String username = request.getParameter("fullname");
         String password = request.getParameter("password");
         String fullname = request.getParameter("fullname");
         String email = request.getParameter("email");
-        String phoneNumer = request.getParameter("phoneNumer");
+        String phoneNumber = request.getParameter("phoneNumber");
         String address = request.getParameter("address");
         String googleID = request.getParameter("googleID");
         String accessToken = request.getParameter("accessToken");
         String userAvatar = "Image/Avatar" + request.getParameter("userAvatar");
+
         try {
             CustomerDAO cd = new CustomerDAO();
-            Customer c = cd.findByPhone(phoneNumer);
-            if (c != null) {
-                request.setAttribute("error", phoneNumer + " already exists");
-                request.getRequestDispatcher("views/guestview/registerView.jsp").forward(request, response);
-            } else {
-                cd.create(new Customer(0, username, password, fullname, email, googleID, accessToken, userAvatar, address, phoneNumer));
-                response.sendRedirect("views/guestview/OTPview.jsp");
+            Customer c = cd.findByPhone(phoneNumber);
+            if (c == null) {
+//                String hashedPassword = hashPass(password);
+                Customer customerNew = new Customer(0, username, password, fullname, email, googleID, accessToken, userAvatar, address, phoneNumber);
+                cd.create(customerNew);
+                response.sendRedirect("login");
                 response.setContentType("application/json");
                 response.setCharacterEncoding("UTF-8");
+
+            } else {
+                request.setAttribute("error", "Phone number " + phoneNumber + " already exists");
+                request.getRequestDispatcher("views/guestview/registerView.jsp").forward(request, response);
             }
         } catch (Exception e) {
         }

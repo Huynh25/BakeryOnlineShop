@@ -1,7 +1,7 @@
 <%-- 
     Document   : editProfile
     Created on : Feb 23, 2024, 10:52:25 AM
-    Author     : acer
+    Author     : HuynhLNCE171797
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -32,56 +32,64 @@
     <body>
         <%@include file="../homeviews/customer-header.jsp" %>
         <div class="form-edit">
-      <form class="form">
-        <div class="col-md-2 right-avatar file-input-wrapper ">
-            <img class="avatar" src="../../Image/Avatar/batman.jpg" alt="Avatar" />
-             <input type="file" id="file" accept=".jpg,.png" name="avatar" required>
-            <span id="fileLabel">Change avatar</span>
+            <form class="form" action="editProfile" method="POST">
+                <div class="col-md-2 right-avatar file-input-wrapper ">
+                    <label for="file" class="avatar-wrapper">
+                    <img src="${userAvatar}" class="avatar" alt="Avatar" />
+                    <input type="file" id="file" accept=".jpg,.png" name="avatar" required>
+                    </label>
+                    <span id="fileLabel">Change avatar</span>
+                </div>
+                <div class="col-md-8 container left">
+                    <div class="form-group">
+                        <label for="fullname">Fullname</label>
+                        <input
+                            type="text"
+                            id="fullname"
+                            name="fullname"
+                            value="${fullname}"
+                            placeholder="Enter your fullname"
+                            />
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            value="${email}"
+                            placeholder="Enter your email"
+                            />
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Address</label>
+                        <input
+
+                            type="text"
+                            id="address"
+                            name="address"
+                            value="${address}"
+                            placeholder="Enter your address"
+                            />
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Contact number</label>
+                        <input
+
+                            type="tel"
+                            id="phoneNumber"
+                            name="phoneNumber"
+                            value="${phoneNumber}"
+                            placeholder="Enter your contact number"
+                            />
+                    </div>
+                    <div class="form-group">
+                        <button class="cancel-btn" onclick="cancelEdit()">Cancel</button>
+                        <button class="save">Save</button>
+                    </div>
+                </div>
+            </form>
         </div>
-        <div class="col-md-8 container left">
-          <div class="form-group">
-            <label for="fullname">Fullname</label>
-            <input
-              type="text"
-              id="fullname"
-              name="fullname"
-              placeholder="Enter your fullname"
-            />
-          </div>
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              placeholder="Enter your email"
-            />
-          </div>
-          <div class="form-group">
-            <label for="address">Address</label>
-            <input
-              type="text"
-              id="address"
-              name="address"
-              placeholder="Enter your address"
-            />
-          </div>
-          <div class="form-group">
-            <label for="phone">Contact number</label>
-            <input
-              type="tel"
-              id="phone"
-              name="phone"
-              placeholder="Enter your contact number"
-            />
-          </div>
-          <div class="form-group">
-            <button class="cancel-btn">Cancel</button>
-            <button class="save">Save</button>
-          </div>
-        </div>
-      </form>
-    </div>
         <script
             src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
             integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
@@ -92,5 +100,6 @@
             integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
             crossorigin="anonymous"
         ></script>
+        <script src="../../assets/javascript/editProfile.js"></script>
     </body>
 </html>

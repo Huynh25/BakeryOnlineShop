@@ -15,6 +15,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     text-decoration: none;
     font-family: "Unna";
 }
+
+
 a {
     text-decoration: none !important;
 }
@@ -23,13 +25,13 @@ body {
 }
 .content-center {
     position: absolute;
-    top: 50%;
+    top: 55%;
     left: 50%;
     transform: translate(-50%, -45%);
     background: white;
     border-radius: 20px;
     width: 1050px;
-    height: 650px;
+    height: 700px;
     background-color: rgb(164, 47, 45);
 }
 .left {
@@ -48,7 +50,7 @@ body {
     float: right;
     width: 65%;
     background: #ffffff;
-    height: 650px;
+    height: 700px;
     border-radius: 20px;
 }
 .right h2 {
@@ -58,17 +60,14 @@ body {
     color: rgb(206, 83, 81);
 }
 .form-group {
-    text-align: center;
     margin-bottom: 0rem;
-}
-.box {
-    padding-top: 20px;
+    text-align: center;
 }
 .button {
     margin: 30px;
     padding: 5px;
     background: rgb(206, 83, 81);
-    width: 500px;
+    width: 400px;
     color: #fff;
     border-radius: 12.9622px;
     font-family: "Unna";
@@ -79,10 +78,10 @@ body {
     border: none;
     font-size: 20px;
 }
-.login {
-    font-family: "Unna";
-    font-weight: normal;
-    text-align: center;
+login {
+    font-family: "Inter", sans-serif;
+    color: var(--black);
+    box-sizing: border-box;
 }
 .login a {
     color: rgb(221, 26, 26);
@@ -97,16 +96,6 @@ body {
     display: flex;
     padding-left: 240px;
 }
-.google img {
-    width: 20px;
-    height: 20px;
-    margin-right: 20px;
-}
-.google p {
-    text-decoration: none;
-    font-family: "unna";
-    color: rgb(27, 26, 26);
-}
 .form-group input[type="text"],
 .form-group input[type="email"],
 .form-group input[type="number"],
@@ -114,16 +103,7 @@ body {
     padding: 4px;
     border-radius: 5px;
     border: 1px solid #4c4c4c;
-}
-
-.form-group input[type="text"],
-.form-group input[type="email"],
-.form-group input[type="number"],
-.form-group input[type="address"] {
     width: 500px;
-}
-.form-group input[type="password"] {
-    width: 206px;
 }
 
 .form-group input::-webkit-inner-spin-button,
@@ -134,7 +114,7 @@ body {
     position: absolute;
     width: 200px;
     height: 200px;
-    transform: translate(-43.6%, -14.4%) scaleX(-1) rotate(-70deg);
+    transform: translate(140.4%, -180.4%) scaleX(-1) rotate(-70deg);
     clip-path: polygon(0 0, 100% 0, 90% 42%, 0% 75%);
 }
 .cake-1 {
@@ -147,11 +127,6 @@ body {
     height: 180px;
     transform: translate(60%, -135%) rotate(-25deg);
 }
-.password-form {
-    display: flex;
-    padding-left: 90px;
-}
-
 .cake-3 {
     width: 185px;
     height: 190px;
@@ -160,20 +135,13 @@ body {
 .cake-4 {
     width: 185px;
     height: 180px;
-    transform: translate(30px, -475px);
+    transform: translate(-135px, -290px);
 }
 .title {
-    padding-right: 415px;
+    text-align: left;
+    padding-left: 100px;
 }
-.mailBox .title {
-    padding-right: 440px;
-}
-.title-phone {
-padding-right: 360px;
-}
-.title-password {
-    padding-right: 120px;
-}
+
 .overall-error{
     text-align: center;
     position: absolute;
@@ -186,4 +154,22 @@ padding-right: 360px;
 .error{
     text-align: center;
     position: absolute;
+}
+#registerForm{
+    margin-top: 30px;
+}
+.invalid-feedback{
+    text-align: left;
+}
+
+#accountValid{
+    text-align: center;
+}
+.form-control{
+   margin-left: 90px;
+   margin-bottom: 10px;
+}
+.invalid-feedback{
+    text-align: right;
+    padding-right: 90px;
 }
