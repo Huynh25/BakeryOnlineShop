@@ -109,6 +109,7 @@
     display: flex;
     list-style: none;
     justify-content: space-around;
+    align-items: center;
 }
 #content{
     width: 100%;

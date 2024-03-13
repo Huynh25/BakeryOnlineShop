@@ -122,6 +122,7 @@ body {
     display: flex;
     list-style: none;
     justify-content: space-around;
+    align-items: center;
 }
 #header #navbar-icon li {
     font-size: 25px;

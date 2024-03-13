@@ -1,3 +1,4 @@
+models\Config.class
 controllers\admincontrollers\StatisticToppingController.class
 controllers\admincontrollers\RatingController.class
 daos\ToppingDAO.class
@@ -53,6 +54,7 @@ controllers\customercontrollers\forgotpasswordController.class
 models\UserGoogleDto.class
 controllers\customercontrollers\LoginController.class
 controllers\customercontrollers\ChangePasswordController.class
+controllers\customercontrollers\MakePurchaseByEWallet.class
 models\Customer.class
 models\ToppingInCake.class
 controllers\admincontrollers\AddToppingController.class

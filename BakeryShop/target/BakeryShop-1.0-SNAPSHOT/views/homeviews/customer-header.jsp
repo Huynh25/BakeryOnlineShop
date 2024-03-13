@@ -29,11 +29,17 @@
 
             <c:choose>
                 <c:when test="${'customer'.equalsIgnoreCase(role)}">
-                    <li>
-                        <a href="changePassword">
-                            <i class="bi bi-person-circle">
+                    <li class="nav-item dropdown" id="dropdown-container">
+                        <a class="nav-link dropdown-toggle" id="dropdown-management" href="#" role="button"
+                           data-toggle="dropdown" aria-expanded="false">
+                            <i class="bi bi-person-circle h4">
                             </i>
                         </a>
+                        <div class="dropdown-menu" id="dropdown-management-list">
+                            <a class="dropdown-item" href="editProfile">Edit profile</a>
+                            <a class="dropdown-item" href="changePassword">Change password</a>
+                            <a class="dropdown-item" href="logout">Log out</a>
+                        </div>
                     </li>
                 </c:when>
                 <c:otherwise>

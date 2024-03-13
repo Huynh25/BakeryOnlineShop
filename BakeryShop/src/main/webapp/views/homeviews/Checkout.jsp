@@ -4,7 +4,7 @@
     Author     : Tran Gia Huy CE170732
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page language="java" contentType="text/html" pageEncoding="UTF-8"%>
 <%@ page import="java.lang.Math" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -74,7 +74,7 @@
                         </div>
                             <div class="checkout-part description-info row justify-content-between">
                             <div class="col-sm-12 title">
-                                <h3>Shipping information</h3>
+                                <h3>Order description</h3>
                             </div>
                             <div class="col-sm-12 input">
                                 <textarea form="make-purchase-form" name="description" id="description" cols="30" rows="10"

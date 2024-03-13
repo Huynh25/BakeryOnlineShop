@@ -124,6 +124,14 @@
         <servlet-name>ChangePasswordController</servlet-name>
         <servlet-class>controllers.customercontrollers.ChangePasswordController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>EditCartController</servlet-name>
+        <servlet-class>controllers.customercontrollers.EditCartController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>LogOutController</servlet-name>
+        <servlet-class>controllers.customercontrollers.LogOutController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RatingController</servlet-name>
         <url-pattern>/rating-management</url-pattern>
@@ -255,6 +263,14 @@
     <servlet-mapping>
         <servlet-name>ChangePasswordController</servlet-name>
         <url-pattern>/changePassword</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditCartController</servlet-name>
+        <url-pattern>/editcart</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LogOutController</servlet-name>
+        <url-pattern>/logout</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
