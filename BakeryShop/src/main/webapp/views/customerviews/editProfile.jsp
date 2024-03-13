@@ -30,7 +30,7 @@
             />
     </head>
     <body>
-        <%@include file="../homeviews/customer-header.jsp" %>
+        <%@include file="../homeviews/Header.jsp" %>
         <div class="form-edit">
             <form class="form" action="editProfile" method="POST">
                 <div class="col-md-2 right-avatar file-input-wrapper ">

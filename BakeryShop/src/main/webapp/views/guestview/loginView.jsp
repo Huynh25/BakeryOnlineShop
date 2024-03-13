@@ -30,7 +30,7 @@
         <title>Login</title>
     </head>
     <body style="overflow: hidden">
-        <%@include file="../homeviews/customer-header.jsp" %>
+        <%@include file="../homeviews/Header.jsp" %>
         <div class="content-center">
             <div class="left">
                 <h1>Indulge in the perfection of delightful cakes!</h1>

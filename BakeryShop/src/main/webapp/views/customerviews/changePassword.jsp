@@ -33,7 +33,7 @@
         <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     </head>
     <body>
-        <%@include file="../homeviews/customer-header.jsp" %>
+        <%@include file="../homeviews/Header.jsp" %>
         <div class="form-edit">
             <form action="changePassword" method="post" class="form">
                 <input type="text" name="userID" value="${customer.userID}" hidden=""/>

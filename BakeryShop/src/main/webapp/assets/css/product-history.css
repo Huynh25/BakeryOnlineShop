@@ -170,3 +170,19 @@ Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/css.css to edit this t
 #back-page-btn ,#next-page-btn{
     cursor: pointer;
 }
+#statistic-link-wrapper{
+    display: flex;
+    justify-content: right;
+    margin-right: 75px;
+}
+#statistic-link{
+    text-decoration: none;
+    color: var(--black);
+    border: 2px solid var(--black);
+    padding: 3px 3px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+#statistic-link:hover{
+    transform: scale(1.1); 
+}

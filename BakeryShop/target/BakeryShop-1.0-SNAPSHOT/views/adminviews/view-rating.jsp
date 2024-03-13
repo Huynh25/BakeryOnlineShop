@@ -26,7 +26,7 @@
     </head>
 
     <body>
-        <%@include file="../homeviews/staff-header.jsp" %>
+        <%@include file="../homeviews/Header.jsp" %>
         <div id="content" class="row">
             <aside id="aside-left" class="col-sm-4">
                 <div id="url">

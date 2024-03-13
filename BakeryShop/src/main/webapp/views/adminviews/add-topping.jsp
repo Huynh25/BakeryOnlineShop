@@ -22,7 +22,7 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <%@include file="../homeviews/staff-header.jsp" %>
+        <%@include file="../homeviews/Header.jsp" %>
         <div class="content container-fluid">
             <div class="top-option">
                 <div class="menu-and-history row">

@@ -37,7 +37,7 @@ public class StaffDAO extends AbstractDAO<Staff> {
                 staff.setStaffAvatar(rs.getString("staffAvatar"));
                 staff.setAddress(rs.getString("address"));
                 staff.setPhoneNumber(rs.getString("phoneNumber"));
-
+                staff.setManagerID(rs.getInt("managerID"));
                 staffs.add(staff);
             }
 

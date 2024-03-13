@@ -23,7 +23,7 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <%@include file="../homeviews/staff-header.jsp" %>
+        <%@include file="../homeviews/Header.jsp" %>
         <div class="content container-fluid">
             <div class="top-option">
                 <div class="menu-and-history row">
@@ -55,8 +55,13 @@
                             </button>
                         </form>
                     </div>
-                    <div class="col-sm-6"></div>
-                    <div class="col-sm-2 d-flex align-items-center justify-content-around">
+                    <div class="col-sm-5"></div>
+                    <div class="col-sm-3 d-flex align-items-center justify-content-around">
+                        <c:if test="${sessionScope.user.role eq 'manager'}">
+                            <div id="statistic-link-wrapper">                       
+                                <a href="../../views/adminviews/topping-statistic-page.jsp" id="statistic-link">Statistics <i class="bi bi-bar-chart"></i></a>
+                            </div>
+                        </c:if>
                         <button onclick="redirectToAddToppingPage()" id="add-topping-btn" >Add Topping<i class="add-icon bi bi-plus"></i></button>
                     </div>
                     <!--                    <div class="swap-page col-sm-3 d-flex align-items-center justify-content-end">

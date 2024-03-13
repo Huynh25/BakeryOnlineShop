@@ -352,3 +352,6 @@
 #order-summarize-title{
     margin: 0 !important;
 }
+.nav-item:hover{
+     transform: scale(1.1); 
+}

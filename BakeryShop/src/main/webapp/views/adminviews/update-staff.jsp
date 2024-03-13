@@ -25,7 +25,7 @@
     </head>
 
     <body>
-        <%@include file="../homeviews/manager-header.jsp" %>
+        <%@include file="../homeviews/Header.jsp" %>
         <div id="content" class="row">
             <div id="back-btn" class="col-sm-1"><button>Back</button></div>
             <div id="avatar-container" class="col-sm-3">

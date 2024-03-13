@@ -26,12 +26,17 @@
     </head>
 
     <body>
-        <%@include file="../homeviews/manager-header.jsp" %>
+        <%@include file="../homeviews/Header.jsp" %>
         <div id="content">            
             <div id="url">
                 <a id="home-link" href="#">Home</a>
                 <i id="next-btn" class="bi bi-chevron-compact-right"></i>
                 <span id="title">Product History Management</span>
+                <c:if test="${sessionScope.user.role eq 'manager'}">
+                    <div id="statistic-link-wrapper">                       
+                        <a href="../../views/adminviews/product-history-statistic-page.jsp" id="statistic-link">Statistics <i class="bi bi-bar-chart"></i></a>
+                    </div>
+                </c:if>
             </div>
             <nav id="nav-bar-container" >
                 <div id="nav-bar" class="row">                   
@@ -55,7 +60,7 @@
                 <div id="product-content-info-wrapper">
                     <div id="product-content-info">
                         <c:set var="numberProduct" value="${numberAllPage}"></c:set>
-                        <h5 id="numberProduct">${numberProduct} Products</h5>
+                        <h5 id="numberProduct">${numberProduct} Products</h5>                      
                         <div id="pagination">
                             <div id="showCurrentPage">Page 1 of ${allPage}</div> 
                             <i id="back-page-btn" class="bi bi-chevron-left disable-icon" ></i>
@@ -65,7 +70,6 @@
                             <c:if test="${allPage!=1}">
                                 <i id="next-page-btn" class="bi bi-chevron-right" onclick="performFilter('next-page')"></i>
                             </c:if>  
-
                         </div>
                     </div>
                 </div>

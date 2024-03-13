@@ -3,6 +3,9 @@
     Created on : Mar 6, 2024, 12:34:25 PM
     Author     : Tran Nguyen Nam Thuan CE171497
 --%>
+<%@page import="models.Staff"%>
+<%@page import="daos.StaffDAO"%>
+<%@page import="models.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -19,23 +22,31 @@
             <div class="sidebar pe-4 pb-3 col-sm-3">
                 <nav class="navbar bg-secondary navbar-white">
                     <div class="d-flex align-items-center ms-4 mb-4">
+                        <%
+                            User user = (User) session.getAttribute("user");
+                            StaffDAO sd = new StaffDAO();
+                            Staff manager = (Staff) sd.findByID(user.getId());
+                            String staffAvatar = manager.getStaffAvatar();
+                            String fullname = manager.getFullname();
+                        %>
                         <div class="position-relative">
-                            <img class="rounded-circle" src="../../Image/Avatar/darthvader.jpg" alt="" style="width: 40px; height: 40px;">
+                            <img class="rounded-circle" src="../../<%= staffAvatar%>" alt="" style="width: 40px; height: 40px;">
                             <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
                         </div>
                         <div class="ms-3">
-                            <h6 class="mb-0">Jhon Doe</h6>
+                            <h6 class="mb-0"><%=fullname%></h6>
                             <span>Admin</span>
                         </div>
                     </div>
                     <div class="navbar-nav w-100">
                         <a href="../../home" class="nav-item nav-link" ><i class="bi bi-house"></i>Home</a>
-                        <a href="../../views/adminviews/order-statistic-page.jsp" class="nav-item nav-link"><i class="bi bi-bag-check-fill"></i>Order</a>
-                        <a href="../../views/adminviews/topping-statistic-page.jsp" class="nav-item nav-link"><i class="bi bi-patch-plus"></i>Topping</a>
-                        <a href="#" class="nav-item nav-link active"><i class="bi bi-cake-fill"></i>Cake</a>
-                        <a href="../../views/adminviews/rating-statistics-page.jsp" class="nav-item nav-link"><i class="bi bi-star-half"></i>Rating</a>
-                        <a href="../../views/adminviews/staff-statistic-page.jsp" class="nav-item nav-link "><i class="bi bi-file-person-fill"></i>Staff</a>
-                        <a href="../../views/adminviews/product-history-statistic-page.jsp" class="nav-item nav-link"><i class="bi bi-backpack2-fill"></i>Product History</a>                     
+                        <a href="../../views/adminviews/order-statistic-page.jsp" class="nav-item nav-link"><i class="bi bi-bag-check-fill"></i> Order</a>
+                        <a href="../../views/adminviews/topping-statistic-page.jsp" class="nav-item nav-link"><i class="bi bi-patch-plus"></i> Topping</a>
+                        <a href="#" class="nav-item nav-link active"><i class="bi bi-cake-fill"></i> Cake</a>
+                        <a href="../../views/adminviews/rating-statistics-page.jsp" class="nav-item nav-link"><i class="bi bi-star-half"></i> Rating</a>
+                        <a href="../../views/adminviews/staff-statistic-page.jsp" class="nav-item nav-link "><i class="bi bi-file-person-fill"></i> Staff</a>
+                        <a href="../../views/adminviews/product-history-statistic-page.jsp" class="nav-item nav-link"><i class="bi bi-backpack2-fill"></i> Product History</a>                                  
+                        <a href="../../CakeManagement" class="nav-item nav-link"><i class="bi bi-skip-backward-fill"></i> Back</a>
                     </div>
                 </nav>
             </div>
@@ -44,8 +55,8 @@
                     <div class="row">
                         <div class= "col-sm-12 col-xl-12" id="chart-info">
                             <div class="bg-secondary rounded h-100" id="summarize-content" >
-                                   <h4 class="mb-4 chart-title">Summarize Information</h4>  
-                                   
+                                <h4 class="mb-4 chart-title">Summarize Information</h4>  
+
                             </div>
                         </div>
                         <div class="col-sm-12 col-xl-6" id="all-chart">
@@ -69,7 +80,7 @@
 
                                         </div>
                                     </div>
-                                     <div id="page-info">
+                                    <div id="page-info">
                                         <span id="chartBar-Pagination"></span>                                       
                                         <i id="back-page-btn" class="bi bi-chevron-left disable-icon pag-icon" ></i>
                                         <i id="next-page-btn" class="bi bi-chevron-right pag-icon"></i>
@@ -99,12 +110,12 @@
 
                                         </div>
                                     </div>
-                                     <div class="dropdown" id="cakeList-dropdown">
+                                    <div class="dropdown" id="cakeList-dropdown">
                                         <button class="btn btn-secondary dropdown-toggle" id="cakelist-one-cake-option-dropdown-btn" type="button" data-toggle="dropdown" aria-expanded="false">
-                                            
+
                                         </button>
                                         <div class="dropdown-menu" id="cakelist-one-cake-option-dropdown">
-                                            
+
                                         </div>
                                     </div>
                                 </div>

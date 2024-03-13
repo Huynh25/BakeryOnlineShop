@@ -31,7 +31,7 @@
         <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     </head>
     <body>
-        <%@include file="../homeviews/customer-header.jsp" %>
+        <%@include file="../homeviews/Header.jsp" %>
         <div class="form-edit">
             <form action="resetPassword" method="post" class="form">
                 <div class= "container">
