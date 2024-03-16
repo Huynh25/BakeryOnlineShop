@@ -29,7 +29,7 @@
         <%@include file="../homeviews/Header.jsp" %>
         <div id="content">            
             <div id="url">
-                <a id="home-link" href="#">Home</a>
+                <a id="home-link" href="./home">Home</a>
                 <i id="next-btn" class="bi bi-chevron-compact-right"></i>
                 <span id="title">Product History Management</span>
                 <c:if test="${sessionScope.user.role eq 'manager'}">

@@ -30,7 +30,7 @@
         <div id="content" class="row">
             <aside id="aside-left" class="col-sm-4">
                 <div id="url">
-                    <a id="home-link" href="#">Home</a>
+                    <a id="home-link" href="./home">Home</a>
                     <i id="next-btn" class="bi bi-chevron-compact-right"></i>
                     <span id="title">Rating Management</span>
                 </div>

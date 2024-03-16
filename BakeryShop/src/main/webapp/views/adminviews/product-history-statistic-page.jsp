@@ -46,7 +46,7 @@
                         <a href="../../views/adminviews/rating-statistics-page.jsp" class="nav-item nav-link"><i class="bi bi-star-half"></i> Rating</a>
                         <a href="../../views/adminviews/staff-statistic-page.jsp" class="nav-item nav-link "><i class="bi bi-file-person-fill"></i> Staff</a>
                         <a href="#" class="nav-item nav-link active"><i class="bi bi-backpack2-fill"></i> Product History</a>                     
-                        <a href="javascript:history.back()" class="nav-item nav-link"><i class="bi bi-skip-backward-fill"></i> Back</a>
+                        <a href="../../product-history" class="nav-item nav-link"><i class="bi bi-skip-backward-fill"></i> Back</a>
                     </div>
                 </nav>
             </div>
