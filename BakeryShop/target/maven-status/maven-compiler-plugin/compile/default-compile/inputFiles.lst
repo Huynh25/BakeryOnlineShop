@@ -31,10 +31,12 @@ D:\BakeryShop\src\main\java\controllers\customercontrollers\editProfileControlle
 D:\BakeryShop\src\main\java\models\Customer.java
 D:\BakeryShop\src\main\java\controllers\admincontrollers\StatisticToppingController.java
 D:\BakeryShop\src\main\java\daos\StaffDAO.java
+D:\BakeryShop\src\main\java\filter\ManagerFilter.java
 D:\BakeryShop\src\main\java\models\User.java
 D:\BakeryShop\src\main\java\controllers\admincontrollers\CakeDetailManagementController.java
 D:\BakeryShop\src\main\java\controllers\admincontrollers\StaffManagementController.java
 D:\BakeryShop\src\main\java\controllers\admincontrollers\StatisticCakeController.java
+D:\BakeryShop\src\main\java\filter\LoginFilter.java
 D:\BakeryShop\src\main\java\controllers\admincontrollers\AddCakeController.java
 D:\BakeryShop\src\main\java\controllers\customercontrollers\forgotpasswordController.java
 D:\BakeryShop\src\main\java\models\Item.java
@@ -61,4 +63,6 @@ D:\BakeryShop\src\main\java\daos\ProductHistoryDAO.java
 D:\BakeryShop\src\main\java\controllers\customercontrollers\CategoryController.java
 D:\BakeryShop\src\main\java\daos\CustomerDAO.java
 D:\BakeryShop\src\main\java\controllers\admincontrollers\AddToppingController.java
+D:\BakeryShop\src\main\java\filter\CustomerFilter.java
 D:\BakeryShop\src\main\java\daos\RatingDAO.java
+D:\BakeryShop\src\main\java\filter\StaffFilter.java

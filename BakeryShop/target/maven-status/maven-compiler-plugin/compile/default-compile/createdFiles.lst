@@ -1,3 +1,4 @@
+controllers\customercontrollers\CategoryController$2.class
 models\Config.class
 controllers\admincontrollers\StatisticToppingController.class
 controllers\admincontrollers\RatingController.class
@@ -7,6 +8,7 @@ models\GoWith.class
 models\Cart.class
 daos\ToppingInCakeDAO.class
 daos\RatingDAO.class
+filter\ManagerFilter.class
 controllers\admincontrollers\StatisticOrderController.class
 controllers\customercontrollers\CatalogController.class
 models\Topping.class
@@ -16,6 +18,7 @@ controllers\admincontrollers\StatisticStaffController.class
 controllers\admincontrollers\ToppingDetailManagementController.class
 models\ProductHistory.class
 models\Constants.class
+controllers\customercontrollers\FilterController.class
 controllers\customercontrollers\CategoryController.class
 daos\OrderDAO.class
 models\CakeInOrder.class
@@ -33,6 +36,7 @@ controllers\customercontrollers\CakeDetailController.class
 controllers\customercontrollers\editProfileController.class
 controllers\customercontrollers\AddCakeToCartController.class
 daos\GoWithDAO.class
+filter\CustomerFilter.class
 controllers\customercontrollers\OrderHistoryController.class
 daos\ProductHistoryDAO.class
 controllers\customercontrollers\RegisterController.class
@@ -50,13 +54,17 @@ controllers\customercontrollers\EditCartController.class
 models\Cake.class
 models\Order.class
 models\Staff.class
+controllers\customercontrollers\CategoryController$1.class
 controllers\customercontrollers\forgotpasswordController.class
 models\UserGoogleDto.class
+filter\StaffFilter.class
 controllers\customercontrollers\LoginController.class
 controllers\customercontrollers\ChangePasswordController.class
 controllers\customercontrollers\MakePurchaseByEWallet.class
 models\Customer.class
 models\ToppingInCake.class
+controllers\customercontrollers\LogOutController.class
+filter\LoginFilter.class
 controllers\admincontrollers\AddToppingController.class
 controllers\admincontrollers\StatisticProductHistoryController.class
 controllers\admincontrollers\UnconfirmedOrdersController.class
