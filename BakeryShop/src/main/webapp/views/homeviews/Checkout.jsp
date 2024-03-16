@@ -43,15 +43,24 @@
                 </div>
             </div>
 
-            <<form action="make-purchase" method="post" id="make-purchase-form">
+            <form action="make-purchase" method="post" id="make-purchase-form">
             </form>
             <!-- Checkout body -->
+            <c:if test="${isPurchaseSuccess == false}">
+                <div class="container purchase-failed">
+                    <h1 class="text-danger pt-4">Order failed, please try again</h3>
+                </div>
+                <%
+                    session.removeAttribute("isPurchaseSuccess");
+                %>
+            </c:if>
+            
             <div class="checkout-body container">
                 <div class="row justify-content-between align-items-start">
                     <div class="col-sm-7 checkout-content">
                         <div class="checkout-part contact-info row justify-content-between">
                             <div class="col-sm-12 title">
-                                <h3>Contact information</h3>
+                                <h3>Contact information <a href="editProfile">Change</a></h3>
                             </div>
                             <div class="col-sm-12 input">
                                 <input form="make-purchase-form" type="text" name="fullname" id="fullname" placeholder="Enter your full name" value="${customer.fullname}">
@@ -65,7 +74,7 @@
                         </div>
                         <div class="checkout-part shipping-info row justify-content-between">
                             <div class="col-sm-12 title">
-                                <h3>Shipping information</h3>
+                                <h3>Shipping information <a href="editProfile">Change</a></h3>
                             </div>
                             <div class="col-sm-12 input">
                                 <textarea form="make-purchase-form" name="address" id="address" cols="30" rows="10"
@@ -150,6 +159,16 @@
         <%@include file="../homeviews/Cart.jsp" %>
 
         <script src="../../assets/javascript/checkout.js""></script>
+        <script
+            src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+            crossorigin="anonymous"
+        ></script>
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
+            crossorigin="anonymous"
+        ></script>
     </body>
 
 </html>

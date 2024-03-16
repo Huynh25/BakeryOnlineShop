@@ -36,7 +36,18 @@
             </div>
         </div>
         <ul id="navbar-icon" class="col-sm-6">
-            <li><a href=""><i class="bi bi-person-circle"></i></a></li>
+            <li class="nav-item dropdown" id="dropdown-container">
+                <a class="nav-link dropdown-toggle" id="dropdown-management" href="#" role="button"
+                   data-toggle="dropdown" aria-expanded="false">
+                    <i class="bi bi-person-circle h4">
+                    </i>
+                </a>
+                <div class="dropdown-menu" id="dropdown-management-list">
+                    <a class="dropdown-item" href="editProfile">Edit profile</a>
+                    <a class="dropdown-item" href="changePassword">Change password</a>
+                    <a class="dropdown-item" href="logout">Log out</a>
+                </div>
+            </li>
         </ul>
     </div>
 </div>

@@ -142,6 +142,15 @@ body {
 }
 
 /* Checkout body */
+.purchase-failed {
+    font-family: "Inter", sans-serif;
+    font-size: 30px;
+}
+
+.purchase-failed h1 {
+    margin-left: 48px;
+}
+
 .checkout-body {
     padding: 60px;
 }
@@ -160,6 +169,12 @@ body {
 .checkout-body .checkout-content .title h3 {
     font-family: "Unna", serif;
     font-size: 40px;
+}
+.checkout-body .checkout-content .title h3 a {
+    font-family: "Inter", san-serif;
+    margin-left: 20px;
+    color: var(--pale-brown);
+    font-size: 20px;
 }
 .checkout-body .checkout-content .input {
     margin-bottom: 20px;

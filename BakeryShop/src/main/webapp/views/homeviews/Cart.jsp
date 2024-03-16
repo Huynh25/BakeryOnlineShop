@@ -51,7 +51,7 @@
     }
 %>
 
-<div class="popup">
+<div class="popup-cart">
     <div class="cart-popup">
         <div class="title">
             Shopping Cart

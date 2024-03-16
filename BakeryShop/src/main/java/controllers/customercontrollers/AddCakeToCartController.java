@@ -21,6 +21,7 @@ import models.Cake;
 import models.Cart;
 import models.Item;
 import models.Topping;
+import models.User;
 
 /**
  *
@@ -38,6 +39,8 @@ public class AddCakeToCartController extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        HttpSession session = request.getSession();
+
         String cakeID = request.getParameter("cakeID");
         String cakeType = request.getParameter("cakeType");
         String[] toppingsID = request.getParameterValues("topping");
@@ -47,6 +50,16 @@ public class AddCakeToCartController extends HttpServlet {
         cakeType = (cakeType == null ? "" : cakeType);
         toppingsID = (toppingsID == null ? new String[0] : toppingsID);
         buyQuantity = (buyQuantity == null ? "" : buyQuantity);
+
+        User userFromSession = (User) session.getAttribute("user");
+
+        if (userFromSession == null) {
+            response.sendRedirect("login");
+            return;
+        } else if (!"customer".equals(userFromSession.getRole())) {
+            response.sendRedirect("/category?cakeType=" + cakeType.replace(" ", "+"));
+            return;
+        }
 
         String text = "";
         Cookie[] cookies = request.getCookies();
@@ -87,7 +100,6 @@ public class AddCakeToCartController extends HttpServlet {
 
         Cart cart = new Cart(text, cakeList, toppingList);
 
-        HttpSession session = request.getSession();
         session.setAttribute("cart", cart);
 
         response.sendRedirect("/category?cakeType=" + cakeType.replace(" ", "+"));

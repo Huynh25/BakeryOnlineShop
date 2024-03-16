@@ -25,6 +25,7 @@ function updateMaxCake() {
         return;
     }
 
+    maxCake = cakeQuantity;
     let toppingsActive = cakeDetailContent.querySelectorAll(".topping-list .topping-item.active a");
     let minQuanToppingActive = 1;
     for (let idx = 0; idx < toppingsActive.length; ++idx) {
@@ -36,7 +37,9 @@ function updateMaxCake() {
         }
     }
 
-    maxCake = minQuanToppingActive;
+    if (maxCake > minQuanToppingActive) {
+        maxCake = minQuanToppingActive;
+    }
 }
 
 function updateBuyQuantity() {

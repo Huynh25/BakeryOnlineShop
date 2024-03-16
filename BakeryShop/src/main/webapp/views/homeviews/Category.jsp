@@ -79,6 +79,24 @@
                 </div>
             </div>
 
+            <div class="container row justify-content-end">
+                <ul class="col-sm-1 row justify-content-center">
+                    <li class="nav-item dropdown col-sm-2" id="dropdown-container">
+                        <a class="nav-link dropdown-toggle" id="dropdown-management" href="#" role="button"
+                           data-toggle="dropdown" aria-expanded="false">
+                            Filter
+                        </a>
+                        <div class="dropdown-menu" id="dropdown-management-list">
+                            <c:url value="/filter" var="filter">
+                                <c:param name="cakeType" value="${title}"/>
+                            </c:url>
+                            <a class="dropdown-item" href="${filter}&sort=name">Name</a>
+                            <a class="dropdown-item" href="${filter}&sort=price">Price</a>
+                        </div>
+                    </li> 
+                </ul>
+            </div>
+
             <!-- Card list -->
             <div class="card-list container">
                 <div class="card-items row justify-content-xxl-start justify-content-center">

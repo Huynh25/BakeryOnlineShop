@@ -213,6 +213,10 @@ body {
     font-size: 19px;
     font-weight: 600;
 }
+.cake-detail-content .cake-attribute .sold-out {
+    color: var(--red);
+    font-size: 32px;
+}
 .cake-detail-content .cake-attribute .toppings .title {
     font-size: 20px;
 }

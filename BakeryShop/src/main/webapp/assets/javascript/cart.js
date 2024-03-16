@@ -1,4 +1,4 @@
-let popup = document.querySelector(".popup");
+let popup = document.querySelector(".popup-cart");
 let openCartClasses = document.querySelectorAll(".openCart");
 let cartPopup = popup.querySelector(".cart-popup");
 let increaseButtons = cartPopup.querySelectorAll(".inc-btn");

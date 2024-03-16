@@ -48,7 +48,6 @@ import models.User;
  */
 public class MakePurchaseController extends HttpServlet {
 
-    private String testString = "testString";
     private CakeDAO cakeDAO;
     private HttpSession session;
     private Cart cart;
@@ -133,7 +132,8 @@ public class MakePurchaseController extends HttpServlet {
 //        } else if ("failed".equals(status)) {
 //            purchased(request, response, false, orderInfo);
         } else {
-            response.sendRedirect("home");
+            session.setAttribute("isPurchaseSuccess", false);
+            response.sendRedirect("checkout");
         }
     }
 
@@ -148,7 +148,7 @@ public class MakePurchaseController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String description = (String) request.getAttribute("description");
+        String description = request.getParameter("description");
 
         String payment = request.getParameter("payment");
         String text = "";
@@ -157,8 +157,6 @@ public class MakePurchaseController extends HttpServlet {
             for (Cookie cookie : cookies) {
                 if (cookie.getName().equals("cart")) {
                     text += cookie.getValue();
-                    cookie.setMaxAge(0);
-                    response.addCookie(cookie);
                 }
             }
         }
@@ -184,7 +182,6 @@ public class MakePurchaseController extends HttpServlet {
             response.sendRedirect("login");
             return;
         } else if ("e-wallet".equals(payment)) {
-            testString = "before go to e wallet";
             request.getServletContext().setAttribute("amount", cart.getTotalPrice());
             response.setStatus(307);
             response.addHeader("Location", "e-wallet");
@@ -197,6 +194,16 @@ public class MakePurchaseController extends HttpServlet {
     private void purchased(HttpServletRequest request, HttpServletResponse response, boolean wasPaid, String description)
             throws ServletException, IOException {
         System.setOut(new PrintStream(System.out, true, "UTF8"));
+
+        Cookie[] cookies = request.getCookies();
+        if (cookies != null) {
+            for (Cookie cookie : cookies) {
+                if (cookie.getName().equals("cart")) {
+                    cookie.setMaxAge(0);
+                    response.addCookie(cookie);
+                }
+            }
+        }
 
         User userFromSession = (User) session.getAttribute("user");
         OrderDAO orderDAO = new OrderDAO();

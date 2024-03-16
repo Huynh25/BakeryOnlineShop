@@ -132,6 +132,10 @@
         <servlet-name>LogOutController</servlet-name>
         <servlet-class>controllers.customercontrollers.LogOutController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>FilterCategoryController</servlet-name>
+        <servlet-class>controllers.customercontrollers.FilterController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RatingController</servlet-name>
         <url-pattern>/rating-management</url-pattern>
@@ -271,6 +275,10 @@
     <servlet-mapping>
         <servlet-name>LogOutController</servlet-name>
         <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FilterCategoryController</servlet-name>
+        <url-pattern>/filter</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
