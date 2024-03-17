@@ -59,7 +59,7 @@
                         </div>
                         <div class="forgot-link">
                             <p class="forgotPassword">
-                                <a href="../guestview/forgotpassword.jsp">Forgot Password?</a>
+                                <a href="../views/guestview/forgotpassword.jsp">Forgot Password?</a>
                             </p>
                         </div>
                     </div>

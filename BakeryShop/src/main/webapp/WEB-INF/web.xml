@@ -113,7 +113,7 @@
         <url-pattern>/UnconfirmedOrders</url-pattern>
         <url-pattern>/product-history</url-pattern>
         <url-pattern>/OrderDetailManagement</url-pattern>
-        <url-pattern>/cakedetail</url-pattern>
+       
         <url-pattern>/AcceptOrder</url-pattern>
         <url-pattern>/CakeManagement</url-pattern>
         <url-pattern>/ToppingManagement</url-pattern>
@@ -138,6 +138,7 @@
         <url-pattern>/checkout</url-pattern>
         <url-pattern>/editProfile</url-pattern>
         <url-pattern>/changePassword</url-pattern>
+         <url-pattern>/cakedetail</url-pattern>
         <url-pattern>/make-purchase</url-pattern>
     </filter-mapping>
  
