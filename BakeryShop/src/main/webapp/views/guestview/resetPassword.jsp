@@ -33,8 +33,9 @@
     <body>
         <%@include file="../homeviews/Header.jsp" %>
         <div class="form-edit">
-            <form action="resetPassword" method="post" class="form">
+            <form action="../../forgotpassword" method="get" class="form">
                 <div class= "container">
+                     <div style="color: red">${message}</div>
                     <div class="form-group">
                         <label for="email">New password</label>
                         <input
@@ -44,8 +45,9 @@
                             value: ${password1}
                             />
                     </div>
+                   
                     <div class="row">
-                        <div class="col-sm-6">
+                        <div class="col-sm-6">                          
                             <span id="8char" class="glyphicon glyphicon-remove" style="color:#FF0004;"></span> 8 Characters Long<br>
                             <span id="ucase" class="glyphicon glyphicon-remove" style="color:#FF0004;"></span> One Uppercase Letter
                         </div>
@@ -84,7 +86,7 @@
             integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
             crossorigin="anonymous"
         ></script>
-         <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
-         <script src="../../assets/javascript/resetpassword.js"></script>
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+        <script src="../../assets/javascript/resetpassword.js"></script>
     </body>
 </html>

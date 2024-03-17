@@ -42,18 +42,18 @@
                 <h1>Indulge in the perfection of delightful cakes!</h1>
             </div>
             <div class="right">
-                <form class="form" action="forgotpassword" method="post">
+                <form class="form" action="../../forgotpassword" method="post">
                     <h2>FORGOT PASSWORD</h2>
                     <p class="title">Enter your phone number to receive the OTP code</p>
                     <div class="input">
+                          <div class="username">
+                            <input type="text" placeholder="  Username" name="username" />
+                        </div>
                         <div class="phone">
-                            <input type="text" placeholder="  Phone or Email" />
-                        </div>
-                        <div class="username">
-                            <input type="text" placeholder="  Username" />
-                        </div>
+                            <input type="text" placeholder="   Email" name="email" />
+                        </div>                      
                     </div>
-
+                    <div style="color:red;padding-bottom: 10px">${message}</div>
                     <button class="btn-otp" type="submit">Verify Code</button>
                 </form>
             </div>

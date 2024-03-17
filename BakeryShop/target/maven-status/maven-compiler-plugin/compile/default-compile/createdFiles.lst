@@ -10,6 +10,7 @@ daos\ToppingInCakeDAO.class
 daos\RatingDAO.class
 filter\ManagerFilter.class
 controllers\admincontrollers\StatisticOrderController.class
+models\Email.class
 controllers\customercontrollers\CatalogController.class
 models\Topping.class
 controllers\admincontrollers\ProductHistoryController.class
@@ -51,6 +52,7 @@ controllers\admincontrollers\MyConfirmedOrdersController.class
 controllers\admincontrollers\StaffManagementController.class
 controllers\customercontrollers\SearchCakeController.class
 controllers\customercontrollers\EditCartController.class
+.netbeans_automatic_build
 models\Cake.class
 models\Order.class
 models\Staff.class

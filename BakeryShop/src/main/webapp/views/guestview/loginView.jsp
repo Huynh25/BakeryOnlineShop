@@ -72,7 +72,7 @@
                     <p class="or">_________________<span>Or</span>_________________</p>
                     <div class="google">
                         <img src="../../Image/Login/google.jpg" alt="google" />
-                        <a href="https://accounts.google.com/o/oauth2/auth?scope=profile&redirect_uri=http://localhost:8080/BakeryShop/LoginGoogle&response_type=code&client_id=419792958495-cne67vhk6lh27eg32he4rltd8440sv7d.apps.googleusercontent.com&approval_prompt=force">
+                        <a href="https://accounts.google.com/o/oauth2/auth?scope=profile&redirect_uri=http://localhost:8080/LoginGoogle&response_type=code&client_id=419792958495-cne67vhk6lh27eg32he4rltd8440sv7d.apps.googleusercontent.com&approval_prompt=force">
                             <p>Continue with Google</p></a>
                     </div>
                     <div class="register">

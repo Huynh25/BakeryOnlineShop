@@ -21,6 +21,7 @@ D:\BakeryShop\src\main\java\daos\AbstractDAO.java
 D:\BakeryShop\src\main\java\daos\UserDAO.java
 D:\BakeryShop\src\main\java\models\Config.java
 D:\BakeryShop\src\main\java\controllers\customercontrollers\LogOutController.java
+D:\BakeryShop\src\main\java\models\Email.java
 D:\BakeryShop\src\main\java\daos\GoWithDAO.java
 D:\BakeryShop\src\main\java\daos\OrderDAO.java
 D:\BakeryShop\src\main\java\controllers\customercontrollers\EditCartController.java

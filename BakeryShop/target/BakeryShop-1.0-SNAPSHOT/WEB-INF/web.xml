@@ -107,7 +107,6 @@
         <url-pattern>/views/adminviews/topping-detail-management.jsp</url-pattern>
         <url-pattern>/views/adminviews/view-rating.jsp</url-pattern>
         <url-pattern>/rating-management</url-pattern>
-        <url-pattern>/order-history</url-pattern>
         <url-pattern>/MyConfirmedOrders</url-pattern>
         <url-pattern>/UnconfirmedOrdersController</url-pattern>
         <url-pattern>/UnconfirmedOrders</url-pattern>
@@ -136,9 +135,10 @@
         <url-pattern>/views/customerviews/editProfile.jsp</url-pattern>
         <url-pattern>/views/customerviews/purchase-history.jsp</url-pattern>
         <url-pattern>/checkout</url-pattern>
+        <url-pattern>/order-history</url-pattern>
         <url-pattern>/editProfile</url-pattern>
         <url-pattern>/changePassword</url-pattern>
-         <url-pattern>/cakedetail</url-pattern>
+        <url-pattern>/cakedetail</url-pattern>
         <url-pattern>/make-purchase</url-pattern>
     </filter-mapping>
  

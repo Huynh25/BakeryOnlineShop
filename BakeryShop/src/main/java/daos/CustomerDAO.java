@@ -116,6 +116,18 @@ public class CustomerDAO extends AbstractDAO<Customer> {
         }
     }
 
+    public void updatePassword(String password, int userID) {
+        try {
+            String sql = "UPDATE Customers\n"
+                    + "SET [password] = CONVERT(VARCHAR(32),HASHBYTES('MD5',\'" + password + "\'), 2)\n"
+                    + "WHERE userID = "+userID;
+            System.out.println(sql);
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
+
     @Override
     public void delete(String id) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
@@ -127,6 +139,34 @@ public class CustomerDAO extends AbstractDAO<Customer> {
 
             String sql = "Select * from [dbo].[Customers]"
                     + "where userID =\'" + id + "\'";
+            Statement stm = con.createStatement();
+            ResultSet rs = stm.executeQuery(sql);
+
+            if (rs.next()) {
+                Customer customer = new Customer();
+                customer.setUserID(rs.getInt("userID"));
+                customer.setUsername(rs.getString("username"));
+                customer.setPassword(rs.getString("password"));
+                customer.setFullname(rs.getString("fullname"));
+                customer.setEmail(rs.getString("email"));
+                customer.setGoogleID(rs.getString("googleID"));
+                customer.setAccessToken(rs.getString("accessToken"));
+                customer.setUserAvatar(rs.getString("userAvatar"));
+                customer.setAddress(rs.getString("address"));
+                customer.setPhoneNumber(rs.getString("phoneNumber"));
+                return customer;
+            }
+
+        } catch (SQLException ex) {
+        }
+        return null;
+    }
+
+    public Customer findByUsernameAndEmail(String username, String email) {
+        try {
+
+            String sql = "Select * from [dbo].[Customers]"
+                    + "where username =\'" + username + "\' AND email=\'" + email + "\'";
             Statement stm = con.createStatement();
             ResultSet rs = stm.executeQuery(sql);
 

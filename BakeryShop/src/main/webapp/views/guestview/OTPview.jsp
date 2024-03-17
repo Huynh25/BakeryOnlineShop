@@ -41,17 +41,17 @@
                 <h1>Indulge in the perfection of delightful cakes!</h1>
             </div>
             <div class="right">
-                <form class="form" action="#" method="post">
+                <form class="form" action="../../forgotpassword" method="GET">
                     <h1>VERIFICATION</h1>
                     <p class="title">Please enter the OTP send your mobile number</p>
                     <div class="input">
                         <div class="input-field">
-                            <input type="number" />
-                            <input type="number" />
-                            <input type="number" />
-                            <input type="number" />
-                            <input type="number" />
-                            <input type="number" />
+                            <input type="number" name="opt-1"/>
+                            <input type="number"  name="opt-2"/>
+                            <input type="number"  name="opt-3"/>
+                            <input type="number"  name="opt-4"/>
+                            <input type="number"  name="opt-5"/>
+                            <input type="number"  name="opt-6"/>
                         </div>
                     </div>
                     <div class="title-1">
