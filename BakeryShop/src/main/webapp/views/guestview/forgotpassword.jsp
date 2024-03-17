@@ -33,7 +33,6 @@
             />
         <link rel="stylesheet" href="../../assets/css/forgotpassword.css" />
         <link rel="stylesheet" href="../../assets/css/GlobalStyle.css" />
-        <link rel="stylesheet" href="../../assets/css/style.css" />
         <title>Forgot Password</title>
     </head>
     <body>

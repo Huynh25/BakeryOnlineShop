@@ -34,7 +34,6 @@
             />
         <link rel="stylesheet" href="../../assets/css/otpview.css" />
         <link rel="stylesheet" href="../../assets/css/GlobalStyle.css" />
-        <link rel="stylesheet" href="../../assets/css/style.css" />
     </head>
     <body>
         <div class="content-center">
