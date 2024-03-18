@@ -181,8 +181,7 @@
 
         </div>
 
-        <!--Cart popup-->
-        <%@include file="../homeviews/Cart.jsp" %>
+       
 
         <script src="../../assets/javascript/homepage.js"></script>
         <script

@@ -19,7 +19,6 @@
         <url-pattern>/product-history</url-pattern>
         <url-pattern>/staff-management</url-pattern>
         <url-pattern>/OrderDetailManagement</url-pattern>
-        <url-pattern>/cakedetail</url-pattern>
         <url-pattern>/AcceptOrder</url-pattern>
         <url-pattern>/CakeManagement</url-pattern>
         <url-pattern>/ToppingManagement</url-pattern>
@@ -58,7 +57,6 @@
         <url-pattern>/views/customerviews/changePassword.jsp</url-pattern>
         <url-pattern>/views/customerviews/editProfile.jsp</url-pattern>
         <url-pattern>/views/customerviews/purchase-history.jsp</url-pattern>
-        
     </filter-mapping>
     <filter>
         <filter-name>ManagerFilter</filter-name>
@@ -93,7 +91,7 @@
             <param-name>Name</param-name>
             <param-value>Value</param-value>
         </init-param>
-    </filter> 
+    </filter>
     <filter-mapping>
         <filter-name>StaffFilter</filter-name>
         <url-pattern>/views/adminviews/Cake-detail-management.jsp</url-pattern>
@@ -112,7 +110,6 @@
         <url-pattern>/UnconfirmedOrders</url-pattern>
         <url-pattern>/product-history</url-pattern>
         <url-pattern>/OrderDetailManagement</url-pattern>
-       
         <url-pattern>/AcceptOrder</url-pattern>
         <url-pattern>/CakeManagement</url-pattern>
         <url-pattern>/ToppingManagement</url-pattern>
@@ -138,10 +135,8 @@
         <url-pattern>/order-history</url-pattern>
         <url-pattern>/editProfile</url-pattern>
         <url-pattern>/changePassword</url-pattern>
-        <url-pattern>/cakedetail</url-pattern>
         <url-pattern>/make-purchase</url-pattern>
     </filter-mapping>
- 
     <servlet>
         <servlet-name>RatingController</servlet-name>
         <servlet-class>controllers.admincontrollers.RatingController</servlet-class>
@@ -277,6 +272,10 @@
     <servlet>
         <servlet-name>FilterCategoryController</servlet-name>
         <servlet-class>controllers.customercontrollers.FilterController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>LoginGoogleController</servlet-name>
+        <servlet-class>controllers.customercontrollers.LoginGoogleController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>RatingController</servlet-name>
@@ -421,6 +420,10 @@
     <servlet-mapping>
         <servlet-name>FilterCategoryController</servlet-name>
         <url-pattern>/filter</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LoginGoogleController</servlet-name>
+        <url-pattern>/BakeryShop/loginGoogle</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

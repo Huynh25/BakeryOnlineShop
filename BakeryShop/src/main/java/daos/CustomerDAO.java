@@ -82,6 +82,67 @@ public class CustomerDAO extends AbstractDAO<Customer> {
         }
     }
 
+    public void createByGoogle(Customer c) {
+        String sql = "INSERT INTO Customers (username, fullname, email, googleID, accessToken, userAvatar) "
+                + "VALUES (?, ?, ?, ?, ?, ?)";
+
+        try {
+            PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            ps.setString(1, c.getUsername());
+            ps.setString(2, c.getFullname());
+            ps.setString(3, c.getEmail());
+            ps.setString(4, c.getGoogleID());
+            ps.setString(5, c.getAccessToken());
+            ps.setString(6, c.getUserAvatar());
+            ps.executeUpdate();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    public Customer readByEmail(String email) {
+        Customer customer = new Customer();
+        try {
+
+            String readSQL = "Select * from Customers where email = \'" + email+"\'";
+            Statement stm = con.createStatement();
+            ResultSet rs = stm.executeQuery(readSQL);
+            System.out.println("sql"+readSQL);
+            if (rs.next()) {
+                customer.setUserID(rs.getInt("userID"));
+                customer.setUsername(rs.getString("username"));
+                customer.setPassword(rs.getString("password"));
+                customer.setFullname(rs.getString("fullname"));
+                customer.setEmail(rs.getString("email"));
+                customer.setGoogleID(rs.getString("googleID"));
+                customer.setAccessToken(rs.getString("accessToken"));
+                customer.setUserAvatar(rs.getString("userAvatar"));
+                customer.setAddress(rs.getString("address"));
+                customer.setPhoneNumber(rs.getString("phoneNumber"));
+                return customer;
+            }
+
+        } catch (SQLException ex) {
+        }
+        return null;
+    }
+
+    public boolean isExistByEmail(String email) {
+        try {
+
+            String sql = "Select * from [dbo].[Customers] Where email=" + email;
+            Statement stm = con.createStatement();
+            ResultSet rs = stm.executeQuery(sql);
+
+            if (rs.next()) {
+                return true;
+            }
+
+        } catch (SQLException ex) {
+        }
+        return false;
+    }
+
     private String hashPass(String password) {
         try {
             MessageDigest md = MessageDigest.getInstance("MD5");
@@ -120,7 +181,7 @@ public class CustomerDAO extends AbstractDAO<Customer> {
         try {
             String sql = "UPDATE Customers\n"
                     + "SET [password] = CONVERT(VARCHAR(32),HASHBYTES('MD5',\'" + password + "\'), 2)\n"
-                    + "WHERE userID = "+userID;
+                    + "WHERE userID = " + userID;
             System.out.println(sql);
             PreparedStatement ps = con.prepareStatement(sql);
             ps.executeUpdate();

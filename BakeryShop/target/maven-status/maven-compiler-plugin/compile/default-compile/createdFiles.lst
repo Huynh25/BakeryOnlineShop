@@ -9,6 +9,7 @@ models\Cart.class
 daos\ToppingInCakeDAO.class
 daos\RatingDAO.class
 filter\ManagerFilter.class
+controllers\customercontrollers\LoginGoogleController.class
 controllers\admincontrollers\StatisticOrderController.class
 models\Email.class
 controllers\customercontrollers\CatalogController.class
@@ -52,7 +53,7 @@ controllers\admincontrollers\MyConfirmedOrdersController.class
 controllers\admincontrollers\StaffManagementController.class
 controllers\customercontrollers\SearchCakeController.class
 controllers\customercontrollers\EditCartController.class
-.netbeans_automatic_build
+models\Email$2.class
 models\Cake.class
 models\Order.class
 models\Staff.class
@@ -62,6 +63,7 @@ models\UserGoogleDto.class
 filter\StaffFilter.class
 controllers\customercontrollers\LoginController.class
 controllers\customercontrollers\ChangePasswordController.class
+models\Email$1.class
 controllers\customercontrollers\MakePurchaseByEWallet.class
 models\Customer.class
 models\ToppingInCake.class

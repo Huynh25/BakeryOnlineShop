@@ -51,6 +51,7 @@ D:\BakeryShop\src\main\java\controllers\admincontrollers\MyConfirmedOrdersContro
 D:\BakeryShop\src\main\java\models\UserGoogleDto.java
 D:\BakeryShop\src\main\java\models\CakeInOrder.java
 D:\BakeryShop\src\main\java\controllers\customercontrollers\ChangePasswordController.java
+D:\BakeryShop\src\main\java\controllers\customercontrollers\LoginGoogleController.java
 D:\BakeryShop\src\main\java\models\Cake.java
 D:\BakeryShop\src\main\java\models\ToppingInCake.java
 D:\BakeryShop\src\main\java\controllers\customercontrollers\LoginController.java

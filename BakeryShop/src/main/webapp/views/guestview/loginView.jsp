@@ -72,7 +72,7 @@
                     <p class="or">_________________<span>Or</span>_________________</p>
                     <div class="google">
                         <img src="../../Image/Login/google.jpg" alt="google" />
-                        <a href="https://accounts.google.com/o/oauth2/auth?scope=profile&redirect_uri=http://localhost:8080/LoginGoogle&response_type=code&client_id=419792958495-cne67vhk6lh27eg32he4rltd8440sv7d.apps.googleusercontent.com&approval_prompt=force">
+                        <a href="http://accounts.google.com/o/oauth2/auth?scope=profile%20email%20openid&redirect_uri=http://localhost:8080/BakeryShop/loginGoogle&response_type=code&client_id=594653780192-pmf6uuqpi6tdacsjvp1s7dvbefqtnd55.apps.googleusercontent.com&approval_prompt=force">
                             <p>Continue with Google</p></a>
                     </div>
                     <div class="register">
@@ -93,6 +93,9 @@
 
             <img class="cake-4" src="../../Image/Login/strawberrymacaron.png" alt="cake" />
         </div>
+                    
+                         <!--Cart popup-->
+        <%@include file="../homeviews/Cart.jsp" %>
         <script
             src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
             integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"

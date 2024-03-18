@@ -23,7 +23,7 @@ CREATE TABLE [Customers](
 	[fullname] nvarchar(50) ,
 	[email] nvarchar(100) ,
 	[googleID] nvarchar(100) ,
-	[accessToken] nvarchar(100) ,
+	[accessToken] nvarchar(225) ,
 	[userAvatar] nvarchar(100) ,
 	[address] nvarchar(50),
 	[phoneNumber] nvarchar(20),

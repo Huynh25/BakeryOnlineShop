@@ -27,7 +27,7 @@
         <%@include file="../homeviews/Header.jsp" %>
         <div id="content">
             <div id="url">
-                <a id="home-link" href="#">Home</a>
+                <a id="home-link" href="/home">Home</a>
                 <i id="next-btn" class="bi bi-chevron-compact-right"></i>
                 <span id="title">Purchase History</span>
             </div>
@@ -135,7 +135,9 @@
             </div>
         </div>
 
-    </div>         
+    </div>   
+     <!--Cart popup-->
+        <%@include file="../homeviews/Cart.jsp" %>
     <script  src="../../assets/javascript/purchase-history.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
             integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
