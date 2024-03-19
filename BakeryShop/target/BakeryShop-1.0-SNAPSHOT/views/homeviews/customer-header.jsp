@@ -25,7 +25,7 @@
     <div class="col-sm-3">
         <ul id="navbar-icon">
             <li><a class="openCart" href="#"><i class="bi bi-basket3"></i></a></li>
-            <li><a href="order-history"><i class="bi bi-clock-history"></i></a></li>
+            <li><a href="/order-history"><i class="bi bi-clock-history"></i></a></li>
 
             <c:choose>
                 <c:when test="${'customer'.equalsIgnoreCase(role)}">

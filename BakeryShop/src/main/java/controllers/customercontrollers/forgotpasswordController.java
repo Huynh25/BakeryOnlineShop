@@ -88,7 +88,12 @@ public class forgotpasswordController extends HttpServlet {
                 CustomerDAO cd = new CustomerDAO();
                 HttpSession session = request.getSession();
                 User u = (User) session.getAttribute("userOTP");
-                cd.updatePassword(password1, u.getId());
+                if(u.getRole().equals("customer")){
+                cd.updatePassword(password1, u.getId());}
+                else{
+                    StaffDAO sd=new StaffDAO();
+                    sd.updatePassworD(password1,u.getId());
+                }
                 request.setAttribute("message", "Password has been changed");
             } else {
                 request.setAttribute("message", "Confirm password is not the same");

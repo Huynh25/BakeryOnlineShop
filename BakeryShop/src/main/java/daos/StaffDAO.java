@@ -73,8 +73,9 @@ public class StaffDAO extends AbstractDAO<Staff> {
             e.printStackTrace();
         }
     }
-public Staff findByUsernameAndEmail(String staffName, String email) {
-        Staff staff=new Staff();
+
+    public Staff findByUsernameAndEmail(String staffName, String email) {
+        Staff staff = new Staff();
         try {
 
             String sql = "Select * from [dbo].[Staffs]"
@@ -92,14 +93,15 @@ public Staff findByUsernameAndEmail(String staffName, String email) {
                 staff.setAddress(rs.getString("address"));
                 staff.setPhoneNumber(rs.getString("phoneNumber"));
                 staff.setManagerID(rs.getInt("managerID"));
-               return staff;
+                return staff;
             }
 
         } catch (SQLException ex) {
         }
         return null;
     }
-  @Override
+
+    @Override
     public void update(Staff s) {
         String sql = "UPDATE [dbo].[Staffs] SET \n"
                 + "      [fullname] = \'" + s.getFullname() + "\'\n"
@@ -107,11 +109,11 @@ public Staff findByUsernameAndEmail(String staffName, String email) {
                 + "      ,[address] = \'" + s.getAddress() + "\'\n"
                 + "      ,[phoneNumber] = \'" + s.getPhoneNumber() + "\'\n"
                 + "      ,[staffAvatar] = \'" + s.getStaffAvatar() + "\'\n";
-               
-        if(!s.getPassword().equals("@PWNT*****")){
-            sql+=",[password] = CONVERT(VARCHAR(32),HASHBYTES('MD5',\'" + s.getPassword() + "\'), 2)\n";
+
+        if (!s.getPassword().equals("@PWNT*****")) {
+            sql += ",[password] = CONVERT(VARCHAR(32),HASHBYTES('MD5',\'" + s.getPassword() + "\'), 2)\n";
         }
-        sql+=" WHERE staffID =" + s.getStaffID();
+        sql += " WHERE staffID =" + s.getStaffID();
         System.out.println(sql);
         try {
             PreparedStatement ps = con.prepareStatement(sql);
@@ -151,7 +153,7 @@ public Staff findByUsernameAndEmail(String staffName, String email) {
         }
         return null;
     }
-    
+
     public Staff findByFullname(String name) {
         try {
 
@@ -188,5 +190,17 @@ public Staff findByUsernameAndEmail(String staffName, String email) {
         System.out.println("---------------");
         System.out.println(cDAO.findByID(1).toString());
 
+    }
+
+    public void updatePassworD(String password1, int id) {
+        try {
+            String sql = "UPDATE Staffs\n"
+                    + "SET [password] = CONVERT(VARCHAR(32),HASHBYTES('MD5',\'" + password1 + "\'), 2)\n"
+                    + "WHERE staffID = " + id;
+            System.out.println(sql);
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
     }
 }

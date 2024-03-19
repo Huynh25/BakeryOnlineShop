@@ -90,10 +90,10 @@
                         <div class="col-sm-3 order-detail-inf order-inf-receivedDate">Received Date: Undefined</div>
                     </c:if>
                     <div class="col-sm-2 order-detail-inf">Status: ${order.getStatus()}</div>
-                    <c:if test="${not empty order.getReceivedDate()}">
+                    <c:if test="${not empty order.getStaffID()}">
                         <div class="col-sm-2 order-detail-inf">Person in charge: #${order.getStaffID()}</div>
                     </c:if>
-                    <c:if test="${empty order.getReceivedDate()}">
+                    <c:if test="${empty order.getStaffID()}">
                         <div class="col-sm-2 order-detail-inf order-inf-receivedDate">Accept By: Undefined</div>
                     </c:if>
 
