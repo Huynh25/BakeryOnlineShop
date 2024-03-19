@@ -122,8 +122,7 @@ function convertDateFormat(dateString) {
     var year = date.getFullYear();
     var month = ("0" + (date.getMonth() + 1)).slice(-2);
     var day = ("0" + date.getDate()).slice(-2);
-    var formattedDate = year + "-" + month + "-" + day;
-
+    var formattedDate = day + "-" + month + "-" + year;
     return formattedDate;
 }
 function ShowTopping(cioID, cioPrice) {

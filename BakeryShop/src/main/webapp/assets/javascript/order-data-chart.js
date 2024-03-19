@@ -172,12 +172,12 @@ let activeOption = "Total Income";
     });
     function updateWeekChart() {
         const weekChart = [];
-        const weekListLength = weekList.length;
+        console.log(weekList);
         const orderListLength = orderList.length;
         const weakActiveList = startDateToWeak(activeWeek);
         let label = "Việt Nam Đồng";
         if (activeOption === "Total Income") {
-            for (var i = 0; i < weekListLength; i++) {
+            for (var i = 0; i < 7; i++) {
                 weekChart.push({"date": weakActiveList[i], "data": 0});
                 for (var j = 0; j < orderListLength; j++) {
                     if (convertDateFormat(orderList[j].orderDate) === weakActiveList[i]) {
@@ -187,7 +187,7 @@ let activeOption = "Total Income";
             }
         } else {
             label = "Orders";
-            for (var i = 0; i < weekListLength; i++) {
+            for (var i = 0; i < 7; i++) {
                 weekChart.push({"date": weakActiveList[i], "data": 0});
                 for (var j = 0; j < orderListLength; j++) {
                     if (convertDateFormat(orderList[j].orderDate) === weakActiveList[i]) {
@@ -196,6 +196,7 @@ let activeOption = "Total Income";
                 }
             }
         }
+        console.log(weekChart);
         if (myChart3) {
             myChart3.destroy();
         }

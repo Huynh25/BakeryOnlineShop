@@ -79,12 +79,25 @@
                         </c:if>
                     </div>
                 </div>
+
                 <c:forEach var="order" items="${orderList}" varStatus="loop">   
                     <div class="order-content row">
                         <div class="col-sm-7 row order-content-total-info">
                             <div class="order-id col-sm-2">#${order.orderID}</div>
-                            <div class="order-content-date col-sm-3"><i class="bi bi-cart"></i> ${order.orderDate}</div>
-                            <div class="order-receive-date col-sm-3"><i class="bi bi-truck"></i> ${order.receivedDate==null?'Undefined':order.receivedDate}</div>        
+                            <div class="order-content-date col-sm-3"><i class="bi bi-cart"></i> 
+                                <fmt:formatDate value="${order.orderDate}" pattern="dd-MM-yyyy" />
+                            </div>
+
+                            <div class="order-receive-date col-sm-3"><i class="bi bi-truck"></i> 
+                                <c:choose>
+                                    <c:when test="${order.receivedDate == null}">
+                                        Undefined
+                                    </c:when>
+                                    <c:otherwise>
+                                        <fmt:formatDate value="${order.receivedDate}" pattern="dd-MM-yyyy" />
+                                    </c:otherwise>
+                                </c:choose>
+                            </div>        
                             <div class="order-total-price col-sm-4">Total Price: <fmt:formatNumber value="${order.totalPrice}" type="currency" currencySymbol="" maxFractionDigits="0" />đ</div>
                         </div>                   
                         <div class="col-sm-1"></div>
@@ -136,8 +149,8 @@
         </div>
 
     </div>   
-     <!--Cart popup-->
-        <%@include file="../homeviews/Cart.jsp" %>
+    <!--Cart popup-->
+    <%@include file="../homeviews/Cart.jsp" %>
     <script  src="../../assets/javascript/purchase-history.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
             integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
