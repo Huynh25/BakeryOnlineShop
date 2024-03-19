@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         <p class="Order-id">Order ID: #${order.orderID}</p>
                     </div>
                     <div class="Order-content d-flex align-items-center justify-content-start">
-                        <p class="Order-content-text">Order Date: ${order.orderDate}</p>
+                        <p class="Order-content-text">Order Date: ${convertDateFormat(order.orderDate)}</p>
                     </div>
                     <div class="Order-content d-flex align-items-center justify-content-start">
                         <p class="Order-content-text">Status: ${order.status}</p>
@@ -110,3 +110,14 @@ function redirectToOrderDetailPage(orderID) {
 function getServletUrl() {
         return searchTerm ? 'SearchOrders' : 'MyConfirmedOrderController';
     }
+    
+    function convertDateFormat(dateString) {
+    if (!dateString)
+        return "Undefined";
+    var date = new Date(dateString);
+    var year = date.getFullYear();
+    var month = ("0" + (date.getMonth() + 1)).slice(-2);
+    var day = ("0" + date.getDate()).slice(-2);
+    var formattedDate = day + "-" + month + "-" + year;
+    return formattedDate;
+}

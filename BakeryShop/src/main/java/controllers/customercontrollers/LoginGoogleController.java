@@ -78,6 +78,7 @@ public class LoginGoogleController extends HttpServlet {
         HttpSession session = request.getSession();
         System.out.println(c);
         session.setAttribute("user", new User(c.getUsername(), null, "customer", c.getUserID()));
+
         response.sendRedirect("/home");
     }
 
@@ -122,7 +123,6 @@ public class LoginGoogleController extends HttpServlet {
         String givenName = jsonObject.get("given_name").getAsString();
         String familyName = jsonObject.get("family_name").getAsString();
         String picture = jsonObject.get("picture").getAsString();
-        String locale = jsonObject.get("locale").getAsString();
         System.out.println(name);
         Customer customer = new Customer();
         customer.setAccessToken(accessToken);

@@ -68,13 +68,13 @@
                             </button>
                         </form>
                     </div>
-                    <div class="col-sm-2"></div>
+<!--                    <div class="col-sm-2"></div>
                     <div class="col-sm-3"></div>
                     <div class="swap-page col-sm-3 d-flex align-items-center justify-content-end">
                         <p class="swap-page-item page-number">Page <span id="currentPage">1</span> of <span id="totalPages">1</span></p>
                         <button class="swap-page-item prev-page swap-page-button">&lt</button>
                         <button class="swap-page-item next-page swap-page-button">&gt</button>
-                    </div>
+                    </div>-->
                 </div>
             </div>
         </div>
@@ -82,9 +82,9 @@
             <div class="order-information d-flex align-items-center">
                 <div class="container-fluid row">
                     <div class="col-sm-1 order-detail-inf order-inf-id">Order #${order.getOrderID()}</div>
-                    <div class="col-sm-2 order-detail-inf">Order Date: ${order.getOrderDate()}</div>
+                    <div class="col-sm-2 order-detail-inf">Order Date: <fmt:formatDate value="${order.getOrderDate()}" pattern="dd-MM-yyyy" /></div>
                     <c:if test="${not empty order.getReceivedDate()}">
-                        <div class="col-sm-3 order-detail-inf order-inf-receivedDate">Received Date: ${order.getReceivedDate()}</div>
+                        <div class="col-sm-3 order-detail-inf order-inf-receivedDate">Received Date: <fmt:formatDate value="${order.getReceivedDate()}" pattern="dd-MM-yyyy" /></div>
                     </c:if>
                     <c:if test="${empty order.getReceivedDate()}">
                         <div class="col-sm-3 order-detail-inf order-inf-receivedDate">Received Date: Undefined</div>
@@ -97,7 +97,7 @@
                         <div class="col-sm-2 order-detail-inf order-inf-receivedDate">Accept By: Undefined</div>
                     </c:if>
 
-                    <div class="col-sm-2 order-detail-inf">Total Price: ${order.getTotalPrice()}đ</div>
+                    <div class="col-sm-2 order-detail-inf">Total Price: <fmt:formatNumber value="${order.getTotalPrice()}" type="currency" currencySymbol="" maxFractionDigits="0" />đ</div>
 
                 </div>
             </div>
