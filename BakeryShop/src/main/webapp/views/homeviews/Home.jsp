@@ -180,6 +180,8 @@
             <%@include file="../homeviews/Footer.jsp" %>
 
         </div>
+            <!--Cart popup-->
+        <%@include file="../homeviews/Cart.jsp" %>
 
        
 
