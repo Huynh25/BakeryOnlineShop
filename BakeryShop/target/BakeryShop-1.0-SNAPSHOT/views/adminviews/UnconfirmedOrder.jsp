@@ -22,6 +22,7 @@
         <title>JSP Page</title>
     </head>
     <body>
+
         <%@include file="../homeviews/Header.jsp" %>
         <div class="content container-fluid">
             <div class="top-option">
@@ -29,13 +30,22 @@
                     <div class="histoty col-sm-4 row">
                         <h4 class="Home-text"><a class="pre-page" href="/home">Home</a></h4>
                         <h4>&gt</h4>
-                        <h4 class="current-page">Unconfirmed Orders</h4>
+                            <h4 class="current-page">Unconfirmed Orders</h4>
+
                     </div>
                     <div class="col-sm-4"></div>
+
                     <div class="menu col-sm-4 row">
-                        <button class="menu-item my-confirmed-order-btn menu-default col-sm-6">
+                        <c:if test="${role eq 'staff'}">
+                            <button id="orderButton" class="menu-item my-confirmed-order-btn menu-default col-sm-6">
                             My Confirmed Orders
                         </button>
+                        </c:if>
+                        <c:if test="${role eq 'manager'}">
+                            <button id="orderButton" class="menu-item all-orders my-confirmed-order-btn menu-default col-sm-5">
+                            All Orders
+                        </button>
+                        </c:if>
                         <div class="col-sm-1"></div>
                         <button class="menu-item unconfirmed-order-btn menu-variant col-sm-5">
                             Unconfirmed Orders
@@ -105,16 +115,19 @@
             </div>
         </div>
         <script src="../../assets/javascript/unconfirmed-orders.js"></script>
-    <script
-        src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-        crossorigin="anonymous"
-    ></script>
-    <script
-        src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
-        crossorigin="anonymous"
-    ></script>
+        <script>
+            var role = "${role}";
+        </script>
+        <script
+            src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+            crossorigin="anonymous"
+        ></script>
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
+            crossorigin="anonymous"
+        ></script>
 
-</body>
+    </body>
 </html>

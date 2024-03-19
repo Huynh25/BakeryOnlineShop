@@ -29,7 +29,9 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function displayOrders(orders) {
+        updateButtonText(role);
         const orderListHTML = orders.map(order => `
+        
             <div class="col-sm-3">
                 <div class="Order-card" onclick="redirectToOrderDetailPage(${order.orderID})">
                     <div class="Order-title d-flex align-items-center justify-content-center">
@@ -80,6 +82,15 @@ document.addEventListener('DOMContentLoaded', function () {
     fetchData(currentPage);
 });
 
+function updateButtonText(role) {
+        var button = document.getElementById('orderButton');
+        if (role === "manager") {
+            button.textContent = "All Orders";
+        } else if (role === "staff") {
+            button.textContent = "My Confirmed Orders";
+        }
+        console.log(role);
+    }
 document.addEventListener('DOMContentLoaded', function () {
     const unconfirmedOrderButton = document.querySelector('.unconfirmed-order-btn');
 
@@ -97,8 +108,11 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 function redirectToOrderDetailPage(orderID) {
-    console.log("hello");
-    var encodedPrePage = encodeURIComponent("My Confirmed Orders");
+    if(role === 'manager'){
+    var encodedPrePage = encodeURIComponent("All Orders");
+    } else{
+        var encodedPrePage = encodeURIComponent("My Confirmed Orders");
+    }
     var encodedURL = encodeURIComponent("MyConfirmedOrders");
     var encodedOrderID = encodeURIComponent(orderID);
 

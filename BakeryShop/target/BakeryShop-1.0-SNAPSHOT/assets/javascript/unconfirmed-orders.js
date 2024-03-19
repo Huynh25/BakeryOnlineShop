@@ -26,6 +26,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function displayOrders(orders) {
+        updateButtonText(role);
         const orderListHTML = orders.map(order => `
             <div class="col-sm-3">
                 <div class="Order-card" onclick="redirectToOrderDetailPage(${order.orderID})">
@@ -76,21 +77,38 @@ document.addEventListener('DOMContentLoaded', function () {
 
     fetchData(currentPage);
 });
+
+function updateButtonText(role) {
+        var button = document.getElementById('orderButton');
+        if (role === "manager") {
+            button.textContent = "All Orders";
+        } else if (role === "staff") {
+            button.textContent = "My Confirmed Orders";
+        }
+        console.log(role);
+    }
+
+
+    
+    
+    
 document.addEventListener('DOMContentLoaded', function () {
     const unconfirmedOrderButton = document.querySelector('.unconfirmed-order-btn');
-
+console.log("hello");
     unconfirmedOrderButton.addEventListener('click', function () {
         window.location.href = 'UnconfirmedOrders'; 
     });
 });
 
 document.addEventListener('DOMContentLoaded', function () {
+    console.log("end");
     const myConfirmedOrder = document.querySelector('.my-confirmed-order-btn');
 
     myConfirmedOrder.addEventListener('click', function () {
         window.location.href = 'MyConfirmedOrders'; 
     });
 });
+
 
 function redirectToOrderDetailPage(orderID) {
     console.log("hello");

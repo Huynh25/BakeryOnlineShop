@@ -58,6 +58,7 @@ public class MyConfirmedOrdersController extends HttpServlet {
     }
 
     StaffDAO staffDAO = new StaffDAO();
+
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -76,7 +77,7 @@ public class MyConfirmedOrdersController extends HttpServlet {
         searchTerm = searchTerm1;
         System.out.println(searchTerm1);
         OrderDAO orderDAO = new OrderDAO();
-        
+
         List<Order> orderList = orderDAO.readAll();
 
         // Chuyển đến trang JSP và truyền danh sách đơn hàng
@@ -101,31 +102,33 @@ public class MyConfirmedOrdersController extends HttpServlet {
 //        String searchTerm = request.getParameter("searchTerm");
         System.out.println(searchTerm);
 
-
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
-        
+        String role = user.getRole();
         int staffID = user.getId();
-        
+
         OrderDAO orderDAO = new OrderDAO();
         List<Order> orderList = new ArrayList<>();
         List<Order> myOrderList = new ArrayList<>();
 
-        // Kiểm tra xem có thông tin tìm kiếm hay không
         if (searchTerm != null && !searchTerm.isEmpty()) {
-            // Nếu có, thực hiện tìm kiếm
             System.out.println("hello");
             orderList = orderDAO.searchOrders(searchTerm);
         } else {
-            // Nếu không, lấy toàn bộ danh sách
             orderList = orderDAO.readAll();
         }
-
-        for (Order order : orderList) {
-            if (order.getStaffID() == staffID) {
-                myOrderList.add(order);
+        if (role.equalsIgnoreCase("staff")) {
+            for (Order order : orderList) {
+                if (order.getStaffID() == staffID) {
+                    myOrderList.add(order);
+                }
+            }
+        } else {
+            for (Order order : orderList) {
+                    myOrderList.add(order);
             }
         }
+        System.out.println(role);
 
         Gson gson = new Gson();
         String json = gson.toJson(myOrderList);

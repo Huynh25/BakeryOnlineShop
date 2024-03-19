@@ -29,13 +29,28 @@
                     <div class="histoty col-sm-4 row">
                         <h4 class="Home-text"><a class="pre-page" href="/home">Home</a></h4>
                         <h4>&gt</h4>
-                        <h4 class="current-page">My Confirmed Orders</h4>
+                        
+                        <c:if test="${role eq 'staff'}">
+                            <h4 class="current-page">My Confirmed Orders</h4>
+                        </c:if>
+                            <c:if test="${role eq 'manager'}">
+                            <h4 class="current-page">All Orders</h4>
+                        </c:if>
+                        
                     </div>
                     <div class="col-sm-4"></div>
                     <div class="menu col-sm-4 row">
-                        <button class="menu-item my-confirmed-order-btn menu-variant col-sm-6">
+                        <c:if test="${role eq 'staff'}">
+                            <button id="orderButton" class="menu-item my-confirmed-order-btn menu-variant col-sm-6">
                             My Confirmed Orders
                         </button>
+                        </c:if>
+                        <c:if test="${role eq 'manager'}">
+                            <button id="orderButton" class="menu-item my-confirmed-order-btn menu-variant col-sm-5">
+                            All Orders
+                        </button>
+                        </c:if>
+                        
                         <div class="col-sm-1"></div>
                         <button class="menu-item unconfirmed-order-btn menu-default col-sm-5">
                             Unconfirmed Orders
@@ -112,6 +127,9 @@
             </div>
         </div>
         <script src="../../assets/javascript/my-confirmed-orders.js"></script>
+        <script>
+            var role = "${role}";
+        </script>
         <script
             src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
             integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
