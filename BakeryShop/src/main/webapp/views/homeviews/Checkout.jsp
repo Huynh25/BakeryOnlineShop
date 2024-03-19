@@ -48,9 +48,19 @@
             <!-- Checkout body -->
             <c:if test="${isPurchaseSuccess == false}">
                 <div class="container purchase-failed">
-                    <h1 class="text-danger pt-4">Order failed, please try again</h3>
+                    <h1 class="text-danger pt-4">
+                        <c:choose>
+                            <c:when test="${alertInfo != null && !alertInfo.isEmpty()}">
+                                ${alertInfo}
+                            </c:when>
+                            <c:otherwise>
+                                Order failed, please try again
+                            </c:otherwise>
+                        </c:choose>
+                    </h1>
                 </div>
                 <%
+                    session.removeAttribute("alertInfo");
                     session.removeAttribute("isPurchaseSuccess");
                 %>
             </c:if>
@@ -104,7 +114,7 @@
                             </div>
                         </div>
                         <div class="checkout-part purchase-btn button">
-                            <button form="make-purchase-form" type="submit">
+                            <button form="make-purchase-form" type="button">
                                 PURCHASE
                             </button>
                         </div>

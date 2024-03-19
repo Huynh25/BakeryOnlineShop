@@ -75,6 +75,9 @@
     background-color: var(--white);
 }
 #bakery-name{
+    font-family: "Unna", serif;
+    font-size: 40px;
+    color: var(--black);
     margin: 0;
 }
 #backhome-link{
@@ -95,6 +98,7 @@
     padding: 0;
 }
 #dropdown-management-list{
+    left: -20px !important;
     background-color: var(--white);
     border: 1px solid var(--black);
 }

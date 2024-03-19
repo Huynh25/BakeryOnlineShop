@@ -52,22 +52,22 @@ public class CategoryController extends HttpServlet {
                         }
                     });
                     break;
-                case "price":
-                    Collections.sort(cakeList, new Comparator<Cake>() {
-                        @Override
-                        public int compare(Cake c1, Cake c2) {
-                            if (c1.getCakePrice() < c2.getCakePrice()) {
-                                return 1;
-                            } else {
-                                if (c1.getCakePrice() == c2.getCakePrice()) {
-                                    return 0;
-                                } else {
-                                    return -1;
-                                }
-                            }
-                        }
-                    });
-                    break;
+//                case "price":
+//                    Collections.sort(cakeList, new Comparator<Cake>() {
+//                        @Override
+//                        public int compare(Cake c1, Cake c2) {
+//                            if (c1.getCakePrice() < c2.getCakePrice()) {
+//                                return 1;
+//                            } else {
+//                                if (c1.getCakePrice() == c2.getCakePrice()) {
+//                                    return 0;
+//                                } else {
+//                                    return -1;
+//                                }
+//                            }
+//                        }
+//                    });
+//                    break;
                 default:
             }
         }

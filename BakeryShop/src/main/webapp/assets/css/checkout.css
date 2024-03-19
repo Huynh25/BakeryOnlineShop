@@ -193,7 +193,6 @@ body {
 }
 .checkout-body .checkout-content .contact-info .input input,
 .checkout-body .checkout-content .shipping-info .input textarea{
-    pointer-events: none;
 }
 .checkout-body .checkout-content .input textarea {
     height: 120px;

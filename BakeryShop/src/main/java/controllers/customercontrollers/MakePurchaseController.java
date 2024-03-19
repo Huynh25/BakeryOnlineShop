@@ -31,6 +31,8 @@ import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import models.Cake;
 import models.CakeInOrder;
 import models.Cart;
@@ -47,7 +49,7 @@ import models.User;
  * @author Gia Huy <https://github.com/ThomasTran17>
  */
 public class MakePurchaseController extends HttpServlet {
-
+    
     private CakeDAO cakeDAO;
     private HttpSession session;
     private Cart cart;
@@ -63,7 +65,7 @@ public class MakePurchaseController extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -93,7 +95,7 @@ public class MakePurchaseController extends HttpServlet {
                 fields.put(fieldName, fieldValue);
             }
         }
-
+        
         String vnp_SecureHash = request.getParameter("vnp_SecureHash");
         if (fields.containsKey("vnp_SecureHashType")) {
             fields.remove("vnp_SecureHashType");
@@ -148,8 +150,13 @@ public class MakePurchaseController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        String fullname = request.getParameter("fullname");
+        String email = request.getParameter("email");
+        String phoneNumber = request.getParameter("phone-number");
+        String address = request.getParameter("address");
         String description = request.getParameter("description");
-
+        
         String payment = request.getParameter("payment");
         String text = "";
         Cookie[] cookies = request.getCookies();
@@ -160,24 +167,75 @@ public class MakePurchaseController extends HttpServlet {
                 }
             }
         }
-
+        
         text = URLDecoder.decode(text, "UTF-8");
         cakeDAO = new CakeDAO();
         List<Cake> cakeList = cakeDAO.readAll();
-
+        
         toppingDAO = new ToppingDAO();
         List<Topping> toppingList = toppingDAO.readAll();
-
+        
         cart = new Cart(text, cakeList, toppingList);
-
+        
         session = request.getSession();
         User userFromSession = (User) session.getAttribute("user");
-
+        
         if (userFromSession == null || !userFromSession.getRole().equalsIgnoreCase("customer")) {
             response.sendRedirect("login");
             return;
         }
-
+        
+        CustomerDAO customerDAO = new CustomerDAO();
+        
+        Customer customerByID = customerDAO.findByID(userFromSession.getId());
+        if (customerByID == null) {
+            response.sendRedirect("checkout");
+            return;
+        }
+        
+        String emailRegex = "^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$";
+        Pattern emailPattern = Pattern.compile(emailRegex);
+        
+        String phoneRegex = "^0\\d{9}$";
+        Pattern phonePattern = Pattern.compile(phoneRegex);
+        
+        Matcher emailMatcher = emailPattern.matcher(email);
+        Matcher phoneMatcher = phonePattern.matcher(phoneNumber);
+        
+        if (!emailMatcher.matches() || !phoneMatcher.matches() || address.isEmpty() || fullname.isEmpty()) {
+            response.sendRedirect("checkout");
+            return;
+        }
+        
+        String alertInfo = "";
+        
+        Customer customerByEmail = customerDAO.readByEmail(email);
+        if (customerByEmail != null && customerByEmail.getUserID() != customerByID.getUserID()) {
+            alertInfo = "The email already exists !";
+            session.setAttribute("alertInfo", text);
+            response.sendRedirect("checkout");
+            return;
+        }
+        
+        Customer customerByPhone = customerDAO.findByPhone(phoneNumber);
+        if (customerByPhone != null && customerByPhone.getUserID() != customerByID.getUserID()) {
+            alertInfo = "The phone number already exists !";
+            session.setAttribute("alertInfo", text);
+            response.sendRedirect("checkout");
+            return;
+        }
+        
+        if (!customerByID.getFullname().equalsIgnoreCase(fullname)
+                || !customerByID.getEmail().equalsIgnoreCase(email)
+                || !customerByID.getPhoneNumber().equalsIgnoreCase(phoneNumber)
+                || !customerByID.getAddress().equalsIgnoreCase(address)) {
+            customerByID.setFullname(fullname);
+            customerByID.setEmail(email);
+            customerByID.setPhoneNumber(phoneNumber);
+            customerByID.setAddress(address);
+            customerDAO.updateProfile(customerByID);
+        }
+        
         if (payment == null || cart.isEmpty()) {
             response.sendRedirect("login");
             return;
@@ -190,11 +248,11 @@ public class MakePurchaseController extends HttpServlet {
 
         purchased(request, response, false, description);
     }
-
+    
     private void purchased(HttpServletRequest request, HttpServletResponse response, boolean wasPaid, String description)
             throws ServletException, IOException {
         System.setOut(new PrintStream(System.out, true, "UTF8"));
-
+        
         Cookie[] cookies = request.getCookies();
         if (cookies != null) {
             for (Cookie cookie : cookies) {
@@ -204,7 +262,7 @@ public class MakePurchaseController extends HttpServlet {
                 }
             }
         }
-
+        
         User userFromSession = (User) session.getAttribute("user");
         OrderDAO orderDAO = new OrderDAO();
         Order order = new Order();
@@ -213,13 +271,13 @@ public class MakePurchaseController extends HttpServlet {
         order.setTotalPrice(cart.getTotalPrice());
         order.setOrderDescription(description);
         order.setWasPaid(wasPaid);
-
+        
         LocalDate date = LocalDate.now();
         Date sqlDate = new Date(date.getYear() - 1900, date.getMonthValue() - 1, date.getDayOfMonth());
-
+        
         order.setOrderDate(sqlDate);
         order.setStatus("Waiting");
-
+        
         orderDAO.create(order);
         List<Item> items = cart.getItems();
         CakeInOrderDAO cioDAO = new CakeInOrderDAO();
@@ -232,22 +290,22 @@ public class MakePurchaseController extends HttpServlet {
             cio.setCake(item.getCake());
             cio.setOrder(order);
             cioDAO.create(cio);
-
+            
             for (Topping topping : item.getToppings()) {
                 ToppingInCake tic = new ToppingInCake();
                 tic.setCakeInOrder(cio);
                 tic.setTicQuantity(buyQuantity);
                 tic.setTopping(topping);
                 ticDAO.create(tic);
-
+                
                 topping.setToppingQuantity(topping.getToppingQuantity() - buyQuantity);
                 toppingDAO.updateQuantity(topping);
             }
-
+            
             item.getCake().setCakeQuantity(item.getCake().getCakeQuantity() - buyQuantity);
             cakeDAO.updateQuantity(item.getCake());
         }
-
+        
         session.removeAttribute("cart");
         response.sendRedirect("order-history");
     }

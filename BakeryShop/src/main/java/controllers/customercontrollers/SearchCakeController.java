@@ -36,10 +36,15 @@ public class SearchCakeController extends HttpServlet {
             throws ServletException, IOException {
         String cakeFind = request.getParameter("cakeSearch");
         request.setAttribute("title", cakeFind);
-        CakeDAO cakeDAO = new CakeDAO();
-        List<Cake> cakeList = cakeDAO.searchCakes(cakeFind);
-        request.setAttribute("cakeList", cakeList);
-        request.getRequestDispatcher("views/homeviews/SearchCake.jsp").forward(request, response);  
+        if (!cakeFind.isEmpty()) {
+            CakeDAO cakeDAO = new CakeDAO();
+            List<Cake> cakeList = cakeDAO.searchCakes(cakeFind);
+            request.setAttribute("cakeList", cakeList);
+        } else {
+            request.setAttribute("cakeList", new ArrayList<Cake>());
+        }
+
+        request.getRequestDispatcher("views/homeviews/SearchCake.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
