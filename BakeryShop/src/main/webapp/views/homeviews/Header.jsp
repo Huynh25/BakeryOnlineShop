@@ -11,21 +11,20 @@
 
 <%
     User user = (User) session.getAttribute("user");
+    String role = (user != null) ? user.getRole() : "guest";
+    request.setAttribute("role", role);
 %>
-<c:set var="role" value="${user.role}"></c:set>
 
 
-<c:choose>
-    <c:when test="${'customer'.equalsIgnoreCase(role)}">
-        <%@include file="../homeviews/customer-header.jsp" %>
-    </c:when>
-    <c:when test="${'manager'.equalsIgnoreCase(role)}">
-        <%@include file="../homeviews/manager-header.jsp" %>
-    </c:when>
-    <c:when test="${'staff'.equalsIgnoreCase(role)}">
-        <%@include file="../homeviews/staff-header.jsp" %>
-    </c:when>
-    <c:otherwise>
-        <%@include file="../homeviews/customer-header.jsp" %>
-    </c:otherwise>
-</c:choose>
+<c:if test="${role eq 'customer'}">
+    <%@include file="../homeviews/customer-header.jsp" %>
+</c:if>
+<c:if test="${role eq 'manager'}">
+    <%@include file="../homeviews/manager-header.jsp" %>
+</c:if>
+<c:if test="${role eq 'staff'}">
+    <%@include file="../homeviews/staff-header.jsp" %>
+</c:if>
+<c:if test="${role eq 'guest'}">
+    <%@include file="../homeviews/customer-header.jsp" %>
+</c:if>

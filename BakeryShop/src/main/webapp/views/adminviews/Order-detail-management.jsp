@@ -3,6 +3,7 @@
     Created on : Feb 26, 2024, 2:46:59 PM
     Author     : Nguyen Truong An CE170984
 --%>
+<%@page import="models.User"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -22,6 +23,8 @@
     </head>
     <body>
         <%@include file="../homeviews/Header.jsp" %>
+
+      
         <div class="container-fluid content-top">
             <div class="top-option">
                 <div class="menu-and-history row">
@@ -194,7 +197,7 @@
                     <button class="no-option" onclick="closePopup()">No</button>
                 </div>
             </div>
-                    
+
             <div id="contactPopup" class="popup">
                 <div class="popup-content">
                     <p>Customer Phone Number: ${user.phoneNumber}</p>
