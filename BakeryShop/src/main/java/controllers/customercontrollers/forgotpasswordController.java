@@ -77,9 +77,13 @@ public class forgotpasswordController extends HttpServlet {
                     User user = new User(u.getUsername(), u.getPassword(), u.getRole(), u.getId());
                     session.setAttribute("user", user);
                     request.getRequestDispatcher("views/guestview/resetPassword.jsp").forward(request, response);
+                } else {
+                    request.setAttribute("message", "OTP is incorrect");
+                    request.getRequestDispatcher("views/guestview/forgotpassword.jsp").forward(request, response);
                 }
 
             } else {
+                System.out.println("aaa");
                 request.getRequestDispatcher("views/guestview/forgotpassword.jsp").forward(request, response);
             }
         } else {
@@ -88,11 +92,11 @@ public class forgotpasswordController extends HttpServlet {
                 CustomerDAO cd = new CustomerDAO();
                 HttpSession session = request.getSession();
                 User u = (User) session.getAttribute("userOTP");
-                if(u.getRole().equals("customer")){
-                cd.updatePassword(password1, u.getId());}
-                else{
-                    StaffDAO sd=new StaffDAO();
-                    sd.updatePassworD(password1,u.getId());
+                if (u.getRole().equals("customer")) {
+                    cd.updatePassword(password1, u.getId());
+                } else {
+                    StaffDAO sd = new StaffDAO();
+                    sd.updatePassworD(password1, u.getId());
                 }
                 request.setAttribute("message", "Password has been changed");
             } else {
@@ -117,8 +121,14 @@ public class forgotpasswordController extends HttpServlet {
         Email e = new Email();
         String username = request.getParameter("username");
         String email = request.getParameter("email");
-        System.out.println(username);
-        System.out.println(email);
+        HttpSession session = request.getSession();
+        if (username != null) {
+            session.setAttribute("username", username);
+            session.setAttribute("email", email);
+        } else {
+            username = (String) session.getAttribute("username");
+            email = (String) session.getAttribute("email");
+        }
         CustomerDAO cd = new CustomerDAO();
         Customer customer = cd.findByUsernameAndEmail(username, email);
         StaffDAO sd = new StaffDAO();
@@ -127,7 +137,7 @@ public class forgotpasswordController extends HttpServlet {
             String OTPCode = e.getRandom();
             boolean isSend = e.sendEmail(customer.getEmail(), OTPCode);
             if (isSend) {
-                HttpSession session = request.getSession();
+
                 User userOTP = new User(username, customer.getPassword(), "customer", customer.getUserID());
                 session.setAttribute("OTPCode", OTPCode);
                 session.setAttribute("userOTP", userOTP);
@@ -137,7 +147,6 @@ public class forgotpasswordController extends HttpServlet {
             String OTPCode = e.getRandom();
             boolean isSend = e.sendEmail(staff.getEmail(), OTPCode);
             if (isSend) {
-                HttpSession session = request.getSession();
                 User userOTP;
                 if (staff.getStaffID() == staff.getManagerID()) {
                     userOTP = new User(username, staff.getPassword(), "manager", staff.getStaffID());
@@ -146,8 +155,8 @@ public class forgotpasswordController extends HttpServlet {
                 }
 
                 session.setAttribute("OTPCode", OTPCode);
-                session.setAttribute("userOTP", userOTP);          
-            request.getRequestDispatcher("views/guestview/OTPview.jsp").forward(request, response);
+                session.setAttribute("userOTP", userOTP);
+                request.getRequestDispatcher("views/guestview/OTPview.jsp").forward(request, response);
             }
         } else {
             request.setAttribute("message", "Username or email is incorrect");

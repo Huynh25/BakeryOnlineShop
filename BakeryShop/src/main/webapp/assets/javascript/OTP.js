@@ -7,14 +7,24 @@
 
     function startCountdown() {
         var interval = setInterval(function () {
-            countDown--; // Giảm số giây đếm ngược
-            countdownElement.textContent = countDown + ' second'; // Cập nhật nội dung trong thẻ
+            countDown--; 
+            countdownElement.textContent = countDown + ' second';
 
             if (countDown <= 0) {
-                clearInterval(interval); // Dừng đếm ngược khi hết thời gian
-                countdownElement.textContent = 'Expired'; // Hiển thị thông báo hết thời gian
+                clearInterval(interval); 
+                countdownElement.textContent = 'Expired'; 
             }
-        }, 1000); // Đếm ngược mỗi giây
+        }, 1000); 
     }
 
     startCountdown();
+     function postDataToServlet() {
+        var form = document.createElement('form');
+        form.method = 'POST';
+        form.action = 'forgotpassword'; 
+        var input = document.createElement('input');
+        input.type = 'hidden';
+        form.appendChild(input);    
+        document.body.appendChild(form);
+        form.submit();
+    }
