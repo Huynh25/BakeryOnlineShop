@@ -6,8 +6,6 @@ package models;
 
 import java.util.Properties;
 import java.util.Random;
-import models.Staff;
-import models.Customer;
 import javax.mail.Authenticator;
 import javax.mail.Message;
 import javax.mail.PasswordAuthentication;
@@ -28,9 +26,9 @@ public class Email {
         return String.format("%06d", number);
     }
 
-    public boolean sendEmail(Customer s,String code) {
+    public boolean sendEmail(String email,String code) {
         boolean test = false;
-        String toEmail = s.getEmail();
+        String toEmail = email;
         final String fromEmail = "trannguyennamthuan@gmail.com";
         final String password = "frty evmk dinp pywh";
         try {
@@ -57,30 +55,6 @@ public class Email {
         return test;
     }
 
-    public boolean emailSend(Customer s) {
-        boolean test = false;
-        String toEmail = s.getEmail();
-        final String fromEmail = "trannguyennamthuan@gmail.com";
-        final String password = s.getPassword();
-        try {
-            Properties pr = cofigEmail(new Properties());
-            Session session = Session.getDefaultInstance(pr, new Authenticator() {
-                protected PasswordAuthentication getPassAuthentication() {
-                    return new PasswordAuthentication(fromEmail, password);
-                }
-            });
-            Message mess = new MimeMessage(session);
-            mess.setHeader("Content-Type", "text/plain; charset=UTF-8");
-            mess.setFrom(new InternetAddress(fromEmail));
-            mess.setRecipient(Message.RecipientType.TO, new InternetAddress(toEmail));
-            mess.setSubject("Your Password");
-            mess.setText("Password: " + s.getPassword());
-            Transport.send(mess);
-            test = true;
-        } catch (Exception e) {
-        }
-        return test;
-    }
 
     public Properties cofigEmail(Properties pr) {
         pr.setProperty("mail.smtp.host", "smtp.gmail.com");

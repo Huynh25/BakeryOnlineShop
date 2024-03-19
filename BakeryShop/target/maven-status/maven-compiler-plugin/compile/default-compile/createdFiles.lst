@@ -53,7 +53,6 @@ controllers\admincontrollers\MyConfirmedOrdersController.class
 controllers\admincontrollers\StaffManagementController.class
 controllers\customercontrollers\SearchCakeController.class
 controllers\customercontrollers\EditCartController.class
-models\Email$2.class
 models\Cake.class
 models\Order.class
 models\Staff.class

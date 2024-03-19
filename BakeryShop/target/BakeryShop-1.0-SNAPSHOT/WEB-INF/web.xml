@@ -129,11 +129,9 @@
     <filter-mapping>
         <filter-name>CustomerFilter</filter-name>
         <url-pattern>/views/customerviews/changePassword.jsp</url-pattern>
-        <url-pattern>/views/customerviews/editProfile.jsp</url-pattern>
         <url-pattern>/views/customerviews/purchase-history.jsp</url-pattern>
         <url-pattern>/checkout</url-pattern>
         <url-pattern>/order-history</url-pattern>
-        <url-pattern>/editProfile</url-pattern>
         <url-pattern>/changePassword</url-pattern>
         <url-pattern>/make-purchase</url-pattern>
     </filter-mapping>

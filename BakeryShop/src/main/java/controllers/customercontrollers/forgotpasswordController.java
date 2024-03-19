@@ -5,6 +5,7 @@
 package controllers.customercontrollers;
 
 import daos.CustomerDAO;
+import daos.StaffDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -14,6 +15,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import models.Customer;
 import models.Email;
+import models.Staff;
 import models.User;
 
 /**
@@ -72,7 +74,7 @@ public class forgotpasswordController extends HttpServlet {
                 String otpcode = (String) session.getAttribute("OTPCode");
                 if (otpInput.equals(otpcode)) {
                     User u = (User) session.getAttribute("userOTP");
-                    User user = new User(u.getUsername(), u.getPassword(), "customer", u.getId());
+                    User user = new User(u.getUsername(), u.getPassword(), u.getRole(), u.getId());
                     session.setAttribute("user", user);
                     request.getRequestDispatcher("views/guestview/resetPassword.jsp").forward(request, response);
                 }
@@ -80,18 +82,18 @@ public class forgotpasswordController extends HttpServlet {
             } else {
                 request.getRequestDispatcher("views/guestview/forgotpassword.jsp").forward(request, response);
             }
-        }else{
+        } else {
             String password2 = request.getParameter("password2");
-            if(password1.equals(password2)){
-                CustomerDAO cd=new CustomerDAO();
-                  HttpSession session = request.getSession();
+            if (password1.equals(password2)) {
+                CustomerDAO cd = new CustomerDAO();
+                HttpSession session = request.getSession();
                 User u = (User) session.getAttribute("userOTP");
-                cd.updatePassword(password1,u.getId());
+                cd.updatePassword(password1, u.getId());
                 request.setAttribute("message", "Password has been changed");
-            }else{
+            } else {
                 request.setAttribute("message", "Confirm password is not the same");
             }
-              request.getRequestDispatcher("views/guestview/resetPassword.jsp").forward(request, response);
+            request.getRequestDispatcher("views/guestview/resetPassword.jsp").forward(request, response);
         }
 
     }
@@ -114,18 +116,36 @@ public class forgotpasswordController extends HttpServlet {
         System.out.println(email);
         CustomerDAO cd = new CustomerDAO();
         Customer customer = cd.findByUsernameAndEmail(username, email);
+        StaffDAO sd = new StaffDAO();
+        Staff staff = sd.findByUsernameAndEmail(username, email);
         if (customer != null) {
             String OTPCode = e.getRandom();
-            boolean isSend = e.sendEmail(customer, OTPCode);
+            boolean isSend = e.sendEmail(customer.getEmail(), OTPCode);
             if (isSend) {
                 HttpSession session = request.getSession();
-                User userOTP = new User(username, customer.getPassword(), "otpUser", customer.getUserID());
+                User userOTP = new User(username, customer.getPassword(), "customer", customer.getUserID());
                 session.setAttribute("OTPCode", OTPCode);
                 session.setAttribute("userOTP", userOTP);
                 request.getRequestDispatcher("views/guestview/OTPview.jsp").forward(request, response);
             }
+        } else if (staff != null) {
+            String OTPCode = e.getRandom();
+            boolean isSend = e.sendEmail(staff.getEmail(), OTPCode);
+            if (isSend) {
+                HttpSession session = request.getSession();
+                User userOTP;
+                if (staff.getStaffID() == staff.getManagerID()) {
+                    userOTP = new User(username, staff.getPassword(), "manager", staff.getStaffID());
+                } else {
+                    userOTP = new User(username, staff.getPassword(), "staff", staff.getStaffID());
+                }
+
+                session.setAttribute("OTPCode", OTPCode);
+                session.setAttribute("userOTP", userOTP);          
+            request.getRequestDispatcher("views/guestview/OTPview.jsp").forward(request, response);
+            }
         } else {
-            request.setAttribute("message", "Username does not exist in the database");
+            request.setAttribute("message", "Username or email is incorrect");
             request.getRequestDispatcher("views/guestview/forgotpassword.jsp").forward(request, response);
         }
 

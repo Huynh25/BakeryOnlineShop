@@ -125,14 +125,14 @@ VALUES
     ('jamesbond',CONVERT(VARCHAR(32), HASHBYTES('MD5', '007'), 2), 'James Bond', 'james@mi6.com', NULL, NULL, 'Image/Avatar/jamesbond.jpg', 'London, England', '0987654321'),
     ('gandalf', CONVERT(VARCHAR(32), HASHBYTES('MD5', 'youshallnotpass'), 2),  'Gandalf the Grey', 'gandalf@greyhavens.com', NULL, NULL, 'Image/Avatar/gandalf.jpg', 'The Shire, Middle-earth', '0123456789'),
     ('deadpool',CONVERT(VARCHAR(32), HASHBYTES('MD5', 'chimichangas'), 2),  'Deadpool', 'deadpool@mercwithamouth.com', NULL, NULL, 'Image/Avatar/deadpool.jpg', 'New York City', '0987654321'),
-    ('joker', CONVERT(VARCHAR(32), HASHBYTES('MD5', 'whysoserious'), 2), 'The Joker', 'joker@arkhamasylum.com', NULL, NULL, 'Image/Avatar/joker.jpg', 'Gotham City', '0123456789'),
+    ('joker', CONVERT(VARCHAR(32), HASHBYTES('MD5', 'whysoserious'), 2), 'The Joker', 'lenhuhuynh25032003@gmail.com', NULL, NULL, 'Image/Avatar/joker.jpg', 'Gotham City', '0123456789'),
     ('lukeSkywalker', CONVERT(VARCHAR(32), HASHBYTES('MD5', 'usetheforce'), 2), 'Luke Skywalker', 'luke@rebels.com', NULL, NULL, 'Image/Avatar/lukeskywalker.jpg', 'Tatooine', '0987654321');
 
 
 INSERT INTO Staffs ([staffName], [password], [fullname], [email], [address], [phoneNumber], [staffAvatar], [managerID])
 VALUES 
-    ('johnsmith', CONVERT(VARCHAR(32), HASHBYTES('MD5', 'johnSmith@123'),2 ), 'John Smith', 'john@company.com', '123 Main Street, City', '0927481623', 'Image/Avatar/johnsmith.jpg', 1),
-    ('janedoe', CONVERT(VARCHAR(32), HASHBYTES('MD5', 'janeDoe@123'),2 ), 'Jane Doe', 'jane@company.com', '456 Oak Avenue, Town', '0926371623', 'Image/Avatar/janedoe.jpg', 1),
+    ('johnsmith', CONVERT(VARCHAR(32), HASHBYTES('MD5', 'johnSmith@123'),2 ), 'John Smith', 'thuantnnce171497@fpt.edu.vn', '123 Main Street, City', '0927481623', 'Image/Avatar/johnsmith.jpg', 1),
+    ('janedoe', CONVERT(VARCHAR(32), HASHBYTES('MD5', 'janeDoe@123'),2 ), 'Jane Doe', 'anntce170984@fpt.edu.vn', '456 Oak Avenue, Town', '0926371623', 'Image/Avatar/janedoe.jpg', 1),
     ('michaelbrown', CONVERT(VARCHAR(32), HASHBYTES('MD5', 'michaelBrown@123'), 2), 'Michael Brown', 'michael@company.com', '789 Pine Road, Village', '0926374134', 'Image/Avatar/michaelbrown.jpg', 1),
     ('emilyjohnson', CONVERT(VARCHAR(32), HASHBYTES('MD5', 'emilyJohnson@123'), 2), 'Emily Johnson', 'emily@company.com', '101 Maple Lane, County', '0927374826', 'Image/Avatar/emilyjohnson.jpg', 1),
     ('williamtaylor',CONVERT(VARCHAR(32), HASHBYTES('MD5', 'williamTaylor@123'), 2),  'William Taylor', 'william@company.com', '111 Cedar Drive, District', '0925236805', 'Image/Avatar/williamtaylor.jpg', 1),

@@ -73,7 +73,32 @@ public class StaffDAO extends AbstractDAO<Staff> {
             e.printStackTrace();
         }
     }
+public Staff findByUsernameAndEmail(String staffName, String email) {
+        Staff staff=new Staff();
+        try {
 
+            String sql = "Select * from [dbo].[Staffs]"
+                    + "where staffName =\'" + staffName + "\' AND email=\'" + email + "\'";
+            Statement stm = con.createStatement();
+            ResultSet rs = stm.executeQuery(sql);
+
+            if (rs.next()) {
+                staff.setStaffID(rs.getInt("staffID"));
+                staff.setStaffName(rs.getString("staffName"));
+                staff.setPassword(rs.getString("password"));
+                staff.setFullname(rs.getString("fullname"));
+                staff.setEmail(rs.getString("email"));
+                staff.setStaffAvatar(rs.getString("staffAvatar"));
+                staff.setAddress(rs.getString("address"));
+                staff.setPhoneNumber(rs.getString("phoneNumber"));
+                staff.setManagerID(rs.getInt("managerID"));
+               return staff;
+            }
+
+        } catch (SQLException ex) {
+        }
+        return null;
+    }
   @Override
     public void update(Staff s) {
         String sql = "UPDATE [dbo].[Staffs] SET \n"

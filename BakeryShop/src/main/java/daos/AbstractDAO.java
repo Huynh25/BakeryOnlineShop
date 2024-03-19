@@ -20,7 +20,7 @@ import java.util.logging.Logger;
 public abstract class AbstractDAO<T> {
     String url = "jdbc:sqlserver://localhost:1433;databaseName=BakeryShop;encrypt=true;trustServerCertificate=true";
     String user = "sa";
-    String password = "1";
+    String password = "1234";
     Connection con;
 
       public AbstractDAO() {
