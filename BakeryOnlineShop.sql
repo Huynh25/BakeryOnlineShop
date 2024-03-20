@@ -65,7 +65,7 @@ CREATE TABLE [Ratings](
 	[cakeID] int NOT NULL foreign key references Cakes(cakeID),
 	[ratingDate] Date not null,
 	[ratingValue] int Not null,
-	[comment] varchar(200),
+	[comment] nvarchar(200),
 	primary key (userID,cakeID),
 );
 CREATE TABLE [CakeInOrder](
@@ -107,26 +107,26 @@ CREATE TABLE [ProductHistory](
 
 INSERT INTO Customers ([username], [password], [fullname], [email], [googleID], [accessToken], [userAvatar], [address], [phoneNumber])
 VALUES 
-    ('luffy',CONVERT(VARCHAR(32), HASHBYTES('MD5', 'onepiece'), 2), 'Monkey D. Luffy', 'luffy@strawhatpirates.com', NULL, NULL, 'Image/Avatar/luffy.jpg', 'Thousand Sunny, East Blue', '0123456789'),
-    ('voldemort',CONVERT(VARCHAR(32), HASHBYTES('MD5',  'darklord'), 2),'Lord Voldemort', 'voldemort@deathEaters.com', NULL, NULL, 'Image/Avatar/voldemort.jpg', 'Malfoy Manor, Wiltshire', '0987654321'),
-    ('mickeymouse',CONVERT(VARCHAR(32), HASHBYTES('MD5', 'disney'), 2), 'Mickey Mouse', 'mickey@disney.com', NULL, NULL, 'Image/Avatar/mickeymouse.jpg', 'Disneyland, Anaheim, California', '0123456789'),
-    ('darthvader', CONVERT(VARCHAR(32), HASHBYTES('MD5', 'sithlord'), 2),'Darth Vader', 'vader@empire.com', NULL, NULL, 'Image/Avatar/darthvader.jpg', 'Death Star, Outer Rim Territories', '0987654321'),
-    ('sherlockholmes', CONVERT(VARCHAR(32), HASHBYTES('MD5', 'elementary'), 2),  'Sherlock Holmes', 'sherlock@bakerstreet.com', NULL, NULL, 'Image/Avatar/sherlockholmes.jpg', '221B Baker Street, London', '0123456789'),
-    ('winniethepooh',CONVERT(VARCHAR(32), HASHBYTES('MD5', 'honey'), 2),  'Winnie the Pooh', 'pooh@hundredacrewood.com', NULL, NULL, 'Image/Avatar/winniethepooh.jpg', 'Hundred Acre Wood', '0987654321'),
-    ('hanniballecter',CONVERT(VARCHAR(32), HASHBYTES('MD5', 'favaBeans'), 2),  'Hannibal Lecter', 'hannibal@psychiatrist.com', NULL, NULL, 'Image/Avatar/hanniballecter.jpg', 'Baltimore State Hospital for the Criminally Insane', '0123456789'),
-    ('elizabethbennet', CONVERT(VARCHAR(32), HASHBYTES('MD5', 'prideprejudice'), 2), 'Elizabeth Bennet', 'elizabeth@longbourn.com', NULL, NULL, 'Image/Avatar/elizabethbennet.jpg', 'Longbourn Estate, Hertfordshire', '0987654321'),
-    ('michaeljackson', CONVERT(VARCHAR(32), HASHBYTES('MD5', 'moonwalk'), 2), 'Michael Jackson', 'michael@neverlandranch.com', NULL, NULL, 'Image/Avatar/michaeljackson.jpg', 'Neverland Ranch, California', '0123456789'),
-    ('pikachu',CONVERT(VARCHAR(32), HASHBYTES('MD5', 'thunderbolt'), 2),  'Pikachu', 'pikachu@pokemon.com', NULL, NULL, 'Image/Avatar/pikachu.jpg', 'Pallet Town, Kanto', '0987654321'),
-    ('harrypotter',CONVERT(VARCHAR(32), HASHBYTES('MD5', 'hogwarts'), 2),  'Harry Potter', 'harry@hogwarts.com', NULL, NULL, 'Image/Avatar/harrypotter.jpg', '4 Privet Drive, Little Whinging, Surrey', '0123456789'),
-    ('ironman', CONVERT(VARCHAR(32), HASHBYTES('MD5', 'tonystark'), 2), 'Tony Stark', 'tony@starkindustries.com', NULL, NULL, 'Image/Avatar/ironman.jpg', 'Stark Tower, New York', '0987654321'),
-    ('batman', CONVERT(VARCHAR(32), HASHBYTES('MD5', 'brucewayne'), 2),  'Bruce Wayne', 'bruce@wayneenterprises.com', NULL, NULL, 'Image/Avatar/batman.jpg', 'Wayne Manor, Gotham City', '0123456789'),
-    ('wonderwoman', CONVERT(VARCHAR(32), HASHBYTES('MD5', 'amazon'), 2),  'Diana Prince', 'diana@themyscira.com', NULL, NULL, 'Image/Avatar/wonderwoman.jpg', 'Themyscira, Paradise Island', '0987654321'),
-    ('spiderman', CONVERT(VARCHAR(32), HASHBYTES('MD5', 'peterparker'), 2),  'Peter Parker', 'peter@dailybugle.com', NULL, NULL, 'Image/Avatar/spiderman.jpg', 'Queens, New York City', '0123456789'),
-    ('jamesbond',CONVERT(VARCHAR(32), HASHBYTES('MD5', '007'), 2), 'James Bond', 'james@mi6.com', NULL, NULL, 'Image/Avatar/jamesbond.jpg', 'London, England', '0987654321'),
-    ('gandalf', CONVERT(VARCHAR(32), HASHBYTES('MD5', 'youshallnotpass'), 2),  'Gandalf the Grey', 'gandalf@greyhavens.com', NULL, NULL, 'Image/Avatar/gandalf.jpg', 'The Shire, Middle-earth', '0123456789'),
-    ('deadpool',CONVERT(VARCHAR(32), HASHBYTES('MD5', 'chimichangas'), 2),  'Deadpool', 'deadpool@mercwithamouth.com', NULL, NULL, 'Image/Avatar/deadpool.jpg', 'New York City', '0987654321'),
-    ('joker', CONVERT(VARCHAR(32), HASHBYTES('MD5', 'whysoserious'), 2), 'The Joker', 'lenhuhuynh25032003@gmail.com', NULL, NULL, 'Image/Avatar/joker.jpg', 'Gotham City', '0123456789'),
-    ('lukeSkywalker', CONVERT(VARCHAR(32), HASHBYTES('MD5', 'usetheforce'), 2), 'Luke Skywalker', 'luke@rebels.com', NULL, NULL, 'Image/Avatar/lukeskywalker.jpg', 'Tatooine', '0987654321');
+    ('luffy',CONVERT(VARCHAR(32), HASHBYTES('MD5', 'onepiece'), 2), 'Monkey D. Luffy', 'luffy@strawhatpirates.com', NULL, NULL, 'Image/Avatar/luffy.jpg', 'Thousand Sunny, East Blue', '0926384612'),
+    ('voldemort',CONVERT(VARCHAR(32), HASHBYTES('MD5',  'darklord'), 2),'Lord Voldemort', 'voldemort@deathEaters.com', NULL, NULL, 'Image/Avatar/voldemort.jpg', 'Malfoy Manor, Wiltshire', '0826474681'),
+    ('mickeymouse',CONVERT(VARCHAR(32), HASHBYTES('MD5', 'disney'), 2), 'Mickey Mouse', 'mickey@disney.com', NULL, NULL, 'Image/Avatar/mickeymouse.jpg', 'Disneyland, Anaheim, California', '0307162847'),
+    ('darthvader', CONVERT(VARCHAR(32), HASHBYTES('MD5', 'sithlord'), 2),'Darth Vader', 'vader@empire.com', NULL, NULL, 'Image/Avatar/darthvader.jpg', 'Death Star, Outer Rim Territories', '0987456321'),
+    ('sherlockholmes', CONVERT(VARCHAR(32), HASHBYTES('MD5', 'elementary'), 2),  'Sherlock Holmes', 'sherlock@bakerstreet.com', NULL, NULL, 'Image/Avatar/sherlockholmes.jpg', '221B Baker Street, London', '0978456312'),
+    ('winniethepooh',CONVERT(VARCHAR(32), HASHBYTES('MD5', 'honey'), 2),  'Winnie the Pooh', 'pooh@hundredacrewood.com', NULL, NULL, 'Image/Avatar/winniethepooh.jpg', 'Hundred Acre Wood', '0975543789'),
+    ('hanniballecter',CONVERT(VARCHAR(32), HASHBYTES('MD5', 'favaBeans'), 2),  'Hannibal Lecter', 'hannibal@psychiatrist.com', NULL, NULL, 'Image/Avatar/hanniballecter.jpg', 'Baltimore State Hospital for the Criminally Insane', '0956784356'),
+    ('elizabethbennet', CONVERT(VARCHAR(32), HASHBYTES('MD5', 'prideprejudice'), 2), 'Elizabeth Bennet', 'elizabeth@longbourn.com', NULL, NULL, 'Image/Avatar/elizabethbennet.jpg', 'Longbourn Estate, Hertfordshire', '0876589012'),
+    ('michaeljackson', CONVERT(VARCHAR(32), HASHBYTES('MD5', 'moonwalk'), 2), 'Michael Jackson', 'michael@neverlandranch.com', NULL, NULL, 'Image/Avatar/michaeljackson.jpg', 'Neverland Ranch, California', '0845367832'),
+    ('pikachu',CONVERT(VARCHAR(32), HASHBYTES('MD5', 'thunderbolt'), 2),  'Pikachu', 'pikachu@pokemon.com', NULL, NULL, 'Image/Avatar/pikachu.jpg', 'Pallet Town, Kanto', '0967294715'),
+    ('harrypotter',CONVERT(VARCHAR(32), HASHBYTES('MD5', 'hogwarts'), 2),  'Harry Potter', 'harry@hogwarts.com', NULL, NULL, 'Image/Avatar/harrypotter.jpg', '4 Privet Drive, Little Whinging, Surrey', '0962849263'),
+    ('ironman', CONVERT(VARCHAR(32), HASHBYTES('MD5', 'tonystark'), 2), 'Tony Stark', 'tony@starkindustries.com', NULL, NULL, 'Image/Avatar/ironman.jpg', 'Stark Tower, New York', '0916384657'),
+    ('batman', CONVERT(VARCHAR(32), HASHBYTES('MD5', 'brucewayne'), 2),  'Bruce Wayne', 'bruce@wayneenterprises.com', NULL, NULL, 'Image/Avatar/batman.jpg', 'Wayne Manor, Gotham City', '0961846284'),
+    ('wonderwoman', CONVERT(VARCHAR(32), HASHBYTES('MD5', 'amazon'), 2),  'Diana Prince', 'diana@themyscira.com', NULL, NULL, 'Image/Avatar/wonderwoman.jpg', 'Themyscira, Paradise Island', '0915482645'),
+    ('spiderman', CONVERT(VARCHAR(32), HASHBYTES('MD5', 'peterparker'), 2),  'Peter Parker', 'peter@dailybugle.com', NULL, NULL, 'Image/Avatar/spiderman.jpg', 'Queens, New York City', '0829461869'),
+    ('jamesbond',CONVERT(VARCHAR(32), HASHBYTES('MD5', '007'), 2), 'James Bond', 'james@mi6.com', NULL, NULL, 'Image/Avatar/jamesbond.jpg', 'London, England', '0915482648'),
+    ('gandalf', CONVERT(VARCHAR(32), HASHBYTES('MD5', 'youshallnotpass'), 2),  'Gandalf the Grey', 'gandalf@greyhavens.com', NULL, NULL, 'Image/Avatar/gandalf.jpg', 'The Shire, Middle-earth', '0964826482'),
+    ('deadpool',CONVERT(VARCHAR(32), HASHBYTES('MD5', 'chimichangas'), 2),  'Deadpool', 'deadpool@mercwithamouth.com', NULL, NULL, 'Image/Avatar/deadpool.jpg', 'New York City', '0856184829'),
+    ('joker', CONVERT(VARCHAR(32), HASHBYTES('MD5', 'whysoserious'), 2), 'The Joker', 'lenhuhuynh25032003@gmail.com', NULL, NULL, 'Image/Avatar/joker.jpg', 'Gotham City', '0914486263'),
+    ('lukeSkywalker', CONVERT(VARCHAR(32), HASHBYTES('MD5', 'usetheforce'), 2), 'Luke Skywalker', 'luke@rebels.com', NULL, NULL, 'Image/Avatar/lukeskywalker.jpg', 'Tatooine', '0972856263');
 
 
 INSERT INTO Staffs ([staffName], [password], [fullname], [email], [address], [phoneNumber], [staffAvatar], [managerID])

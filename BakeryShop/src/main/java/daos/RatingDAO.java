@@ -6,6 +6,7 @@ package daos;
 
 import daos.CustomerDAO;
 import daos.CakeDAO;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -54,14 +55,71 @@ public class RatingDAO extends AbstractDAO<Rating> {
         return ratings;
     }
 
-    @Override
-    public void create(Rating object) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public Rating findByCakeUserID(int cakeID, int userID) {
+        Rating rating = new Rating();
+        try {
+
+            String sql = "Select * from [dbo].[Ratings] where cakeID=" + cakeID + " AND userID=" + userID;
+            Statement stm = con.createStatement();
+            ResultSet rs = stm.executeQuery(sql);
+
+            while (rs.next()) {
+                Cake cake = cakeDAO.findByID(rs.getInt("cakeID"));
+
+                Customer customer = cDAo.findByID(rs.getInt("userID"));
+
+                rating.setCustomer(customer);
+                rating.setCake(cake);
+                rating.setRatingDate(rs.getDate("ratingDate"));
+                rating.setRatingValue(rs.getInt("ratingValue"));
+                rating.setComment(rs.getString("comment"));
+
+                return rating;
+            }
+
+        } catch (SQLException ex) {
+        }
+        return null;
     }
 
     @Override
-    public void update(Rating object) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void create(Rating r) {
+        String sql = "INSERT INTO [dbo].[Ratings]\n"
+                + "           ([userID]\n"
+                + "           ,[cakeID]\n"
+                + "           ,[ratingDate]\n"
+                + "           ,[ratingValue]\n"
+                + "           ,[comment])\n"
+                + "     VALUES\n"
+                + "           (?,?,?,?,?)";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, r.getCustomer().getUserID());
+            ps.setInt(2, r.getCake().getCakeID());
+            ps.setDate(3, r.getRatingDate());
+            ps.setInt(4, r.getRatingValue());
+            ps.setString(5, r.getComment());
+            ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void update(Rating r) {
+        String sql = "UPDATE [dbo].[Ratings] SET "
+                + "[userID] = '" + r.getCustomer().getUserID() + "', "
+                + "[cakeID] = '" + r.getCake().getCakeID() + "', "
+                + "[ratingDate] = '" + r.getRatingDate() + "', "
+                + "[ratingValue] = '" + r.getRatingValue() + "', "
+                + "[comment] = N\'" + r.getComment() + "\' "
+                + "WHERE [userID] = '" + r.getCustomer().getUserID() + "' AND [cakeID] = '" + r.getCake().getCakeID() + "'";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace(); // In ra lỗi nếu có
+        }
     }
 
     @Override
@@ -83,7 +141,7 @@ public class RatingDAO extends AbstractDAO<Rating> {
             Statement stm = con.createStatement();
             ResultSet rs = stm.executeQuery(sql);
             Cake cake = cakeDAO.findByID(cakeID);
-            
+
             if (cake == null) {
                 return ratings;
             }
@@ -114,6 +172,22 @@ public class RatingDAO extends AbstractDAO<Rating> {
         for (Rating r : list) {
             System.out.println(r.toString());
         }
+    }
+    
+    public boolean isExistRating(String cakeID, int id) {
+        try {
+
+            String sql = "Select * from [dbo].[Ratings] where cakeID=" + cakeID + " AND userID=" + id;
+            Statement stm = con.createStatement();
+            ResultSet rs = stm.executeQuery(sql);
+            
+            if (rs.next()) {
+                return true;
+            }
+
+        } catch (SQLException ex) {
+        }
+        return false;
     }
 
 }

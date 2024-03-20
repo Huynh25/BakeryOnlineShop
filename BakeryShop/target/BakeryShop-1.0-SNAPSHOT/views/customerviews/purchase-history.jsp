@@ -79,9 +79,9 @@
                         </c:if>
                     </div>
                 </div>
-
+                <c:set var="cakeCardIndex" value="0"/>
                 <c:forEach var="order" items="${orderList}" varStatus="loop">   
-                    <div class="order-content row">
+                    <div class="order-content row" id="order-content-${order.orderID}">
                         <div class="col-sm-7 row order-content-total-info">
                             <div class="order-id col-sm-2">#${order.orderID}</div>
                             <div class="order-content-date col-sm-3"><i class="bi bi-cart"></i> 
@@ -108,31 +108,47 @@
 
                     </div>
                     <div class="orderdDetail-content row" id="orderdDetail-content-${order.orderID}">                                                                  
-                        <div class="col-sm-12 order-Description">
-                            ${order.orderDescription}
-                        </div>
+                        <div class="col-sm-6 received-btn" ${order.status == "Delivering"?"":"hidden"}>
+                            <button onclick="receivedOrder(${order.orderID})">Received</button></div>
+                        <div class="${order.status == "Delivering"?"col-sm-6":"col-sm-12"} col-sm-6 order-Description">
+                            ${order.orderDescription} 
+                        </div>                     
                         <c:set var="orderDetailQuantity" value="0" />
-                        <c:forEach var="cakeInOrder" items="${cakeInOrder.get(loop.index)}">  
-                            <c:set var="orderDetailQuantity" value="${orderDetailQuantity+1}" />
-                            <c:if test="${orderDetailQuantity <=3}">
+                        <c:forEach var="cakeInOrder" items="${cakeInOrder.get(loop.index)}"> 
+                            <c:set var="ratingVlaue" value="${ratingInCake[loop.index][orderDetailQuantity].ratingValue}"></c:set>
+                            <c:if test="${orderDetailQuantity <3}">
                                 <div class="orderDetail-card orderDetail-card--unshowTopping col-sm-3" id="orderDetail-card-${cakeInOrder.cioID}">
                                     <div class="orderDetail-cakeName">${cakeInOrder.cake.cakeName}</div>
                                     <div class="cake-info row">                          
                                         <img class="orderDetail-cakeImage col-sm-6" src="./../../${cakeInOrder.cake.cakeImg}"/>
-                                        <div class="col-sm-6">
-                                            <div class="orderDetail-cakePrice">Price:
+                                        <div class="col-sm-6 row card-info">
+                                            <div class="orderDetail-cakePrice col-sm-12">Price:
                                                 <fmt:formatNumber value="${cakeInOrder.cake.cakePrice}" type="currency" currencySymbol="" maxFractionDigits="0" />đ
                                             </div>
-                                            <div class="orderDetail-cakeQuantity">Quantity: ${cakeInOrder.cioQuantity}</div>
-                                            <div class="showTopping-btn-cotainer">                                    
+                                            <div class="orderDetail-cakeQuantity col-sm-12">Quantity: ${cakeInOrder.cioQuantity}</div>
+                                            <div class="rate col-sm-12 cake-index-${cakeInOrder.cake.cakeID} index-array-${loop.index}-${orderDetailQuantity}" id="${cakeCardIndex}">
+                                                <input type="radio" id="star5-${cakeCardIndex}" name="rate-${cakeCardIndex}" value="5" ${ratingVlaue==5?"checked":""} />
+                                                <label for="star5-${cakeCardIndex}" title="text">5 stars</label>
+                                                <input type="radio" id="star4-${cakeCardIndex}" name="rate-${cakeCardIndex}" value="4" ${ratingVlaue==4?"checked":""}/>
+                                                <label for="star4-${cakeCardIndex}" title="text">4 stars</label>
+                                                <input type="radio" id="star3-${cakeCardIndex}" name="rate-${cakeCardIndex}" value="3" ${ratingVlaue==3?"checked":""}/>
+                                                <label for="star3-${cakeCardIndex}" title="text">3 stars</label>
+                                                <input type="radio" id="star2-${cakeCardIndex}" name="rate-${cakeCardIndex}" value="2" ${ratingVlaue==2?"checked":""}/>
+                                                <label for="star2-${cakeCardIndex}" title="text">2 stars</label>
+                                                <input type="radio" id="star1-${cakeCardIndex}" name="rate-${cakeCardIndex}" value="1" ${ratingVlaue==1?"checked":""}/>
+                                                <label for="star1-${cakeCardIndex}" title="text">1 stars</label>                   
+                                            </div>
+                                            <div class="showTopping-btn-cotainer col-sm-12">                                    
                                                 <button class="showTopping-btn" onclick="ShowTopping(${cakeInOrder.cioID},${cakeInOrder.cioQuantity * cakeInOrder.cake.cakePrice})">Show Topping <i id class="bi bi-chevron-double-down down-icon"></i></button>                           
                                             </div>
                                         </div>
                                     </div>
                                     <div class="orderDetail-totalPrice">Total Cake Price: 
                                         <fmt:formatNumber value="${cakeInOrder.cioQuantity * cakeInOrder.cake.cakePrice}" type="currency" currencySymbol="" maxFractionDigits="0" />đ
-                                    </div>
+                                    </div>                                
                                 </div>
+                                <c:set var="orderDetailQuantity" value="${orderDetailQuantity+1}" /> 
+                                <c:set var="cakeCardIndex" value="${cakeCardIndex + 1}" />
                             </c:if>
                         </c:forEach>
                         <c:if test="${orderDetailQuantity > 3}">                          
@@ -151,12 +167,21 @@
     </div>   
     <!--Cart popup-->
     <%@include file="../homeviews/Cart.jsp" %>
-    <script  src="../../assets/javascript/purchase-history.js"></script>
+
+    <div id="ratingPopup" class="popup">
+        <div class="popup-content">
+            <h3>Enter your comment</h3>
+            <textarea id="comment" cols="50" rows="5"></textarea>
+            <button class="yes-option" onclick="handleRating()">Yes</button>
+            <button class="no-option" onclick="ClosePopup()">No</button>
+        </div>
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
             integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
     crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
     crossorigin="anonymous"></script>
+    <script  src="../../assets/javascript/purchase-history.js"></script>
 </body>
 </html>

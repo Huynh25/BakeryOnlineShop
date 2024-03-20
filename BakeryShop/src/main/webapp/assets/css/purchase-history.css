@@ -45,11 +45,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/css.css to edit this t
     position: absolute;
     left: 0;
     bottom: 0;
-   display: block;
-   content: "";
-   width: calc(100% + 10px);
-   height: 3px;
-   background-color: var(--red);
+    display: block;
+    content: "";
+    width: calc(100% + 10px);
+    height: 3px;
+    background-color: var(--red);
 }
 .nav-bar--active .nav-bar-items:hover{
     color: var(--black);
@@ -81,7 +81,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/css.css to edit this t
     align-items: center;
 }
 #filter-container{
-     display: flex;
+    display: flex;
     justify-content: center;
     align-items: center;
 }
@@ -165,10 +165,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/css.css to edit this t
     text-align: center;
 }
 .showTopping-btn, .showLess-btn{
-  margin: 10px 0;   
-  padding: 0px 3px !important;
-  border-radius: 5px;
-  border: 2px solid var(--black);
+    margin: 10px 0;
+    padding: 0px 3px !important;
+    border-radius: 5px;
+    border: 2px solid var(--black);
 }
 .showMore-btn-cotainer{
     display: flex;
@@ -210,16 +210,16 @@ Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/css.css to edit this t
     text-align: left;
 }
 .orderDetail-card--unshowTopping{
-    height: 220px;
+    height: 250px;
 }
 @media only screen and (max-width: 1390px) {
     .orderDetail-card--unshowTopping {
-        height: 350px; 
+        height: 300px;
     }
 }
 @media only screen and (max-width: 800px) {
     .orderDetail-card--unshowTopping {
-        height: 380px; 
+        height: 350px;
     }
 }
 .order-Description{
@@ -229,4 +229,107 @@ Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/css.css to edit this t
 }
 .toppingInfo{
     margin-bottom: 5px;
+}
+*{
+    margin: 0;
+    padding: 0;
+}
+.rate {
+    float: left;
+    height: 46px;
+    display: flex;
+    flex-direction: row-reverse;
+    width: 100px;
+    padding: 0 10px;
+}
+.rate:not(:checked) > input {
+    position:absolute;
+    top:0;
+    display: none;
+}
+
+.rate:not(:checked) > label {
+    float:right;
+    width:1em;
+    overflow:hidden;
+    white-space:nowrap;
+    cursor:pointer;
+    font-size:30px;
+    color:#ccc;
+}
+.rate:not(:checked) > label:before {
+    content: '★ ';
+}
+.rate > input:checked ~ label {
+    color: #ffc700;
+}
+.rate:not(:checked) > label:hover,
+.rate:not(:checked) > label:hover ~ label {
+    color: #deb217;
+}
+.rate > input:checked + label:hover,
+.rate > input:checked + label:hover ~ label,
+.rate > input:checked ~ label:hover,
+.rate > input:checked ~ label:hover ~ label,
+.rate > label:hover ~ input:checked ~ label {
+    color: #c59b08;
+}
+.card-info{
+    padding: 0 !important;
+}
+
+.popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 9999;
+}
+
+.popup-content {
+    text-align: center;
+}
+.popup h3{
+    margin-bottom: 10px;
+}
+.popup button {
+    margin-top: 10px;
+    padding: 5px 10px;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    width: 120px;
+    height: 40px;
+}
+
+.popup button:hover {
+    background-color: #0056b3;
+}
+
+.popup textarea {
+    width: 100%;
+    margin-bottom: 10px;
+}
+.yes-option{
+    background-color: #007bff;
+}
+.no-option{
+    background-color: red;
+}
+.received-btn{
+    padding-top: 10px !important;
+}
+.received-btn button{
+    border-radius: 5px;
+    background-color:  red;
+    color: white;
+    padding: 3px;
+    border:0;
 }

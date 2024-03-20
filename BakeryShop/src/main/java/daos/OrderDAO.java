@@ -243,7 +243,17 @@ public class OrderDAO extends AbstractDAO<Order> {
         }
         return number;
     }
-
+    public void receivedStatus(String orderID) {
+        String sql = "UPDATE [dbo].[Orders] SET "
+                + "[status] = 'Done'"
+                + "WHERE [orderID] = " + orderID;
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace(); // In ra lỗi nếu có
+        }
+    }
     public int numberFilterByUserID(int id, String filter, String search, String orderDate, String receivedDate) {
         int number = 0;
         try {
