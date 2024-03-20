@@ -52,6 +52,9 @@ public class CategoryController extends HttpServlet {
                         }
                     });
                     break;
+                case "bestSeller":
+                    cakeList = cakeDAO.getBestSellerByCakeType(cakeType);
+                    break;
 //                case "price":
 //                    Collections.sort(cakeList, new Comparator<Cake>() {
 //                        @Override

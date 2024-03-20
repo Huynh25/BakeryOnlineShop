@@ -47,7 +47,7 @@ public class CakeDAO extends AbstractDAO<Cake> {
     }
 
     @Override
-     public void create(Cake newCake) {
+    public void create(Cake newCake) {
         try {
             String sql = "INSERT INTO [dbo].[Cakes] (cakeName, cakeDescription, cakePrice, cakeImg, cakeQuantity, cakeType) "
                     + "VALUES (?, ?, ?, ?, ?, ?)";
@@ -84,7 +84,7 @@ public class CakeDAO extends AbstractDAO<Cake> {
     }
 
     @Override
-public void update(Cake updatedCake) {
+    public void update(Cake updatedCake) {
         try {
             // Assuming cakeID is the primary key
             int cakeID = updatedCake.getCakeID();
@@ -121,7 +121,7 @@ public void update(Cake updatedCake) {
             // Handle exceptions as needed
             ex.printStackTrace();
         }
-    }    
+    }
 
     @Override
     public void delete(String id) {
@@ -313,7 +313,7 @@ public void update(Cake updatedCake) {
         }
         return types;
     }
-    
+
     public void updateQuantity(Cake cake) {
         String sql = "UPDATE Cakes SET cakeQuantity=? WHERE cakeID=?";
 
@@ -328,6 +328,38 @@ public void update(Cake updatedCake) {
         } catch (Exception e) {
         }
 
+    }
+    
+    public List<Cake> getBestSellerByCakeType(String cakeType) {
+        List<Cake> cakes = new ArrayList<>();
+        try {
+
+            String sql = "SELECT c.cakeID, c.cakeName, c.cakeDescription, c.cakePrice, c.cakeImg, c.cakeQuantity, c.cakeType, COUNT(*) AS NumberOfOrder\n"
+                    + "FROM Cakes c\n"
+                    + "JOIN CakeInOrder cio ON c.cakeID = cio.cakeID\n"
+                    + "JOIN Orders o ON cio.orderID = o.orderID\n"
+                    + "WHERE cakeType = '" + cakeType + "'\n"
+                    + "GROUP BY c.cakeID, c.cakeName, c.cakeDescription, c.cakePrice, c.cakeImg, c.cakeQuantity, c.cakeType\n"
+                    + "ORDER BY NumberOfOrder desc;";
+            Statement stm = con.createStatement();
+            ResultSet rs = stm.executeQuery(sql);
+
+            while (rs.next()) {
+                Cake cake = new Cake();
+                cake.setCakeID(rs.getInt("cakeID"));
+                cake.setCakeName(rs.getString("cakeName"));
+                cake.setCakeDescription(rs.getString("cakeDescription"));
+                cake.setCakePrice(rs.getInt("cakePrice"));
+                cake.setCakeImg(rs.getString("cakeImg"));
+                cake.setCakeQuantity(rs.getInt("cakeQuantity"));
+                cake.setCakeType(rs.getString("cakeType"));
+
+                cakes.add(cake);
+            }
+
+        } catch (SQLException ex) {
+        }
+        return cakes;
     }
 
     public static void main(String[] args) {

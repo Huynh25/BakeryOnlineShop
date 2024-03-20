@@ -3,6 +3,7 @@
     Created on : Feb 23, 2024, ‏‎2:29:23 PM
     Author     : Tran Gia Huy CE170732
 --%>
+<%@page import="models.User"%>
 <%@page import="daos.ToppingDAO"%>
 <%@page import="daos.CakeDAO"%>
 <%@page import="java.net.URLDecoder"%>
@@ -21,6 +22,22 @@
 <link rel="stylesheet" href="../../assets/css/cart.css"/>
 
 <%
+    User userInSession = (User) session.getAttribute("user");
+    if (userInSession == null || !userInSession.getRole().equalsIgnoreCase("customer")) {
+        session.removeAttribute("cart");
+        request.removeAttribute("cart");
+
+        Cookie[] cookies = request.getCookies();
+        if (cookies != null) {
+            for (Cookie cookie : cookies) {
+                if (cookie.getName().equals("cart")) {
+                    cookie.setMaxAge(0);
+                    response.addCookie(cookie);
+                }
+            }
+        }
+    }
+
     Cart cart = (Cart) session.getAttribute("cart");
     if (cart == null) {
         String text = "";

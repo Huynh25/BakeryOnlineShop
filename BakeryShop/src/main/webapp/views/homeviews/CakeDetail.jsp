@@ -202,7 +202,7 @@
                                         </div>
                                     </c:when>
                                     <c:otherwise>
-                                        <h2 class="sold-out">Sold out</h2>
+                                        <h2 class="sold-out">Out of stock</h2>
                                     </c:otherwise>
                                 </c:choose>
                             </div>

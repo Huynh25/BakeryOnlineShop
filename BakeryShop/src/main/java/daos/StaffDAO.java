@@ -17,16 +17,16 @@ import models.Staff;
  * @author Nguyen Truong An CE170984
  */
 public class StaffDAO extends AbstractDAO<Staff> {
-
+    
     @Override
     public List<Staff> readAll() {
         List<Staff> staffs = new ArrayList<>();
         try {
-
+            
             String sql = "Select * from [dbo].[Staffs]";
             Statement stm = con.createStatement();
             ResultSet rs = stm.executeQuery(sql);
-
+            
             while (rs.next()) {
                 Staff staff = new Staff();
                 staff.setStaffID(rs.getInt("staffID"));
@@ -40,12 +40,12 @@ public class StaffDAO extends AbstractDAO<Staff> {
                 staff.setManagerID(rs.getInt("managerID"));
                 staffs.add(staff);
             }
-
+            
         } catch (SQLException ex) {
         }
         return staffs;
     }
-
+    
     @Override
     public void create(Staff s) {
         String sql = "INSERT INTO [dbo].[Staffs]\n"
@@ -73,16 +73,16 @@ public class StaffDAO extends AbstractDAO<Staff> {
             e.printStackTrace();
         }
     }
-
+    
     public Staff findByUsernameAndEmail(String staffName, String email) {
         Staff staff = new Staff();
         try {
-
+            
             String sql = "Select * from [dbo].[Staffs]"
                     + "where staffName =\'" + staffName + "\' AND email=\'" + email + "\'";
             Statement stm = con.createStatement();
             ResultSet rs = stm.executeQuery(sql);
-
+            
             if (rs.next()) {
                 staff.setStaffID(rs.getInt("staffID"));
                 staff.setStaffName(rs.getString("staffName"));
@@ -95,12 +95,12 @@ public class StaffDAO extends AbstractDAO<Staff> {
                 staff.setManagerID(rs.getInt("managerID"));
                 return staff;
             }
-
+            
         } catch (SQLException ex) {
         }
         return null;
     }
-
+    
     @Override
     public void update(Staff s) {
         String sql = "UPDATE [dbo].[Staffs] SET \n"
@@ -109,7 +109,7 @@ public class StaffDAO extends AbstractDAO<Staff> {
                 + "      ,[address] = \'" + s.getAddress() + "\'\n"
                 + "      ,[phoneNumber] = \'" + s.getPhoneNumber() + "\'\n"
                 + "      ,[staffAvatar] = \'" + s.getStaffAvatar() + "\'\n";
-
+        
         if (!s.getPassword().equals("@PWNT*****")) {
             sql += ",[password] = CONVERT(VARCHAR(32),HASHBYTES('MD5',\'" + s.getPassword() + "\'), 2)\n";
         }
@@ -121,21 +121,21 @@ public class StaffDAO extends AbstractDAO<Staff> {
         } catch (Exception e) {
         }
     }
-
+    
     @Override
     public void delete(String id) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-
+    
     @Override
     public Staff findByID(int id) {
         try {
-
+            
             String sql = "Select * from [dbo].[Staffs]"
                     + "where staffID =\'" + id + "\'";
             Statement stm = con.createStatement();
             ResultSet rs = stm.executeQuery(sql);
-
+            
             if (rs.next()) {
                 Staff staff = new Staff();
                 staff.setStaffID(rs.getInt("staffID"));
@@ -148,20 +148,20 @@ public class StaffDAO extends AbstractDAO<Staff> {
                 staff.setPhoneNumber(rs.getString("phoneNumber"));
                 return staff;
             }
-
+            
         } catch (SQLException ex) {
         }
         return null;
     }
-
+    
     public Staff findByFullname(String name) {
         try {
-
+            
             String sql = "Select * from [dbo].[Staffs]"
                     + "where staffName =\'" + name + "\'";
             Statement stm = con.createStatement();
             ResultSet rs = stm.executeQuery(sql);
-
+            
             if (rs.next()) {
                 Staff staff = new Staff();
                 staff.setStaffID(rs.getInt("staffID"));
@@ -174,24 +174,24 @@ public class StaffDAO extends AbstractDAO<Staff> {
                 staff.setPhoneNumber(rs.getString("phoneNumber"));
                 return staff;
             }
-
+            
         } catch (SQLException ex) {
         }
         return null;
     }
-
+    
     public static void main(String[] args) {
         StaffDAO cDAO = new StaffDAO();
-
+        
         List<Staff> list = cDAO.readAll();
         for (Staff s : list) {
             System.out.println(s.toString());
         }
         System.out.println("---------------");
         System.out.println(cDAO.findByID(1).toString());
-
+        
     }
-
+    
     public void updatePassworD(String password1, int id) {
         try {
             String sql = "UPDATE Staffs\n"
@@ -202,5 +202,55 @@ public class StaffDAO extends AbstractDAO<Staff> {
             ps.executeUpdate();
         } catch (Exception e) {
         }
+    }
+    
+    public Staff readByEmail(String email) {
+        Staff staff = new Staff();
+        try {
+            
+            String readSQL = "Select * from Staffs where email = \'" + email + "\'";
+            Statement stm = con.createStatement();
+            ResultSet rs = stm.executeQuery(readSQL);
+            System.out.println("sql" + readSQL);
+            if (rs.next()) {
+                staff.setStaffID(rs.getInt("staffID"));
+                staff.setStaffName(rs.getString("staffName"));
+                staff.setPassword(rs.getString("password"));
+                staff.setFullname(rs.getString("fullname"));
+                staff.setEmail(rs.getString("email"));
+                staff.setAddress(rs.getString("address"));
+                staff.setPhoneNumber(rs.getString("phoneNumber"));
+                staff.setStaffAvatar(rs.getString("staffAvatar"));
+                staff.setManagerID(rs.getInt("managerID"));
+                return staff;
+            }
+            
+        } catch (SQLException ex) {
+        }
+        return null;
+    }
+    
+    public Staff findByPhone(String phoneNumber) {
+        try {
+            String sql = "SELECT * FROM [dbo].[Staffs] WHERE phoneNumber = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, phoneNumber);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                Staff staff = new Staff();
+                staff.setStaffID(rs.getInt("staffID"));
+                staff.setStaffName(rs.getString("staffName"));
+                staff.setPassword(rs.getString("password"));
+                staff.setFullname(rs.getString("fullname"));
+                staff.setEmail(rs.getString("email"));
+                staff.setAddress(rs.getString("address"));
+                staff.setPhoneNumber(rs.getString("phoneNumber"));
+                staff.setStaffAvatar(rs.getString("staffAvatar"));
+                staff.setManagerID(rs.getInt("managerID"));
+                return staff;
+            }
+        } catch (SQLException ex) {
+        }
+        return null;
     }
 }

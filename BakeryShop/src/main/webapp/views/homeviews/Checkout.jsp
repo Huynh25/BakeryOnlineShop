@@ -46,7 +46,7 @@
             <form action="make-purchase" method="post" id="make-purchase-form">
             </form>
             <!-- Checkout body -->
-            <c:if test="${isPurchaseSuccess == false}">
+            <c:if test="${isPurchaseSuccess == false || alertInfo != null && !alertInfo.isEmpty()}">
                 <div class="container purchase-failed">
                     <h1 class="text-danger pt-4">
                         <c:choose>
@@ -70,7 +70,9 @@
                     <div class="col-sm-7 checkout-content">
                         <div class="checkout-part contact-info row justify-content-between">
                             <div class="col-sm-12 title">
-                                <h3>Contact information <a href="editProfile">Change</a></h3>
+                                <h3>Contact information 
+                                    <!--<a href="editProfile">Change</a>-->
+                                </h3>
                             </div>
                             <div class="col-sm-12 input">
                                 <input form="make-purchase-form" type="text" name="fullname" id="fullname" placeholder="Enter your full name" value="${customer.fullname}">
@@ -84,7 +86,9 @@
                         </div>
                         <div class="checkout-part shipping-info row justify-content-between">
                             <div class="col-sm-12 title">
-                                <h3>Shipping information <a href="editProfile">Change</a></h3>
+                                <h3>Shipping information 
+                                    <!--<a href="editProfile">Change</a>-->
+                                </h3>
                             </div>
                             <div class="col-sm-12 input">
                                 <textarea form="make-purchase-form" name="address" id="address" cols="30" rows="10"

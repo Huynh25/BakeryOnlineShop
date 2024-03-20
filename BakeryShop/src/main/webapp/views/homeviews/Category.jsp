@@ -91,6 +91,7 @@
                                 <c:param name="cakeType" value="${title}"/>
                             </c:url>
                             <a class="dropdown-item" href="${filter}&sort=name">Name</a>
+                            <a class="dropdown-item" href="${filter}&sort=bestSeller">Best seller</a>
                             <!--<a class="dropdown-item" href="${filter}&sort=price">Price</a>-->   
                         </div>
                     </li> 
