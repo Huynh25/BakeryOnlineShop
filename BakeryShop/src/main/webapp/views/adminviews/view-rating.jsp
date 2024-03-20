@@ -98,9 +98,11 @@
             <aside id="aside-right" class="col-sm-8">
                 <div id="rating-detail-1">
                     <h3 id="rating-title">Rating of ${cakeList.get(0).cakeName}</h3> 
-                    <div id="statistic-link-wrapper">                       
-                        <a href="../../views/adminviews/rating-statistics-page.jsp" id="statistic-link">Statistics <i class="bi bi-bar-chart"></i></a>
-                    </div>
+                    <c:if test="${sessionScope.user.role eq 'manager'}">
+                        <div id="statistic-link-wrapper">                       
+                            <a href="../../views/adminviews/cake-statistic-page.jsp" id="statistic-link">Statistics <i class="bi bi-bar-chart"></i></a>
+                        </div>
+                    </c:if>
                     <div class="row" id="rating-detail-container">
                     <c:forEach var="rating" items="${ratingList}">
                         <c:if test="${rating.cake.cakeID==1}">

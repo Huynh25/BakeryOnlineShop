@@ -31,6 +31,11 @@
                         <h4>&gt</h4>
                         <h4><a class="pre-page" href="/CakeManagement">Cake Management</a></h4>
                         <h4>&gt</h4>
+                        <c:set var="isFirst" value="true"/>
+                        <c:if test="${isFirst}">
+                            <h4 id="cake-name-title" class="current-page">Add Cake</h4>
+                            <c:set var="isFirst" value="false"/>
+                        </c:if>
                         <h4 id="cake-name-title" class="current-page">${cake.cakeName}</h4>
                     </div>
                 </div>

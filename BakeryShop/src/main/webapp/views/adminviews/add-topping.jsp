@@ -31,6 +31,11 @@
                         <h4>&gt</h4>
                         <h4><a class="pre-page" href="/ToppingManagement">Topping Management</a></h4>
                         <h4>&gt</h4>
+                        <c:set var="isFirst" value="true"/>
+                        <c:if test="${isFirst}">
+                            <h4 id="topping-name-title" class="current-page">Add Topping</h4>
+                            <c:set var="isFirst" value="false"/>
+                        </c:if>
                         <h4 id="topping-name-title" class="current-page">${topping.toppingName}</h4>
                     </div>
                 </div>
