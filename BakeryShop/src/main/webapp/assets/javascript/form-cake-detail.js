@@ -13,10 +13,12 @@ const alertNode = document.createElement("div");
 alertNode.setAttribute("class", ["row align-items-center justify-content-start alert"]);
 alertNode.textContent = "You must choose one of these toppings !";
 
-const orgPrice = parseInt(priceTag.nodeValue);
+const orgPrice = parseInt(priceTag.nodeValue.replace(/\./g, ''));
+
 
 function updatePrice() {
-    priceTag.nodeValue = buyQuanCurrent * (orgPrice + toppingsPrice);
+    console.log(orgPrice);
+    priceTag.nodeValue = (buyQuanCurrent * (orgPrice + toppingsPrice)).toLocaleString('en-US').replace(/,/g,'.');
 }
 
 function updateMaxCake() {

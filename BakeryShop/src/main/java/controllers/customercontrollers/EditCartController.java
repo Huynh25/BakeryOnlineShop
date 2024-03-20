@@ -5,6 +5,7 @@
 package controllers.customercontrollers;
 
 import daos.CakeDAO;
+import daos.GoWithDAO;
 import daos.ToppingDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -20,6 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 import models.Cake;
 import models.Cart;
+import models.GoWith;
 import models.Item;
 import models.Topping;
 
@@ -49,14 +51,14 @@ public class EditCartController extends HttpServlet {
             topping.setToppingID(Integer.parseInt(toppingID));
             listTopping.add(topping);
         }
-        
+
         Cake cake = new Cake();
         cake.setCakeID(Integer.parseInt(cakeID));
-        
+
         Item inputItem = new Item();
         inputItem.setCake(cake);
         inputItem.setToppings(listTopping);
-        
+
         String valueString = request.getParameter("value");
         int value = 1;
         try {
@@ -90,7 +92,7 @@ public class EditCartController extends HttpServlet {
         Cart cart = new Cart(text, cakeList, toppingList);
         List<Item> items = cart.getItems();
         Item item = cart.getItemInCart(inputItem);
-        
+
         int maxQuantityCouldBeSet = 0;
         int totalCakeIDInCart = 0;
         for (Item i : items) {
@@ -100,8 +102,35 @@ public class EditCartController extends HttpServlet {
         }
 
         maxQuantityCouldBeSet = item.getCake().getCakeQuantity() - totalCakeIDInCart;
+
+        //Get list of toppings that go with the cake
+        GoWithDAO goWithDAO = new GoWithDAO();
+
+        List<GoWith> goWithList = goWithDAO.findAllByCakeID(item.getCake().getCakeID());
+        List<Topping> toppings = new ArrayList<>();
+        List<Topping> toppingsInItem = item.getToppings();
+
+        for (GoWith goWith : goWithList) {
+            for (Topping topping : toppingsInItem) {
+                if (topping.getToppingID() == goWith.getTopping().getToppingID()) {
+                    toppings.add(goWith.getTopping());
+                }
+            }
+        }
+
+        for (Topping topping : toppings) {
+            int buyQuantity = 0;
+            for (Item itemInCart : items) {
+                for (Topping toppingItem : itemInCart.getToppings()) {
+                    if (topping.getToppingID() == toppingItem.getToppingID()) {
+                        buyQuantity += itemInCart.getBuyQuantity();
+                        break;
+                    }
+                }
+            }
+            topping.setToppingQuantity(topping.getToppingQuantity() - buyQuantity);
+        }
         int maxQuantityTopping = 0;
-        List<Topping> toppings = item.getToppings();
         int length = toppings.size();
         for (int i = 0; i < length; ++i) {
             if (i == 0) {
@@ -111,9 +140,8 @@ public class EditCartController extends HttpServlet {
             }
         }
 
-        maxQuantityTopping = maxQuantityTopping - totalCakeIDInCart;
-
         if (maxQuantityCouldBeSet > maxQuantityTopping) {
+
             maxQuantityCouldBeSet = maxQuantityTopping;
         }
 
@@ -131,7 +159,7 @@ public class EditCartController extends HttpServlet {
                 }
                 break;
             case "change":
-                if (value < maxQuantityCouldBeSet) {
+                if (value <= maxQuantityCouldBeSet) {
                     item.setBuyQuantity(value);
                 }
                 break;

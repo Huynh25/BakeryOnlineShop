@@ -4,6 +4,7 @@
  */
 package models;
 
+import daos.GoWithDAO;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -91,13 +92,64 @@ public class Cart {
 
     public void addItem(Item item) {
         Item itemInCart = getItemInCart(item);
-
-        if (itemInCart != null) {
-            itemInCart.setBuyQuantity(itemInCart.getBuyQuantity() + item.getBuyQuantity());
-        } else {
-            items.add(item);
+        int totalCakeIDInCart = 0;
+        for (Item i : items) {
+            if (item.getCake().getCakeID() == i.getCake().getCakeID()) {
+                totalCakeIDInCart += i.getBuyQuantity();
+            }
         }
 
+        if (itemInCart == null) {
+            if (item.getCake().getCakeQuantity() - totalCakeIDInCart - item.getBuyQuantity() >= 0) {
+                items.add(item);
+            }
+            return;
+        }
+
+        int quantityCouldBuy = item.getBuyQuantity();
+        //Get list of toppings that go with the cake
+        GoWithDAO goWithDAO = new GoWithDAO();
+
+        List<GoWith> goWithList = goWithDAO.findAllByCakeID(item.getCake().getCakeID());
+        List<Topping> toppings = new ArrayList<>();
+        List<Topping> toppingsInItem = item.getToppings();
+
+        for (GoWith goWith : goWithList) {
+            for (Topping topping : toppingsInItem) {
+                if (topping.getToppingID() == goWith.getTopping().getToppingID()) {
+                    toppings.add(goWith.getTopping());
+                }
+            }
+        }
+
+        for (Topping topping : toppings) {
+            int buyQuantity = 0;
+            for (Item cartItem : items) {
+                for (Topping toppingItem : cartItem.getToppings()) {
+                    if (topping.getToppingID() == toppingItem.getToppingID()) {
+                        buyQuantity += cartItem.getBuyQuantity();
+                        break;
+                    }
+                }
+            }
+            topping.setToppingQuantity(topping.getToppingQuantity() - buyQuantity);
+        }
+
+        int maxQuantityTopping = 0;
+        int length = toppings.size();
+        for (int i = 0; i < length; ++i) {
+            if (i == 0) {
+                maxQuantityTopping = toppings.get(0).getToppingQuantity();
+            } else if (maxQuantityTopping > toppings.get(i).getToppingQuantity()) {
+                maxQuantityTopping = toppings.get(i).getToppingQuantity();
+            }
+        }
+
+        if (quantityCouldBuy > maxQuantityTopping) {
+            quantityCouldBuy = maxQuantityTopping;
+        }
+
+        itemInCart.setBuyQuantity(itemInCart.getBuyQuantity() + quantityCouldBuy);
     }
 
     public void removeItem(Item item) {

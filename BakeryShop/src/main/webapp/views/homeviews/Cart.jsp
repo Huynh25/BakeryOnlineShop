@@ -15,6 +15,7 @@
 <%@page import="models.Item"%>
 <%@page import="models.Cart"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ page import="java.lang.Math" %>
 
@@ -85,7 +86,7 @@
                 <div class="title">
                     Total
                 </div>
-                <div class="price">${cart.totalPrice}<span class="underline">đ</span>
+                <div class="price"><fmt:formatNumber type="number" value="${cart.totalPrice}" pattern="#,###" /><span class="underline">đ</span>
                 </div>
             </div>
             <div class="col-sm-12 button">
@@ -106,7 +107,7 @@
                         ${item.cake.cakeName}
                     </div>
                     <div class="cake-price">
-                        ${item.totalPrice} <span class="underline">đ</span>
+                        <fmt:formatNumber type="number" value="${item.totalPrice}" pattern="#,###" /> <span class="underline">đ</span>
                     </div>
                     <div class="cake-toppings">
                         Toppings: <c:forEach var="topping" items="${item.toppings}" varStatus="status">

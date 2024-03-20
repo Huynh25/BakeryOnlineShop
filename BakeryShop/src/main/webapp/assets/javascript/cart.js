@@ -56,13 +56,13 @@ function rerender( {product, cartPrice, productPrice, quantity}, element, type =
     let productPriceElement = element.querySelector(".cake-price");
     
     productInCartElement.childNodes[0].nodeValue = product + " products";
-    priceInCartElement.childNodes[0].nodeValue = cartPrice;
+    priceInCartElement.childNodes[0].nodeValue = cartPrice.toLocaleString('en-US').replace(/,/g,'.') ;
 
     switch (type) {
         case "update":
             quanElement.setAttribute("value", quantity);
             quanElement.value = quantity;
-            productPriceElement.childNodes[0].nodeValue = " " + productPrice + " ";
+            productPriceElement.childNodes[0].nodeValue = " " + productPrice.toLocaleString('en-US').replace(/,/g,'.') + " ";
             break;
         case "delete":
             let cartItem = element.parentElement.parentElement.parentElement;

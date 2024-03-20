@@ -4,6 +4,8 @@
     Author     : Tran Gia Huy CE170732
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ page import="java.lang.Math" %>
 <!DOCTYPE html>
@@ -69,20 +71,23 @@
             }
             int boughtQuantity = 0;
             List<Item> items = currentCart.getItems();
+
+            for (Topping topping : toppings) {
+                int buyQuantity = 0;
+                for (Item item : items) {
+                    for (Topping toppingItem : item.getToppings()) {
+                        if (topping.getToppingID() == toppingItem.getToppingID()) {
+                            buyQuantity += item.getBuyQuantity();
+                            break;
+                        }
+                    }
+                }
+                topping.setToppingQuantity(topping.getToppingQuantity() - buyQuantity);
+            }
+
             for (Item item : items) {
                 if (item.getCake().getCakeID() == cake.getCakeID()) {
                     boughtQuantity += item.getBuyQuantity();
-
-                    int idx = 0;
-                    for (Topping topping : toppings) {
-                        idx = 0;
-                        for (Topping toppingItem : item.getToppings()) {
-                            if (topping.getToppingID() == toppingItem.getToppingID()) {
-                                int updateQuantity = topping.getToppingQuantity() - item.getToppingsBuyQuantity().get(idx);
-                                topping.setToppingQuantity(updateQuantity);
-                            }
-                        }
-                    }
                 }
             }
             cake.setCakeQuantity(cake.getCakeQuantity() - boughtQuantity);
@@ -159,29 +164,31 @@
                         </div>
                         <div class="col-4 cake-attribute row justify-content-xl-between justify-content-center">
                             <div class="col-12 toppings">
-                                <div class="title">
-                                    Choose toppings
-                                </div>
-                                <div class="topping-list">
-                                    <c:forEach var="topping" items="${toppings}">
-                                        <c:choose>
-                                            <c:when test="${topping.toppingQuantity > 0}">
+                                <c:set var="isToppingOutOfStock" value="true"/>
+
+                                <c:if test="${cake.cakeQuantity > 0}">
+                                    <div class="title">
+                                        Choose toppings
+                                    </div>
+                                    <div class="topping-list">
+                                        <c:forEach var="topping" items="${toppings}">
+                                            <c:if test="${topping.toppingQuantity > 0}">
+                                                <c:set var="isToppingOutOfStock" value="false"/>
                                                 <div class="topping-item">
                                                     <a data-value="${topping.toppingID}" data-price="${topping.toppingPrice}" 
                                                        data-quan="${topping.toppingQuantity}">${topping.toppingName}</a>
                                                 </div>
-                                            </c:when>
-                                        </c:choose>
-
-                                    </c:forEach>
-                                </div>
+                                            </c:if>
+                                        </c:forEach>
+                                    </div>
+                                </c:if>
                             </div>
 
                             <div class="row align-items-end">
                                 <c:choose>
-                                    <c:when test="${cake.cakeQuantity > 0}">
+                                    <c:when test="${cake.cakeQuantity > 0 && !isToppingOutOfStock}">
                                         <div class="col-12 price-quantity row justify-content-xxl-between justify-content-center">
-                                            <div class="col-xxl-6 col-12 price">${cake.cakePrice}<span>đ</span>
+                                            <div class="col-xxl-6 col-12 price"><fmt:formatNumber type="number" value="${cake.cakePrice}" pattern="#,###" /><span>đ</span>
                                             </div>
                                             <div class="col-xxl-6 col-12 quantity row justify-content-between align-items-center">
                                                 <div class="col-3 quantity-btn">
