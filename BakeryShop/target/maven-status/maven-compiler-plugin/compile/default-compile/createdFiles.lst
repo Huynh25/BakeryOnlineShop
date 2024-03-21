@@ -1,3 +1,4 @@
+controllers\admincontrollers\editProfileStaff.class
 models\Config.class
 controllers\admincontrollers\StatisticToppingController.class
 controllers\admincontrollers\RatingController.class
@@ -59,6 +60,7 @@ controllers\customercontrollers\CategoryController$1.class
 controllers\customercontrollers\forgotpasswordController.class
 models\UserGoogleDto.class
 filter\StaffFilter.class
+controllers\admincontrollers\changePasswordStaff.class
 controllers\customercontrollers\LoginController.class
 controllers\customercontrollers\ChangePasswordController.class
 models\Email$1.class

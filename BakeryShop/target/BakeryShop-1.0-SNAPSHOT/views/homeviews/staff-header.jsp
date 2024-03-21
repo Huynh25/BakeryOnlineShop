@@ -43,8 +43,8 @@
                     </i>
                 </a>
                 <div class="dropdown-menu" id="dropdown-management-list">
-                    <a class="dropdown-item" href="editProfile">Edit profile</a>
-                    <a class="dropdown-item" href="changePassword">Change password</a>
+                    <a class="dropdown-item" href="editProfileStaff">Edit profile</a>
+                    <a class="dropdown-item" href="changePasswordStaff">Change password</a>
                     <a class="dropdown-item" href="logout">Log out</a>
                 </div>
             </li>

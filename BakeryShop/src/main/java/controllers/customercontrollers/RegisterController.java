@@ -71,9 +71,9 @@ public class RegisterController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
        response.setContentType("text/html;charset=UTF-8");
-        String username = request.getParameter("fullname");
-        String password = request.getParameter("password");
+        String username = request.getParameter("username");
         String fullname = request.getParameter("fullname");
+        String password = request.getParameter("password");
         String email = request.getParameter("email");
         String phoneNumber = request.getParameter("phoneNumber");
         String address = request.getParameter("address");
@@ -83,7 +83,7 @@ public class RegisterController extends HttpServlet {
 
         try {
             CustomerDAO cd = new CustomerDAO();
-            Customer c = cd.findByPhone(phoneNumber);
+            Customer c = cd.findByUsername(username);
             if (c == null) {
                 Customer customerNew = new Customer(0, username, password, fullname, email, googleID, accessToken, userAvatar, address, phoneNumber);
                 cd.create(customerNew);
@@ -92,7 +92,7 @@ public class RegisterController extends HttpServlet {
                 response.setCharacterEncoding("UTF-8");
 
             } else {
-                request.setAttribute("error", "Phone number " + phoneNumber + " already exists");
+                request.setAttribute("error", "Username " + username + " already exists");
                 request.getRequestDispatcher("views/guestview/registerView.jsp").forward(request, response);
             }
         } catch (Exception e) {

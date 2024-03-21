@@ -1,0 +1,123 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : Mar 4, 2024, 2:16:37 PM
+    Author     : acer
+*/
+
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="tel"] {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.form-group button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.form-group button.cancel {
+  background-color: #ccc;
+  margin-right: 10px;
+}
+
+.staffAvatar {
+  width: 150px;
+  height: 150px;
+  border-radius: 60%;
+  margin-bottom: 20px;
+}
+.left {
+  float: left;
+  width: 50%;
+}
+.right-avatar {
+  float: right;
+  width: 50%;
+  background: none;
+}
+
+.form-edit {
+  width: 1050px;
+  height: 650px;
+  background: white;
+  top: 50%;
+  left: 50%;
+  transform: translate(15%, 5%);
+}
+.form-group .cancel-btn {
+  background-color: transparent;
+  border: 1px solid rgb(206, 83, 81);
+  color: rgb(206, 83, 81);
+  width: 120px;
+}
+.form-group .save {
+  background: rgb(206, 83, 81);
+  width: 120px;
+  font-weight: bold;
+  margin-left: 40px;
+  margin-top: 20px;
+}
+.file-input-wrapper {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    background: none;
+    color: #555555;
+    border-radius: 4px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.file-input-wrapper input[type="file"] {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.file-input-wrapper span {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.file-input-wrapper:hover {
+    background-color: #dddddd;
+}
+
+.file-input-wrapper:active {
+    background-color: #bfbfbf;
+}
+.right-avatar span{
+    padding-left: 20px;
+    font-weight: bold;
+}

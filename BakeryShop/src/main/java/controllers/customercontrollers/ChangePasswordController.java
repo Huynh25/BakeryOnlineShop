@@ -85,31 +85,25 @@ public class ChangePasswordController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
             HttpSession session = request.getSession();
-            User user = (User) session.getAttribute("user");
-            if (user != null) {
-                String userID = request.getParameter("userID");
-                String currentPassword = request.getParameter("currentpassword");
-                String newPassword = request.getParameter("newPassword");
-                String confirmPassword = request.getParameter("password2");
-
-                CustomerDAO cusDAO = new CustomerDAO();
-                boolean passwordVerified = cusDAO.verifyPassword(Integer.parseInt(userID), currentPassword);
-
-                if (passwordVerified && newPassword.equals(confirmPassword)) {
-                    boolean passwordChanged = cusDAO.changePassword(Integer.parseInt(userID), newPassword);
-
-                    if (passwordChanged) {
-                        request.setAttribute("successMessage", "Password changed successfully!");
-                        request.getRequestDispatcher("views/customerviews/changePassword.jsp").forward(request, response);
-                    } else {
-                        request.setAttribute("errorMessage", "An error occurred while changing password. Please try again!");
-                        request.getRequestDispatcher("views/customerviews/changePassword.jsp").forward(request, response);
-                    }
-                } else {
-                    request.setAttribute("errorMessage", "Current password is incorrect or new passwords do not match.");
-                    request.getRequestDispatcher("views/customerviews/changePassword.jsp").forward(request, response);
+        User user = (User) session.getAttribute("user");
+        if (user != null) {
+//            String userID = request.getParameter("userID");
+            String currentPassword = request.getParameter("currentpassword");
+            String newPassword = request.getParameter("newPassword");
+            CustomerDAO cusDAO = new CustomerDAO();
+            boolean passwordVerified = cusDAO.verifyPassword(user.getId(), currentPassword);
+            System.out.println(passwordVerified);
+            if (passwordVerified) {
+                boolean passwordChanged = cusDAO.changePassword(user.getId(), newPassword);
+                if (passwordChanged) {
+                    request.setAttribute("successMessage", "Password changed successfully!");
+                    request.getRequestDispatcher("home").forward(request, response);
                 }
+            } else {
+                request.setAttribute("errorMessage", "Current password is incorrect");
+                request.getRequestDispatcher("views/customerviews/changePassword.jsp").forward(request, response);
             }
+        }
         }
 
     /**

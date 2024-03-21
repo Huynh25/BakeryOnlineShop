@@ -17,7 +17,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const emailInput = document.getElementById('email');
     const phoneInput = document.getElementById('phoneNumber');
     const passwordInput = document.getElementById('password');
-    const password2Input = document.getElementById('password2');
     const errorMessageDiv = document.getElementById('accountValid');
     function showError(errorMessage) {
         errorMessageDiv.innerText = errorMessage;
@@ -29,7 +28,6 @@ document.addEventListener('DOMContentLoaded', function () {
     emailInput.addEventListener('input', clearError);
     phoneInput.addEventListener('input', clearError);
     passwordInput.addEventListener('input', clearError);
-    password2Input.addEventListener('input', clearError);
     phoneInput.addEventListener('input', function () {
         const phoneNumber = phoneInput.value;
         const phoneRegex = /^[0-9]{10}$/;
@@ -37,20 +35,43 @@ document.addEventListener('DOMContentLoaded', function () {
             showError("Invalid phone number. Please enter a 10-digit valid phone number.");
         }
     });
-    passwordInput.addEventListener('input', function () {
-        const password = passwordInput.value;
-        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/;
-        if (!passwordRegex.test(password)) {
-            showError("Password must contain at least 6 characters, including uppercase, lowercase, and special characters.");
-        }
-    });
-    password2Input.addEventListener('input', function () {
-        const password = passwordInput.value;
-        const password2 = password2Input.value;
-
-        if (password2 !== password) {
-            showError("Passwords do not match");
-        }
-    });
 });
 
+function checkUsernameValidity() {
+    var username = document.getElementById("username").value;
+    var usernameFeedback = document.getElementById("usernameFeedback");
+    if (/\s/.test(username)) {
+        usernameFeedback.style.display = "block";
+        usernameFeedback.innerHTML = "Username cannot contain spaces!";
+        return false;
+    }
+    var hasDiacritic = /[àáảãạâầấẩẫậăằắẳẵặèéẻẽẹêềếểễệđìíỉĩịòóỏõọôồốổỗộơờớởỡợùúủũụưừứửữựỳýỷỹỵÀÁẢÃẠÂẦẤẨẪẬĂẰẮẲẴẶÈÉẺẼẸÊỀẾỂỄỆĐÌÍỈĨỊÒÓỎÕỌÔỒỐỔỖỘƠỜỚỞỠỢÙÚỦŨỤƯỪỨỬỮỰỲÝỶỸỴ]/.test(username);
+    if (hasDiacritic) {
+        usernameFeedback.style.display = "block";
+        usernameFeedback.innerHTML = "Username cannot contain diacritics!";
+        return false;
+    }
+
+    // Nếu username hợp lệ, ẩn thông báo lỗi
+    usernameFeedback.style.display = "none";
+    return true;
+}
+
+function validateForm() {
+  var password = document.getElementById("password").value;
+  var passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/;
+  if (!passwordRegex.test(password)) {
+    var errorElement = document.getElementById("passwordFeedback");
+    errorElement.textContent = "Invalid password";
+
+    // Xóa nội dung của ô mật khẩu
+    document.getElementById("password").value = "";
+
+    // Thêm lớp CSS "is-invalid" cho chữ báo lỗi
+    errorElement.classList.add("is-invalid");
+
+    return false;
+  }
+
+  return true;
+}

@@ -32,7 +32,8 @@
     <body>
         <%@include file="../homeviews/Header.jsp" %>
         <div class="form-edit">
-            <form class="form" action="editProfile" method="POST">
+            <form class="form" action="editProfile" id="form" method="POST" onsubmit="return validateForm()">
+                 <span id="fileLabel">${successMessage} ${errorMessage}</span>
                 <div class="col-md-2 right-avatar file-input-wrapper ">
                     <input type="text" name="userID" value="${customer.userID}" hidden=""/>
                     <label for="file" class="avatar-wrapper">
@@ -40,7 +41,6 @@
                         <input type="file" id="file" onchange="handleAvatar(event)"/>
                         <input type="text" id="inputAvatar" name="avatar" value="${customer.userAvatar}" hidden="">
                     </label>
-                    <span id="fileLabel">Change avatar ${successMessage} ${errorMessage}</span>
                 </div>
                 <div class="col-md-8 container left">
                     <div class="form-group">
@@ -78,7 +78,7 @@
                         <label for="phone">Contact number</label>
                         <input
 
-                            type="tel"
+                            type="number"
                             id="phoneNumber"
                             name="phoneNumber"
                             value="${customer.phoneNumber}"

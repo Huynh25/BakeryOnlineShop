@@ -4,6 +4,9 @@
  */
 package daos;
 
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -252,5 +255,73 @@ public class StaffDAO extends AbstractDAO<Staff> {
         } catch (SQLException ex) {
         }
         return null;
+    }
+    
+    
+    public boolean updateProfile(Staff s) {
+        try {
+            String sql = "UPDATE Staffs\n"
+                    + "SET staffAvatar=?, staffName =?, fullname =?, email =?, address =?, phoneNumber=?\n"
+                    + "WHERE staffID = ?;";
+            PreparedStatement ps = con.prepareStatement(sql);
+            System.out.println(s);
+              ps.setString(1, s.getStaffAvatar());
+              ps.setString(2, s.getStaffName());
+              ps.setString(3, s.getFullname());
+              ps.setString(4, s.getEmail());
+              ps.setString(5, s.getAddress());
+              ps.setString(6, s.getPhoneNumber());
+              ps.setInt(7, s.getStaffID());
+            int rowsAffected = ps.executeUpdate();
+            return rowsAffected > 0;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+    
+    public boolean verifyPassword(int staffID, String currentPassword) {
+        try {
+            String hashedPassword = hashPass(currentPassword);
+            String sql = "SELECT * FROM Staffs WHERE staffID = ? AND password = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, staffID);
+            ps.setString(2, hashedPassword);
+            ResultSet rs = ps.executeQuery();
+            return rs.next(); // Trả về true nếu tìm thấy mật khẩu, ngược lại trả về false
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return false;
+    }
+        private String hashPass(String password) {
+        try {
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            byte[] MD = md.digest(password.getBytes());
+            BigInteger number = new BigInteger(1, MD);
+            String hashPass = number.toString(16);
+            while (hashPass.length() < 32) {
+                hashPass = "0" + hashPass;
+            }
+            return hashPass;
+        } catch (NoSuchAlgorithmException ex) {
+            throw new RuntimeException(ex);
+        }
+    }
+    
+        
+        public boolean changePassword(int staffID, String newPassword) {
+        try {
+            String hashedPassword = hashPass(newPassword);
+            String sql = "UPDATE Staffs SET password = ? WHERE staffID = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, hashedPassword);
+            ps.setInt(2, staffID);
+            int rowsAffected = ps.executeUpdate();
+            return rowsAffected > 0;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return false;
     }
 }

@@ -49,6 +49,14 @@
                 <h2>CREATE ACCOUNT</h2>
                 <form action="register" method="post" id="registerForm" onsubmit="return validateForm()" class="needs-validation" novalidate>
                     <div class="form-group">
+                        <div class="title"><label for="username">Username</label></div>
+                        <!--                        <input class="form-control" type="text" id="username" name="username" required/>
+                                                <div class="invalid-feedback">Please enter Username!</div>-->
+                        <input class="form-control" type="text" id="username" name="username" required oninput="checkUsernameValidity()" />
+                        <div class="invalid-feedback" id="usernameFeedback">Please enter a valid username!</div>
+
+                    </div>
+                    <div class="form-group">
                         <div class="title"><label for="fname">Full Name</label></div>
                         <input class="form-control" type="text" id="fullname" name="fullname" required/>
                         <div class="invalid-feedback">Please enter Full name!</div>
@@ -64,14 +72,10 @@
                         <div class="invalid-feedback">Please enter a Phone number!</div>
                     </div>
                     <div class="form-group">
-                        <div class="title"><label for="password">Password</label></div>
+                        <div style="display: flex;" class="title" ><label for="password">Password</label><div style="padding-left: 30px; color: red" id="passwordFeedback"></div></div>
                         <input class="form-control" type="password" id="password" name="password" required/>
                         <div class="invalid-feedback" >Please enter Password!</div>
-                    </div>
-                    <div class="form-group box">
-                        <div class="title"><label for="password">Confirm Password</label></div>
-                        <input class="form-control" type="password" id="password2" name="password2" required/>
-                        <div class="invalid-feedback">Please enter Confirm Password!</div>
+<!--                        <div id="passwordFeedback"></div>-->
                     </div>
                     <div style="color: red" id="accountValid">${error}</div>
                     <div class="form-group">
@@ -90,8 +94,8 @@
                 <img class="cake-4" src="../../Image/Login/strawberrymacaron.png" alt="cake" />
             </div>
         </div>
-                    
-                         <!--Cart popup-->
+
+        <!--Cart popup-->
         <%@include file="../homeviews/Cart.jsp" %>
         <script
             src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"

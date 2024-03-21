@@ -86,7 +86,7 @@ public class editProfileController extends HttpServlet {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
         if (user != null) {
-            String userID=request.getParameter("userID");
+//            String userID=request.getParameter("userID");
             String userAvatar = request.getParameter("avatar");
             String fullname = request.getParameter("fullname");
             String email = request.getParameter("email");
@@ -94,7 +94,7 @@ public class editProfileController extends HttpServlet {
             String phoneNumber = request.getParameter("phoneNumber");
 
             Customer updatedCustomer = new Customer();
-            updatedCustomer.setUserID(Integer.parseInt(userID));
+            updatedCustomer.setUserID(user.getId());
             updatedCustomer.setUserAvatar(userAvatar);
             updatedCustomer.setFullname(fullname);
             updatedCustomer.setEmail(email);

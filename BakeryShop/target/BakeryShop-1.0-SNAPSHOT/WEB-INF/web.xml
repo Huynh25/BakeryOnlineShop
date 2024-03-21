@@ -275,6 +275,14 @@
         <servlet-name>LoginGoogleController</servlet-name>
         <servlet-class>controllers.customercontrollers.LoginGoogleController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>editProfileStaff</servlet-name>
+        <servlet-class>controllers.admincontrollers.editProfileStaff</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>changePasswordStaff</servlet-name>
+        <servlet-class>controllers.admincontrollers.changePasswordStaff</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RatingController</servlet-name>
         <url-pattern>/rating-management</url-pattern>
@@ -422,6 +430,14 @@
     <servlet-mapping>
         <servlet-name>LoginGoogleController</servlet-name>
         <url-pattern>/BakeryShop/loginGoogle</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>editProfileStaff</servlet-name>
+        <url-pattern>/editProfileStaff</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>changePasswordStaff</servlet-name>
+        <url-pattern>/changePasswordStaff</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

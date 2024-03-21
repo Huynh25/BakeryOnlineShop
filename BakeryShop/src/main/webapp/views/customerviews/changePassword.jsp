@@ -11,8 +11,8 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Change Password</title>
 
-        <link rel="stylesheet" href="../../assets/css/changePassword.css" />
         <link rel="stylesheet" href="../../assets/css/GlobalStyle.css" />
+        <link rel="stylesheet" href="../../assets/css/changePassword.css" />
 
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -30,12 +30,12 @@
             rel="stylesheet"
             href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
             />
-        <!--<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">-->
+        <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     </head>
     <body>
         <%@include file="../homeviews/Header.jsp" %>
         <div class="form-edit">
-            <form action="changePassword" method="post" class="form">
+            <form action="changePassword" method="post" class="form" onsubmit="return validatePasswords()" class="needs-validation" novalidate>
                 <input type="text" name="userID" value="${customer.userID}" hidden=""/>
                 <div class= "container">
                     <div class="form-group container">
@@ -45,12 +45,9 @@
                             id="currentpassword"
                             name="currentpassword"
                             value: ${currentpassword}
+                            required
+                            oninput="clearErrorMessage()"
                             />
-                        <div class="forgot-link">
-                            <p class="forgotPassword">
-                                <a href="forgotpassword">Forgot Password?</a>
-                            </p>
-                        </div>
                     </div>
                     <div class= "container">
                         <div class="form-group">
@@ -60,11 +57,13 @@
                                 id="newPassword"
                                 name="newPassword"
                                 value: ${newPassword}
+                                required
+                                oninput="clearErrorMessage()"
                                 />
                         </div>
                         <div class="row">
                             <div class="col-sm-6">
-                                <span id="8char" class="glyphicon glyphicon-remove" style="color:#FF0004;"></span> 8 Characters Long<br>
+                                <span id="8char" class="glyphicon glyphicon-remove" style="color:#FF0004;"></span> 6 Characters Long<br>
                                 <span id="ucase" class="glyphicon glyphicon-remove" style="color:#FF0004;"></span> One Uppercase Letter
                             </div>
                             <div class="col-sm-6">
@@ -79,6 +78,8 @@
                                 id="password2"
                                 name="password2"
                                 value: ${password2}
+                                required
+                                oninput="clearErrorMessage()"
                                 />
                         </div>
                         <div class="row">
@@ -92,10 +93,12 @@
                         <button type="submit" class="save">Save</button>
                     </div>
                 </div>
-                ${successMessage} ${errorMessage}
+                <div style="color: red" id="passwordValid">${errorMessage}</div>
+                ${successMessage}
+
             </form>
         </div>
-                 <!--Cart popup-->
+        <!--Cart popup-->
         <%@include file="../homeviews/Cart.jsp" %>
         <script
             src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
@@ -108,6 +111,6 @@
             crossorigin="anonymous"
         ></script>
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
-        <script src="../../assets/javascript/resetpassword.js"></script>
+        <script src="../../assets/javascript/changePassword.js"></script>
     </body>
 </html>
