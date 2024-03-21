@@ -10,7 +10,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Change Password</title>
-        <link rel="stylesheet" href="../../assets/css/changePassword.css" />
+        <link rel="stylesheet" href="../../assets/css/resetPassword.css" />
         <link rel="stylesheet" href="../../assets/css/GlobalStyle.css" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -33,9 +33,9 @@
     <body>
         <%@include file="../homeviews/Header.jsp" %>
         <div class="form-edit">
-            <form action="../../forgotpassword" method="get" class="form">
+            <form action="../../forgotpassword" method="get" class="form" onsubmit="return validatePasswordReset()" class="needs-validation" novalidate>
                 <div class= "container">
-                     <div style="color: red">${message}</div>
+                     <div style="color: greenyellow">${message}</div>
                     <div class="form-group">
                         <label for="email">New password</label>
                         <input
@@ -43,12 +43,14 @@
                             id="password1"
                             name="password1"
                             value: ${password1}
+                            required
+                            oninput="clearErrorMessage()"
                             />
                     </div>
                    
                     <div class="row">
                         <div class="col-sm-6">                          
-                            <span id="8char" class="glyphicon glyphicon-remove" style="color:#FF0004;"></span> 8 Characters Long<br>
+                            <span id="8char" class="glyphicon glyphicon-remove" style="color:#FF0004;"></span> 6 Characters Long<br>
                             <span id="ucase" class="glyphicon glyphicon-remove" style="color:#FF0004;"></span> One Uppercase Letter
                         </div>
                         <div class="col-sm-6">
@@ -63,6 +65,8 @@
                             id="password2"
                             name="password2"
                             value: ${password2}
+                            required
+                            oninput="clearErrorMessage()"
                             />
                     </div>
                     <div class="row">
@@ -79,7 +83,7 @@
                             
                                  <!--Cart popup-->
         <%@include file="../homeviews/Cart.jsp" %>
-        <script
+       <script
             src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
             integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
             crossorigin="anonymous"
@@ -90,6 +94,7 @@
             crossorigin="anonymous"
         ></script>
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+
         <script src="../../assets/javascript/resetpassword.js"></script>
     </body>
 </html>

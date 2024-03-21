@@ -7,7 +7,7 @@ $("input[type=password]").keyup(function () {
     var lcase = new RegExp("[a-z]+");
     var num = new RegExp("[0-9]+");
 
-    if ($("#newPassword").val().length >= 6) {
+    if ($("#password1").val().length >= 6) {
         $("#8char").removeClass("glyphicon-remove");
         $("#8char").addClass("glyphicon-ok");
         $("#8char").css("color", "#00A41E");
@@ -17,7 +17,7 @@ $("input[type=password]").keyup(function () {
         $("#8char").css("color", "#FF0004");
     }
 
-    if (ucase.test($("#newPassword").val())) {
+    if (ucase.test($("#password1").val())) {
         $("#ucase").removeClass("glyphicon-remove");
         $("#ucase").addClass("glyphicon-ok");
         $("#ucase").css("color", "#00A41E");
@@ -27,7 +27,7 @@ $("input[type=password]").keyup(function () {
         $("#ucase").css("color", "#FF0004");
     }
 
-    if (lcase.test($("#newPassword").val())) {
+    if (lcase.test($("#password1").val())) {
         $("#lcase").removeClass("glyphicon-remove");
         $("#lcase").addClass("glyphicon-ok");
         $("#lcase").css("color", "#00A41E");
@@ -37,7 +37,7 @@ $("input[type=password]").keyup(function () {
         $("#lcase").css("color", "#FF0004");
     }
 
-    if (num.test($("#newPassword").val())) {
+    if (num.test($("#password1").val())) {
         $("#num").removeClass("glyphicon-remove");
         $("#num").addClass("glyphicon-ok");
         $("#num").css("color", "#00A41E");
@@ -47,7 +47,7 @@ $("input[type=password]").keyup(function () {
         $("#num").css("color", "#FF0004");
     }
 
-    if ($("#newPassword").val() === $("#password2").val()) {
+    if ($("#password1").val() === $("#password2").val()) {
         $("#pwmatch").removeClass("glyphicon-remove");
         $("#pwmatch").addClass("glyphicon-ok");
         $("#pwmatch").css("color", "#00A41E");
@@ -58,13 +58,13 @@ $("input[type=password]").keyup(function () {
     }
 
     // Kiểm tra tất cả các điều kiện
-    if ($("#newPassword").val().length >= 6 &&
-            ucase.test($("#newPassword").val()) &&
-            lcase.test($("#newPassword").val()) &&
-            num.test($("#newPassword").val())) {
+    if ($("#password1").val().length >= 6 &&
+            ucase.test($("#password1").val()) &&
+            lcase.test($("#password1").val()) &&
+            num.test($("#password1").val())) {
         // Nếu tất cả các điều kiện đều đúng, đặt biến cờ là true
         allConditionsMet = true;
-    } else if ($("#newPassword").val() === $("#password2").val()) {
+    } else if ($("#password1").val() === $("#password2").val()) {
         confirmPassword = true;
     } else {
         allConditionsMet = false;
@@ -74,3 +74,20 @@ $("input[type=password]").keyup(function () {
 function cancelChange() {
     window.location.href = "/home";
 }
+    function validatePasswordReset() {
+        var newPassword = document.getElementById("password1").value;
+        var confirmPassword = document.getElementById("password2").value;
+
+        if (newPassword !== confirmPassword) {
+            document.getElementById("passwordValid").innerHTML = "Confirmation password does not match";
+            return false;
+        }
+        var uppercaseRegex = /[A-Z]/;
+        var lowercaseRegex = /[a-z]/;
+        var numberRegex = /[0-9]/;
+        if (newPassword.length < 6 || !uppercaseRegex.test(newPassword) || !lowercaseRegex.test(newPassword) || !numberRegex.test(newPassword)) {
+            document.getElementById("passwordValid").innerHTML = "New password is not valid";
+            return false;
+        }
+        return true;
+    }
